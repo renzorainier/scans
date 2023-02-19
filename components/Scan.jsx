@@ -108,11 +108,10 @@ function Scan() {
       <p className="text-xl">{data}</p>
       <h1 className="text-3xl font-semibold mt-8">Recent Logs</h1>
       <div className="bg-white rounded-lg shadow-lg mt-6 w-full max-w-md">
-        <ul className="divide-y divide-gray-300">
+        <ul className="text-gray-500 divide-y divide-gray-300">
           {log.map((entry, index) => (
             <li key={entry.id} className="py-4 px-6">
               <span className="block font-semibold">{entry.info}</span>
-            
             </li>
           ))}
         </ul>
