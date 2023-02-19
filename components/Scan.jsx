@@ -217,6 +217,9 @@ export default Scan;
 //         // This is facing mode: "environment". It will open the back camera of
 //         // the smartphone and if not found, will open the front camera
 //         constraints={{ facingMode: "environment" }}
+//                 style={{ width: "40%", height: "40%" }}
+
+
 //         className="mb-8"
 //       />
 //       <p className="text-xl mb-4">{data}</p>
