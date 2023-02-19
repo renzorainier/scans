@@ -103,7 +103,7 @@ function Scan() {
   <ul className="divide-y divide-gray-300">
     {log.map((entry, index) => (
       <li key={entry.id} className="py-4 px-6">
-        <span className="block font-semibold">{entry.info}</span>
+        <span className=" text-gray-500 block font-semibold">{entry.info}</span>
       </li>
     ))}
   </ul>
