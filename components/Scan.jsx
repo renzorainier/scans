@@ -94,7 +94,7 @@ function Scan() {
         // This is facing mode: "environment". It will open the back camera of
         // the smartphone and if not found, will open the front camera
         constraints={{ facingMode: "environment" }}
-        style={{ width: "100%", height: "100%" }}
+        style={{ width: "40%", height: "40%" }}
       />
     <p className="text-xl font-bold mt-6">Scan result:</p>
 <p className="text-xl">{data}</p>
