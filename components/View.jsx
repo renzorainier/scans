@@ -174,7 +174,7 @@ function AttendanceViewer() {
             <li key={student.id} className="py-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <h3 className="text-lg font-bold">{student.name}</h3>
+                  <h3 className="text-gray-500 text-lg font-bold">{student.name}</h3>
                   <p className="text-gray-500">
                     {student.lastScan
                       ? `Last Scan: ${student.lastScan.toLocaleTimeString()}`
