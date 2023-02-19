@@ -188,7 +188,7 @@ function AttendanceViewer() {
         </ul>
       </div>
     <div className="bg-white p-8 rounded-lg shadow-lg mt-8">
-  <h2 className="text-xl font-bold mb-4">Past Attendance</h2>
+  <h2 className="text-gray-500 text-xl font-bold mb-4">Past Attendance</h2>
   <div className="flex items-center mb-4">
     <label htmlFor="attendanceDate" className="block mr-4 font-medium text-gray-700">
       Select a date:
