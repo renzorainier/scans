@@ -9,7 +9,7 @@ function Generate() {
     <div>
       <div>Generate QR</div>
       {qrCodeValue != "" && <QRCode value={qrCodeValue} />}
-      <input
+      <input className="text-black"
         onChange={(e) => {
           setQrCodeValue(e.target.value);
         }}
