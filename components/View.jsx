@@ -166,7 +166,7 @@ function AttendanceViewer() {
   };
 
   return (
-    <div className="h-screen flex flex-colu items-center">
+    <div className="h-screen flex flex-colu in items-center">
       <div className="bg-white p-8 rounded-lg shadow-lg">
         <h2 className="text-gray-500 text-xl font-bold mb-4">Today's Attendance</h2>
         <ul className="divide-y divide-gray-200">
