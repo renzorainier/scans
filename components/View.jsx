@@ -223,9 +223,6 @@ function AttendanceViewer() {
   ) : (
     <p className="text-gray-500">No attendance records found for this date.</p>
   )}
-  <div/>
-);
-}
 
 
 
