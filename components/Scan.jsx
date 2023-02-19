@@ -217,7 +217,7 @@ function Scan() {
       />
       <p className="text-xl mb-4">{data}</p>
       <h1 className="text-3xl font-semibold mb-4">Recent Logs</h1>
-      <ul className="divide-y className="divide-gray-200">
+      <ul className="divide-y divide-gray-200">
 {logs.map((log, index) => (
 <li key={index} className="py-4">
 <p className="text-lg font-medium">{log.name}</p>
@@ -227,3 +227,6 @@ function Scan() {
 </ul>
 </div>
 );
+// }
+
+// export default Scan;
