@@ -20,7 +20,7 @@ function Scan() {
     const timeoutId = setTimeout(() => {
       setData("");
     }, 10000);
-
+    // npm install react-qr-code --legacy-peer-deps
     return () => clearTimeout(timeoutId);
   }, [data]);
 
