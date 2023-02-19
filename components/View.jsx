@@ -168,7 +168,7 @@ function AttendanceViewer() {
   return (
     <div className="bg-gray-100 h-screen flex flex-col items-center justify-center">
       <div className="bg-white p-8 rounded-lg shadow-lg">
-        <h2 className="text-xl font-bold mb-4">Today's Attendance</h2>
+        <h2 className="text-gray-500 text-xl font-bold mb-4">Today's Attendance</h2>
         <ul className="divide-y divide-gray-200">
           {todayAttendance.map((student) => (
             <li key={student.id} className="py-4">
