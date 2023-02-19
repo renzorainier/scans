@@ -6,7 +6,7 @@ function Generate() {
   const [qrCodeValue, setQrCodeValue] = useState("");
 
   return (
-    <div>
+    <div className="bg-white">
       <div>Generate QR</div>
       {qrCodeValue != "" && <QRCode value={qrCodeValue} />}
       <input className="text-black"
