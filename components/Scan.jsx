@@ -41,7 +41,13 @@ function Scan() {
           console.log(`Student ${code} is already marked as present`);
         }
 
-        const timeString = studentData.lastScan.toDate().toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
+        const timeString = studentData.lastScan
+          .toDate()
+          .toLocaleTimeString("en-US", {
+            hour: "numeric",
+            minute: "numeric",
+            hour12: true,
+          });
         return {
           name: studentData.name,
           time: timeString,
@@ -63,7 +69,9 @@ function Scan() {
       };
 
       // Remove duplicates
-      const existingEntryIndex = log.findIndex((entry) => entry.id === lastScanned);
+      const existingEntryIndex = log.findIndex(
+        (entry) => entry.id === lastScanned
+      );
       if (existingEntryIndex !== -1) {
         const updatedLog = [...log];
         updatedLog[existingEntryIndex] = newLogEntry;
@@ -96,16 +104,19 @@ function Scan() {
         constraints={{ facingMode: "environment" }}
         style={{ width: "100%", height: "100%" }}
       />
-      <p>{data}</p>
-      <h1>Recent Logs</h1>
-      <ul>
-        {log.map((entry, index) => (
-          <li key={entry.id}>
-            <span>{entry.info}</span>
-          </li>
-        ))}
-      </ul>
-
+      <p className="text-xl font-bold mt-6">Scan result:</p>
+      <p className="text-xl">{data}</p>
+      <h1 className="text-3xl font-semibold mt-8">Recent Logs</h1>
+      <div className="bg-white rounded-lg shadow-lg mt-6 w-full max-w-md">
+        <ul className="divide-y divide-gray-300">
+          {log.map((entry, index) => (
+            <li key={entry.id} className="py-4 px-6">
+              <span className="block font-semibold">{entry.info}</span>
+            
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }
@@ -219,7 +230,6 @@ export default Scan;
 //         constraints={{ facingMode: "environment" }}
 //                 style={{ width: "40%", height: "40%" }}
 
-
 //         className="mb-8"
 //       />
 //       <p className="text-xl mb-4">{data}</p>
@@ -237,7 +247,6 @@ export default Scan;
 // }
 
 // export default Scan;
-
 
 // import React, { useState, useEffect } from "react";
 // import { QrReader } from "react-qr-reader";
