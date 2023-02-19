@@ -81,7 +81,7 @@ function Scan() {
         setLog(updatedLog);
       }
     }
-  }, [data]);
+  }, [data, lastScanned, log]);
 
   return (
     <div>
