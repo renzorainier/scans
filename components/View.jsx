@@ -181,7 +181,7 @@ function AttendanceViewer() {
                       : "Not yet scanned"}
                   </p>
                 </div>
-                <span className="text-gray-500">{student.id}</span>
+                <span className="text-gray-500">{}</span>
               </div>
             </li>
           ))}
