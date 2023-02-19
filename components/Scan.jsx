@@ -106,13 +106,11 @@
 //         ))}
 //       </ul>
 
-
 //     </div>
 //   );
 // }
 
 // export default Scan;
-
 
 import React, { useState, useEffect } from "react";
 import { QrReader } from "react-qr-reader";
@@ -159,7 +157,11 @@ function Scan() {
 
         const timeString = studentData.lastScan
           .toDate()
-          .toLocaleTimeString("en-US", { hour: "numeric", minute: "numeric", hour12: true });
+          .toLocaleTimeString("en-US", {
+            hour: "numeric",
+            minute: "numeric",
+            hour12: true,
+          });
         return {
           name: studentData.name,
           time: timeString,
@@ -181,7 +183,9 @@ function Scan() {
       };
 
       // Remove duplicates
-      const existingEntryIndex = log.findIndex((entry) => entry.id === lastScanned);
+      const existingEntryIndex = log.findIndex(
+        (entry) => entry.id === lastScanned
+      );
       if (existingEntryIndex !== -1) {
         const updatedLog = [...log];
         updatedLog[existingEntryIndex] = newLogEntry;
@@ -218,15 +222,15 @@ function Scan() {
       <p className="text-xl mb-4">{data}</p>
       <h1 className="text-3xl font-semibold mb-4">Recent Logs</h1>
       <ul className="divide-y divide-gray-200">
-{logs.map((log, index) => (
-<li key={index} className="py-4">
-<p className="text-lg font-medium">{log.name}</p>
-<p className="text-gray-500">{log.time}</p>
-</li>
-))}
-</ul>
-</div>
-);
-// }
+        {logs.map((log, index) => (
+          <li key={index} className="py-4">
+            <p className="text-lg font-medium">{log.name}</p>
+            <p className="text-gray-500">{log.time}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
 
-// export default Scan;
+export default Scan;
