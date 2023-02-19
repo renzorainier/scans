@@ -96,17 +96,19 @@ function Scan() {
         constraints={{ facingMode: "environment" }}
         style={{ width: "100%", height: "100%" }}
       />
-      <p>{data}</p>
-      <h1>Recent Logs</h1>
-      <ul>
-        {log.map((entry, index) => (
-          <li key={entry.id}>
-            <span>{entry.info}</span>
-          </li>
-        ))}
-      </ul>
-
-    </div>
+<p className="text-xl font-bold mt-6">Scan result:</p>
+<p className="text-xl">{data}</p>
+<h1 className="text-3xl font-semibold mt-8">Recent Logs</h1>
+<div className="bg-white rounded-lg shadow-lg mt-6 w-full max-w-md">
+  <ul className="text-gray-500 divide-y divide-gray-300">
+    {log.map((entry, index) => (
+      <li key={entry.id} className="py-4 px-6">
+        <span className="block font-semibold">{entry.info}</span>
+      </li>
+    ))}
+  </ul>
+</div>
+</div>
   );
 }
 

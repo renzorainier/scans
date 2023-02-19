@@ -233,7 +233,7 @@ function AttendanceViewer() {
 
 export default AttendanceViewer
 
-<p className="text-xl font-bold mt-6">Scan result:</p>
+{/* <p className="text-xl font-bold mt-6">Scan result:</p>
 <p className="text-xl">{data}</p>
 <h1 className="text-3xl font-semibold mt-8">Recent Logs</h1>
 <div className="bg-white rounded-lg shadow-lg mt-6 w-full max-w-md">
@@ -246,4 +246,4 @@ export default AttendanceViewer
   </ul>
 </div>
 </div>
-);
+); */}
