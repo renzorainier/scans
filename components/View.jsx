@@ -73,7 +73,7 @@ function AttendanceViewer() {
           {todayAttendance.map((student) => (
             <li key={student.id} className="py-4">
               <div className="flex items-center justify-between">
-                <div className="flex items-center justify-between">
+                <div className="flex flex-roiw tems-center justify-between">
                   <h3 className="text-gray-700 text-lg font-bold">{student.name}</h3>
                   <p className="text-gray-700">
                     {student.lastScan
