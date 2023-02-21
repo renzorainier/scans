@@ -57,7 +57,7 @@ function TodayAttendance() {
   );
 }
 
-export default TodayAttendanceViewer
+export default TodayAttendance
 
 
 // import React, { useState, useEffect } from "react";

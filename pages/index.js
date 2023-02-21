@@ -1,8 +1,8 @@
 import Head from "next/head";
 import { useState } from "react";
 import Scan from "components/Scan";
-import TodayAttendance from "@/components/PastView";
-import PastAttendance from "@/components/TodayView";
+import PastAttendance  from "@/components/PastView";
+import TodayAttendance  from "@/components/TodayView";
 import SavePresentStudents from "components/Save";
 import Generate from "components/Generate";
 import { useEffect } from "react";
