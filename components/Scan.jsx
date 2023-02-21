@@ -26,7 +26,7 @@ function Scan() {
 
   const handleMarkPresent = async (code) => {
     try {
-      const studentRef = doc(db, "students", code);
+      const studentRef = doc(db, "strands", "STEM", "1B", code);
       const docSnapshot = await getDoc(studentRef);
       if (docSnapshot.exists()) {
         const studentData = docSnapshot.data();
