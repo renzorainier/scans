@@ -115,8 +115,7 @@ function AttendanceViewer() {
                         : "Not yet scanned"}
                     </p>
                     <p className="text-gray-700">
-                      {stude
-
+                      {student.section}
                     </p>
                   </div>
                   <span className="text-gray-700">{student.section}</span>
