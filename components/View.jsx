@@ -19,7 +19,7 @@ function AttendanceViewer() {
   useEffect(() => {
     const fetchTodayAttendance = async () => {
       const presentStudentsQuery = query(
-        collection(db, "students"),
+        collection(db, "strands", "STEM", "1B"),
         where("present", "==", true)
       );
       const presentStudentsQuerySnapshot = await getDocs(presentStudentsQuery);
