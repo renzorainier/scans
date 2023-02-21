@@ -47,6 +47,7 @@ function AttendanceViewer() {
           (student) => ({
             ...student,
             lastScan: student.lastScan.toDate(),
+            section: student.section,
           })
         );
         presentStudents.sort((a, b) => b.lastScan - a.lastScan);
