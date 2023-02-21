@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { useState } from "react";
 import Scan from "components/Scan";
-import AttendanceViewer from "components/View";
+import AttendanceViewer from "@/components/PastView";
 import SavePresentStudents from "components/Save";
 import Generate from "components/Generate";
 import { useEffect } from "react";
