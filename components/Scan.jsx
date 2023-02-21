@@ -20,18 +20,12 @@ function Scan() {
     const timeoutId = setTimeout(() => {
       setData("");
     }, 10000);
-    // npm install react-qr-code --legacy-peer-deps
     return () => clearTimeout(timeoutId);
   }, [data]);
 
-  const handleMarkPresent = async (code) => {
+  const handleMarkPresent = async (strand, section, id) => {
     try {
-      const parts = code.split("-");
-      const strand = parts[0];
-      const section = parts[1];
-      const referenceNumber = parts[2];
-
-      const studentRef = doc(db, "strands", strand, section, referenceNumber);
+      const studentRef = doc(db, "strands", strand, section, id);
       const docSnapshot = await getDoc(studentRef);
       if (docSnapshot.exists()) {
         const studentData = docSnapshot.data();
@@ -41,9 +35,9 @@ function Scan() {
             { present: true, lastScan: new Date() },
             { merge: true }
           );
-          console.log(`Student ${code} marked as present`);
+          console.log(`Student ${id} marked as present`);
         } else {
-          console.log(`Student ${code} is already marked as present`);
+          console.log(`Student ${id} is already marked as present`);
         }
 
         const timeString = studentData.lastScan
@@ -58,7 +52,7 @@ function Scan() {
           time: timeString,
         };
       } else {
-        console.log(`No student found with ID ${code}`);
+        console.log(`No student found with ID ${id}`);
         return undefined;
       }
     } catch (e) {
@@ -96,70 +90,25 @@ function Scan() {
             const code = result.text;
             if (code !== lastScanned) {
               setLastScanned(code);
-
-              const codeParts = code.split("-");
-              const strand = codeParts[0];
-              const section = codeParts[1];
-              const lrn = codeParts[2];
-
-              try {
-                const studentRef = doc(db, "strands", strand, section, lrn);
-                const docSnapshot = await getDoc(studentRef);
-                if (docSnapshot.exists()) {
-                  const studentData = docSnapshot.data();
-                  if (!studentData.present) {
-                    await setDoc(
-                      studentRef,
-                      { present: true, lastScan: new Date() },
-                      { merge: true }
-                    );
-                    console.log(`Student ${lrn} marked as present`);
-                  } else {
-                    console.log(`Student ${lrn} is already marked as present`);
-                  }
-
-                  const timeString = studentData.lastScan
-                    .toDate()
-                    .toLocaleTimeString("en-US", {
-                      hour: "numeric",
-                      minute: "numeric",
-                      hour12: true,
-                    });
-
-                  return {
-                    name: studentData.name,
-                    time: timeString,
-                  };
-                } else {
-                  console.log(`No student found with ID ${lrn}`);
-                  return undefined;
+              const parts = code.split("-");
+              if (parts.length === 3) {
+                const [strand, section, id] = parts;
+                const studentInfo = await handleMarkPresent(strand, section, id);
+                if (studentInfo) {
+                  const { name, time } = studentInfo;
+                  setData(`Name: ${name}, Scanned at: ${time}`);
                 }
-              } catch (e) {
-                console.error("Error marking student as present: ", e);
+              } else {
+                console.log(`Invalid QR code format: ${code}`);
               }
             }
           }
         }}
-        // This is facing mode: "environment". It will open the back camera of
-        // the smartphone and if not found, will open the front camera
         constraints={{ facingMode: "environment" }}
         style={{ width: "100%", height: "100%" }}
       />
-      <p className="text-xl font-bold mt-6">Scan result:</p>
-      <p className="text-xl">{data}</p>
-      <h1 className="text-3xl font-semibold mt-8">Recent Logs</h1>
-      <div className="bg-white rounded-lg shadow-lg mt-6 w-full max-w-md">
-        <ul className="text-gray-500 divide-y divide-gray-300">
-          {log.map((entry, index) => (
-            <li key={entry.id} className="py-4 px-6">
-              <span className="block font-semibold">{entry.info}</span>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </div>
-  );
-}
+      <p className="text-xl font-bold mt-6">Scan
+
 
 // import React, { useState, useEffect } from "react";
 // import { QrReader } from "react-qr-reader";
