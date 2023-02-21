@@ -34,7 +34,7 @@ function TodayAttendance() {
   }, []);
 
   return (
-    <div className="bg-white p-8 pr-8 divide-x divide-y rounded-lg shadow-lg border-r inline-block">
+    <div className="bg-white p-8 divide-x divide-yrounded-lg shadow-lg border-r inline-block">
     <h2 className="text-gray-700 text-xl font-bold mb-4">Attendance For Today</h2>
     <table className="divide-y divide-gray-200">
         <thead className="bg-gray-50">
