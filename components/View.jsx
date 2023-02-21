@@ -114,8 +114,9 @@ function AttendanceViewer() {
                         ? `Last Scan: ${student.lastScan.toLocaleTimeString()}`
                         : "Not yet scanned"}
                     </p>
-                    <p>
-                      
+                    <p className="text-gray-700">
+                      {stude
+
                     </p>
                   </div>
                   <span className="text-gray-700">{student.section}</span>
