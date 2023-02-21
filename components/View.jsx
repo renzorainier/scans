@@ -27,6 +27,7 @@ function AttendanceViewer() {
         id: doc.id,
         name: doc.data().name,
         lastScan: doc.data().lastScan?.toDate() || null,
+        section: doc.data().section,
       }));
       presentStudents.sort((a, b) => b.lastScan - a.lastScan);
       setTodayAttendance(presentStudents);
