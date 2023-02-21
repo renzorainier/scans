@@ -19,8 +19,8 @@ export default function Home() {
     switch (component) {
       case "Scan":
         return <Scan />;
-      case "View":
-        return <AttendanceViewer />;
+      case "TodayView":
+        return <TodayAttendance />;
       case "Save":
         return <SavePresentStudents />;
       case "Generate":
