@@ -71,7 +71,7 @@ function AttendanceViewer() {
         <h2 className="text-gray-700 text-xl font-bold mb-4">Attendance For Today</h2>
         <ul className="divide-y divide-gray-200">
           {todayAttendance.map((student) => (
-            <li key={student.id} className="py-4">
+            <li key={student.id} className="py-4 divide-x divide-gray-200">
               <div className="flex items-center justify-between">
                 <div className="flex flex-row items-center justify-between">
                   <h3 className="text-gray-700 text-lg font-bold">{student.name}</h3>
