@@ -52,7 +52,7 @@ function StudentCollection() {
 
     students.forEach((student) => {
       const studentRef = doc(studentsCollectionRef, student.id);
-      batch.push(setDoc(studentRef, { present: false, name: student.name, section: student.section }));
+      batch.push(setDoc(studentRef, { present: false, name: student.name, section: student.section, badges: [] }));
     });
     try {
       await Promise.all(batch);
