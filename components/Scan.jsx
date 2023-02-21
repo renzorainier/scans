@@ -93,7 +93,7 @@ function Scan() {
               const parts = code.split("-");
               if (parts.length === 3) {
                 const [strand, section, id] = parts;
-                const studentInfo = await handleMarkPresent(id);
+                const studentInfo = await handleMarkPresent(id, section, id);
                 if (studentInfo) {
                   const { name, time } = studentInfo;
                   setData(`Name: ${name}, Scanned at: ${time}`);
