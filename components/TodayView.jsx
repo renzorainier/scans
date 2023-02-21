@@ -34,9 +34,9 @@ function TodayAttendance() {
   }, []);
 
   return (
-    <div className="bg-white p-8 pr-8 divide-x divide-y rounded-lg shadow-lg inline-block">
-      <h2 className="text-gray-700 text-xl font-bold mb-4">Attendance For Today</h2>
-      <table className="divide-y divide-gray-200 border border-gray-300 rounded-md">
+    <div className="bg-white p-8 pr-8 divide-x divide-y rounded-lg shadow-lg border-r inline-block">
+    <h2 className="text-gray-700 text-xl font-bold mb-4">Attendance For Today</h2>
+    <table className="divide-y divide-gray-200">
         <thead className="bg-gray-50">
           <tr>
             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
