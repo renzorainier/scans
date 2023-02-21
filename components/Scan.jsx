@@ -26,7 +26,12 @@ function Scan() {
 
   const handleMarkPresent = async (code) => {
     try {
-      const studentRef = doc(db, "strands", "STEM", "1B", code);
+      const parts = code.split("-");
+      const strand = parts[0];
+      const section = parts[1];
+      const referenceNumber = parts[2];
+
+      const studentRef = doc(db, "strands", strand, section, referenceNumber);
       const docSnapshot = await getDoc(studentRef);
       if (docSnapshot.exists()) {
         const studentData = docSnapshot.data();
@@ -91,10 +96,46 @@ function Scan() {
             const code = result.text;
             if (code !== lastScanned) {
               setLastScanned(code);
-              const studentInfo = await handleMarkPresent(code);
-              if (studentInfo) {
-                const { name, time } = studentInfo;
-                setData(`Name: ${name}, Scanned at: ${time}`);
+
+              const codeParts = code.split("-");
+              const strand = codeParts[0];
+              const section = codeParts[1];
+              const lrn = codeParts[2];
+
+              try {
+                const studentRef = doc(db, "strands", strand, section, lrn);
+                const docSnapshot = await getDoc(studentRef);
+                if (docSnapshot.exists()) {
+                  const studentData = docSnapshot.data();
+                  if (!studentData.present) {
+                    await setDoc(
+                      studentRef,
+                      { present: true, lastScan: new Date() },
+                      { merge: true }
+                    );
+                    console.log(`Student ${lrn} marked as present`);
+                  } else {
+                    console.log(`Student ${lrn} is already marked as present`);
+                  }
+
+                  const timeString = studentData.lastScan
+                    .toDate()
+                    .toLocaleTimeString("en-US", {
+                      hour: "numeric",
+                      minute: "numeric",
+                      hour12: true,
+                    });
+
+                  return {
+                    name: studentData.name,
+                    time: timeString,
+                  };
+                } else {
+                  console.log(`No student found with ID ${lrn}`);
+                  return undefined;
+                }
+              } catch (e) {
+                console.error("Error marking student as present: ", e);
               }
             }
           }
@@ -119,11 +160,6 @@ function Scan() {
     </div>
   );
 }
-
-export default Scan;
-
-
-
 
 // import React, { useState, useEffect } from "react";
 // import { QrReader } from "react-qr-reader";
