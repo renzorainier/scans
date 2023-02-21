@@ -1,8 +1,8 @@
 import Head from "next/head";
 import { useState } from "react";
 import Scan from "components/Scan";
-import PastAttendance  from "@/components/PastView";
-import TodayAttendance  from "@/components/TodayView";
+import PastAttendance from "@/components/PastView";
+import TodayAttendance from "@/components/TodayView";
 import SavePresentStudents from "components/Save";
 import Generate from "components/Generate";
 import { useEffect } from "react";
@@ -19,8 +19,10 @@ export default function Home() {
     switch (component) {
       case "Scan":
         return <Scan />;
-      case "TodayView":
+      case "TodayAttendance":
         return <TodayAttendance />;
+      case "PastAttendance":
+        return <PastAttendance />;
       case "Save":
         return <SavePresentStudents />;
       case "Generate":
@@ -36,18 +38,27 @@ export default function Home() {
             <p className="text-lg mb-6 text-white">Choose Below</p>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               <button
+                value="TodayAttendance"
+                className="bg-blue-600 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded transition-colors duration-200"
+                onClick={handleClick}
+              >
+                Today's Attendance
+              </button>
+
+              <button
+                value="PastAttendance"
+                className="bg-blue-600 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded transition-colors duration-200"
+                onClick={handleClick}
+              >
+                Past Attendance
+              </button>
+
+              <button
                 value="Scan"
                 className="bg-blue-600 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded transition-colors duration-200"
                 onClick={handleClick}
               >
                 Scan
-              </button>
-              <button
-                value="View"
-                className="bg-blue-600 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded transition-colors duration-200"
-                onClick={handleClick}
-              >
-                View
               </button>
               <button
                 value="Save"
