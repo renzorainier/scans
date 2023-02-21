@@ -25,7 +25,6 @@ function TodayAttendance() {
         name: doc.data().name,
         lastScan: doc.data().lastScan?.toDate() || null,
         section: doc.data().section,
-        
       }));
       presentStudents.sort((a, b) => b.lastScan - a.lastScan);
       setTodayAttendance(presentStudents);
@@ -37,29 +36,47 @@ function TodayAttendance() {
   return (
     <div className="bg-white p-8 rounded-lg shadow-lg">
       <h2 className="text-gray-700 text-xl font-bold mb-4">Attendance For Today</h2>
-      <ul className="divide-y divide-gray-200">
-        {todayAttendance.map((student) => (
-          <li key={student.id} className="py-4 divide-x divide-gray-200">
-            <div className="flex items-center justify-between">
-              <div className="flex flex-row items-center justify-between">
-                <h3 className="text-gray-700 text-lg font-bold">{student.name}</h3>
-                <p className="text-gray-700">
+      <table className="w-full divide-y divide-gray-200">
+        <thead className="bg-gray-50">
+          <tr>
+            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              Name
+            </th>
+            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              Last Scan
+            </th>
+            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              Section
+            </th>
+          </tr>
+        </thead>
+        <tbody className="bg-white divide-y divide-gray-200">
+          {todayAttendance.map((student) => (
+            <tr key={student.id}>
+              <td className="px-6 py-4 whitespace-nowrap">
+                <div className="flex items-center">
+                  <div className="ml-4">
+                    <div className="text-sm font-medium text-gray-900">{student.name}</div>
+                  </div>
+                </div>
+              </td>
+              <td className="px-6 py-4 whitespace-nowrap">
+                <div className="text-sm text-gray-900">
                   {student.lastScan
-                    ? `Last Scan: ${student.lastScan.toLocaleTimeString()}`
+                    ? student.lastScan.toLocaleTimeString()
                     : "Not yet scanned"}
-                </p>
-                <p className="text-gray-800">{student.section}</p>
-              </div>
-            </div>
-          </li>
-        ))}
-      </ul>
+                </div>
+              </td>
+              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{student.section}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 }
 
-export default TodayAttendance
-
+export default TodayAttendance;
 
 // import React, { useState, useEffect } from "react";
 // import {
