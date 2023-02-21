@@ -18,7 +18,7 @@ function TodayAttendance() {
       const presentStudentsQuery = query(
         collection(db, "strands", "STEM", "1B"),
         where("present", "==", true)
-      );
+      );    
       const presentStudentsQuerySnapshot = await getDocs(presentStudentsQuery);
       const presentStudents = presentStudentsQuerySnapshot.docs.map((doc) => ({
         id: doc.id,
