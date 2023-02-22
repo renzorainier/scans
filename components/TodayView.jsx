@@ -19,7 +19,7 @@ function TodayAttendance() {
   useEffect(() => {
     const fetchTodayAttendance = async () => {
       const presentStudentsQuery = query(
-        collection(db, "strands", "STEM", "1B"),
+        collection(db, "strands", "STEM", "1A"),
         where("present", "==", true)
       );
       const presentStudentsQuerySnapshot = await getDocs(presentStudentsQuery);
