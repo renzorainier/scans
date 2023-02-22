@@ -22,11 +22,11 @@ function TodayAttendance() {
       let attendanceQuery = query(collection(db, "strands"));
 
       if (selectedStrand && selectedStrand !== "ALL STRANDS") {
-        attendanceQuery = query(attendanceQuery, where("strand", "==", selectedStrand));
+        attendanceQuery = query(collection(db, "strands", selectedStrand), where("strand", "==", selectedStrand));
       }
 
       if (selectedSection && selectedSection !== "ALL SECTIONS") {
-        attendanceQuery = query(attendanceQuery, where("section", "==", selectedSection));
+        attendanceQuery = query(collection(db, "strands", selectedStrand, selectedSection), where("section", "==", selectedSection));
       }
 
       const presentStudentsQuery = query(attendanceQuery, where("present", "==", true));
