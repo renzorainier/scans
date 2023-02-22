@@ -16,17 +16,12 @@ function TodayAttendance() {
   const [selectedSection, setSelectedSection] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
 
-
   useEffect(() => {
     const fetchTodayAttendance = async () => {
       let attendanceQuery = query(collection(db, "strands"));
 
       if (selectedStrand && selectedStrand !== "ALL STRANDS") {
-        attendanceQuery = query(collection(db, "strands", selectedStrand), where("strand", "==", selectedStrand));
-      }
-
-      if (selectedSection && selectedSection !== "ALL SECTIONS") {
-        attendanceQuery = query(collection(db, "strands", selectedStrand, selectedSection), where("section", "==", selectedSection));
+        attendanceQuery = query(collection(db, "strands", selectedStrand, selectedSection), where("strand", "==", selectedStrand));
       }
 
       const presentStudentsQuery = query(attendanceQuery, where("present", "==", true));
@@ -43,9 +38,8 @@ function TodayAttendance() {
       setFilteredAttendance(presentStudents);
     };
 
-
     fetchTodayAttendance();
-  }, []);
+  }, [selectedStrand, selectedSection]);
 
   useEffect(() => {
     const filteredStudents = todayAttendance.filter(
@@ -59,8 +53,7 @@ function TodayAttendance() {
   }, [selectedStrand, selectedSection, searchQuery, todayAttendance]);
 
   const strands = ["STEM", "ABM", "HUMSS", "ICT", "GAS", "ALL STRANDS"];
-const sections = ["1A", "1B", "2A", "2B", "3A", "3B", "ALL SECTIONS"];
-
+  const sections = ["1A", "1B", "2A", "2B", "3A", "3B", "ALL SECTIONS"];
 
   const handleStrandChange = (event) => {
     const selectedStrand = event.target.value;
@@ -93,6 +86,7 @@ const sections = ["1A", "1B", "2A", "2B", "3A", "3B", "ALL SECTIONS"];
   const handleSearchQueryChange = (event) => {
     setSearchQuery(event.target.value);
   };
+
 
   return (
     <div className="text-gray-700 bg-white p-8 pr-8 divide-x divide-y rounded-lg shadow-lg inline-block">
