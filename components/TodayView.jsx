@@ -12,13 +12,13 @@ import { db } from "./firebase.js";
 function TodayAttendance() {
   const [todayAttendance, setTodayAttendance] = useState([]);
   const [filteredAttendance, setFilteredAttendance] = useState([]);
-  const [selectedStrand, setSelectedStrand] = useState("");
+  const [selectedStrand, setSelectedStrand] = useState("STEM");
   const [selectedSection, setSelectedSection] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     const fetchTodayAttendance = async () => {
-      let attendanceQuery = query(collection(db, "strands", "STEM", "1B"))
+      let attendanceQuery = query(collection(db, "strands", selectedStrand, selectedSection))
 
 
       const presentStudentsQuery = query(attendanceQuery, where("present", "==", true));
