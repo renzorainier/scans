@@ -45,7 +45,7 @@ function TodayAttendance() {
 
 
     fetchTodayAttendance();
-  }, []);
+  }, );
 
   useEffect(() => {
     const filteredStudents = todayAttendance.filter(
