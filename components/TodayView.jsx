@@ -69,7 +69,7 @@ function TodayAttendance() {
   };
 
   return (
-    <div className="bg-white p-8 pr-8 divide-x divide-y rounded-lg shadow-lg inline-block">
+    <div className="text-gray-700 bg-white p-8 pr-8 divide-x divide-y rounded-lg shadow-lg inline-block">
       <h2 className="text-gray-700 text-xl font-bold mb-4">
         Attendance For Today
       </h2>
@@ -116,7 +116,7 @@ function TodayAttendance() {
         </div>
       </div>
       <div className="overflow-x-auto">
-        <table className="text-gray-700 table-auto border-collapse w-full">
+        <table className=" table-auto border-collapse w-full">
           <thead>
             <tr>
               <th className="border p-2">#</th>
