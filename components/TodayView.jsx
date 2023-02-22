@@ -74,11 +74,31 @@ function TodayAttendance() {
   ];
 
   const handleStrandChange = (event) => {
-    setSelectedStrand(event.target.value);
+    const selectedStrand = event.target.value;
+    setSelectedStrand(selectedStrand);
+
+    const filteredStudents = todayAttendance.filter(
+      (student) =>
+        (selectedStrand === "ALL STRANDS" || student.strand === selectedStrand) &&
+        (selectedSection === "ALL SECTIONS" || student.section === selectedSection) &&
+        (!searchQuery ||
+          student.name.toLowerCase().includes(searchQuery.toLowerCase()))
+    );
+    setFilteredAttendance(filteredStudents);
   };
 
   const handleSectionChange = (event) => {
-    setSelectedSection(event.target.value);
+    const selectedSection = event.target.value;
+    setSelectedSection(selectedSection);
+
+    const filteredStudents = todayAttendance.filter(
+      (student) =>
+        (selectedStrand === "ALL STRANDS" || student.strand === selectedStrand) &&
+        (selectedSection === "ALL SECTIONS" || student.section === selectedSection) &&
+        (!searchQuery ||
+          student.name.toLowerCase().includes(searchQuery.toLowerCase()))
+    );
+    setFilteredAttendance(filteredStudents);
   };
 
   const handleSearchQueryChange = (event) => {
