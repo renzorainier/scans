@@ -21,7 +21,7 @@ function TodayAttendance() {
       let attendanceQuery = query(collection(db, "strands"));
 
       if (selectedStrand && selectedStrand !== "ALL STRANDS") {
-        attendanceQuery = query(collection(db, "strands", selectedStrand, selectedSection), where("strand", "==", selectedStrand));
+        attendanceQuery = query(collection(db, "strands", selectedStrand, selectedSection), where("strand", "==", selectedStrand, where("section", "==", selectedSection));
       }
 
       const presentStudentsQuery = query(attendanceQuery, where("present", "==", true));
