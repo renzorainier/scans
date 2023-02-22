@@ -18,9 +18,9 @@ function TodayAttendance() {
 
   useEffect(() => {
     const fetchTodayAttendance = async () => {
-      let attendanceQuery = query(collection(db, "strands",selectedStrand, selectedSection));
+      let attendanceQuery = query(collection(db, "strands","STEM", selectedSection));
 
-    
+
 
       const presentStudentsQuery = query(attendanceQuery, where("present", "==", true));
       const presentStudentsQuerySnapshot = await getDocs(presentStudentsQuery);
