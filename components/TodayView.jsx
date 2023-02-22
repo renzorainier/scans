@@ -16,6 +16,7 @@ function TodayAttendance() {
   const [selectedSection, setSelectedSection] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
 
+
   useEffect(() => {
     const fetchTodayAttendance = async () => {
       let attendanceQuery = collection(db, "attendance");
@@ -66,12 +67,9 @@ function TodayAttendance() {
     setFilteredAttendance(filteredStudents);
   }, [selectedStrand, selectedSection, searchQuery, todayAttendance]);
 
-  const strands = [
-    ...new Set(todayAttendance.map((student) => student.strand)),
-  ];
-  const sections = [
-    ...new Set(todayAttendance.map((student) => student.section)),
-  ];
+  const strands = ["STEM", "ABM", "HUMSS", "ICT", "GAS", "ALL STRANDS"];
+const sections = ["1A", "1B", "2A", "2B", "3A", "3B", "ALL SECTIONS"];
+
 
   const handleStrandChange = (event) => {
     const selectedStrand = event.target.value;
