@@ -18,8 +18,15 @@ function TodayAttendance() {
 
   useEffect(() => {
     const fetchTodayAttendance = async () => {
-      let attendanceQuery = query(collection(db, "strands", selectedStrand, selectedSection))
+      let attendanceQuery;
 
+      if (selectedStrand && selectedSection) {
+        attendanceQuery = query(collection(db, "strands", selectedStrand, selectedSection));
+      } else if (selectedStrand) {
+        attendanceQuery = query(collection(db, "strands", selectedStrand));
+      } else {
+        attendanceQuery = query(collection(db, "strands"));
+      }
 
       const presentStudentsQuery = query(attendanceQuery, where("present", "==", true));
       const presentStudentsQuerySnapshot = await getDocs(presentStudentsQuery);
@@ -37,6 +44,7 @@ function TodayAttendance() {
 
     fetchTodayAttendance();
   }, [selectedStrand, selectedSection]);
+
 
   useEffect(() => {
     const filteredStudents = todayAttendance.filter(
