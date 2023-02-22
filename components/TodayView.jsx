@@ -18,7 +18,10 @@ function TodayAttendance() {
 
   useEffect(() => {
     const fetchTodayAttendance = async () => {
-      let attendanceQuery = query(collection(db, "strands", selectedStrand, selectedSection));
+      let attendanceQuery = query(collection(db, "strands"));
+
+      if (selectedStrand && selectedStrand !== "ALL STRANDS") {
+        attendanceQuery = query(collection(db, "strands", selectedStrand, "sections", selectedSection), where("strand", "==", selectedStrand));
       }
 
       const presentStudentsQuery = query(attendanceQuery, where("present", "==", true));
@@ -83,6 +86,7 @@ function TodayAttendance() {
   const handleSearchQueryChange = (event) => {
     setSearchQuery(event.target.value);
   };
+
 
 
   return (
