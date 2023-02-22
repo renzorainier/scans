@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import {
   collection,
@@ -12,13 +11,25 @@ import { db } from "./firebase.js";
 
 function TodayAttendance() {
   const [todayAttendance, setTodayAttendance] = useState([]);
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     const fetchTodayAttendance = async () => {
-      const presentStudentsQuery = query(
+      let presentStudentsQuery = query(
         collection(db, "strands", "STEM", "1B"),
         where("present", "==", true)
-      );    
+      );
+
+      // Apply search filter
+      if (search) {
+        presentStudentsQuery = query(
+          collection(db, "strands", "STEM", "1B"),
+          where("present", "==", true),
+          where("name", ">=", search),
+          where("name", "<=", search + "\uf8ff")
+        );
+      }
+
       const presentStudentsQuerySnapshot = await getDocs(presentStudentsQuery);
       const presentStudents = presentStudentsQuerySnapshot.docs.map((doc) => ({
         id: doc.id,
@@ -31,11 +42,24 @@ function TodayAttendance() {
     };
 
     fetchTodayAttendance();
-  }, []);
+  }, [search]);
+
+  const handleSearchChange = (event) => {
+    setSearch(event.target.value);
+  };
 
   return (
     <div className="bg-white p-8 pr-8 divide-x divide-y rounded-lg shadow-lg inline-block">
       <h2 className="text-gray-700 text-xl font-bold mb-4">Attendance For Today</h2>
+      <div className="mb-4">
+        <input
+          type="text"
+          className="border border-gray-300 rounded-md py-2 px-4 block w-full appearance-none leading-normal"
+          placeholder="Search by name, section, or strand..."
+          value={search}
+          onChange={handleSearchChange}
+        />
+      </div>
       <table className="divide-y divide-gray-200 border border-gray-300 rounded-md">
         <thead className="bg-gray-50">
           <tr>
@@ -60,11 +84,6 @@ function TodayAttendance() {
                   </div>
                 </div>
               </td>
-              <td className="px-6 py-4 whitespace-nowrap">
-                <div className="text-sm text-gray-900">
-                  {student.lastScan ? student.lastScan.toLocaleTimeString() : "No Record"}
-                </div>
-              </td>
               <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{student.section}</td>
             </tr>
           ))}
@@ -77,6 +96,85 @@ function TodayAttendance() {
 }
 
 export default TodayAttendance;
+
+// import React, { useState, useEffect } from "react";
+// import {
+//   collection,
+//   query,
+//   where,
+//   getDocs,
+//   getDoc,
+//   doc,
+// } from "firebase/firestore";
+// import { db } from "./firebase.js";
+
+// function TodayAttendance() {
+//   const [todayAttendance, setTodayAttendance] = useState([]);
+
+//   useEffect(() => {
+//     const fetchTodayAttendance = async () => {
+//       const presentStudentsQuery = query(
+//         collection(db, "strands", "STEM", "1B"),
+//         where("present", "==", true)
+//       );
+//       const presentStudentsQuerySnapshot = await getDocs(presentStudentsQuery);
+//       const presentStudents = presentStudentsQuerySnapshot.docs.map((doc) => ({
+//         id: doc.id,
+//         name: doc.data().name,
+//         lastScan: doc.data().lastScan?.toDate() || null,
+//         section: doc.data().section,
+//       }));
+//       presentStudents.sort((a, b) => b.lastScan - a.lastScan);
+//       setTodayAttendance(presentStudents);
+//     };
+
+//     fetchTodayAttendance();
+//   }, []);
+
+//   return (
+//     <div className="bg-white p-8 pr-8 divide-x divide-y rounded-lg shadow-lg inline-block">
+//       <h2 className="text-gray-700 text-xl font-bold mb-4">Attendance For Today</h2>
+//       <table className="divide-y divide-gray-200 border border-gray-300 rounded-md">
+//         <thead className="bg-gray-50">
+//           <tr>
+//             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+//               Name
+//             </th>
+//             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+//               Last Scan
+//             </th>
+//             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+//               Section
+//             </th>
+//           </tr>
+//         </thead>
+//         <tbody className="bg-white divide-y divide-gray-200">
+//           {todayAttendance.map((student) => (
+//             <tr key={student.id}>
+//               <td className="px-6 py-4 whitespace-nowrap">
+//                 <div className="flex items-center">
+//                   <div className="ml-4">
+//                     <div className="text-sm font-medium text-gray-900">{student.name}</div>
+//                   </div>
+//                 </div>
+//               </td>
+//               <td className="px-6 py-4 whitespace-nowrap">
+//                 <div className="text-sm text-gray-900">
+//                   {student.lastScan ? student.lastScan.toLocaleTimeString() : "No Record"}
+//                 </div>
+//               </td>
+//               <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{student.section}</td>
+//             </tr>
+//           ))}
+//         </tbody>
+//       </table>
+//     </div>
+//   );
+
+
+// }
+
+// export default TodayAttendance;
 
 
 
