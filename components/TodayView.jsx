@@ -116,7 +116,7 @@ function TodayAttendance() {
         </div>
       </div>
       <div className="overflow-x-auto">
-        <table className="table-auto border-collapse w-full">
+        <table className="text-gray-700 table-auto border-collapse w-full">
           <thead>
             <tr>
               <th className="border p-2">#</th>
