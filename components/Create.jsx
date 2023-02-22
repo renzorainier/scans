@@ -47,12 +47,12 @@ function StudentCollection() {
   ]);
 
   const createCollection = async () => {
-    const studentsCollectionRef = collection(db, "strands", "STEM", "1A");
+    const studentsCollectionRef = collection(db, "strands", "STEM", "1B");
     const batch = [];
 
     students.forEach((student) => {
       const studentRef = doc(studentsCollectionRef, student.id);
-      batch.push(setDoc(studentRef, { present: false, name: student.name, section: student.section, badges: [] }));
+      batch.push(setDoc(studentRef, { strand: student.strand, present: false, name: student.name, section: student.section, badges: [] }));
     });
     try {
       await Promise.all(batch);
