@@ -12,7 +12,7 @@ import { db } from "./firebase.js";
 function TodayAttendance() {
   const [todayAttendance, setTodayAttendance] = useState([]);
   const [filteredAttendance, setFilteredAttendance] = useState([]);
-  const [selectedStrand, setSelectedStrand] = useState("STEM");
+  const [selectedStrand, setSelectedStrand] = useState("");
   const [selectedSection, setSelectedSection] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
 
