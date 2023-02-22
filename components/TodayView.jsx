@@ -83,7 +83,11 @@ function TodayAttendance() {
                     <div className="text-sm font-medium text-gray-900">{student.name}</div>
                   </div>
                 </div>
-                
+              </td>
+              <td className="px-6 py-4 whitespace-nowrap">
+                <div className="text-sm text-gray-900">
+                  {student.lastScan ? student.lastScan.toLocaleTimeString() : "No Record"}
+                </div>
               </td>
               <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{student.section}</td>
             </tr>
@@ -92,6 +96,7 @@ function TodayAttendance() {
       </table>
     </div>
   );
+
 
 
 }
@@ -132,45 +137,45 @@ export default TodayAttendance;
 //     fetchTodayAttendance();
 //   }, []);
 
-//   return (
-//     <div className="bg-white p-8 pr-8 divide-x divide-y rounded-lg shadow-lg inline-block">
-//       <h2 className="text-gray-700 text-xl font-bold mb-4">Attendance For Today</h2>
-//       <table className="divide-y divide-gray-200 border border-gray-300 rounded-md">
-//         <thead className="bg-gray-50">
-//           <tr>
-//             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-//               Name
-//             </th>
-//             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-//               Last Scan
-//             </th>
-//             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-//               Section
-//             </th>
-//           </tr>
-//         </thead>
-//         <tbody className="bg-white divide-y divide-gray-200">
-//           {todayAttendance.map((student) => (
-//             <tr key={student.id}>
-//               <td className="px-6 py-4 whitespace-nowrap">
-//                 <div className="flex items-center">
-//                   <div className="ml-4">
-//                     <div className="text-sm font-medium text-gray-900">{student.name}</div>
-//                   </div>
-//                 </div>
-//               </td>
-//               <td className="px-6 py-4 whitespace-nowrap">
-//                 <div className="text-sm text-gray-900">
-//                   {student.lastScan ? student.lastScan.toLocaleTimeString() : "No Record"}
-//                 </div>
-//               </td>
-//               <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{student.section}</td>
-//             </tr>
-//           ))}
-//         </tbody>
-//       </table>
-//     </div>
-//   );
+  // return (
+  //   <div className="bg-white p-8 pr-8 divide-x divide-y rounded-lg shadow-lg inline-block">
+  //     <h2 className="text-gray-700 text-xl font-bold mb-4">Attendance For Today</h2>
+  //     <table className="divide-y divide-gray-200 border border-gray-300 rounded-md">
+  //       <thead className="bg-gray-50">
+  //         <tr>
+  //           <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+  //             Name
+  //           </th>
+  //           <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+  //             Last Scan
+  //           </th>
+  //           <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+  //             Section
+  //           </th>
+  //         </tr>
+  //       </thead>
+  //       <tbody className="bg-white divide-y divide-gray-200">
+  //         {todayAttendance.map((student) => (
+  //           <tr key={student.id}>
+  //             <td className="px-6 py-4 whitespace-nowrap">
+  //               <div className="flex items-center">
+  //                 <div className="ml-4">
+  //                   <div className="text-sm font-medium text-gray-900">{student.name}</div>
+  //                 </div>
+  //               </div>
+  //             </td>
+  //             <td className="px-6 py-4 whitespace-nowrap">
+  //               <div className="text-sm text-gray-900">
+  //                 {student.lastScan ? student.lastScan.toLocaleTimeString() : "No Record"}
+  //               </div>
+  //             </td>
+  //             <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{student.section}</td>
+  //           </tr>
+  //         ))}
+  //       </tbody>
+  //     </table>
+  //   </div>
+  // );
 
 
 // }
