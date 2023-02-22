@@ -50,9 +50,7 @@ function TodayAttendance() {
 
   return (
     <div className="bg-white p-8 pr-8 divide-x divide-y rounded-lg shadow-lg inline-block">
-      <h2 className="text-gray-700 text-xl font-bold mb-4">
-        Attendance For Today
-      </h2>
+      <h2 className="text-gray-700 text-xl font-bold mb-4">Attendance For Today</h2>
       <div className="mb-4">
         <input
           type="text"
@@ -82,31 +80,20 @@ function TodayAttendance() {
               <td className="px-6 py-4 whitespace-nowrap">
                 <div className="flex items-center">
                   <div className="ml-4">
-                    <div className="text-sm font-medium text-gray-900">
-                      {student.name}
-                    </div>
+                    <div className="text-sm font-medium text-gray-900">{student.name}</div>
                   </div>
                 </div>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="text-sm text-gray-900">
-                    {" "}
-                    {student.lastScan
-                      ? student.lastScan.toLocaleTimeString()
-                      : "No Record"}
-                    {" "}
-                  </div>
-                  //{" "}
-                </td>
+                
               </td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                {student.section}
-              </td>
+              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{student.section}</td>
             </tr>
           ))}
         </tbody>
       </table>
     </div>
   );
+
+
 }
 
 export default TodayAttendance;
@@ -185,9 +172,34 @@ export default TodayAttendance;
 //     </div>
 //   );
 
+
 // }
 
 // export default TodayAttendance;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // import React, { useState, useEffect } from "react";
 // import {
@@ -291,8 +303,9 @@ export default TodayAttendance;
 
 // export default TodayAttendanceViewer;
 
-{
-  /* <p className="text-xl font-bold mt-6">Scan result:</p>
+
+
+{/* <p className="text-xl font-bold mt-6">Scan result:</p>
 <p className="text-xl">{data}</p>
 <h1 className="text-3xl font-semibold mt-8">Recent Logs</h1>
 <div className="bg-white rounded-lg shadow-lg mt-6 w-full max-w-md">
@@ -305,5 +318,4 @@ export default TodayAttendance;
   </ul>
 </div>
 </div>
-); */
-}
+); */}
