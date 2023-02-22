@@ -85,7 +85,23 @@ function TodayAttendance() {
     setSearchQuery(event.target.value);
   };
 
-
+  const handleRefreshClick = async () => {
+    const attendanceQuery = query(
+      collection(db, "strands", selectedStrand, selectedSection)
+    );
+    const presentStudentsQuery = query(attendanceQuery, where("present", "==", true));
+    const presentStudentsQuerySnapshot = await getDocs(presentStudentsQuery);
+    const presentStudents = presentStudentsQuerySnapshot.docs.map((doc) => ({
+      id: doc.id,
+      name: doc.data().name,
+      lastScan: doc.data().lastScan?.toDate() || null,
+      section: doc.data().section,
+      strand: doc.data().strand,
+    }));
+    presentStudents.sort((a, b) => b.lastScan - a.lastScan);
+    setTodayAttendance(presentStudents);
+    setFilteredAttendance(presentStudents);
+  };
 
   return (
     <div className="text-gray-700 bg-white p-8 pr-8 divide-x divide-y rounded-lg shadow-lg inline-block">
@@ -159,8 +175,17 @@ function TodayAttendance() {
             ))}
           </tbody>
         </table>
+        <div className="flex items-center">
+          <button
+            onClick={handleRefreshClick}
+            className="border rounded-md py-1 px-2 text-gray-700 ml-4"
+          >
+            Refresh
+          </button>
+        </div>
       </div>
     </div>
+
   );
 }
 
