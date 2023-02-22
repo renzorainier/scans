@@ -11,94 +11,138 @@ import { db } from "./firebase.js";
 
 function TodayAttendance() {
   const [todayAttendance, setTodayAttendance] = useState([]);
-  const [search, setSearch] = useState("");
+  const [filteredAttendance, setFilteredAttendance] = useState([]);
+  const [selectedStrand, setSelectedStrand] = useState("");
+  const [selectedSection, setSelectedSection] = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     const fetchTodayAttendance = async () => {
-      let presentStudentsQuery = query(
+      const presentStudentsQuery = query(
         collection(db, "strands", "STEM", "1B"),
         where("present", "==", true)
       );
-
-      // Apply search filter
-      if (search) {
-        presentStudentsQuery = query(
-          collection(db, "strands", "STEM", "1B"),
-          where("present", "==", true),
-          where("name", ">=", search),
-          where("name", "<=", search + "\uf8ff")
-        );
-      }
-
       const presentStudentsQuerySnapshot = await getDocs(presentStudentsQuery);
       const presentStudents = presentStudentsQuerySnapshot.docs.map((doc) => ({
         id: doc.id,
         name: doc.data().name,
         lastScan: doc.data().lastScan?.toDate() || null,
         section: doc.data().section,
+        strand: doc.data().strand,
       }));
       presentStudents.sort((a, b) => b.lastScan - a.lastScan);
       setTodayAttendance(presentStudents);
+      setFilteredAttendance(presentStudents);
     };
 
     fetchTodayAttendance();
-  }, [search]);
+  }, []);
 
-  const handleSearchChange = (event) => {
-    setSearch(event.target.value);
+  useEffect(() => {
+    const filteredStudents = todayAttendance.filter(
+      (student) =>
+        (!selectedStrand || student.strand === selectedStrand) &&
+        (!selectedSection || student.section === selectedSection) &&
+        (!searchQuery ||
+          student.name.toLowerCase().includes(searchQuery.toLowerCase()))
+    );
+    setFilteredAttendance(filteredStudents);
+  }, [selectedStrand, selectedSection, searchQuery, todayAttendance]);
+
+  const strands = [
+    ...new Set(todayAttendance.map((student) => student.strand)),
+  ];
+  const sections = [
+    ...new Set(todayAttendance.map((student) => student.section)),
+  ];
+
+  const handleStrandChange = (event) => {
+    setSelectedStrand(event.target.value);
+  };
+
+  const handleSectionChange = (event) => {
+    setSelectedSection(event.target.value);
+  };
+
+  const handleSearchQueryChange = (event) => {
+    setSearchQuery(event.target.value);
   };
 
   return (
     <div className="bg-white p-8 pr-8 divide-x divide-y rounded-lg shadow-lg inline-block">
-      <h2 className="text-gray-700 text-xl font-bold mb-4">Attendance For Today</h2>
-      <div className="mb-4">
-        <input
-          type="text"
-          className="border border-gray-300 rounded-md py-2 px-4 block w-full appearance-none leading-normal"
-          placeholder="Search by name, section, or strand..."
-          value={search}
-          onChange={handleSearchChange}
-        />
+      <h2 className="text-gray-700 text-xl font-bold mb-4">
+        Attendance For Today
+      </h2>
+      <div className="flex justify-between mb-4">
+        <div className="flex items-center">
+          <label className="text-gray-700 font-bold mr-2">Strand:</label>
+          <select
+            value={selectedStrand}
+            onChange={handleStrandChange}
+            className="border rounded-md py-1 px-2 text-gray-700"
+          >
+            <option value="">All</option>
+            {strands.map((strand) => (
+              <option key={strand} value={strand}>
+                {strand}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div className="flex items-center">
+          <label className="text-gray-700 font-bold mr-2">Section:</label>
+          <select
+            value={selectedSection}
+            onChange={handleSectionChange}
+            className="border rounded-md py-1 px-2 text-gray-700"
+          >
+            <option value="">All</option>
+            {sections.map((section) => (
+              <option key={section} value={section}>
+                {section}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div className="flex items-center">
+          <label className="text-gray-700 font-bold mr-2">Search:</label>
+          <input
+            type="text"
+            value={searchQuery}
+            onChange={handleSearchQueryChange}
+            className="border rounded-md py-1 px-2 text-gray-700"
+            placeholder="Search by name"
+          />
+        </div>
       </div>
-      <table className="divide-y divide-gray-200 border border-gray-300 rounded-md">
-        <thead className="bg-gray-50">
-          <tr>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-              Name
-            </th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-              Last Scan
-            </th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-              Section
-            </th>
-          </tr>
-        </thead>
-        <tbody className="bg-white divide-y divide-gray-200">
-          {todayAttendance.map((student) => (
-            <tr key={student.id}>
-              <td className="px-6 py-4 whitespace-nowrap">
-                <div className="flex items-center">
-                  <div className="ml-4">
-                    <div className="text-sm font-medium text-gray-900">{student.name}</div>
-                  </div>
-                </div>
-              </td>
-              <td className="px-6 py-4 whitespace-nowrap">
-                <div className="text-sm text-gray-900">
-                  {student.lastScan ? student.lastScan.toLocaleTimeString() : "No Record"}
-                </div>
-              </td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{student.section}</td>
+      <div className="overflow-x-auto">
+        <table className="table-auto border-collapse w-full">
+          <thead>
+            <tr>
+              <th className="border p-2">#</th>
+              <th className="border p-2">Name</th>
+              <th className="border p-2">Strand</th>
+              <th className="border p-2">Section</th>
+              <th className="border p-2">Last Scan</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {filteredAttendance.map((student, index) => (
+              <tr key={student.id}>
+                <td className="border p-2">{index + 1}</td>
+                <td className="border p-2">{student.name}</td>
+                <td className="border p-2">{student.strand}</td>
+                <td className="border p-2">{student.section}</td>
+                <td className="border p-2">
+                  {student.lastScan ? student.lastScan.toLocaleString() : "N/A"}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
-
-
-
 }
 
 export default TodayAttendance;
@@ -137,74 +181,49 @@ export default TodayAttendance;
 //     fetchTodayAttendance();
 //   }, []);
 
-  // return (
-  //   <div className="bg-white p-8 pr-8 divide-x divide-y rounded-lg shadow-lg inline-block">
-  //     <h2 className="text-gray-700 text-xl font-bold mb-4">Attendance For Today</h2>
-  //     <table className="divide-y divide-gray-200 border border-gray-300 rounded-md">
-  //       <thead className="bg-gray-50">
-  //         <tr>
-  //           <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-  //             Name
-  //           </th>
-  //           <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-  //             Last Scan
-  //           </th>
-  //           <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-  //             Section
-  //           </th>
-  //         </tr>
-  //       </thead>
-  //       <tbody className="bg-white divide-y divide-gray-200">
-  //         {todayAttendance.map((student) => (
-  //           <tr key={student.id}>
-  //             <td className="px-6 py-4 whitespace-nowrap">
-  //               <div className="flex items-center">
-  //                 <div className="ml-4">
-  //                   <div className="text-sm font-medium text-gray-900">{student.name}</div>
-  //                 </div>
-  //               </div>
-  //             </td>
-  //             <td className="px-6 py-4 whitespace-nowrap">
-  //               <div className="text-sm text-gray-900">
-  //                 {student.lastScan ? student.lastScan.toLocaleTimeString() : "No Record"}
-  //               </div>
-  //             </td>
-  //             <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{student.section}</td>
-  //           </tr>
-  //         ))}
-  //       </tbody>
-  //     </table>
-  //   </div>
-  // );
-
+// return (
+//   <div className="bg-white p-8 pr-8 divide-x divide-y rounded-lg shadow-lg inline-block">
+//     <h2 className="text-gray-700 text-xl font-bold mb-4">Attendance For Today</h2>
+//     <table className="divide-y divide-gray-200 border border-gray-300 rounded-md">
+//       <thead className="bg-gray-50">
+//         <tr>
+//           <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+//             Name
+//           </th>
+//           <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+//             Last Scan
+//           </th>
+//           <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+//             Section
+//           </th>
+//         </tr>
+//       </thead>
+//       <tbody className="bg-white divide-y divide-gray-200">
+//         {todayAttendance.map((student) => (
+//           <tr key={student.id}>
+//             <td className="px-6 py-4 whitespace-nowrap">
+//               <div className="flex items-center">
+//                 <div className="ml-4">
+//                   <div className="text-sm font-medium text-gray-900">{student.name}</div>
+//                 </div>
+//               </div>
+//             </td>
+//             <td className="px-6 py-4 whitespace-nowrap">
+//               <div className="text-sm text-gray-900">
+//                 {student.lastScan ? student.lastScan.toLocaleTimeString() : "No Record"}
+//               </div>
+//             </td>
+//             <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{student.section}</td>
+//           </tr>
+//         ))}
+//       </tbody>
+//     </table>
+//   </div>
+// );
 
 // }
 
 // export default TodayAttendance;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // import React, { useState, useEffect } from "react";
 // import {
@@ -308,9 +327,8 @@ export default TodayAttendance;
 
 // export default TodayAttendanceViewer;
 
-
-
-{/* <p className="text-xl font-bold mt-6">Scan result:</p>
+{
+  /* <p className="text-xl font-bold mt-6">Scan result:</p>
 <p className="text-xl">{data}</p>
 <h1 className="text-3xl font-semibold mt-8">Recent Logs</h1>
 <div className="bg-white rounded-lg shadow-lg mt-6 w-full max-w-md">
@@ -323,4 +341,5 @@ export default TodayAttendance;
   </ul>
 </div>
 </div>
-); */}
+); */
+}
