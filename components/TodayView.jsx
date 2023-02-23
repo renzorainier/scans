@@ -127,7 +127,7 @@ function TodayAttendance() {
           </thead>
           <tbody>
             {sortedAttendance.map((student, index) => (
-              <tr className=" hover:scale-105 ease-in duration-300" key={student.id}>
+              <tr className="hover:scale-105 ease-in duration-300" key={student.id}>
                 <td className="border p-2">
                   {sortedAttendance.length - index}
                 </td>
