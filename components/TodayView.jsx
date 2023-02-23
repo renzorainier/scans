@@ -15,7 +15,7 @@ function TodayAttendance() {
   const [selectedSection, setSelectedSection] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
 
-  const sections = ["1A", "1B", "2A", "2B", "3A", "3B"];
+  const sections = ["1A", "1B", "2A"];
 
   useEffect(() => {
     const fetchAttendance = async () => {
