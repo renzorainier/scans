@@ -119,24 +119,24 @@ function TodayAttendance() {
             </tr>
           </thead>
           <tbody>
-          {sortedAttendance.map((student, index) => (
-        <tr key={student.id}>
-          <td className="border p-2">{sortedAttendance.length - index}</td>
-          <td className="border p-2">{student.name}</td>
-          <td className="border p-2">{student.strand}</td>
-          <td className="border p-2">{student.section}</td>
-          <td className="border p-2">
-            {student.lastScan
-              ? student.lastScan.toLocaleTimeString([], {
-                  hour: "numeric",
-                  minute: "2-digit",
-                })
-              : "N/A"}
-          </td>
-        </tr>
-      ))}
-
-
+            {sortedAttendance.map((student, index) => (
+              <tr key={student.id}>
+                <td className="border p-2">
+                  {sortedAttendance.length - index}
+                </td>
+                <td className="border p-2">{student.name}</td>
+                <td className="border p-2">{student.strand}</td>
+                <td className="border p-2">{student.section}</td>
+                <td className="border p-2">
+                  {student.lastScan
+                    ? student.lastScan.toLocaleTimeString([], {
+                        hour: "numeric",
+                        minute: "2-digit",
+                      })
+                    : "N/A"}
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
