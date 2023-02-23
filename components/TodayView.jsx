@@ -17,22 +17,10 @@ function TodayAttendance() {
 
   useEffect(() => {
     const fetchTodayAttendance = async () => {
-      let presentStudentsQuery = query(
-        collection(db, "strands", "STEM", selectedSection)
-      );
-
-      if (selectedSection) {
-        presentStudentsQuery = query(
-          presentStudentsQuery,
-          where("section", "==", selectedSection)
-        );
-      }
-
-      presentStudentsQuery = query(
-        presentStudentsQuery,
+      const presentStudentsQuery = query(
+        collection(db, "strands", "STEM", "1B"),
         where("present", "==", true)
       );
-
       const presentStudentsQuerySnapshot = await getDocs(presentStudentsQuery);
       const presentStudents = presentStudentsQuerySnapshot.docs.map((doc) => ({
         id: doc.id,
@@ -41,18 +29,17 @@ function TodayAttendance() {
         section: doc.data().section,
         strand: doc.data().strand,
       }));
-
       presentStudents.sort((a, b) => b.lastScan - a.lastScan);
       setTodayAttendance(presentStudents);
       setFilteredAttendance(presentStudents);
     };
+
     fetchTodayAttendance();
-  }, [selectedSection]);
+  }, []);
 
   useEffect(() => {
     const filteredStudents = todayAttendance.filter(
       (student) =>
-
         (!selectedSection || student.section === selectedSection) &&
         (!searchQuery ||
           student.name.toLowerCase().includes(searchQuery.toLowerCase()))
@@ -62,6 +49,7 @@ function TodayAttendance() {
 
   const sections = ["1A", "1B", "2A", "2B", "3A", "3B"];
 
+
   const handleSectionChange = (event) => {
     setSelectedSection(event.target.value);
   };
@@ -70,13 +58,14 @@ function TodayAttendance() {
     setSearchQuery(event.target.value);
   };
 
-
   return (
     <div className=" text-gray-700 bg-white p-8 pr-8 divide-x divide-y rounded-lg shadow-lg inline-block">
       <h2 className="text-gray-700 text-xl font-bold mb-4">
         Attendance For Today
       </h2>
       <div className="flex justify-between mb-4">
+        <div className="flex items-center">
+        </div>
         <div className="flex items-center">
           <label className="text-gray-700 font-bold mr-2">Section:</label>
           <select
@@ -134,6 +123,137 @@ function TodayAttendance() {
 }
 
 export default TodayAttendance;
+
+
+
+
+// import React, { useState, useEffect } from "react";
+// import {
+//   collection,
+//   query,
+//   where,
+//   getDocs,
+//   getDoc,
+//   doc,
+// } from "firebase/firestore";
+// import { db } from "./firebase.js";
+
+// function TodayAttendance() {
+//   const [todayAttendance, setTodayAttendance] = useState([]);
+//   const [filteredAttendance, setFilteredAttendance] = useState([]);
+//   const [selectedSection, setSelectedSection] = useState("");
+//   const [searchQuery, setSearchQuery] = useState("");
+
+//   useEffect(() => {
+//     const fetchTodayAttendance = async () => {
+//       let presentStudentsQuery = collection(db, "strands", "STEM", selectedSection);
+
+
+//       presentStudentsQuery = query(presentStudentsQuery, where("present", "==", true));
+
+//       const presentStudentsQuerySnapshot = await getDocs(presentStudentsQuery);
+//       const presentStudents = presentStudentsQuerySnapshot.docs.map((doc) => ({
+//         id: doc.id,
+//         name: doc.data().name,
+//         lastScan: doc.data().lastScan?.toDate() || null,
+//         section: doc.data().section,
+//         strand: doc.data().strand,
+//       }));
+
+//       presentStudents.sort((a, b) => b.lastScan - a.lastScan);
+//       setTodayAttendance(presentStudents);
+//       setFilteredAttendance(presentStudents);
+//     };
+
+//     fetchTodayAttendance();
+//   }, [selectedSection]);
+
+//   useEffect(() => {
+//     const filteredStudents = todayAttendance.filter(
+//       (student) =>
+
+//         (!selectedSection || student.section === selectedSection) &&
+//         (!searchQuery ||
+//           student.name.toLowerCase().includes(searchQuery.toLowerCase()))
+//     );
+//     setFilteredAttendance(filteredStudents);
+//   }, [ selectedSection, searchQuery, todayAttendance]);
+
+  // const sections = ["1A", "1B", "2A", "2B", "3A", "3B"];
+
+
+//   const handleSectionChange = (event) => {
+//     setSelectedSection(event.target.value);
+//   };
+
+//   const handleSearchQueryChange = (event) => {
+//     setSearchQuery(event.target.value);
+//   };
+
+
+//   return (
+//     <div className=" text-gray-700 bg-white p-8 pr-8 divide-x divide-y rounded-lg shadow-lg inline-block">
+//       <h2 className="text-gray-700 text-xl font-bold mb-4">
+//         Attendance For Today
+//       </h2>
+//       <div className="flex justify-between mb-4">
+//         <div className="flex items-center">
+//           <label className="text-gray-700 font-bold mr-2">Section:</label>
+//           <select
+//             value={selectedSection}
+//             onChange={handleSectionChange}
+//             className="border rounded-md py-1 px-2 text-gray-700"
+//           >
+//             <option value="">All</option>
+//             {sections.map((section) => (
+//               <option key={section} value={section}>
+//                 {section}
+//               </option>
+//             ))}
+//           </select>
+//         </div>
+//         <div className="flex items-center">
+//           <label className="text-gray-700 font-bold mr-2">Search:</label>
+//           <input
+//             type="text"
+//             value={searchQuery}
+//             onChange={handleSearchQueryChange}
+//             className="border rounded-md py-1 px-2 text-gray-700"
+//             placeholder="Search by name"
+//           />
+//         </div>
+//       </div>
+//       <div className="overflow-x-auto">
+//         <table className="table-auto border-collapse w-full">
+//           <thead>
+//             <tr>
+//               <th className="border p-2">#</th>
+//               <th className="border p-2">Name</th>
+//               <th className="border p-2">Strand</th>
+//               <th className="border p-2">Section</th>
+//               <th className="border p-2">Last Scan</th>
+//             </tr>
+//           </thead>
+//           <tbody>
+//             {filteredAttendance.map((student, index) => (
+//               <tr key={student.id}>
+//                 <td className="border p-2">{index + 1}</td>
+//                 <td className="border p-2">{student.name}</td>
+//                 <td className="border p-2">{student.strand}</td>
+//                 <td className="border p-2">{student.section}</td>
+//                 <td className="border p-2">
+//                   {student.lastScan ? student.lastScan.toLocaleString() : "N/A"}
+//                 </td>
+//               </tr>
+//             ))}
+//           </tbody>
+//         </table>
+//       </div>
+//     </div>
+//   );
+// }
+
+// export default TodayAttendance;
 
 // THIS IS WORKING
 // import React, { useState, useEffect } from "react";
