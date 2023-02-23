@@ -106,23 +106,23 @@ function TodayAttendance() {
               <th className="border p-2">Last Scan</th>
             </tr>
             </thead>
-          <tbody>
-            {filteredAttendance.map((student, index) => (
-              <tr key={student.id}>
-                <td className="border p-2">{index + 1}</td>
-                <td className="border p-2">{student.name}</td>
-                <td className="border p-2">{student.strand}</td>
-                <td className="border p-2">{student.section}</td>
-                <td className="border p-2">
-                  {student.lastScan ? student.lastScan.toLocaleString() : "N/A"}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    </div>
-  );
+            <tbody>
+  {filteredAttendance.map((student, index) => (
+    <tr key={student.id}>
+      <td className="border p-2">{index + 1}</td>
+      <td className="border p-2">{student.name}</td>
+      <td className="border p-2">{student.strand}</td>
+      <td className="border p-2">{student.section}</td>
+      <td className="border p-2">
+//                   {student.lastScan ? student.lastScan.toLocaleString() : "N/A"}
+//                 </td>
+    </tr>
+  ))}
+</tbody>
+</table>
+</div>
+</div>
+);
 }
 
 export default TodayAttendance;
