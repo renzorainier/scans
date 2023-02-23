@@ -121,7 +121,7 @@ function TodayAttendance() {
               <th className="border p-2">#</th>
               <th className="border p-2">Name</th>
               <th className="border p-2">Strand</th>
-              <th className="border p-2 ">Section</th>
+              <th className="border p-2 ">Sec</th>
               <th className="border p-2">Last Scan</th>
             </tr>
           </thead>
