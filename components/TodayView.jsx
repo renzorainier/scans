@@ -116,7 +116,12 @@ function TodayAttendance() {
                 <td className="border p-2">{student.strand}</td>
                 <td className="border p-2">{student.section}</td>
                 <td className="border p-2">
-                  {student.lastScan ? student.lastScan.toLocaleString() : "N/A"}{" "}
+                  {student.lastScan
+                    ? student.lastScan.toLocaleTimeString([], {
+                        hour: "numeric",
+                        minute: "2-digit",
+                      })
+                    : "N/A"}
                 </td>
               </tr>
             ))}
