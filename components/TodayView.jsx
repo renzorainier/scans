@@ -18,10 +18,18 @@ function TodayAttendance() {
 
   useEffect(() => {
     const fetchTodayAttendance = async () => {
-      const presentStudentsQuery = query(
-        collection(db, "strands", "STEM", "1B"),
-        where("present", "==", true)
-      );
+      let presentStudentsQuery = collection(db, "strands");
+
+      if (selectedStrand) {
+        presentStudentsQuery = collection(db, "strands", selectedStrand);
+      }
+
+      if (selectedSection) {
+        presentStudentsQuery = collection(presentStudentsQuery, selectedSection);
+      }
+
+      presentStudentsQuery = query(presentStudentsQuery, where("present", "==", true));
+
       const presentStudentsQuerySnapshot = await getDocs(presentStudentsQuery);
       const presentStudents = presentStudentsQuerySnapshot.docs.map((doc) => ({
         id: doc.id,
@@ -30,13 +38,14 @@ function TodayAttendance() {
         section: doc.data().section,
         strand: doc.data().strand,
       }));
+
       presentStudents.sort((a, b) => b.lastScan - a.lastScan);
       setTodayAttendance(presentStudents);
       setFilteredAttendance(presentStudents);
     };
 
     fetchTodayAttendance();
-  }, []);
+  }, [selectedStrand, selectedSection]);
 
   useEffect(() => {
     const filteredStudents = todayAttendance.filter(
@@ -50,10 +59,11 @@ function TodayAttendance() {
   }, [selectedStrand, selectedSection, searchQuery, todayAttendance]);
 
   const strands = ["STEM", "ABM", "HUMSS", "ICT", "GAS", "ALL STRANDS"];
-    const sections = ["1A", "1B", "2A", "2B", "3A", "3B", "ALL SECTIONS"];
+  const sections = ["1A", "1B", "2A", "2B", "3A", "3B", "ALL SECTIONS"];
 
   const handleStrandChange = (event) => {
     setSelectedStrand(event.target.value);
+    setSelectedSection("");
   };
 
   const handleSectionChange = (event) => {
@@ -63,6 +73,7 @@ function TodayAttendance() {
   const handleSearchQueryChange = (event) => {
     setSearchQuery(event.target.value);
   };
+
 
   return (
     <div className=" text-gray-700 bg-white p-8 pr-8 divide-x divide-y rounded-lg shadow-lg inline-block">
