@@ -47,14 +47,15 @@ function TodayAttendance() {
   }, []);
 
   useEffect(() => {
-    const filteredStudents = todayAttendance.filter(
+    const filteredStudents = originalAttendance.filter(
       (student) =>
         (!selectedSection || student.section === selectedSection) &&
         (!searchQuery ||
           student.name.toLowerCase().includes(searchQuery.toLowerCase()))
     );
     setFilteredAttendance(filteredStudents);
-  }, [selectedSection, searchQuery, todayAttendance]);
+  }, [selectedSection, searchQuery, originalAttendance]);
+
 
   const handleSectionChange = (event) => {
     setSelectedSection(event.target.value);
