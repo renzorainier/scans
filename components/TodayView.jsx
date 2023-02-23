@@ -71,88 +71,42 @@ function TodayAttendance() {
 
 
   return (
-    <div className="text-gray-700 bg-white p-8 pr-8 divide-x divide-y rounded-lg shadow-lg inline-block">
-      <h2 className="text-gray-700 text-xl font-bold mb-4">
-        Attendance For Today
-      </h2>
-      <div className="flex justify-between mb-4">
-        <div className="flex items-center">
-          <label className="text-gray-700 font-bold mr-2">Strand:</label>
-          <select
-            value={selectedStrand}
-            onChange={handleStrandChange}
-            className="border rounded-md py-1 px-2 text-gray-700"
-          >
-            <option value="">All</option>
-            {strands.map((strand) => (
-              <option key={strand} value={strand}>
-                {strand}
-              </option>
-            ))}
-          </select>
-        </div>
-        <div className="flex items-center">
-          <label className="text-gray-700 font-bold mr-2">Section:</label>
-          <select
-            value={selectedSection}
-            onChange={handleSectionChange}
-            className="border rounded-md py-1 px-2 text-gray-700"
-          >
-            <option value="">All</option>
-            {sections.map((section) => (
-              <option key={section} value={section}>
-                {section}
-              </option>
-            ))}
-          </select>
-        </div>
-        <div className="flex items-center">
-          <label className="text-gray-700 font-bold mr-2">Search:</label>
+    <div>
+      <div className="filters">
+        <FilterDropdown
+          label="Strand"
+          options={strands}
+          selected={selectedStrand}
+          handleFilterChange={(value) => handleFilterChange("strand", value)}
+        />
+        <FilterDropdown
+          label="Section"
+          options={sections}
+          selected={selectedSection}
+          handleFilterChange={(value) => handleFilterChange("section", value)}
+        />
+        <div className="search">
           <input
             type="text"
+            placeholder="Search"
             value={searchQuery}
-            onChange={handleSearchQueryChange}
-            className="border rounded-md py-1 px-2 text-gray-700"
-            placeholder="Search by name"
+            onChange={(e) => handleFilterChange("searchQuery", e.target.value)}
           />
+          <i className="fas fa-search"></i>
         </div>
+        <button className="refresh" onClick={handleRefreshClick}>
+          <i className="fas fa-sync"></i>
+        </button>
       </div>
-      <div className="overflow-x-auto">
-        <table className=" table-auto border-collapse w-full">
-          <thead>
-            <tr>
-              <th className="border p-2">#</th>
-              <th className="border p-2">Name</th>
-              <th className="border p-2">Strand</th>
-              <th className="border p-2">Section</th>
-              <th className="border p-2">Last Scan</th>
-            </tr>
-          </thead>
-          <tbody>
-            {filteredAttendance.map((student, index) => (
-              <tr key={student.id}>
-                <td className="border p-2">{index + 1}</td>
-                <td className="border p-2">{student.name}</td>
-                <td className="border p-2">{student.strand}</td>
-                <td className="border p-2">{student.section}</td>
-                <td className="border p-2">
-                  {student.lastScan ? student.lastScan.toLocaleString() : "N/A"}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-        <div className="flex items-center">
-          <button
-            onClick={handleRefreshClick}
-            className="border rounded-md py-1 px-2 text-gray-700 ml-4"
-          >
-            Refresh
-          </button>
-        </div>
+      <div className="attendance-list">
+        {filteredAttendance.map((student) => (
+          <StudentAttendance key={student.id} student={student} />
+        ))}
+        {filteredAttendance.length === 0 && (
+          <p className="no-results">No results found.</p>
+        )}
       </div>
     </div>
-
   );
 }
 
