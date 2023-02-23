@@ -17,10 +17,22 @@ function TodayAttendance() {
 
   useEffect(() => {
     const fetchTodayAttendance = async () => {
-      let presentStudentsQuery = collection(db, "strands", "STEM", selectedSection);
+      let presentStudentsQuery = query(
+        collection(db, "strands"),
+        where("strand", "==", "STEM")
+      );
 
+      if (selectedSection) {
+        presentStudentsQuery = query(
+          presentStudentsQuery,
+          where("section", "==", selectedSection)
+        );
+      }
 
-      presentStudentsQuery = query(presentStudentsQuery, where("present", "==", true));
+      presentStudentsQuery = query(
+        presentStudentsQuery,
+        where("present", "==", true)
+      );
 
       const presentStudentsQuerySnapshot = await getDocs(presentStudentsQuery);
       const presentStudents = presentStudentsQuerySnapshot.docs.map((doc) => ({
@@ -35,7 +47,6 @@ function TodayAttendance() {
       setTodayAttendance(presentStudents);
       setFilteredAttendance(presentStudents);
     };
-
     fetchTodayAttendance();
   }, [selectedSection]);
 
