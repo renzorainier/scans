@@ -15,26 +15,33 @@ function TodayAttendance() {
   const [selectedSection, setSelectedSection] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
 
+  const sections = ["1A", "1B", "2A", "2B", "3A", "3B"];
+
   useEffect(() => {
-    const fetchTodayAttendance = async () => {
-      const presentStudentsQuery = query(
-        collection(db, "strands", "STEM", "1B"),
-        where("present", "==", true)
-      );
-      const presentStudentsQuerySnapshot = await getDocs(presentStudentsQuery);
-      const presentStudents = presentStudentsQuerySnapshot.docs.map((doc) => ({
-        id: doc.id,
-        name: doc.data().name,
-        lastScan: doc.data().lastScan?.toDate() || null,
-        section: doc.data().section,
-        strand: doc.data().strand,
-      }));
+    const fetchAttendance = async () => {
+      const presentStudents = [];
+      for (const section of sections) {
+        const presentStudentsQuery = query(
+          collection(db, "strands", "STEM", section),
+          where("present", "==", true)
+        );
+        const presentStudentsQuerySnapshot = await getDocs(presentStudentsQuery);
+        presentStudents.push(
+          ...presentStudentsQuerySnapshot.docs.map((doc) => ({
+            id: doc.id,
+            name: doc.data().name,
+            lastScan: doc.data().lastScan?.toDate() || null,
+            section,
+            strand: doc.data().strand,
+          }))
+        );
+      }
       presentStudents.sort((a, b) => b.lastScan - a.lastScan);
       setTodayAttendance(presentStudents);
       setFilteredAttendance(presentStudents);
     };
 
-    fetchTodayAttendance();
+    fetchAttendance();
   }, []);
 
   useEffect(() => {
@@ -45,10 +52,7 @@ function TodayAttendance() {
           student.name.toLowerCase().includes(searchQuery.toLowerCase()))
     );
     setFilteredAttendance(filteredStudents);
-  }, [ selectedSection, searchQuery, todayAttendance]);
-
-  const sections = ["1A", "1B", "2A", "2B", "3A", "3B"];
-
+  }, [selectedSection, searchQuery, todayAttendance]);
 
   const handleSectionChange = (event) => {
     setSelectedSection(event.target.value);
@@ -64,8 +68,7 @@ function TodayAttendance() {
         Attendance For Today
       </h2>
       <div className="flex justify-between mb-4">
-        <div className="flex items-center">
-        </div>
+        <div className="flex items-center"></div>
         <div className="flex items-center">
           <label className="text-gray-700 font-bold mr-2">Section:</label>
           <select
@@ -102,7 +105,7 @@ function TodayAttendance() {
               <th className="border p-2">Section</th>
               <th className="border p-2">Last Scan</th>
             </tr>
-          </thead>
+            </thead>
           <tbody>
             {filteredAttendance.map((student, index) => (
               <tr key={student.id}>
