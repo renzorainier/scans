@@ -115,40 +115,48 @@ function TodayAttendance() {
         </div>
       </div>
       <div className="overflow-x-auto">
-        <table className="table-auto border-collapse w-full">
-          <thead>
-            <tr>
-              <th className="border p-2">#</th>
-              <th className="border p-2">Name</th>
-              <th className="border p-2">Strand</th>
-              <th className="border p-2 ">Sec</th>
-              <th className="border p-2">Scan</th>
-            </tr>
-          </thead>
-          <tbody>
-            {sortedAttendance.map((student, index) => (
-              <tr key={student.id}>
-                <td className="border p-2">
-                  {sortedAttendance.length - index}
-                </td>
-                <td className="border p-2" style={{ whiteSpace: "nowrap" }}>
-                  {student.name}
-                </td>
-                <td className="border p-2">{student.strand}</td>
-                <td className="border p-2 ">{student.section}</td>
-                <td className="border p-2" style={{ whiteSpace: "nowrap" }}>
-                  {student.lastScan
-                    ? student.lastScan.toLocaleTimeString([], {
-                        hour: "numeric",
-                        minute: "2-digit",
-                      })
-                    : "N/A"}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+  <table className="w-full border-collapse">
+    <thead>
+      <tr className="bg-gray-200 text-gray-700">
+        <th className="p-4">#</th>
+        <th className="p-4">Name</th>
+        <th className="p-4">Strand</th>
+        <th className="p-4">Sec</th>
+        <th className="p-4">Scan</th>
+      </tr>
+    </thead>
+    <tbody>
+      {sortedAttendance.map((student, index) => (
+        <tr key={student.id} className="border-b border-gray-200">
+          <td className="p-4">{sortedAttendance.length - index}</td>
+          <td className="p-4">
+            <div className="flex flex-col">
+              <span className="font-medium">{student.name}</span>
+              <span className="text-sm text-gray-500">{student.email}</span>
+            </div>
+          </td>
+          <td className="p-4">
+            <div className="text-gray-600">{student.strand}</div>
+          </td>
+          <td className="p-4">
+            <div className="text-gray-600">{student.section}</div>
+          </td>
+          <td className="p-4">
+            <div className="text-gray-600">
+              {student.lastScan
+                ? student.lastScan.toLocaleTimeString([], {
+                    hour: "numeric",
+                    minute: "2-digit",
+                  })
+                : "N/A"}
+            </div>
+          </td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
+
     </div>
   );
 }
