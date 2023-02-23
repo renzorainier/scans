@@ -52,11 +52,6 @@ function TodayAttendance() {
 
   const sections = ["1A", "1B", "2A", "2B", "3A", "3B"];
 
-  const handleStrandChange = (event) => {
-    setSelectedStrand(event.target.value);
-    setSelectedSection("");
-  };
-
   const handleSectionChange = (event) => {
     setSelectedSection(event.target.value);
   };
