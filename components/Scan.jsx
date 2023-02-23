@@ -42,13 +42,7 @@ function Scan() {
         console.log(`Student ${id} is already marked as present`);
       }
 
-      // const timeString = studentData.lastScan
-      // ? studentData.lastScan.toDate().toLocaleTimeString("en-US", {
-      //     hour: "numeric",
-      //     minute: "numeric",
-      //     hour12: true,
-      //   })
-      // : "";
+
       const timeString = studentData.lastScan
           .toDate()
           .toLocaleTimeString("en-US", {
