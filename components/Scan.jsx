@@ -7,6 +7,8 @@ import {
   setDoc,
 } from "firebase/firestore";
 import { db } from "./firebase.js";
+import Schedule from "./Schedule.jsx"
+
 
 function Scan() {
   const [lastScanned, setLastScanned] = useState(null);

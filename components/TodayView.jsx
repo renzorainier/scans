@@ -8,7 +8,6 @@ import {
   doc,
 } from "firebase/firestore";
 import { db } from "./firebase.js";
-import Schedule from "./Schedule.jsx"
 
 
 function TodayAttendance() {
