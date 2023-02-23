@@ -18,7 +18,7 @@ function TodayAttendance() {
   useEffect(() => {
     const fetchTodayAttendance = async () => {
       let presentStudentsQuery = query(
-        collection(db, "strands", "STEM",)
+        collection(db, "strands", "STEM", selectedSection)
       );
 
       if (selectedSection) {
