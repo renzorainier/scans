@@ -109,22 +109,23 @@ function TodayAttendance() {
             </tr>
           </thead>
           <tbody>
-            {filteredAttendance.map((student, index) => (
-              <tr key={student.id}>
-                <td className="border p-2">{index + 1}</td>
-                <td className="border p-2">{student.name}</td>
-                <td className="border p-2">{student.strand}</td>
-                <td className="border p-2">{student.section}</td>
-                <td className="border p-2">
-                  {student.lastScan
-                    ? student.lastScan.toLocaleTimeString([], {
-                        hour: "numeric",
-                        minute: "2-digit",
-                      })
-                    : "N/A"}
-                </td>
-              </tr>
-            ))}
+          {filteredAttendance.slice().reverse().map((student, index) => (
+  <tr key={student.id}>
+    <td className="border p-2">{index + 1}</td>
+    <td className="border p-2">{student.name}</td>
+    <td className="border p-2">{student.strand}</td>
+    <td className="border p-2">{student.section}</td>
+    <td className="border p-2">
+      {student.lastScan
+        ? student.lastScan.toLocaleTimeString([], {
+            hour: "numeric",
+            minute: "2-digit",
+          })
+        : "N/A"}
+    </td>
+  </tr>
+))}
+
           </tbody>
         </table>
       </div>
