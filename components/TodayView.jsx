@@ -1,117 +1,201 @@
-import { useState, useEffect } from "react";
-import { collection, query, where, getDocs } from "firebase/firestore";
-import FilterDropdown from "/components/FIlterDropdown.jsx";
+import React, { useState, useEffect } from "react";
+import {
+  collection,
+  query,
+  where,
+  getDocs,
+  getDoc,
+  doc,
+} from "firebase/firestore";
 import { db } from "./firebase.js";
 
 function TodayAttendance() {
   const [todayAttendance, setTodayAttendance] = useState([]);
-  const [filteredAttendance, setFilteredAttendance] = useState([]);
-  const [selectedStrand, setSelectedStrand] = useState("");
-  const [selectedSection, setSelectedSection] = useState("");
-  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
-    async function fetchData() {
-      const attendanceQuery = query(
-        collection(db, "strands", selectedStrand || "", selectedSection || "")
+    const fetchTodayAttendance = async () => {
+      const presentStudentsQuery = query(
+        collection(db, "strands", "STEM", "1B"),
+        where("present", "==", true)
       );
-      const presentStudentsQuery = query(attendanceQuery, where("present", "==", true));
       const presentStudentsQuerySnapshot = await getDocs(presentStudentsQuery);
       const presentStudents = presentStudentsQuerySnapshot.docs.map((doc) => ({
         id: doc.id,
         name: doc.data().name,
         lastScan: doc.data().lastScan?.toDate() || null,
         section: doc.data().section,
-        strand: doc.data().strand,
       }));
       presentStudents.sort((a, b) => b.lastScan - a.lastScan);
       setTodayAttendance(presentStudents);
-    }
-    fetchData();
-  }, [selectedStrand, selectedSection]);
+    };
 
-  useEffect(() => {
-    const filteredStudents = todayAttendance.filter(
-      (student) =>
-        (!selectedStrand || student.strand === selectedStrand) &&
-        (!selectedSection || student.section === selectedSection) &&
-        (!searchQuery || student.name.toLowerCase().includes(searchQuery.toLowerCase()))
-    );
-    setFilteredAttendance(filteredStudents);
-  }, [selectedStrand, selectedSection, searchQuery, todayAttendance]);
+    fetchTodayAttendance();
+  }, []);
 
-  const strands = ["STEM", "ABM", "HUMSS", "ICT", "GAS", "ALL STRANDS"];
-  const sections = ["1A", "1B", "2A", "2B", "3A", "3B", "ALL SECTIONS"];
-
-  const handleFilterChange = (type, value) => {
-    if (type === "strand") {
-      setSelectedStrand(value);
-    } else if (type === "section") {
-      setSelectedSection(value);
-    } else if (type === "searchQuery") {
-      setSearchQuery(value);
-    }
-  };
-
-  const handleRefreshClick = async () => {
-    const attendanceQuery = query(
-      collection(db, "strands", selectedStrand || "", selectedSection || "")
-    );
-    const presentStudentsQuery = query(attendanceQuery, where("present", "==", true));
-    const presentStudentsQuerySnapshot = await getDocs(presentStudentsQuery);
-    const presentStudents = presentStudentsQuerySnapshot.docs.map((doc) => ({
-      id: doc.id,
-      name: doc.data().name,
-      lastScan: doc.data().lastScan?.toDate() || null,
-      section: doc.data().section,
-      strand: doc.data().strand,
-    }));
-    presentStudents.sort((a, b) => b.lastScan - a.lastScan);
-    setTodayAttendance(presentStudents);
-  };
-
-
-  return (
-    <div>
-      <div className="filters">
-        <FilterDropdown
-          label="Strand"
-          options={strands}
-          selected={selectedStrand}
-          onChange={(value) => handleFilterChange("strand", value)}
-          />
-        <FilterDropdown
-          label="Section"
-          options={sections}
-          selected={selectedSection}
-          onChange={(value) => handleFilterChange("section", value)}
-          />
-        <div className="search">
-          <input
-            type="text"
-            placeholder="Search"
-            value={searchQuery}
-            onChange={(e) => handleFilterChange("searchQuery", e.target.value)}
-          />
-          <i className="fas fa-search"></i>
-        </div>
-        <button className="refresh" onClick={handleRefreshClick}>
-          <i className="fas fa-sync"></i>
-        </button>
-      </div>
-      <div className="attendance-list">
-        {filteredAttendance.map((student) => (
-          <StudentAttendance key={student.id} student={student} />
+return (
+  <div className="bg-white p-8 pr-8 divide-x divide-y rounded-lg shadow-lg inline-block">
+    <h2 className="text-gray-700 text-xl font-bold mb-4">Attendance For Today</h2>
+    <table className="divide-y divide-gray-200 border border-gray-300 rounded-md">
+      <thead className="bg-gray-50">
+        <tr>
+          <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            Name
+          </th>
+          <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            Last Scan
+          </th>
+          <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            Section
+          </th>
+        </tr>
+      </thead>
+      <tbody className="bg-white divide-y divide-gray-200">
+        {todayAttendance.map((student) => (
+          <tr key={student.id}>
+            <td className="px-6 py-4 whitespace-nowrap">
+              <div className="flex items-center">
+                <div className="ml-4">
+                  <div className="text-sm font-medium text-gray-900">{student.name}</div>
+                </div>
+              </div>
+            </td>
+            <td className="px-6 py-4 whitespace-nowrap">
+              <div className="text-sm text-gray-900">
+                {student.lastScan ? student.lastScan.toLocaleTimeString() : "No Record"}
+              </div>
+            </td>
+            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{student.section}</td>
+          </tr>
         ))}
-        {filteredAttendance.length === 0 && (
-          <p className="no-results">No results found.</p>
-        )}
-      </div>
-    </div>
-  );
+      </tbody>
+    </table>
+  </div>
+);
+
 }
 
 export default TodayAttendance;
+
+
+
+
+
+
+
+// import { useState, useEffect } from "react";
+// import { collection, query, where, getDocs } from "firebase/firestore";
+// import FilterDropdown from "/components/FIlterDropdown.jsx";
+// import { db } from "./firebase.js";
+
+// function TodayAttendance() {
+//   const [todayAttendance, setTodayAttendance] = useState([]);
+//   const [filteredAttendance, setFilteredAttendance] = useState([]);
+//   const [selectedStrand, setSelectedStrand] = useState("");
+//   const [selectedSection, setSelectedSection] = useState("");
+//   const [searchQuery, setSearchQuery] = useState("");
+
+//   useEffect(() => {
+//     async function fetchData() {
+//       const attendanceQuery = query(
+//         collection(db, "strands", selectedStrand || "", selectedSection || "")
+//       );
+//       const presentStudentsQuery = query(attendanceQuery, where("present", "==", true));
+//       const presentStudentsQuerySnapshot = await getDocs(presentStudentsQuery);
+//       const presentStudents = presentStudentsQuerySnapshot.docs.map((doc) => ({
+//         id: doc.id,
+//         name: doc.data().name,
+//         lastScan: doc.data().lastScan?.toDate() || null,
+//         section: doc.data().section,
+//         strand: doc.data().strand,
+//       }));
+//       presentStudents.sort((a, b) => b.lastScan - a.lastScan);
+//       setTodayAttendance(presentStudents);
+//     }
+//     fetchData();
+//   }, [selectedStrand, selectedSection]);
+
+//   useEffect(() => {
+//     const filteredStudents = todayAttendance.filter(
+//       (student) =>
+//         (!selectedStrand || student.strand === selectedStrand) &&
+//         (!selectedSection || student.section === selectedSection) &&
+//         (!searchQuery || student.name.toLowerCase().includes(searchQuery.toLowerCase()))
+//     );
+//     setFilteredAttendance(filteredStudents);
+//   }, [selectedStrand, selectedSection, searchQuery, todayAttendance]);
+
+//   const strands = ["STEM", "ABM", "HUMSS", "ICT", "GAS", "ALL STRANDS"];
+//   const sections = ["1A", "1B", "2A", "2B", "3A", "3B", "ALL SECTIONS"];
+
+//   const handleFilterChange = (type, value) => {
+//     if (type === "strand") {
+//       setSelectedStrand(value);
+//     } else if (type === "section") {
+//       setSelectedSection(value);
+//     } else if (type === "searchQuery") {
+//       setSearchQuery(value);
+//     }
+//   };
+
+//   const handleRefreshClick = async () => {
+//     const attendanceQuery = query(
+//       collection(db, "strands", selectedStrand || "", selectedSection || "")
+//     );
+//     const presentStudentsQuery = query(attendanceQuery, where("present", "==", true));
+//     const presentStudentsQuerySnapshot = await getDocs(presentStudentsQuery);
+//     const presentStudents = presentStudentsQuerySnapshot.docs.map((doc) => ({
+//       id: doc.id,
+//       name: doc.data().name,
+//       lastScan: doc.data().lastScan?.toDate() || null,
+//       section: doc.data().section,
+//       strand: doc.data().strand,
+//     }));
+//     presentStudents.sort((a, b) => b.lastScan - a.lastScan);
+//     setTodayAttendance(presentStudents);
+//   };
+
+
+//   return (
+//     <div>
+//       <div className="filters">
+//         <FilterDropdown
+//           label="Strand"
+//           options={strands}
+//           selected={selectedStrand}
+//           onChange={(value) => handleFilterChange("strand", value)}
+//           />
+//         <FilterDropdown
+//           label="Section"
+//           options={sections}
+//           selected={selectedSection}
+//           onChange={(value) => handleFilterChange("section", value)}
+//           />
+//         <div className="search">
+//           <input
+//             type="text"
+//             placeholder="Search"
+//             value={searchQuery}
+//             onChange={(e) => handleFilterChange("searchQuery", e.target.value)}
+//           />
+//           <i className="fas fa-search"></i>
+//         </div>
+//         <button className="refresh" onClick={handleRefreshClick}>
+//           <i className="fas fa-sync"></i>
+//         </button>
+//       </div>
+//       <div className="attendance-list">
+//         {filteredAttendance.map((student) => (
+//           <StudentAttendance key={student.id} student={student} />
+//         ))}
+//         {filteredAttendance.length === 0 && (
+//           <p className="no-results">No results found.</p>
+//         )}
+//       </div>
+//     </div>
+//   );
+// }
+
+// export default TodayAttendance;
 
 // import React, { useState, useEffect } from "react";
 // import {
