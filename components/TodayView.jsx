@@ -17,7 +17,7 @@ function TodayAttendance() {
 
   useEffect(() => {
     const fetchTodayAttendance = async () => {
-      let presentStudentsQuery = collection(db, "strands", "STEM");
+      let presentStudentsQuery = collection(db, "strands", "STEM", "1B");
 
 
       if (selectedSection) {
@@ -46,7 +46,7 @@ function TodayAttendance() {
   useEffect(() => {
     const filteredStudents = todayAttendance.filter(
       (student) =>
-        (!selectedStrand || student.strand === selectedStrand) &&
+
         (!selectedSection || student.section === selectedSection) &&
         (!searchQuery ||
           student.name.toLowerCase().includes(searchQuery.toLowerCase()))
@@ -54,7 +54,7 @@ function TodayAttendance() {
     setFilteredAttendance(filteredStudents);
   }, [ selectedSection, searchQuery, todayAttendance]);
 
-  const sections = ["1A", "1B", "2A", "2B", "3A", "3B", "ALL SECTIONS"];
+  const sections = ["1A", "1B", "2A", "2B", "3A", "3B"];
 
   const handleStrandChange = (event) => {
     setSelectedStrand(event.target.value);
