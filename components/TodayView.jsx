@@ -82,7 +82,7 @@ function TodayAttendance() {
   }
 
   return (
-    <div  className=" w-screen text-gray-700 bg-white p-5 text-sm rounded-lg shadow-lg inline-block">
+    <div  className="w-screen m- text-gray-700 bg-white p-5 text-sm rounded-lg shadow-lg inline-block">
       <h2 className="text-gray-700 text-xl font-bold mb-4">
         Attendance For Today
       </h2>
