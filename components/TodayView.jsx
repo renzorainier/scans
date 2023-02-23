@@ -64,6 +64,16 @@ function TodayAttendance() {
     setSearchQuery(event.target.value);
   };
 
+  const sortedAttendance = filteredAttendance.slice().sort((a, b) => {
+    if (a.lastScan && b.lastScan) {
+      return b.lastScan.getTime() - a.lastScan.getTime();
+    } else if (a.lastScan) {
+      return -1;
+    } else {
+      return 1;
+    }
+  });
+
   return (
     <div className=" text-gray-700 bg-white p-8 pr-8 divide-x divide-y rounded-lg shadow-lg inline-block">
       <h2 className="text-gray-700 text-xl font-bold mb-4">
@@ -109,22 +119,23 @@ function TodayAttendance() {
             </tr>
           </thead>
           <tbody>
-          {filteredAttendance.slice().reverse().map((student, index) => (
-  <tr key={student.id}>
-    <td className="border p-2">{index + 1}</td>
-    <td className="border p-2">{student.name}</td>
-    <td className="border p-2">{student.strand}</td>
-    <td className="border p-2">{student.section}</td>
-    <td className="border p-2">
-      {student.lastScan
-        ? student.lastScan.toLocaleTimeString([], {
-            hour: "numeric",
-            minute: "2-digit",
-          })
-        : "N/A"}
-    </td>
-  </tr>
-))}
+          {sortedAttendance.map((student, index) => (
+        <tr key={student.id}>
+          <td className="border p-2">{sortedAttendance.length - index}</td>
+          <td className="border p-2">{student.name}</td>
+          <td className="border p-2">{student.strand}</td>
+          <td className="border p-2">{student.section}</td>
+          <td className="border p-2">
+            {student.lastScan
+              ? student.lastScan.toLocaleTimeString([], {
+                  hour: "numeric",
+                  minute: "2-digit",
+                })
+              : "N/A"}
+          </td>
+        </tr>
+      ))}
+
 
           </tbody>
         </table>
