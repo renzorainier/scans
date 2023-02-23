@@ -82,7 +82,7 @@ function TodayAttendance() {
   }
 
   return (
-<div className="w-full ml-4 mt-4 text-gray-700 bg-white p-5 text-sm rounded-lg shadow-lg inline-block mx-auto" style={{ maxWidth: "90%" }}>
+<div className=" hover:scale-105 ease-in duration-300 w-full ml-4 mt-4 text-gray-700 bg-white p-5 text-sm rounded-lg shadow-lg inline-block mx-auto" style={{ maxWidth: "90%" }}>
       <h2 className="text-gray-700 text-xl font-bold mb-4">
         Attendance For Today
       </h2>
