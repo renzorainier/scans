@@ -9,12 +9,12 @@ import {
 } from "firebase/firestore";
 import { db } from "./firebase.js";
 
-
 function TodayAttendance() {
   const [todayAttendance, setTodayAttendance] = useState([]);
   const [filteredAttendance, setFilteredAttendance] = useState([]);
   const [selectedSection, setSelectedSection] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
 
   const sections = ["1A", "1B", "2A"];
 
@@ -42,6 +42,7 @@ function TodayAttendance() {
       presentStudents.sort((a, b) => b.lastScan - a.lastScan);
       setTodayAttendance(presentStudents);
       setFilteredAttendance(presentStudents);
+      setIsLoading(false);
     };
 
     fetchAttendance();
@@ -75,12 +76,17 @@ function TodayAttendance() {
     }
   });
 
+  if (isLoading) {
+    return <div>
+      Loading...</div>;
+  }
+
   return (
-    <div className=" text-gray-700 bg-white p-8 pr-8 divide-x divide-y rounded-lg shadow-lg inline-block">
+    <div  className="text-gray-700 bg-white p-8 pr-8 mr-8 rounded-lg shadow-lg inline-block">
       <h2 className="text-gray-700 text-xl font-bold mb-4">
         Attendance For Today
       </h2>
-      <div className="flex justify-between mb-4">
+      <div className="flex justify-between items-center mb-4">
         <div className="flex items-center"></div>
         <div className="flex items-center">
           <label className="text-gray-700 font-bold mr-2">Section:</label>
@@ -115,7 +121,7 @@ function TodayAttendance() {
               <th className="border p-2">#</th>
               <th className="border p-2">Name</th>
               <th className="border p-2">Strand</th>
-              <th className="border p-2">Section</th>
+              <th className="border p-2 ">Section</th>
               <th className="border p-2">Last Scan</th>
             </tr>
           </thead>
@@ -125,10 +131,12 @@ function TodayAttendance() {
                 <td className="border p-2">
                   {sortedAttendance.length - index}
                 </td>
-                <td className="border p-2">{student.name}</td>
+                <td className="border p-2" style={{ whiteSpace: "nowrap" }}>
+                  {student.name}
+                </td>
                 <td className="border p-2">{student.strand}</td>
-                <td className="border p-2">{student.section}</td>
-                <td className="border p-2">
+                <td className="border p-2 ">{student.section}</td>
+                <td className="border p-2" style={{ whiteSpace: "nowrap" }}>
                   {student.lastScan
                     ? student.lastScan.toLocaleTimeString([], {
                         hour: "numeric",
