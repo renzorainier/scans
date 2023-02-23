@@ -25,7 +25,9 @@ function TodayAttendance() {
           collection(db, "strands", "STEM", section),
           where("present", "==", true)
         );
-        const presentStudentsQuerySnapshot = await getDocs(presentStudentsQuery);
+        const presentStudentsQuerySnapshot = await getDocs(
+          presentStudentsQuery
+        );
         presentStudents.push(
           ...presentStudentsQuerySnapshot.docs.map((doc) => ({
             id: doc.id,
@@ -105,30 +107,27 @@ function TodayAttendance() {
               <th className="border p-2">Section</th>
               <th className="border p-2">Last Scan</th>
             </tr>
-            </thead>
-            <tbody>
-  {filteredAttendance.map((student, index) => (
-    <tr key={student.id}>
-      <td className="border p-2">{index + 1}</td>
-      <td className="border p-2">{student.name}</td>
-      <td className="border p-2">{student.strand}</td>
-      <td className="border p-2">{student.section}</td>
-      <td className="border p-2">
-//                   {student.lastScan ? student.lastScan.toLocaleString() : "N/A"}
-//                 </td>
-    </tr>
-  ))}
-</tbody>
-</table>
-</div>
-</div>
-);
+          </thead>
+          <tbody>
+            {filteredAttendance.map((student, index) => (
+              <tr key={student.id}>
+                <td className="border p-2">{index + 1}</td>
+                <td className="border p-2">{student.name}</td>
+                <td className="border p-2">{student.strand}</td>
+                <td className="border p-2">{student.section}</td>
+                <td className="border p-2">
+                  {student.lastScan ? student.lastScan.toLocaleString() : "N/A"}{" "}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
 }
 
 export default TodayAttendance;
-
-
-
 
 // import React, { useState, useEffect } from "react";
 // import {
@@ -150,7 +149,6 @@ export default TodayAttendance;
 //   useEffect(() => {
 //     const fetchTodayAttendance = async () => {
 //       let presentStudentsQuery = collection(db, "strands", "STEM", selectedSection);
-
 
 //       presentStudentsQuery = query(presentStudentsQuery, where("present", "==", true));
 
@@ -182,8 +180,7 @@ export default TodayAttendance;
 //     setFilteredAttendance(filteredStudents);
 //   }, [ selectedSection, searchQuery, todayAttendance]);
 
-  // const sections = ["1A", "1B", "2A", "2B", "3A", "3B"];
-
+// const sections = ["1A", "1B", "2A", "2B", "3A", "3B"];
 
 //   const handleSectionChange = (event) => {
 //     setSelectedSection(event.target.value);
@@ -192,7 +189,6 @@ export default TodayAttendance;
 //   const handleSearchQueryChange = (event) => {
 //     setSearchQuery(event.target.value);
 //   };
-
 
 //   return (
 //     <div className=" text-gray-700 bg-white p-8 pr-8 divide-x divide-y rounded-lg shadow-lg inline-block">
