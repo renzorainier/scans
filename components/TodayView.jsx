@@ -78,14 +78,14 @@ function TodayAttendance() {
           label="Strand"
           options={strands}
           selected={selectedStrand}
-          handleFilterChange={(value) => handleFilterChange("strand", value)}
-        />
+          onChange={(value) => handleFilterChange("strand", value)}
+          />
         <FilterDropdown
           label="Section"
           options={sections}
           selected={selectedSection}
-          handleFilterChange={(value) => handleFilterChange("section", value)}
-        />
+          onChange={(value) => handleFilterChange("section", value)}
+          />
         <div className="search">
           <input
             type="text"
