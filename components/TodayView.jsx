@@ -82,7 +82,7 @@ function TodayAttendance() {
   }
 
   return (
-    <div  className="text-gray-700 bg-white p-1 text-sm rounded-lg shadow-lg inline-block">
+    <div  className="text-gray-700 bg-white p-8 pr-8 mr-8 text-sm rounded-lg shadow-lg inline-block">
       <h2 className="text-gray-700 text-xl font-bold mb-4">
         Attendance For Today
       </h2>
@@ -121,7 +121,7 @@ function TodayAttendance() {
               <th className="border p-2">#</th>
               <th className="border p-2">Name</th>
               <th className="border p-2">Strand</th>
-              <th className="border p-2 ">Sec</th>
+              <th className="border p-2 ">Section</th>
               <th className="border p-2">Last Scan</th>
             </tr>
           </thead>
