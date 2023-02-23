@@ -14,52 +14,47 @@ function TodayAttendance() {
   const [filteredAttendance, setFilteredAttendance] = useState([]);
   const [selectedSection, setSelectedSection] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
-  const [originalAttendance, setOriginalAttendance] = useState([]);
-
 
   const sections = ["1A", "1B", "2A"];
 
   useEffect(() => {
-const fetchAttendance = async () => {
-  const presentStudents = [];
-  for (const section of sections) {
-    const presentStudentsQuery = query(
-      collection(db, "strands", "STEM", section),
-      where("present", "==", true)
-    );
-    const presentStudentsQuerySnapshot = await getDocs(
-      presentStudentsQuery
-    );
-    presentStudents.push(
-      ...presentStudentsQuerySnapshot.docs.map((doc) => ({
-        id: doc.id,
-        name: doc.data().name,
-        lastScan: doc.data().lastScan?.toDate() || null,
-        section,
-        strand: doc.data().strand,
-      }))
-    );
-  }
-  presentStudents.sort((a, b) => b.lastScan - a.lastScan);
-  setTodayAttendance(presentStudents);
-  setFilteredAttendance(presentStudents);
-  setOriginalAttendance(presentStudents);
-};
-
+    const fetchAttendance = async () => {
+      const presentStudents = [];
+      for (const section of sections) {
+        const presentStudentsQuery = query(
+          collection(db, "strands", "STEM", section),
+          where("present", "==", true)
+        );
+        const presentStudentsQuerySnapshot = await getDocs(
+          presentStudentsQuery
+        );
+        presentStudents.push(
+          ...presentStudentsQuerySnapshot.docs.map((doc) => ({
+            id: doc.id,
+            name: doc.data().name,
+            lastScan: doc.data().lastScan?.toDate() || null,
+            section,
+            strand: doc.data().strand,
+          }))
+        );
+      }
+      presentStudents.sort((a, b) => b.lastScan - a.lastScan);
+      setTodayAttendance(presentStudents);
+      setFilteredAttendance(presentStudents);
+    };
 
     fetchAttendance();
   }, []);
 
   useEffect(() => {
-    const filteredStudents = originalAttendance.filter(
+    const filteredStudents = todayAttendance.filter(
       (student) =>
         (!selectedSection || student.section === selectedSection) &&
         (!searchQuery ||
           student.name.toLowerCase().includes(searchQuery.toLowerCase()))
     );
     setFilteredAttendance(filteredStudents);
-  }, [selectedSection, searchQuery, originalAttendance]);
-
+  }, [selectedSection, searchQuery, todayAttendance]);
 
   const handleSectionChange = (event) => {
     setSelectedSection(event.target.value);
