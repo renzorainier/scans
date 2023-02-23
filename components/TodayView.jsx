@@ -11,6 +11,10 @@ import { db } from "./firebase.js";
 
 function TodayAttendance() {
   const [todayAttendance, setTodayAttendance] = useState([]);
+  const [filteredAttendance, setFilteredAttendance] = useState([]);
+  const [selectedStrand, setSelectedStrand] = useState("");
+  const [selectedSection, setSelectedSection] = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     const fetchTodayAttendance = async () => {
@@ -24,13 +28,41 @@ function TodayAttendance() {
         name: doc.data().name,
         lastScan: doc.data().lastScan?.toDate() || null,
         section: doc.data().section,
+        strand: doc.data().strand,
       }));
       presentStudents.sort((a, b) => b.lastScan - a.lastScan);
       setTodayAttendance(presentStudents);
+      setFilteredAttendance(presentStudents);
     };
 
     fetchTodayAttendance();
   }, []);
+
+  useEffect(() => {
+    const filteredStudents = todayAttendance.filter(
+      (student) =>
+        (!selectedStrand || student.strand === selectedStrand) &&
+        (!selectedSection || student.section === selectedSection) &&
+        (!searchQuery ||
+          student.name.toLowerCase().includes(searchQuery.toLowerCase()))
+    );
+    setFilteredAttendance(filteredStudents);
+  }, [selectedStrand, selectedSection, searchQuery, todayAttendance]);
+
+  const strands = [...new Set(todayAttendance.map((student) => student.strand))];
+  const sections = [...new Set(todayAttendance.map((student) => student.section))];
+
+  const handleStrandChange = (event) => {
+    setSelectedStrand(event.target.value);
+  };
+
+  const handleSectionChange = (event) => {
+    setSelectedSection(event.target.value);
+  };
+
+  const handleSearchQueryChange = (event) => {
+    setSearchQuery(event.target.value);
+  };
 
 return (
   <div className="bg-white p-8 pr-8 divide-x divide-y rounded-lg shadow-lg inline-block">
