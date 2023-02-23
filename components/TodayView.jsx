@@ -14,12 +14,12 @@ function TodayAttendance() {
   const [filteredAttendance, setFilteredAttendance] = useState([]);
   const [selectedSection, setSelectedSection] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
+  const [originalAttendance, setOriginalAttendance] = useState([]);
+
 
   const sections = ["1A", "1B", "2A"];
 
   useEffect(() => {
-    const [originalAttendance, setOriginalAttendance] = useState([]);
-
 const fetchAttendance = async () => {
   const presentStudents = [];
   for (const section of sections) {
