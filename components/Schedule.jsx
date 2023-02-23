@@ -16,6 +16,8 @@ function Schedule({ strand, section, id, onSaveStatus }) {
       { day: "monday", time: "08:30" },
       { day: "tuesday", time: "08:00" },
       { day: "wednesday", time: "09:30" },
+      { day: "thursday", time: "09:30" },
+      { day: "friday", time: "09:30" },
     ];
 
     // Find the first time in the section schedule that is later than the student's schedule
