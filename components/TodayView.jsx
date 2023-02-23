@@ -12,17 +12,13 @@ import { db } from "./firebase.js";
 function TodayAttendance() {
   const [todayAttendance, setTodayAttendance] = useState([]);
   const [filteredAttendance, setFilteredAttendance] = useState([]);
-  const [selectedStrand, setSelectedStrand] = useState("");
   const [selectedSection, setSelectedSection] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     const fetchTodayAttendance = async () => {
-      let presentStudentsQuery = collection(db, "strands");
+      let presentStudentsQuery = collection(db, "strands", "STEM");
 
-      if (selectedStrand) {
-        presentStudentsQuery = collection(db, "strands", selectedStrand);
-      }
 
       if (selectedSection) {
         presentStudentsQuery = collection(presentStudentsQuery, selectedSection);
@@ -45,7 +41,7 @@ function TodayAttendance() {
     };
 
     fetchTodayAttendance();
-  }, [selectedStrand, selectedSection]);
+  }, [selectedSection]);
 
   useEffect(() => {
     const filteredStudents = todayAttendance.filter(
@@ -56,9 +52,8 @@ function TodayAttendance() {
           student.name.toLowerCase().includes(searchQuery.toLowerCase()))
     );
     setFilteredAttendance(filteredStudents);
-  }, [selectedStrand, selectedSection, searchQuery, todayAttendance]);
+  }, [ selectedSection, searchQuery, todayAttendance]);
 
-  const strands = ["STEM", "ABM", "HUMSS", "ICT", "GAS", "ALL STRANDS"];
   const sections = ["1A", "1B", "2A", "2B", "3A", "3B", "ALL SECTIONS"];
 
   const handleStrandChange = (event) => {
@@ -81,21 +76,6 @@ function TodayAttendance() {
         Attendance For Today
       </h2>
       <div className="flex justify-between mb-4">
-        <div className="flex items-center">
-          <label className="text-gray-700 font-bold mr-2">Strand:</label>
-          <select
-            value={selectedStrand}
-            onChange={handleStrandChange}
-            className="border rounded-md py-1 px-2 text-gray-700"
-          >
-            <option value="">All</option>
-            {strands.map((strand) => (
-              <option key={strand} value={strand}>
-                {strand}
-              </option>
-            ))}
-          </select>
-        </div>
         <div className="flex items-center">
           <label className="text-gray-700 font-bold mr-2">Section:</label>
           <select
