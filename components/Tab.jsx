@@ -11,10 +11,10 @@ function TabSelector() {
 
   return (
     <div>
-      <div className="flex justify-center space-x-4 mb-4">
+      <div className="flex justify-center pt-8 space-x-4 mb-4">
         <button
           className={`py-2 px-4 rounded ${
-            selectedTab === "a" ? "bg-blue-500 text-white" : "bg-gray-200"
+            selectedTab === "a" ? "bg-blue-500 text-white" : "bg-gray-200 hover:bg-blue-200 transition duration-500 ease-in-out"
           }`}
           onClick={() => handleTabChange("a")}
         >
@@ -22,17 +22,17 @@ function TabSelector() {
         </button>
         <button
           className={`py-2 px-4 rounded ${
-            selectedTab === "b" ? "bg-blue-500 text-white" : "bg-gray-200"
+            selectedTab === "b" ? "bg-blue-500 text-white" : "bg-gray-200 hover:bg-blue-200 transition duration-500 ease-in-out"
           }`}
           onClick={() => handleTabChange("b")}
         >
           Previous
         </button>
       </div>
-      <div style={{ display: selectedTab === "a" ? "block" : "none" }}>
+      <div className={`${selectedTab === "a" ? "block" : "hidden"} transition duration-500 ease-in-out`}>
         <TodayAttendance />
       </div>
-      <div style={{ display: selectedTab === "b" ? "block" : "none" }}>
+      <div className={`${selectedTab === "b" ? "block" : "hidden"} transition duration-500 ease-in-out`}>
         <PastAttendance />
       </div>
     </div>
