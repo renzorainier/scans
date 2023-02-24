@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-  @apply h-screen w-screen bg-gradient-to-br from-[#1CB5E0] to-[#2F80ED]
+  @apply h-screen w-screen bg-gradient-to-br from-[#D4E6F1] to-[#D4E6F1]
   tracking-wide;
 }
 
