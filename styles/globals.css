@@ -8,10 +8,18 @@ body {
   font-family: "Urbanist";
 }
 
+.tab-content {
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out;
+}
+
+.block .tab-content {
+  opacity: 1;
+}
+
 .hidden-component {
   display: none;
 }
-
 
 .grid {
   display: grid;
