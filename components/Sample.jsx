@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, children } from "react";
 
-function Tab({ label, selected, onClick }) {
+export function Tab({ label, selected, onClick }) {
   return (
     <button
       role="tab"
@@ -19,7 +19,7 @@ function Tab({ label, selected, onClick }) {
   );
 }
 
-function TabPanel({ label, selected, children }) {
+export function TabPanel({ label, selected, children }) {
   return (
     <div
       role="tabpanel"
@@ -33,7 +33,7 @@ function TabPanel({ label, selected, children }) {
   );
 }
 
-function Tabs() {
+export function Tabs() {
   const tabs = useRef([]);
   const indicator = useRef(null);
   const panels = useRef([]);
@@ -102,4 +102,3 @@ function Tabs() {
 
 };
 
-export default Tabs;
