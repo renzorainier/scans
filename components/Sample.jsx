@@ -1,4 +1,6 @@
-import React, { useState, useEffect, useRef, children } from "react";function Tab({ label, selected, onClick }) {
+import React, { useState, useEffect, useRef, children } from "react";
+
+function Tab({ label, selected, onClick }) {
   return (
     <button
       role="tab"
