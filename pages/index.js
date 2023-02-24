@@ -7,7 +7,7 @@ import SavePresentStudents from "components/Save";
 import Generate from "components/Generate";
 import { useEffect } from "react";
 import StudentCollection from "components/Create";
-import Sample from "components/Sample";
+import Sample  from "components/Sample";
 
 export default function Home() {
   const [component, setComponent] = useState("");
@@ -31,7 +31,7 @@ export default function Home() {
       case "Create":
         return <StudentCollection />;
         case "Sample":
-        return <Sample />;
+        return <Sample />
       default:
         return (
           <>
