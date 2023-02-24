@@ -7,7 +7,7 @@ import SavePresentStudents from "components/Save";
 import Generate from "components/Generate";
 import { useEffect } from "react";
 import StudentCollection from "components/Create";
-import TaTabSelector  from "components/Tab";
+import TabSelector  from "components/Tab";
 
 export default function Home() {
   const [component, setComponent] = useState("");
@@ -33,7 +33,7 @@ export default function Home() {
       case "Create":
         return <StudentCollection />;
         case "Tab":
-        return <Tab />
+        return <TabSelector />
       default:
         return (
           <>
