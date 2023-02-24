@@ -115,72 +115,73 @@ function TodayAttendance() {
       <h2 className="text-gray-700 text-xl font-bold text-center">
         Attendance For Today
       </h2>
-      <h1 className="text-gray-700 font-bold text-base mb-4 text-center">({new Date().toLocaleDateString()})</h1>
+      <h1 className="text-gray-700 font-bold text-base mb-4 text-center">
+        ({new Date().toLocaleDateString()})
+      </h1>
       <div className="flex justify-between items-center mb-4">
-  <div className="flex items-center flex-grow">
-    <select
-      value={selectedSection}
-      onChange={handleSectionChange}
-      className="border rounded-md py-1 px-2 text-gray-700 w-full"
-    >
-      <option value="">All</option>
-      {sections.map((section) => (
-        <option key={section} value={section}>
-          {section}
-        </option>
-      ))}
-    </select>
-  </div>
-  <div className="flex items-center flex-grow">
-    <input
-      type="text"
-      value={searchQuery}
-      onChange={handleSearchQueryChange}
-      className="border rounded-md py-1 px-2 text-gray-700 w-full"
-      placeholder="Search by name"
-    />
-</div>
-
-      </div>
-        <div className="overflow-x-auto rounded-lg">
-          <table className="table-auto w-full text-center">
-            <thead className="bg-gray-200 text-">
-              <tr className="p-2 font-bold">
-                <th className="p-2 pb-4 pt-4">#</th>
-                <th className="p-2">NAME</th>
-                <th className="p-2">STRAND</th>
-                <th className="p-2">SEC</th>
-                <th className="p-2">SCANNED:</th>
-              </tr>
-            </thead>
-            <tbody>
-              {sortedAttendance.map((student, index) => (
-                <tr
-                  className={`${
-                    index % 2 === 0 ? "bg-gray-100" : "bg-gray-200"
-                  } rounded-lg mb-2`}
-                  key={student.id}
-                >
-                  <td className="p-2">{sortedAttendance.length - index}</td>
-                  <td className="p-2 font-bold whitespace-nowrap">
-                    {student.name}
-                  </td>
-                  <td className="p-2">{student.strand}</td>
-                  <td className="p-2 ">{student.section}</td>
-                  <td className="p-2 whitespace-nowrap">
-                    {student.lastScan
-                      ? student.lastScan.toLocaleTimeString([], {
-                          hour: "numeric",
-                          minute: "2-digit",
-                        })
-                      : "N/A"}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+        <div className="flex items-center flex-grow">
+          <select
+            value={selectedSection}
+            onChange={handleSectionChange}
+            className="border rounded-md py-1 px-2 text-gray-700 w-full"
+          >
+            <option value="">All</option>
+            {sections.map((section) => (
+              <option key={section} value={section}>
+                {section}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div className="flex items-center flex-grow">
+          <input
+            type="text"
+            value={searchQuery}
+            onChange={handleSearchQueryChange}
+            className="border rounded-md py-1 px-2 text-gray-700 w-full"
+            placeholder="Search by name"
+          />
         </div>
       </div>
+      <div className="overflow-x-auto rounded-lg">
+        <table className="table-auto w-full text-center">
+          <thead className="bg-gray-200 text-">
+            <tr className="p-2 font-bold">
+              <th className="p-2 pb-4 pt-4">#</th>
+              <th className="p-2">NAME</th>
+              <th className="p-2">STRAND</th>
+              <th className="p-2">SEC</th>
+              <th className="p-2">SCANNED:</th>
+            </tr>
+          </thead>
+          <tbody>
+            {sortedAttendance.map((student, index) => (
+              <tr
+                className={`${
+                  index % 2 === 0 ? "bg-gray-100" : "bg-gray-200"
+                } rounded-lg mb-2`}
+                key={student.id}
+              >
+                <td className="p-2">{sortedAttendance.length - index}</td>
+                <td className="p-2 font-bold whitespace-nowrap">
+                  {student.name}
+                </td>
+                <td className="p-2">{student.strand}</td>
+                <td className="p-2 ">{student.section}</td>
+                <td className="p-2 whitespace-nowrap">
+                  {student.lastScan
+                    ? student.lastScan.toLocaleTimeString([], {
+                        hour: "numeric",
+                        minute: "2-digit",
+                      })
+                    : "N/A"}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
   );
 }
 
