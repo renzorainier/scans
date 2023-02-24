@@ -18,7 +18,7 @@ function TabSelector() {
           }`}
           onClick={() => handleTabChange("a")}
         >
-          Component A
+          Today
         </button>
         <button
           className={`py-2 px-4 rounded ${
@@ -26,7 +26,7 @@ function TabSelector() {
           }`}
           onClick={() => handleTabChange("b")}
         >
-          Component B
+          Previous
         </button>
       </div>
       {selectedTab === "a" && <TodayAttendance />}
