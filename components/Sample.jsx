@@ -113,7 +113,7 @@ function Sample() {
               <h1 className="text-4xl font-bold mb-4">First Tab Content</h1>
               <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam
-               que culpa autem enim? Fugiat, animi.
+                que culpa autem enim? Fugiat, animi.
               </p>
             </div>
             <div
@@ -141,7 +141,7 @@ function Sample() {
               <h1 className="text-4xl font-bold mb-4">Third Tab Content</h1>
               <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam
-               
+
               </p>
             </div>
           </div>
