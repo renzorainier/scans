@@ -31,30 +31,10 @@ function TabSelector() {
         </button>
       </div>
       <div className={`${selectedTab === "a" ? "block" : "hidden-component"}`}>
-      <Transition
-          show={selectedTab === "a"}
-          enter="transition-opacity duration-500"
-          enterFrom="opacity-0"
-          enterTo="opacity-100"
-          leave="transition-opacity duration-500"
-          leaveFrom="opacity-100"
-          leaveTo="opacity-0"
-        >
-          <TodayAttendance />
-        </Transition>
+        <TodayAttendance className="tab-content" />
       </div>
       <div className={`${selectedTab === "b" ? "block" : "hidden-component"}`}>
-      <Transition
-          show={selectedTab === "b"}
-          enter="transition-opacity duration-500"
-          enterFrom="opacity-0"
-          enterTo="opacity-100"
-          leave="transition-opacity duration-500"
-          leaveFrom="opacity-100"
-          leaveTo="opacity-0"
-        >
-          <PastAttendance />
-        </Transition>
+        <PastAttendance className="tab-content" />
       </div>
     </div>
   );
