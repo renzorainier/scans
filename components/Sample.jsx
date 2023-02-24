@@ -1,37 +1,53 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
 function Sample() {
   const [activeTab, setActiveTab] = useState(1);
 
   useEffect(() => {
-    const tabs = document.querySelectorAll('.tab');
-    const indicator = document.querySelector('.indicator');
-    const panels = document.querySelectorAll('.tab-panel');
+    const tabs = document.querySelectorAll(".tab");
+    const indicator = document.querySelector(".indicator");
+    const panels = document.querySelectorAll(".tab-panel");
 
-    const activeTabElement = document.querySelector(`[aria-controls="panel-${activeTab}"]`);
+    const activeTabElement = document.querySelector(
+      `[aria-controls="panel-${activeTab}"]`
+    );
 
-    indicator.style.width = `${activeTabElement.getBoundingClientRect().width}px`;
-    indicator.style.left = `${activeTabElement.getBoundingClientRect().left - activeTabElement.parentElement.getBoundingClientRect().left}px`;
+    indicator.style.width = `${
+      activeTabElement.getBoundingClientRect().width
+    }px`;
+    indicator.style.left = `${
+      activeTabElement.getBoundingClientRect().left -
+      activeTabElement.parentElement.getBoundingClientRect().left
+    }px`;
 
-    tabs.forEach(tab => {
-      tab.addEventListener('click', () => {
-        const tabTarget = parseInt(tab.getAttribute('aria-controls').replace('panel-', ''));
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        const tabTarget = parseInt(
+          tab.getAttribute("aria-controls").replace("panel-", "")
+        );
 
         setActiveTab(tabTarget);
 
-        const tabElement = document.querySelector(`[aria-controls="panel-${tabTarget}"]`);
+        const tabElement = document.querySelector(
+          `[aria-controls="panel-${tabTarget}"]`
+        );
 
         indicator.style.width = `${tabElement.getBoundingClientRect().width}px`;
-        indicator.style.left = `${tabElement.getBoundingClientRect().left - tabElement.parentElement.getBoundingClientRect().left}px`;
+        indicator.style.left = `${
+          tabElement.getBoundingClientRect().left -
+          tabElement.parentElement.getBoundingClientRect().left
+        }px`;
 
-        panels.forEach(panel => {
-          const panelId = parseInt(panel.getAttribute('id').replace('panel-', ''));
+        panels.forEach((panel) => {
+          const panelId = parseInt(
+            panel.getAttribute("id").replace("panel-", "")
+          );
 
           if (panelId === tabTarget) {
-            panel.classList.remove('invisible', 'opacity-0');
-            panel.classList.add('visible', 'opacity-100');
+            panel.classList.remove("invisible", "opacity-0");
+            panel.classList.add("visible", "opacity-100");
           } else {
-            panel.classList.add('invisible', 'opacity-0');
+            panel.classList.add("invisible", "opacity-0");
           }
         });
       });
@@ -51,46 +67,82 @@ function Sample() {
               <div className="absolute indicator h-11 my-auto top-0 bottom-0 left-0 rounded-full bg-white shadow-md"></div>
               <button
                 role="tab"
-                aria-selected={activeTab === 1 ? 'true' : 'false'}
+                aria-selected={activeTab === 1 ? "true" : "false"}
                 aria-controls="panel-1"
                 id="tab-1"
                 tabIndex="0"
-                className={`relative block h-10 px-6 tab rounded-full ${activeTab === 1 ? 'active' : ''}`}
+                className={`relative block h-10 px-6 tab rounded-full ${
+                  activeTab === 1 ? "active" : ""
+                }`}
               >
                 <span className="text-gray-800">First Tab</span>
               </button>
               <button
                 role="tab"
-                aria-selected={activeTab === 2 ? 'true' : 'false'}
+                aria-selected={activeTab === 2 ? "true" : "false"}
                 aria-controls="panel-2"
                 id="tab-2"
                 tabIndex="-1"
-                className={`relative block h-10 px-6 tab rounded-full ${activeTab === 2 ? 'active' : ''}`}
+                className={`relative block h-10 px-6 tab rounded-full ${
+                  activeTab === 2 ? "active" : ""
+                }`}
               >
                 <span className="text-gray-800">Second Tab</span>
               </button>
               <button
                 role="tab"
-                aria-selected={activeTab === 3 ? 'true' : 'false'}
+                aria-selected={activeTab === 3 ? "true" : "false"}
                 aria-controls="panel-3"
                 id="tab-3"
                 tabIndex="-1"
-                className={`relative block h-10 px-6 tab rounded-full ${activeTab === 3 ? 'active' : ''}`}
+                className={`relative block h-10 px-6 tab rounded-full ${
+                  activeTab === 3 ? "active" : ""
+                }`}
               >
                 <span className="text-gray-800">Third Tab</span>
               </button>
             </div>
-            <div role="tabpanel" aria-labelledby="tab-1" id="panel-1" className={`tab-panel ${activeTab === 1 ? 'visible opacity-100' : 'invisible opacity-0'}`}>
+            <div
+              role="tabpanel"
+              aria-labelledby="tab-1"
+              id="panel-1"
+              className={`tab-panel ${
+                activeTab === 1 ? "visible opacity-100" : "invisible opacity-0"
+              }`}
+            >
               <h1 className="text-4xl font-bold mb-4">First Tab Content</h1>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam assumenda, laborum facilis commodi repudiandae, atque, voluptas perferendis cumque minus repellendus dolores? Minima mollitia aspernatur itaque culpa autem enim? Fugiat, animi.</p>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam
+               que culpa autem enim? Fugiat, animi.
+              </p>
             </div>
-            <div role="tabpanel" aria-labelledby="tab-2" id="panel-2" className={`tab-panel ${activeTab === 2 ? 'visible opacity-100' : 'invisible opacity-0'}`}>
+            <div
+              role="tabpanel"
+              aria-labelledby="tab-2"
+              id="panel-2"
+              className={`tab-panel ${
+                activeTab === 2 ? "visible opacity-100" : "invisible opacity-0"
+              }`}
+            >
               <h1 className="text-4xl font-bold mb-4">Second Tab Content</h1>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam assumenda, laborum facilis commodi repudiandae, atque, voluptas perferendis cumque minus repellendus dolores? Minima mollitia aspernatur itaque culpa autem enim? Fugiat, animi.</p>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam
+
+              </p>
             </div>
-            <div role="tabpanel" aria-labelledby="tab-3" id="panel-3" className={`tab-panel ${activeTab === 3 ? 'visible opacity-100' : 'invisible opacity-0'}`}>
+            <div
+              role="tabpanel"
+              aria-labelledby="tab-3"
+              id="panel-3"
+              className={`tab-panel ${
+                activeTab === 3 ? "visible opacity-100" : "invisible opacity-0"
+              }`}
+            >
               <h1 className="text-4xl font-bold mb-4">Third Tab Content</h1>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam assumenda, laborum facilis commodi repudiandae, atque, voluptas perferendis cumque minus repellendus dolores? Minima mollitia aspernatur itaque culpa autem enim? Fugiat, animi.</p>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam
+               
+              </p>
             </div>
           </div>
         </div>
@@ -98,3 +150,4 @@ function Sample() {
     </div>
   );
 }
+export default Sample;
