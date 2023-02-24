@@ -13,7 +13,7 @@ function TabSelector() {
     <div>
       <div className="flex justify-center pt-8 space-x-4 mb-4">
         <button
-          className={`py-2 px-4 rounded ${
+          className={`py-2 px-4 rounded-t-md ${
             selectedTab === "a" ? "bg-blue-500 text-white" : "bg-gray-200 hover:bg-blue-200 transition duration-500 ease-in-out"
           }`}
           onClick={() => handleTabChange("a")}
