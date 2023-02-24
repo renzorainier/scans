@@ -22,7 +22,7 @@ function TabSelector() {
         </button>
         <button
           className={`py-2 px-4 rounded-lg ${
-            selectedTab === "b" ? "bg-blue-500 text-white" : "bg-gray-200 hover:bg-blue-200 transition duration-500 ease-in-out"
+            selectedTab === "b" ? "bg-blue-400 text-white" : "bg-gray-200 hover:bg-blue-200 transition duration-500 ease-in-out"
           }`}
           onClick={() => handleTabChange("b")}
         >
