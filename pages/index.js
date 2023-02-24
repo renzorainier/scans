@@ -41,7 +41,7 @@ export default function Home() {
               Welcome to Scas Attendance Viewer
             </h1>
             <p className="text-lg mb-6 text-white">Choose Below</p>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div className="">
               <button
                 value="TodayAttendance"
                 className="bg-blue-600 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded transition-colors duration-200"
@@ -119,7 +119,7 @@ export default function Home() {
       </Head>
       <main className="container mx-auto ">{renderComponent()}</main>
       <div>
-        
+
       </div>
     </>
   );
