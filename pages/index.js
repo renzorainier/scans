@@ -16,6 +16,8 @@ export default function Home() {
     setComponent(event.target.value);
   };
 
+
+
   const renderComponent = () => {
     switch (component) {
       case "Scan":
@@ -116,6 +118,9 @@ export default function Home() {
 
       </Head>
       <main className="container mx-auto ">{renderComponent()}</main>
+      <div>
+        
+      </div>
     </>
   );
 }
