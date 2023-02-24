@@ -117,29 +117,30 @@ function TodayAttendance() {
       </h2>
       <h1 className="text-gray-700 font-bold text-base mb-4 text-center">({new Date().toLocaleDateString()})</h1>
       <div className="flex justify-between items-center mb-4">
-        <div className="flex items-center">
-          <select
-            value={selectedSection}
-            onChange={handleSectionChange}
-            className="border rounded-md py-1 px-2 text-gray-700"
-          >
-            <option value="">All</option>
-            {sections.map((section) => (
-              <option key={section} value={section}>
-                {section}
-              </option>
-            ))}
-          </select>
-        </div>
-        <div className="flex items-center">
-          <input
-            type="text"
-            value={searchQuery}
-            onChange={handleSearchQueryChange}
-            className="border rounded-md py-1 px-2 text-gray-700"
-            placeholder="Search by name"
-          />
-        </div>
+  <div className="flex items-center flex-grow">
+    <select
+      value={selectedSection}
+      onChange={handleSectionChange}
+      className="border rounded-md py-1 px-2 text-gray-700 w-full"
+    >
+      <option value="">All</option>
+      {sections.map((section) => (
+        <option key={section} value={section}>
+          {section}
+        </option>
+      ))}
+    </select>
+  </div>
+  <div className="flex items-center flex-grow">
+    <input
+      type="text"
+      value={searchQuery}
+      onChange={handleSearchQueryChange}
+      className="border rounded-md py-1 px-2 text-gray-700 w-full"
+      placeholder="Search by name"
+    />
+</div>
+
       </div>
         <div className="overflow-x-auto rounded-lg">
           <table className="table-auto w-full text-center">
