@@ -29,8 +29,12 @@ function TabSelector() {
           Previous
         </button>
       </div>
-      {selectedTab === "a" && <TodayAttendance />}
-      {selectedTab === "b" && <PastAttendance />}
+      <div style={{ display: selectedTab === "a" ? "block" : "none" }}>
+        <TodayAttendance />
+      </div>
+      <div style={{ display: selectedTab === "b" ? "block" : "none" }}>
+        <PastAttendance />
+      </div>
     </div>
   );
 }
