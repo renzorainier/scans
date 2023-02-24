@@ -8,6 +8,10 @@ body {
   font-family: "Urbanist";
 }
 
+.indicator{
+  transition: left .4s;
+}
+
 button {
 }
 
