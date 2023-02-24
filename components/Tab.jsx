@@ -1,7 +1,6 @@
 import { useState } from "react";
 import PastAttendance from "/components/PastView";
 import TodayAttendance from "/components/TodayView";
-import { Transition } from "@headlessui/react";
 
 function TabSelector() {
   const [selectedTab, setSelectedTab] = useState("a");
@@ -31,30 +30,10 @@ function TabSelector() {
         </button>
       </div>
       <div className={`${selectedTab === "a" ? "block" : "hidden"} transition duration-500 ease-in-out`}>
-        <Transition
-          show={selectedTab === "a"}
-          enter="transition-opacity duration-500"
-          enterFrom="opacity-0"
-          enterTo="opacity-100"
-          leave="transition-opacity duration-500"
-          leaveFrom="opacity-100"
-          leaveTo="opacity-0"
-        >
-          <TodayAttendance />
-        </Transition>
+        <TodayAttendance />
       </div>
       <div className={`${selectedTab === "b" ? "block" : "hidden"} transition duration-500 ease-in-out`}>
-        <Transition
-          show={selectedTab === "b"}
-          enter="transition-opacity duration-500"
-          enterFrom="opacity-0"
-          enterTo="opacity-100"
-          leave="transition-opacity duration-500"
-          leaveFrom="opacity-100"
-          leaveTo="opacity-0"
-        >
-          <PastAttendance />
-        </Transition>
+        <PastAttendance />
       </div>
     </div>
   );
