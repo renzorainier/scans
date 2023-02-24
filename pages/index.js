@@ -30,6 +30,8 @@ export default function Home() {
         return <Generate />;
       case "Create":
         return <StudentCollection />;
+        case "Sample":
+        return <Sample />;
       default:
         return (
           <>
@@ -83,18 +85,11 @@ export default function Home() {
                 Update Data
               </button>
               <button
-                value="Generate"
+                value="Sample"
                 className="bg-blue-600 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded transition-colors duration-200"
                 onClick={handleClick}
               >
-                Create
-              </button>
-              <button
-                value="Create"
-                className="bg-blue-600 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded transition-colors duration-200"
-                onClick={handleClick}
-              >
-                Update Data
+                Sample
               </button>
             </div>
           </>
