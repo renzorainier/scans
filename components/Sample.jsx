@@ -71,8 +71,8 @@ function Sample() {
         </div>
       </div>
     </div>
-                                
-    <script type="module" src="./main.js"></script>
+
+    <script type="module" src="/components/main.js"></script>
   </body>
     </div>
   )
