@@ -30,8 +30,8 @@ function TabSelector() {
           Previous
         </button>
       </div>
-      <div className={`${selectedTab === "a" ? "block" : "hidden"} transition duration-500 ease-in-out`}>
-      <Transition
+      <div className={`${selectedTab === "a" ? "block" : "hidden-component"}`}>
+        <Transition
           show={selectedTab === "a"}
           enter="transition-opacity duration-500"
           enterFrom="opacity-0"
@@ -43,8 +43,18 @@ function TabSelector() {
           <TodayAttendance />
         </Transition>
       </div>
-      <div className={`${selectedTab === "b" ? "block" : "hidden"} transition duration-500 ease-in-out`}>
-        <PastAttendance />
+      <div className={`${selectedTab === "b" ? "block" : "hidden-component"}`}>
+        <Transition
+          show={selectedTab === "b"}
+          enter="transition-opacity duration-500"
+          enterFrom="opacity-0"
+          enterTo="opacity-100"
+          leave="transition-opacity duration-500"
+          leaveFrom="opacity-100"
+          leaveTo="opacity-0"
+        >
+          <PastAttendance />
+        </Transition>
       </div>
     </div>
   );
