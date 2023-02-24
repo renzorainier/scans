@@ -7,6 +7,7 @@ import SavePresentStudents from "components/Save";
 import Generate from "components/Generate";
 import { useEffect } from "react";
 import StudentCollection from "components/Create";
+import Sample from "components/Sample";
 
 export default function Home() {
   const [component, setComponent] = useState("");
@@ -66,6 +67,20 @@ export default function Home() {
                 onClick={handleClick}
               >
                 Save
+              </button>
+              <button
+                value="Generate"
+                className="bg-blue-600 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded transition-colors duration-200"
+                onClick={handleClick}
+              >
+                Create
+              </button>
+              <button
+                value="Create"
+                className="bg-blue-600 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded transition-colors duration-200"
+                onClick={handleClick}
+              >
+                Update Data
               </button>
               <button
                 value="Generate"
