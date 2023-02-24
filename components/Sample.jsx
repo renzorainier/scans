@@ -1,104 +1,81 @@
-import React, { useState, useEffect, useRef, children } from "react";
+import React from 'react'
 
-export function Tab({ label, selected, onClick }) {
+function Sample() {
   return (
-    <button
-      role="tab"
-      aria-selected={selected}
-      aria-controls={`panel-${label}`}
-      id={`tab-${label}`}
-      className={`relative block h-10 px-6 rounded-full ${
-        selected
-          ? "bg-white text-gray-800"
-          : "text-gray-800/50 hover:text-gray-800/70"
-      }`}
-      onClick={onClick}
-    >
-      <span>{label}</span>
-    </button>
-  );
-}
-
-export function TabPanel({ label, selected, children }) {
-  return (
-    <div
-      role="tabpanel"
-      id={`panel-${label}`}
-      className={`${
-        selected ? "visible opacity-100" : "invisible opacity-0"
-      } tab-panel p-6 transition duration-300`}
-    >
-      {children}
-    </div>
-  );
-}
-
-export function Tabs() {
-  const tabs = useRef([]);
-  const indicator = useRef(null);
-  const panels = useRef([]);
-
-  const [selectedTab, setSelectedTab] = useState(0);
-
-  useEffect(() => {
-    if (tabs.current.length > 0 && panels.current.length > 0) {
-      const currentTab = tabs.current[selectedTab];
-      const currentPanel = panels.current[selectedTab];
-
-      indicator.current.style.width = `${currentTab.getBoundingClientRect().width}px`;
-      indicator.current.style.left = `${currentTab.getBoundingClientRect().left - currentTab.parentElement.getBoundingClientRect().left}px`;
-
-      panels.current.forEach((panel, index) => {
-        if (index === selectedTab) {
-          panel.classList.remove("invisible", "opacity-0");
-          panel.classList.add("visible", "opacity-100");
-        } else {
-          panel.classList.add("invisible", "opacity-0");
-        }
-      });
-    }
-  }, [selectedTab]);
-
-  const handleTabClick = (index) => {
-    setSelectedTab(index);
-  };
-
-  return (
-    <div className="tabs">
-      <div className="tab-list" role="tablist">
-        {React.Children.map(children, (child, index) => {
-          const isSelected = index === selectedTab;
-          return React.cloneElement(child, {
-            selected: isSelected,
-            onClick: () => handleTabClick(index),
-            ref: (el) => (tabs.current[index] = el),
-          });
-        })}
+    <div>
+      <body class="min-h-screen flex items-center bg-gradient-to-br from-purple-200 to-indigo-400">
+    <div class="max-w-3xl mx-auto px-8 sm:px-0">
+      <div class="sm:w-7/12 sm:mx-auto">
         <div
-          className="tab-indicator"
-          ref={indicator}
-          style={{
-            position: "absolute",
-            bottom: 0,
-            left: 0,
-            height: "4px",
-            backgroundColor: "white",
-            borderRadius: "999px",
-            transition: "all 0.3s cubic-bezier(0.65, 0.05, 0.36, 1)",
-          }}
-        ></div>
-      </div>
-      <div className="tab-panels">
-        {React.Children.map(children, (child, index) => {
-          const isSelected = index === selectedTab;
-          return React.cloneElement(child.props.children, {
-            selected: isSelected,
-            ref: (el) => (panels.current[index] = el),
-          });
-        })}
+          role="tablist"
+          aria-label="tabs"
+          class="relative w-max mx-auto h-12 grid grid-cols-3 items-center px-[3px] rounded-full bg-gray-900/20 overflow-hidden shadow-2xl shadow-900/20 transition"
+        >
+          <div class="absolute indicator h-11 my-auto top-0 bottom-0 left-0 rounded-full bg-white shadow-md"></div>
+          <button
+            role="tab"
+            aria-selected="true"
+            aria-controls="panel-1"
+            id="tab-1"
+            tabindex="0"
+            class="relative block h-10 px-6 tab rounded-full"
+          >
+            <span class="text-gray-800">First Tab</span>
+          </button>
+          <button
+            role="tab"
+            aria-selected="false"
+            aria-controls="panel-2"
+            id="tab-2"
+            tabindex="-1"
+            class="relative block h-10 px-6 tab rounded-full"
+          >
+            <span class="text-gray-800">Second Tab</span>
+          </button>
+          <button
+            role="tab"
+            aria-selected="false"
+            aria-controls="panel-3"
+            id="tab-3"
+            tabindex="-1"
+            class="relative block h-10 px-6 tab rounded-full"
+          >
+            <span class="text-gray-800">Third Tab</span>
+          </button>
+        </div>
+        <div class="mt-6 relative rounded-3xl bg-purple-50">
+          <div
+            role="tabpanel"
+            id="panel-1"
+            class="tab-panel p-6 transition duration-300"
+          >
+            <h2 class="text-xl font-semibold text-gray-800">First tab panel</h2>
+            <p class="mt-4 text-gray-600">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quas dolores voluptate temporibus, atque ab eos, delectus at ad hic voluptatem veritatis iure, nulla voluptates quod nobis doloremque eaque! Perferendis, soluta.</p>
+          </div>
+          <div
+            role="tabpanel"
+            id="panel-2"
+            class="absolute top-0 invisible opacity-0 tab-panel p-6 transition duration-300"
+          >
+            <h2 class="text-xl font-semibold text-gray-800">Second tab panel</h2>
+            <p class="mt-4 text-gray-600">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quas dolores voluptate temporibus, atque ab eos, delectus at ad hic voluptatem veritatis iure, nulla voluptates quod nobis doloremque eaque! Perferendis, soluta.</p>
+          </div>
+          <div
+            role="tabpanel"
+            id="panel-3"
+            class="absolute top-0 invisible opacity-0 tab-panel p-6 transition duration-300"
+          >
+            <h2 class="text-xl font-semibold text-gray-800">Third tab panel</h2>
+            <p class="mt-4 text-gray-600">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quas dolores voluptate temporibus, atque ab eos, delectus at ad hic voluptatem veritatis iure, nulla voluptates quod nobis doloremque eaque! Perferendis, soluta.</p>
+          </div>
+        </div>
       </div>
     </div>
-  );
 
-};
+    <script type="module" src="./main.js"></script>
+  </body>
+    </div>
+  )
+}
 
+export default Sample
