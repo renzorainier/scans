@@ -118,7 +118,6 @@ function TodayAttendance() {
       <h1 className="text-gray-700 font-bold text-base mb-4 text-center">({new Date().toLocaleDateString()})</h1>
       <div className="flex justify-between items-center mb-4">
         <div className="flex items-center">
-          <label className="text-gray-700 font-bold mr-2">Section:</label>
           <select
             value={selectedSection}
             onChange={handleSectionChange}
@@ -133,7 +132,6 @@ function TodayAttendance() {
           </select>
         </div>
         <div className="flex items-center">
-          <label className="text-gray-700 font-bold mr-2">Search:</label>
           <input
             type="text"
             value={searchQuery}
