@@ -1,4 +1,4 @@
-import "./assets/css/tailwind.css";
+// import "./assets/css/tailwind.css";
 
 let tabs = document.querySelectorAll(".tab")
 let indicator = document.querySelector(".indicator")
