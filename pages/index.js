@@ -1,13 +1,13 @@
 import Head from "next/head";
 import { useState } from "react";
 import Scan from "components/Scan";
-import PastAttendance from "@/components/PastView";
-import TodayAttendance from "@/components/TodayView";
+import PastAttendance from "/components/PastView";
+import TodayAttendance from "/components/TodayView";
 import SavePresentStudents from "components/Save";
 import Generate from "components/Generate";
 import { useEffect } from "react";
 import StudentCollection from "components/Create";
-import Sample  from "components/Sample";
+import TaTabSelector  from "components/Tab";
 
 export default function Home() {
   const [component, setComponent] = useState("");
@@ -32,8 +32,8 @@ export default function Home() {
         return <Generate />;
       case "Create":
         return <StudentCollection />;
-        case "Sample":
-        return <Sample />
+        case "Tab":
+        return <Tab />
       default:
         return (
           <>
@@ -87,11 +87,11 @@ export default function Home() {
                 Update Data
               </button>
               <button
-                value="Sample"
+                value="Tab"
                 className="bg-blue-600 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded transition-colors duration-200"
                 onClick={handleClick}
               >
-                Sample
+                Tab
               </button>
             </div>
           </>
