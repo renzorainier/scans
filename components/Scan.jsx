@@ -129,3 +129,65 @@ function Scan() {
 
 export default Scan;
 
+
+const handleMarkPresent = async (strand, section, id) => {
+  // Get student data from Firestore
+  const studentRef = doc(db, "strands", strand, section, id);
+  const docSnapshot = await getDoc(studentRef);
+
+  if (docSnapshot.exists()) {
+    const studentData = docSnapshot.data();
+
+    // Check student's attendance status and update it
+    let attendanceStatus = "";
+    const scheduleRef = doc(db, "schedules", section, studentData.day);
+    const scheduleSnapshot = await getDoc(scheduleRef);
+
+    if (scheduleSnapshot.exists()) {
+      const scheduleData = scheduleSnapshot.data();
+      const studentSchedule = scheduleData[strand];
+      const studentScheduleTime = studentSchedule[id];
+      const classStartTime = new Date(studentScheduleTime.start);
+      const scanTime = new Date();
+      const timeDifference = scanTime.getTime() - classStartTime.getTime();
+
+      if (timeDifference < -300000) {
+        // Student is early (5 minutes before class start time)
+        attendanceStatus = "early";
+      } else if (timeDifference >= -300000 && timeDifference <= 600000) {
+        // Student is on time (within 5 minutes of class start time)
+        attendanceStatus = "on time";
+      } else {
+        // Student is late (more than 5 minutes after class start time)
+        attendanceStatus = "late";
+      }
+    }
+
+    if (!studentData.present) {
+      await setDoc(
+        studentRef,
+        { present: true, lastScan: new Date(), attendanceStatus },
+        { merge: true }
+      );
+      console.log(`Student ${id} marked as present`);
+    } else {
+      console.log(`Student ${id} is already marked as present`);
+    }
+
+    const timeString = studentData.lastScan
+      .toDate()
+      .toLocaleTimeString("en-US", {
+        hour: "numeric",
+        minute: "numeric",
+        hour12: true,
+      });
+
+    return {
+      name: studentData.name,
+      time: timeString,
+    };
+  } else {
+    console.log(`No student found with ID ${id}`);
+    return undefined;
+  }
+};
