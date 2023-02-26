@@ -123,7 +123,7 @@ function TodayAttendance() {
           <select
             value={selectedSection}
             onChange={handleSectionChange}
-            className="border rounded-md py-1 px-2 text-gray-700 "
+            className="border rounded-md py-1 px-2 text-gray-700 w-full"
           >
             <option value="">All</option>
             {sections.map((section) => (
@@ -143,6 +143,7 @@ function TodayAttendance() {
           />
         </div>
       </div>
+
       <div className="overflow-x-auto rounded-lg">
         <table className="table-auto w-full text-center">
           <thead className="bg-gray-200 text-">
