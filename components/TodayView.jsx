@@ -123,7 +123,7 @@ function TodayAttendance() {
           <select
             value={selectedSection}
             onChange={handleSectionChange}
-            className="border rounded-md py-1 px-2 text-gray-700 w-full"
+            className="border rounded-md py-1 px-2 text-gray-700 "
           >
             <option value="">All</option>
             {sections.map((section) => (
