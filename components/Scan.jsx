@@ -31,14 +31,13 @@ function Scan() {
 
       // Check student's attendance status and update it
       let attendanceStatus = "";
-      const scheduleRef = doc(db, "schedules", strand, section, studentData.day,);
+      const scheduleRef = doc(db, "schedules", strand, section, studentData.day);
       const scheduleSnapshot = await getDoc(scheduleRef);
 
       if (scheduleSnapshot.exists()) {
         const scheduleData = scheduleSnapshot.data();
         const studentSchedule = scheduleData[strand];
-        const studentScheduleTime = studentSchedule[id];
-        const classStartTime = new Date(studentScheduleTime.start_time);
+        const classStartTime = new Date(studentSchedule.start_time);
         const scanTime = new Date();
         const timeDifference = scanTime.getTime() - classStartTime.getTime();
 
