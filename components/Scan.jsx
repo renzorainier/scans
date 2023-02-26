@@ -38,7 +38,7 @@ function Scan() {
         const scheduleData = scheduleSnapshot.data();
         const studentSchedule = scheduleData[strand];
         const studentScheduleTime = studentSchedule[id];
-        const classStartTime = new Date(studentScheduleTime.start);
+        const classStartTime = new Date(studentScheduleTime.start_time);
         const scanTime = new Date();
         const timeDifference = scanTime.getTime() - classStartTime.getTime();
 
