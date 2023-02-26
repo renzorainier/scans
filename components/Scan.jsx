@@ -33,7 +33,7 @@ function Scan() {
       let attendanceStatus = "";
       let scheduleRef;
 
-      if (studentData.day && studentData.startTime) {
+      if (studentData.day && studentData.start_time) {
         scheduleRef = doc(db, "schedules", strand, section, studentData.day);
       } else {
         console.log(`No day or start time found for student ${id}`);
