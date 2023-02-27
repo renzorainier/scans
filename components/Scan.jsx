@@ -100,15 +100,11 @@ function Scan() {
       // Check student's attendance status and update it
       let attendanceStatus = "";
       const scheduleData = schedules[strand][section][currentDay];
-      const classStartTime = new Date(
-        Date.parse(`01/01/1970 ${scheduleData.startTime}`)
-      );
-      const timezoneOffset = classStartTime.getTimezoneOffset();
-      classStartTime.setMinutes(classStartTime.getMinutes() + timezoneOffset);
+      const classStartTime = new Date(scheduleData.startTime);
       const scanTime = new Date();
       const timeDifference = scanTime.getTime() - classStartTime.getTime();
 
-      console.log('Time Differenceeeeeee:', timeDifference);
+      console.log('Time Difference:', timeDifference);
 
       if (timeDifference < -300000) {
         // Student is early (5 minutes before class start time)
