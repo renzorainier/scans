@@ -121,7 +121,7 @@ function Scan() {
         attendanceStatus = "late";
       } else {
         // Student is on time (within 10 minutes of class start time)
-        attendanceStatus = "on time";
+        attendanceStatus = "ontime";
       }
 
 
