@@ -36,6 +36,8 @@ function TodayAttendance() {
             lastScan: doc.data().lastScan?.toDate() || null,
             section,
             strand: doc.data().strand,
+            attendanceStatus: doc.data().attendanceStatus,
+            attendanceDifference: doc.data().attendanceDifference
           }))
         );
       }
@@ -145,43 +147,56 @@ function TodayAttendance() {
       </div>
 
       <div className="overflow-x-auto rounded-lg">
-        <table className="table-auto w-full text-center">
-          <thead className="bg-gray-200 text-">
-            <tr className="p-2 font-bold">
-              <th className="p-2 pb-4 pt-4">#</th>
-              <th className="p-2">NAME</th>
-              <th className="p-2">STRAND</th>
-              <th className="p-2">SEC</th>
-              <th className="p-2">SCANNED:</th>
-            </tr>
-          </thead>
-          <tbody>
-            {sortedAttendance.map((student, index) => (
-              <tr
-                className={`${
-                  index % 2 === 0 ? "bg-gray-100" : "bg-gray-200"
-                } rounded-lg mb-2`}
-                key={student.id}
-              >
-                <td className="p-2">{sortedAttendance.length - index}</td>
-                <td className="p-2 font-bold whitespace-nowrap">
-                  {student.name}
-                </td>
-                <td className="p-2">{student.strand}</td>
-                <td className="p-2 ">{student.section}</td>
-                <td className="p-2 whitespace-nowrap">
-                  {student.lastScan
-                    ? student.lastScan.toLocaleTimeString([], {
-                        hour: "numeric",
-                        minute: "2-digit",
-                      })
-                    : "N/A"}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+  <table className="table-auto w-full text-center">
+    <thead className="bg-gray-200 text-">
+      <tr className="p-2 font-bold">
+        <th className="p-2 pb-4 pt-4">#</th>
+        <th className="p-2">NAME</th>
+        <th className="p-2">STRAND</th>
+        <th className="p-2">SEC</th>
+        <th className="p-2">SCANNED:</th>
+        <th className="p-2">STATUS</th> {/* New column */}
+      </tr>
+    </thead>
+    <tbody>
+      {sortedAttendance.map((student, index) => (
+        <tr
+          className={`${
+            index % 2 === 0 ? "bg-gray-100" : "bg-gray-200"
+          } rounded-lg mb-2`}
+          key={student.id}
+        >
+          <td className="p-2">{sortedAttendance.length - index}</td>
+          <td className="p-2 font-bold whitespace-nowrap">
+            {student.name}
+          </td>
+          <td className="p-2">{student.strand}</td>
+          <td className="p-2 ">{student.section}</td>
+          <td className="p-2 whitespace-nowrap">
+            {student.lastScan
+              ? student.lastScan.toLocaleTimeString([], {
+                  hour: "numeric",
+                  minute: "2-digit",
+                })
+              : "N/A"}
+          </td>
+          <td className="p-2 whitespace-nowrap">
+            {student.attendanceStatus === "late" && (
+              <div className="bg-red-500 h-2 w-2 rounded-full inline-block mr-1"></div>
+            )}
+            {student.attendanceStatus === "ontime" && (
+              <div className="bg-yellow-500 h-2 w-2 rounded-full inline-block mr-1"></div>
+            )}
+            {student.attendanceStatus === "early" && (
+              <div className="bg-green-500 h-2 w-2 rounded-full inline-block mr-1"></div>
+            )}
+          </td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
+
     </div>
   );
 }
