@@ -25,22 +25,12 @@ function Scan() {
 
       // Check student's attendance status and update it
       let attendanceStatus = "";
-      let scheduleRef;
-
-      if (studentData.day && studentData.start_time) {
-        scheduleRef = doc(db, "schedules", strand, section, studentData.day);
-      } else {
-        console.log(`No day or start time found for student ${id}`);
-        return undefined;
-      }
-
+      const scheduleRef = doc(db, "schedules", strand, section, studentData.day);
       const scheduleSnapshot = await getDoc(scheduleRef);
 
       if (scheduleSnapshot.exists()) {
         const scheduleData = scheduleSnapshot.data();
-        const studentSchedule = scheduleData[strand];
-        const studentScheduleTime = studentSchedule[id];
-        const classStartTime = new Date(studentScheduleTime.start_time);
+        const classStartTime = new Date(scheduleData.startTime);
         const scanTime = new Date();
         const timeDifference = scanTime.getTime() - classStartTime.getTime();
 
