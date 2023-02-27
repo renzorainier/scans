@@ -17,6 +17,7 @@ function Scan() {
         'monday': {
           'startTime': '08:00:00',
       },
+      
     },
   };
 
