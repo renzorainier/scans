@@ -155,7 +155,7 @@ function TodayAttendance() {
         <th className="p-2">STRAND</th>
         <th className="p-2">SEC</th>
         <th className="p-2">SCANNED:</th>
-        <th className="p-2">STATUS</th> {/* New column */}
+        <th className="p-2" onClick={handleStatusHeaderClick}>STATUS</th> {/* New column */}
       </tr>
     </thead>
     <tbody>
