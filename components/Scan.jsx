@@ -100,7 +100,11 @@ function Scan() {
       // Check student's attendance status and update it
       let attendanceStatus = "";
       const scheduleData = schedules[strand][section][currentDay];
-      const classStartTime = new Date(Date.parse(`01/01/1970 ${scheduleData.startTime}`));
+      const classStartTime = new Date(
+        Date.parse(`01/01/1970 ${scheduleData.startTime}`)
+      );
+      const timezoneOffset = classStartTime.getTimezoneOffset();
+      classStartTime.setMinutes(classStartTime.getMinutes() + timezoneOffset);
       const scanTime = new Date();
       const timeDifference = scanTime.getTime() - classStartTime.getTime();
 
