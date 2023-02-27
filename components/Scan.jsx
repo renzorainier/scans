@@ -15,25 +15,25 @@ function Scan() {
     return () => clearTimeout(timeoutId);
   }, [data]);
 
-  const handleMarkPresent = async (strand, section, id) => {
+  const handleMarkPresent = async (strand, section, id, currentDate) => {
     // Get student data from Firestore
     const studentRef = doc(db, "strands", strand, section, id);
     const docSnapshot = await getDoc(studentRef);
-
+  
     if (docSnapshot.exists()) {
       const studentData = docSnapshot.data();
-
+  
       // Check student's attendance status and update it
       let attendanceStatus = "";
-      const scheduleRef = doc(db, "schedules", strand, section, studentData.day);
+      const scheduleRef = doc(db, "schedules", strand, section, currentDate);
       const scheduleSnapshot = await getDoc(scheduleRef);
-
+  
       if (scheduleSnapshot.exists()) {
         const scheduleData = scheduleSnapshot.data();
         const classStartTime = new Date(scheduleData.startTime);
         const scanTime = new Date();
         const timeDifference = scanTime.getTime() - classStartTime.getTime();
-
+  
         if (timeDifference < -300000) {
           // Student is early (5 minutes before class start time)
           attendanceStatus = "early";
@@ -45,7 +45,7 @@ function Scan() {
           attendanceStatus = "late";
         }
       }
-
+  
       if (!studentData.present) {
         await setDoc(
           studentRef,
@@ -56,7 +56,7 @@ function Scan() {
       } else {
         console.log(`Student ${id} is already marked as present`);
       }
-
+  
       const timeString = studentData.lastScan
         .toDate()
         .toLocaleTimeString("en-US", {
@@ -64,7 +64,7 @@ function Scan() {
           minute: "numeric",
           hour12: true,
         });
-
+  
       return {
         name: studentData.name,
         time: timeString,
@@ -74,7 +74,7 @@ function Scan() {
       return undefined;
     }
   };
-
+  
   useEffect(() => {
     if (data) {
       const newLogEntry = {
