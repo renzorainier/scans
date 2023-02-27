@@ -15,10 +15,8 @@ function Scan() {
     return () => clearTimeout(timeoutId);
   }, [data]);
 
-  const handleMarkPresent = async (strand, section, id, currentDate) => {
+  const handleMarkPresent = async (strand, section, id) => {
     // Get student data from Firestore
-    const currentDate = new Date().toISOString().slice(0, 10);
-    const result = await handleMarkPresent(strand, section, id, currentDate);
     const studentRef = doc(db, "strands", strand, section, id);
     const docSnapshot = await getDoc(studentRef);
 
@@ -27,7 +25,7 @@ function Scan() {
 
       // Check student's attendance status and update it
       let attendanceStatus = "";
-      const scheduleRef = doc(db, "schedules", strand, section, currentDate);
+      const scheduleRef = doc(db, "schedules", strand, section, studentData.day);
       const scheduleSnapshot = await getDoc(scheduleRef);
 
       if (scheduleSnapshot.exists()) {
