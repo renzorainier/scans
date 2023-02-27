@@ -16,11 +16,17 @@ function Scan() {
         },
         'monday': {
           'startTime': '08:00:00',
-      },
-      
-    },
-  };
-
+        },
+        'monday': {
+          'startTime': '08:00:00',
+        },
+        'monday': {
+          'startTime': '08:00:00',
+        };
+        'monday': {
+          'startTime': '08:00:00',
+        };
+      }}}
   useEffect(() => {
     const timeoutId = setTimeout(() => {
       setData("");
