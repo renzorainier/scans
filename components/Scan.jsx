@@ -8,6 +8,16 @@ function Scan() {
   const [data, setData] = useState("");
   const [log, setLog] = useState([]);
 
+  const schedules = {
+    'STEM': {
+      '1A': {
+        'monday': {
+          'startTime': '08:00:00',
+        },
+      },
+    },
+  };
+
   useEffect(() => {
     const timeoutId = setTimeout(() => {
       setData("");
@@ -25,25 +35,20 @@ function Scan() {
 
       // Check student's attendance status and update it
       let attendanceStatus = "";
-      const scheduleRef = doc(db, "schedules", strand, section, "monday");
-      const scheduleSnapshot = await getDoc(scheduleRef);
+      const scheduleData = schedules[strand][section]['monday'];
+      const classStartTime = new Date(Date.parse(`01/01/1970 ${scheduleData.startTime}`));
+      const scanTime = new Date();
+      const timeDifference = scanTime.getTime() - classStartTime.getTime();
 
-      if (scheduleSnapshot.exists()) {
-        const scheduleData = scheduleSnapshot.data();
-        const classStartTime = new Date(Date.parse(`01/01/1970 ${scheduleData.startTime}`));
-        const scanTime = new Date();
-        const timeDifference = scanTime.getTime() - classStartTime.getTime();
-
-        if (timeDifference < -300000) {
-          // Student is early (5 minutes before class start time)
-          attendanceStatus = "early";
-        } else if (timeDifference >= -300000 && timeDifference <= 600000) {
-          // Student is on time (within 5 minutes of class start time)
-          attendanceStatus = "on time";
-        } else {
-          // Student is late (more than 5 minutes after class start time)
-          attendanceStatus = "late";
-        }
+      if (timeDifference < -300000) {
+        // Student is early (5 minutes before class start time)
+        attendanceStatus = "early";
+      } else if (timeDifference >= -300000 && timeDifference <= 600000) {
+        // Student is on time (within 5 minutes of class start time)
+        attendanceStatus = "on time";
+      } else {
+        // Student is late (more than 5 minutes after class start time)
+        attendanceStatus = "late";
       }
 
       if (!studentData.present) {
@@ -74,6 +79,7 @@ function Scan() {
       return undefined;
     }
   };
+
 
   useEffect(() => {
     if (data) {
