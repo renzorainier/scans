@@ -11,70 +11,70 @@ function Scan() {
   const schedules = {
     'STEM': {
       '1A': {
-        'monday': {
+        'Monday': {
           'startTime': '08:00:00',
         },
-        'tuesday': {
+        'Tuesday': {
           'startTime': '08:00:00',
         },
-        'wednesday': {
+        'Wednesday': {
           'startTime': '08:00:00',
         },
-        'thursday': {
+        'Thursday': {
           'startTime': '08:00:00',
         },
-        'friday': {
+        'Friday': {
           'startTime': '08:00:00',
         },
       },
       '1B': {
-        'monday': {
+        'Monday': {
           'startTime': '08:00:00',
         },
-        'tuesday': {
+        'Tuesday': {
           'startTime': '08:00:00',
         },
-        'wednesday': {
+        'Wednesday': {
           'startTime': '08:00:00',
         },
-        'thursday': {
+        'Thursday': {
           'startTime': '08:00:00',
         },
-        'friday': {
+        'Friday': {
           'startTime': '08:00:00',
         },
       },
       '1C': {
-        'monday': {
+        'Monday': {
           'startTime': '08:00:00',
         },
-        'tuesday': {
+        'Tuesday': {
           'startTime': '08:00:00',
         },
-        'wednesday': {
+        'Wednesday': {
           'startTime': '08:00:00',
         },
-        'thursday': {
+        'Thursday': {
           'startTime': '08:00:00',
         },
-        'friday': {
+        'Friday': {
           'startTime': '08:00:00',
         },
       },
       '1D': {
-        'monday': {
+        'Monday': {
           'startTime': '08:00:00',
         },
-        'tuesday': {
+        'Tuesday': {
           'startTime': '08:00:00',
         },
-        'wednesday': {
+        'Wednesday': {
           'startTime': '08:00:00',
         },
-        'thursday': {
+        'Thursday': {
           'startTime': '08:00:00',
         },
-        'friday': {
+        'Friday': {
           'startTime': '08:00:00',
         },
       },
