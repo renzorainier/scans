@@ -1,13 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { QrReader } from "react-qr-reader";
-import {
-  collection,
-  doc,
-  getDoc,
-  setDoc,
-} from "firebase/firestore";
+import { collection, doc, getDoc, setDoc } from "firebase/firestore";
 import { db } from "./firebase.js";
-
 
 function Scan() {
   const [lastScanned, setLastScanned] = useState(null);
@@ -22,20 +16,50 @@ function Scan() {
   }, [data]);
 
   const handleMarkPresent = async (strand, section, id) => {
-    const studentRef = doc(
-      db,
-      "strands",
-      strand,
-      section,
-      id
-    );
+    // Get student data from Firestore
+    const studentRef = doc(db, "strands", strand, section, id);
     const docSnapshot = await getDoc(studentRef);
+
     if (docSnapshot.exists()) {
       const studentData = docSnapshot.data();
+
+      // Check student's attendance status and update it
+      let attendanceStatus = "";
+      let scheduleRef;
+
+      if (studentData.day && studentData.start_time) {
+        scheduleRef = doc(db, "schedules", strand, section, studentData.day);
+      } else {
+        console.log(`No day or start time found for student ${id}`);
+        return undefined;
+      }
+
+      const scheduleSnapshot = await getDoc(scheduleRef);
+
+      if (scheduleSnapshot.exists()) {
+        const scheduleData = scheduleSnapshot.data();
+        const studentSchedule = scheduleData[strand];
+        const studentScheduleTime = studentSchedule[id];
+        const classStartTime = new Date(studentScheduleTime.start_time);
+        const scanTime = new Date();
+        const timeDifference = scanTime.getTime() - classStartTime.getTime();
+
+        if (timeDifference < -300000) {
+          // Student is early (5 minutes before class start time)
+          attendanceStatus = "early";
+        } else if (timeDifference >= -300000 && timeDifference <= 600000) {
+          // Student is on time (within 5 minutes of class start time)
+          attendanceStatus = "on time";
+        } else {
+          // Student is late (more than 5 minutes after class start time)
+          attendanceStatus = "late";
+        }
+      }
+
       if (!studentData.present) {
         await setDoc(
           studentRef,
-          { present: true, lastScan: new Date() },
+          { present: true, lastScan: new Date(), attendanceStatus },
           { merge: true }
         );
         console.log(`Student ${id} marked as present`);
@@ -43,14 +67,13 @@ function Scan() {
         console.log(`Student ${id} is already marked as present`);
       }
 
-
       const timeString = studentData.lastScan
-          .toDate()
-          .toLocaleTimeString("en-US", {
-            hour: "numeric",
-            minute: "numeric",
-            hour12: true,
-          });
+        .toDate()
+        .toLocaleTimeString("en-US", {
+          hour: "numeric",
+          minute: "numeric",
+          hour12: true,
+        });
 
       return {
         name: studentData.name,
@@ -93,11 +116,7 @@ function Scan() {
             const [strand, section, id] = code.split("-");
             if (strand && section && id && code !== lastScanned) {
               setLastScanned(code);
-              const studentInfo = await handleMarkPresent(
-                strand,
-                section,
-                id
-              );
+              const studentInfo = await handleMarkPresent(strand, section, id);
               if (studentInfo) {
                 const { name, time } = studentInfo;
                 setData(`Name: ${name}, Scanned at: ${time}`);
@@ -129,72 +148,72 @@ function Scan() {
 
 export default Scan;
 
-const handleMarkPresent = async (strand, section, id) => {
-  // Get student data from Firestore
-  const studentRef = doc(db, "strands", strand, section, id);
-  const docSnapshot = await getDoc(studentRef);
+// const handleMarkPresent = async (strand, section, id) => {
+//   // Get student data from Firestore
+//   const studentRef = doc(db, "strands", strand, section, id);
+//   const docSnapshot = await getDoc(studentRef);
 
-  if (docSnapshot.exists()) {
-    const studentData = docSnapshot.data();
+//   if (docSnapshot.exists()) {
+//     const studentData = docSnapshot.data();
 
-    // Check student's attendance status and update it
-    let attendanceStatus = "";
-    let scheduleRef;
+//     // Check student's attendance status and update it
+//     let attendanceStatus = "";
+//     let scheduleRef;
 
-    if (studentData.day && studentData.start_time) {
-      scheduleRef = doc(db, "schedules", strand, section, studentData.day);
-    } else {
-      console.log(`No day or start time found for student ${id}`);
-      return undefined;
-    }
+//     if (studentData.day && studentData.start_time) {
+//       scheduleRef = doc(db, "schedules", strand, section, studentData.day);
+//     } else {
+//       console.log(`No day or start time found for student ${id}`);
+//       return undefined;
+//     }
 
-    const scheduleSnapshot = await getDoc(scheduleRef);
+//     const scheduleSnapshot = await getDoc(scheduleRef);
 
-    if (scheduleSnapshot.exists()) {
-      const scheduleData = scheduleSnapshot.data();
-      const studentSchedule = scheduleData[strand];
-      const studentScheduleTime = studentSchedule[id];
-      const classStartTime = new Date(studentScheduleTime.start_time);
-      const scanTime = new Date();
-      const timeDifference = scanTime.getTime() - classStartTime.getTime();
+//     if (scheduleSnapshot.exists()) {
+//       const scheduleData = scheduleSnapshot.data();
+//       const studentSchedule = scheduleData[strand];
+//       const studentScheduleTime = studentSchedule[id];
+//       const classStartTime = new Date(studentScheduleTime.start_time);
+//       const scanTime = new Date();
+//       const timeDifference = scanTime.getTime() - classStartTime.getTime();
 
-      if (timeDifference < -300000) {
-        // Student is early (5 minutes before class start time)
-        attendanceStatus = "early";
-      } else if (timeDifference >= -300000 && timeDifference <= 600000) {
-        // Student is on time (within 5 minutes of class start time)
-        attendanceStatus = "on time";
-      } else {
-        // Student is late (more than 5 minutes after class start time)
-        attendanceStatus = "late";
-      }
-    }
+//       if (timeDifference < -300000) {
+//         // Student is early (5 minutes before class start time)
+//         attendanceStatus = "early";
+//       } else if (timeDifference >= -300000 && timeDifference <= 600000) {
+//         // Student is on time (within 5 minutes of class start time)
+//         attendanceStatus = "on time";
+//       } else {
+//         // Student is late (more than 5 minutes after class start time)
+//         attendanceStatus = "late";
+//       }
+//     }
 
-    if (!studentData.present) {
-      await setDoc(
-        studentRef,
-        { present: true, lastScan: new Date(), attendanceStatus },
-        { merge: true }
-      );
-      console.log(`Student ${id} marked as present`);
-    } else {
-      console.log(`Student ${id} is already marked as present`);
-    }
+//     if (!studentData.present) {
+//       await setDoc(
+//         studentRef,
+//         { present: true, lastScan: new Date(), attendanceStatus },
+//         { merge: true }
+//       );
+//       console.log(`Student ${id} marked as present`);
+//     } else {
+//       console.log(`Student ${id} is already marked as present`);
+//     }
 
-    const timeString = studentData.lastScan
-      .toDate()
-      .toLocaleTimeString("en-US", {
-        hour: "numeric",
-        minute: "numeric",
-        hour12: true,
-      });
+//     const timeString = studentData.lastScan
+//       .toDate()
+//       .toLocaleTimeString("en-US", {
+//         hour: "numeric",
+//         minute: "numeric",
+//         hour12: true,
+//       });
 
-    return {
-      name: studentData.name,
-      time: timeString,
-    };
-  } else {
-    console.log(`No student found with ID ${id}`);
-    return undefined;
-  }
-};
+//     return {
+//       name: studentData.name,
+//       time: timeString,
+//     };
+//   } else {
+//     console.log(`No student found with ID ${id}`);
+//     return undefined;
+//   }
+// };
