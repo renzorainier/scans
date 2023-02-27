@@ -110,7 +110,7 @@ function Scan() {
       const scanTime = new Date();
       const timeDifference = scanTime.getTime() - classStartTime.getTime();
 
-
+      console.log('Time Differenceeeeeeg:', timeDifference);
 
 
       if (timeDifference < -300000) {
