@@ -107,10 +107,8 @@ function Scan() {
       if (timeDifference < -300000) {
         // Student is early (5 minutes before class start time)
         attendanceStatus = "early";
-      } else if (timeDifference >= -300000 && timeDifference <= 600000) {
-        // Student is on time (within 5 minutes of class start time)
-        attendanceStatus = "on time";
-      } else if (timeDifference > 600000) {
+      }  else if (timeDifference > 600000) {
+        console.log(timeDifference)
         // Student is late (more than 10 minutes after class start time)
         attendanceStatus = "late";
       } else {
