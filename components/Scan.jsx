@@ -104,6 +104,7 @@ function Scan() {
       const scanTime = new Date();
       const timeDifference = scanTime.getTime() - classStartTime.getTime();
 
+      console.log('Time Difference:', timeDifference);
 
       if (timeDifference < -300000) {
         // Student is early (5 minutes before class start time)
