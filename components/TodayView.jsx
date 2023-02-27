@@ -110,6 +110,27 @@ function TodayAttendance() {
     );
   }
 
+  const [clickedHeader, setClickedHeader] = useState("");
+
+const handleStatusHeaderClick = (header) => {
+  setShowFloatingDiv(!showFloatingDiv);
+  setClickedHeader(header);
+};
+
+{showFloatingDiv && (
+  <div
+    className="bg-white rounded-md shadow-lg p-4 absolute z-10"
+    style={{
+      top: "50%",
+      left: "50%",
+      transform: "translate(-50%, -50%)",
+    }}
+  >
+    <p>Information about {clickedHeader} column</p>
+  </div>
+)}
+
+
   return (
     <div
       className="w-full ml-4 mt-4 text-gray-700 bg-white p-5 text-sm rounded-lg shadow-lg inline-block mx-auto"
