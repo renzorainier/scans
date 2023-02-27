@@ -15,6 +15,27 @@ function TodayAttendance() {
   const [selectedSection, setSelectedSection] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
   const [isLoading, setIsLoading] = useState(true);
+  
+  const [clickedHeader, setClickedHeader] = useState("");
+
+const handleStatusHeaderClick = (header) => {
+  setShowFloatingDiv(!showFloatingDiv);
+  setClickedHeader(header);
+};
+
+{showFloatingDiv && (
+  <div
+    className="bg-white rounded-md shadow-lg p-4 absolute z-10"
+    style={{
+      top: "50%",
+      left: "50%",
+      transform: "translate(-50%, -50%)",
+    }}
+  >
+    <p>Information about {clickedHeader} column</p>
+  </div>
+)}
+
 
   const sections = ["1A", "1B", "1C", "1D", "2A"];
 
