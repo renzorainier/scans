@@ -95,11 +95,11 @@ function Scan() {
 
     if (docSnapshot.exists()) {
       const studentData = docSnapshot.data();
-      // const currentDay = new Date().toLocaleDateString("en-US", { weekday: "long" });
+      const currentDay = new Date().toLocaleDateString("en-US", { weekday: "long" });
 
       // Check student's attendance status and update it
       let attendanceStatus = "";
-      const scheduleData = schedules[strand][section]["monday"];
+      const scheduleData = schedules[strand][section][currentDay];
       const classStartTime = new Date(Date.parse(`01/01/1970 ${scheduleData.startTime}`));
       const scanTime = new Date();
       const timeDifference = scanTime.getTime() - classStartTime.getTime();
