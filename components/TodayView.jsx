@@ -18,8 +18,6 @@ function TodayAttendance() {
   const [showInfo, setShowInfo] = useState(false);
   const [infoText, setInfoText] = useState("");
 
-
-
   const sections = ["1A", "1B", "1C", "1D", "2A"];
 
   useEffect(() => {
@@ -41,7 +39,7 @@ function TodayAttendance() {
             section,
             strand: doc.data().strand,
             attendanceStatus: doc.data().attendanceStatus,
-            attendanceDifference: doc.data().attendanceDifference
+            attendanceDifference: doc.data().attendanceDifference,
           }))
         );
       }
@@ -113,12 +111,10 @@ function TodayAttendance() {
     );
   }
 
-
   function handleHeaderClick(text) {
     setShowInfo(true);
     setInfoText(text);
   }
-
 
   return (
     <div
@@ -158,57 +154,83 @@ function TodayAttendance() {
       </div>
 
       <div className="overflow-x-auto rounded-lg">
-  <table className="table-auto w-full text-center">
-    <thead className="bg-gray-200 text-">
-      <tr className="p-2 font-bold">
-        <th className="p-2 pb-4 pt-4"onClick={() => handleHeaderClick("STATUS")} >#</th>
-        <th className="p-2"onClick={() => handleHeaderClick("NAME")} >NAME</th>
-        <th className="p-2"onClick={() => handleHeaderClick("STRAND")} >STRAND</th>
-        <th className="p-2"onClick={() => handleHeaderClick("SECTION")} >SEC</th>
-        <th className="p-2"onClick={() => handleHeaderClick("SCANNED -shows the time the student was scanned for the day, red means late, yellow means on time, and green means early.")} >SCANNED:</th>
-      </tr>
-    </thead>
-    <tbody>
-      {sortedAttendance.map((student, index) => (
-        <tr
-          className={`${
-            index % 2 === 0 ? "bg-gray-100" : "bg-gray-200"
-          } rounded-lg mb-2`}
-          key={student.id}
-        >
-          <td className="p-2">{sortedAttendance.length - index}</td>
-          <td className="p-2 font-bold whitespace-nowrap">
-            {student.name}
-          </td>
-          <td className="p-2">{student.strand}</td>
-          <td className="p-2 ">{student.section}</td>
-          <td className="p-2 whitespace-nowrap">
-            {student.attendanceStatus === "late" && (
-                <div className="bg-[#EC7063] h-3 w-9 rounded-sm inline-block mr-1">{student.lastScan
-                  ? student.lastScan.toLocaleTimeString([], {
-                      hour: "numeric",
-                      minute: "2-digit",
-                    })
-                  : "N/A"}</div>
-              )}
-              {student.attendanceStatus === "ontime" && (
-                <div className="bg-[#F7DC6F] h-3 w-9 rounded-sm inline-block mr-1">{student.lastScan
-                  ? student.lastScan.toLocaleTimeString([], {
-                      hour: "numeric",
-                      minute: "2-digit",
-                    })
-                  : "N/A"}</div>
-              )}
-              {student.attendanceStatus === "early" && (
-                <div className="bg-[#2ECC71] h-3 w-9 rounded-sm inline-block mr-1">{student.lastScan
-                  ? student.lastScan.toLocaleTimeString([], {
-                      hour: "numeric",
-                      minute: "2-digit",
-                    })
-                  : "N/A"}</div>
-              )}
-          </td>
-          {/* <td className="p-2 whitespace-nowrap">
+        <table className="table-auto w-full text-center">
+          <thead className="bg-gray-200 text-">
+            <tr className="p-2 font-bold">
+              <th
+                className="p-2 pb-4 pt-4"
+                onClick={() => handleHeaderClick("STATUS")}
+              >
+                #
+              </th>
+              <th className="p-2" onClick={() => handleHeaderClick("NAME")}>
+                NAME
+              </th>
+              <th className="p-2" onClick={() => handleHeaderClick("STRAND - ")}>
+                STRAND
+              </th>
+              <th className="p-2" onClick={() => handleHeaderClick("SEC - shows the section of students.")}>
+                SEC
+              </th>
+              <th
+                className="p-2"
+                onClick={() =>
+                  handleHeaderClick(
+                    "SCANNED - shows the time the student was scanned for the day, red means late, yellow means on time, and green means early."
+                  )
+                }
+              >
+                SCANNED:
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {sortedAttendance.map((student, index) => (
+              <tr
+                className={`${
+                  index % 2 === 0 ? "bg-gray-100" : "bg-gray-200"
+                } rounded-lg mb-2`}
+                key={student.id}
+              >
+                <td className="p-2">{sortedAttendance.length - index}</td>
+                <td className="p-2 font-bold whitespace-nowrap">
+                  {student.name}
+                </td>
+                <td className="p-2">{student.strand}</td>
+                <td className="p-2 ">{student.section}</td>
+                <td className="p-2 whitespace-nowrap">
+                  {student.attendanceStatus === "late" && (
+                    <div className="bg-[#EC7063] h-3 w-9 rounded-sm inline-block mr-1">
+                      {student.lastScan
+                        ? student.lastScan.toLocaleTimeString([], {
+                            hour: "numeric",
+                            minute: "2-digit",
+                          })
+                        : "N/A"}
+                    </div>
+                  )}
+                  {student.attendanceStatus === "ontime" && (
+                    <div className="bg-[#F7DC6F] h-3 w-9 rounded-sm inline-block mr-1">
+                      {student.lastScan
+                        ? student.lastScan.toLocaleTimeString([], {
+                            hour: "numeric",
+                            minute: "2-digit",
+                          })
+                        : "N/A"}
+                    </div>
+                  )}
+                  {student.attendanceStatus === "early" && (
+                    <div className="bg-[#2ECC71] h-3 w-9 rounded-sm inline-block mr-1">
+                      {student.lastScan
+                        ? student.lastScan.toLocaleTimeString([], {
+                            hour: "numeric",
+                            minute: "2-digit",
+                          })
+                        : "N/A"}
+                    </div>
+                  )}
+                </td>
+                {/* <td className="p-2 whitespace-nowrap">
             {student.attendanceStatus === "late" && (
               <div className="bg-red-500 h-3 w-3 rounded-sm inline-block mr-1"></div>
             )}
@@ -219,19 +241,22 @@ function TodayAttendance() {
               <div className="bg-green-500 h-3 w-3 rounded-sm inline-block mr-1"></div>
             )}
           </td> */}
-        </tr>
-      ))}
-    </tbody>
-  </table>
-  {showInfo && (
-  <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2  max-w-90% bg-white p-5 rounded-lg shadow-lg inline-block">
-    <p className="text-gray-700 text-center">{infoText}</p>
-    <button className="block mx-auto mt-4 px-4 py-2 bg-gray-700 text-white rounded-lg hover:bg-gray-600" onClick={() => setShowInfo(false)}>Close</button>
-  </div>
-)}
-
-</div>
-
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        {showInfo && (
+          <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2  max-w-90% bg-white p-5 rounded-lg shadow-lg inline-block">
+            <p className="text-gray-700 text-center">{infoText}</p>
+            <button
+              className="block mx-auto mt-4 px-4 py-2 bg-gray-700 text-white rounded-lg hover:bg-gray-600"
+              onClick={() => setShowInfo(false)}
+            >
+              Close
+            </button>
+          </div>
+        )}
+      </div>
     </div>
   );
 }
