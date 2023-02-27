@@ -25,7 +25,7 @@ function Scan() {
 
       // Check student's attendance status and update it
       let attendanceStatus = "";
-      const scheduleRef = doc(db, "schedules", strand, section, "Monday");
+      const scheduleRef = doc(db, "schedules", strand, section, "monday");
       const scheduleSnapshot = await getDoc(scheduleRef);
 
       if (scheduleSnapshot.exists()) {
