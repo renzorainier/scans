@@ -161,11 +161,11 @@ function TodayAttendance() {
   <table className="table-auto w-full text-center">
     <thead className="bg-gray-200 text-">
       <tr className="p-2 font-bold">
-        <th className="p-2 pb-4 pt-4">#</th>
-        <th className="p-2">NAME</th>
-        <th className="p-2">STRAND</th>
-        <th className="p-2">SEC</th>
-        <th className="p-2">SCANNED:</th>
+        <th className="p-2 pb-4 pt-4"onClick={() => handleHeaderClick("STATUS")} >#</th>
+        <th className="p-2"onClick={() => handleHeaderClick("NAME")} >NAME</th>
+        <th className="p-2"onClick={() => handleHeaderClick("STRAND")} >STRAND</th>
+        <th className="p-2"onClick={() => handleHeaderClick("SECTION")} >SEC</th>
+        <th className="p-2"onClick={() => handleHeaderClick("SCANNED")} >SCANNED:</th>
         <th className="p-2"onClick={() => handleHeaderClick("STATUS")} >STATUS</th>
       </tr>
     </thead>
