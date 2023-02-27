@@ -30,7 +30,7 @@ function Scan() {
 
       if (scheduleSnapshot.exists()) {
         const scheduleData = scheduleSnapshot.data();
-        const classStartTime = new Date(scheduleData.startTime);
+        const classStartTime = new Date(Date.parse(`01/01/1970 ${scheduleData.startTime}`));
         const scanTime = new Date();
         const timeDifference = scanTime.getTime() - classStartTime.getTime();
 
