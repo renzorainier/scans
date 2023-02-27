@@ -16,6 +16,8 @@ function TodayAttendance() {
   const [searchQuery, setSearchQuery] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const [clickedHeader, setClickedHeader] = useState("");
+  const [showFloatingDiv, setShowFloatingDiv] = useState(false);
+
 
 
 
