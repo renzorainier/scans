@@ -188,7 +188,7 @@ function TodayAttendance() {
               <div className="bg-yellow-500 h-2 w-2 rounded-full inline-block mr-1"></div>
             )}
             {student.attendanceStatus === "early" && (
-              <div className="bg-green-500 h-3 w-3 rounded-lg inline-block mr-1"></div>
+              <div className="bg-green-500 h-3 w-3 rounded-sm inline-block mr-1"></div>
             )}
           </td>
         </tr>
