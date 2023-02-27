@@ -110,10 +110,14 @@ function Scan() {
       } else if (timeDifference >= -300000 && timeDifference <= 600000) {
         // Student is on time (within 5 minutes of class start time)
         attendanceStatus = "on time";
-      } else {
-        // Student is late (more than 5 minutes after class start time)
+      } else if (timeDifference > 600000) {
+        // Student is late (more than 10 minutes after class start time)
         attendanceStatus = "late";
+      } else {
+        // Student is on time (within 10 minutes of class start time)
+        attendanceStatus = "on time";
       }
+
 
       if (!studentData.present) {
         await setDoc(
