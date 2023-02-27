@@ -165,7 +165,7 @@ function TodayAttendance() {
         <th className="p-2"onClick={() => handleHeaderClick("NAME")} >NAME</th>
         <th className="p-2"onClick={() => handleHeaderClick("STRAND")} >STRAND</th>
         <th className="p-2"onClick={() => handleHeaderClick("SECTION")} >SEC</th>
-        <th className="p-2"onClick={() => handleHeaderClick("SCANNED")} >SCANNED:</th>
+        <th className="p-2"onClick={() => handleHeaderClick("SCANNED -shows the time the student was scanned for the day, red means late, yellow means on time, green means early.")} >SCANNED:</th>
       </tr>
     </thead>
     <tbody>
