@@ -128,7 +128,7 @@ function Scan() {
       if (!studentData.present) {
         await setDoc(
           studentRef,
-          { present: true, lastScan: new Date(), attendanceStatus },
+          { present: true, lastScan: new Date(), attendanceStatus, attendanceDifference: timeDifference },
           { merge: true }
         );
         console.log(`Student ${id} marked as present`);
