@@ -15,6 +15,8 @@ function TodayAttendance() {
   const [selectedSection, setSelectedSection] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
   const [isLoading, setIsLoading] = useState(true);
+  const [clickedHeader, setClickedHeader] = useState("");
+
 
 
   const sections = ["1A", "1B", "1C", "1D", "2A"];
@@ -110,7 +112,6 @@ function TodayAttendance() {
     );
   }
 
-  const [clickedHeader, setClickedHeader] = useState("");
 
 const handleStatusHeaderClick = (header) => {
   setShowFloatingDiv(!showFloatingDiv);
