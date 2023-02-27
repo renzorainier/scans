@@ -12,7 +12,7 @@ function Scan() {
     'STEM': {
       '1A': {
         'Monday': {
-          'startTime': '03:10:00',
+          'startTime': "08:00:00",
         },
         'Tuesday': {
           'startTime': '08:00:00',
@@ -104,11 +104,12 @@ function Scan() {
       const scanTime = new Date();
       const timeDifference = scanTime.getTime() - classStartTime.getTime();
 
+
       if (timeDifference < -300000) {
         // Student is early (5 minutes before class start time)
         attendanceStatus = "early";
       }  else if (timeDifference > 600000) {
-        console.log(timeDifference)
+        console.log("timediff: " (timeDifference))
         // Student is late (more than 10 minutes after class start time)
         attendanceStatus = "late";
       } else {
