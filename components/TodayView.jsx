@@ -15,7 +15,10 @@ function TodayAttendance() {
   const [selectedSection, setSelectedSection] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
   const [isLoading, setIsLoading] = useState(true);
-  
+  const [showInfo, setShowInfo] = useState(false);
+  const [infoText, setInfoText] = useState("");
+
+
 
   const sections = ["1A", "1B", "1C", "1D", "2A"];
 
@@ -111,6 +114,10 @@ function TodayAttendance() {
   }
 
 
+  function handleHeaderClick(text) {
+    setShowInfo(true);
+    setInfoText(text);
+  }
 
 
   return (
@@ -159,7 +166,7 @@ function TodayAttendance() {
         <th className="p-2">STRAND</th>
         <th className="p-2">SEC</th>
         <th className="p-2">SCANNED:</th>
-        <th className="p-2" >STATUS</th>
+        <th className="p-2"onClick={() => handleHeaderClick("STATUS")} >STATUS</th>
       </tr>
     </thead>
     <tbody>
@@ -199,6 +206,12 @@ function TodayAttendance() {
       ))}
     </tbody>
   </table>
+  {showInfo && (
+        <div className="floating-div">
+          <p>{infoText}</p>
+          <button onClick={() => setShowInfo(false)}>Close</button>
+        </div>
+      )}
 </div>
 
     </div>
