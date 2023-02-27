@@ -19,8 +19,6 @@ function TodayAttendance() {
   const [showFloatingDiv, setShowFloatingDiv] = useState(false);
 
 
-
-
   const sections = ["1A", "1B", "1C", "1D", "2A"];
 
   useEffect(() => {
