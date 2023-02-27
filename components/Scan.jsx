@@ -14,10 +14,10 @@ function Scan() {
         'monday': {
           'startTime': '08:00:00',
         },
-        'monday': {
+        'tuesday': {
           'startTime': '08:00:00',
         },
-        'monday': {
+        'wednesday': {
           'startTime': '08:00:00',
         },
         'monday': {
