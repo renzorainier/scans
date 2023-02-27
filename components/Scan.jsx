@@ -12,7 +12,7 @@ function Scan() {
     'STEM': {
       '1A': {
         'Monday': {
-          'startTime': '03:00:00',
+          'startTime': '15:00:00',
         },
         'Tuesday': {
           'startTime': '08:00:00',
