@@ -20,13 +20,61 @@ function Scan() {
         'wednesday': {
           'startTime': '08:00:00',
         },
-        '': {
+        'thursday': {
           'startTime': '08:00:00',
         },
+        'friday': {
+          'startTime': '08:00:00',
+        },
+      },
+      '1B': {
         'monday': {
           'startTime': '08:00:00',
         },
+        'tuesday': {
+          'startTime': '08:00:00',
+        },
+        'wednesday': {
+          'startTime': '08:00:00',
+        },
+        'thursday': {
+          'startTime': '08:00:00',
+        },
+        'friday': {
+          'startTime': '08:00:00',
+        },
+      },
+      '1C': {
         'monday': {
+          'startTime': '08:00:00',
+        },
+        'tuesday': {
+          'startTime': '08:00:00',
+        },
+        'wednesday': {
+          'startTime': '08:00:00',
+        },
+        'thursday': {
+          'startTime': '08:00:00',
+        },
+        'friday': {
+          'startTime': '08:00:00',
+        },
+      },
+      '1D': {
+        'monday': {
+          'startTime': '08:00:00',
+        },
+        'tuesday': {
+          'startTime': '08:00:00',
+        },
+        'wednesday': {
+          'startTime': '08:00:00',
+        },
+        'thursday': {
+          'startTime': '08:00:00',
+        },
+        'friday': {
           'startTime': '08:00:00',
         },
       },
