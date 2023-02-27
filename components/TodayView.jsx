@@ -166,7 +166,6 @@ function TodayAttendance() {
         <th className="p-2"onClick={() => handleHeaderClick("STRAND")} >STRAND</th>
         <th className="p-2"onClick={() => handleHeaderClick("SECTION")} >SEC</th>
         <th className="p-2"onClick={() => handleHeaderClick("SCANNED")} >SCANNED:</th>
-        <th className="p-2"onClick={() => handleHeaderClick("STATUS")} >STATUS</th>
       </tr>
     </thead>
     <tbody>
@@ -185,7 +184,7 @@ function TodayAttendance() {
           <td className="p-2 ">{student.section}</td>
           <td className="p-2 whitespace-nowrap">
             {student.attendanceStatus === "late" && (
-                <div className="bg-red-500 h-3 w-3 rounded-sm inline-block mr-1">{student.lastScan
+                <div className="bg-red-500 h-3 w-9 rounded-sm inline-block mr-1">{student.lastScan
                   ? student.lastScan.toLocaleTimeString([], {
                       hour: "numeric",
                       minute: "2-digit",
@@ -193,13 +192,23 @@ function TodayAttendance() {
                   : "N/A"}</div>
               )}
               {student.attendanceStatus === "ontime" && (
-                <div className="bg-yellow-300 h-3 w-3 rounded-sm inline-block mr-1"></div>
+                <div className="bg-yellow-300 h-3 w-3 rounded-sm inline-block mr-1">{student.lastScan
+                  ? student.lastScan.toLocaleTimeString([], {
+                      hour: "numeric",
+                      minute: "2-digit",
+                    })
+                  : "N/A"}</div>
               )}
               {student.attendanceStatus === "early" && (
-                <div className="bg-green-500 h-3 w-3 rounded-sm inline-block mr-1"></div>
+                <div className="bg-green-500 h-3 w-3 rounded-sm inline-block mr-1">{student.lastScan
+                  ? student.lastScan.toLocaleTimeString([], {
+                      hour: "numeric",
+                      minute: "2-digit",
+                    })
+                  : "N/A"}</div>
               )}
           </td>
-          <td className="p-2 whitespace-nowrap">
+          {/* <td className="p-2 whitespace-nowrap">
             {student.attendanceStatus === "late" && (
               <div className="bg-red-500 h-3 w-3 rounded-sm inline-block mr-1"></div>
             )}
@@ -209,7 +218,7 @@ function TodayAttendance() {
             {student.attendanceStatus === "early" && (
               <div className="bg-green-500 h-3 w-3 rounded-sm inline-block mr-1"></div>
             )}
-          </td>
+          </td> */}
         </tr>
       ))}
     </tbody>
