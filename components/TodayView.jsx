@@ -192,7 +192,7 @@ function TodayAttendance() {
                   : "N/A"}</div>
               )}
               {student.attendanceStatus === "ontime" && (
-                <div className="bg-yellow-300 h-3 w-3 rounded-sm inline-block mr-1">{student.lastScan
+                <div className="bg-yellow-300 h-3 w-9 rounded-sm inline-block mr-1">{student.lastScan
                   ? student.lastScan.toLocaleTimeString([], {
                       hour: "numeric",
                       minute: "2-digit",
@@ -200,7 +200,7 @@ function TodayAttendance() {
                   : "N/A"}</div>
               )}
               {student.attendanceStatus === "early" && (
-                <div className="bg-green-500 h-3 w-3 rounded-sm inline-block mr-1">{student.lastScan
+                <div className="bg-green-500 h-3 w-9 rounded-sm inline-block mr-1">{student.lastScan
                   ? student.lastScan.toLocaleTimeString([], {
                       hour: "numeric",
                       minute: "2-digit",
