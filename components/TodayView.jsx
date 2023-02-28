@@ -117,10 +117,8 @@ function TodayAttendance() {
   }
 
   return (
-    <div
-      className="w-full ml-4 mt-4 text-gray-700 bg-white p-5 text-sm rounded-lg shadow-lg inline-block mx-auto"
-      style={{ maxWidth: "90%" }}
-    >
+    <div className="flex justify-center items-center h-screen">
+    <div className="w-full text-gray-700 bg-white p-5 text-sm rounded-lg shadow-lg mx-auto" style={{ maxWidth: "90%" }}>
       <h2 className="text-gray-700 text-xl font-bold text-center">
         Attendance For Today
       </h2>
@@ -291,6 +289,7 @@ function TodayAttendance() {
           </div>
         )}
       </div>
+    </div>
     </div>
   );
 }
