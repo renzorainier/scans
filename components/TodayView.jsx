@@ -124,7 +124,7 @@ function TodayAttendance() {
       >
         <div className="bg-gray-200 relative">
           <img
-            src="your-gif-url.gif"
+            src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/fe4eba150658645.630343767747a.gif"
             alt="background gif"
             className="absolute top-0 left-0 w-full h-full object-cover z-0"
           />
