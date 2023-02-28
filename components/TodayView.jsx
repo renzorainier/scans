@@ -155,21 +155,60 @@ function TodayAttendance() {
 
       <div className="overflow-x-auto rounded-lg">
         <table className="table-auto w-full text-center">
-          <thead className="bg-gray-200 text-">
+          <thead className="bg-gray-200 text-" style={{ border: "none" }}>
             <tr className="p-2 font-bold">
               <th
                 className="p-2 pb-4 pt-4"
-                onClick={() => handleHeaderClick("Index - shows the index of the students baseds on their scan time.")}
+                onClick={() =>
+                  handleHeaderClick(
+                    "Index - shows the index of the students baseds on their scan time."
+                  )
+                }
+                style={{
+                  background: "transparent",
+                  fontWeight: "bold",
+                  cursor: "pointer",
+                }}
               >
                 #
               </th>
-              <th className="p-2" onClick={() => handleHeaderClick("NAME - shows the name of the students")}>
+              <th
+                className="p-2"
+                onClick={() =>
+                  handleHeaderClick("NAME - shows the name of the students")
+                }
+                style={{
+                  background: "transparent",
+                  fontWeight: "bold",
+                  cursor: "pointer",
+                }}
+              >
                 NAME
               </th>
-              <th className="p-2" onClick={() => handleHeaderClick("STRAND - shows the strand of the students")}>
+              <th
+                className="p-2"
+                onClick={() =>
+                  handleHeaderClick("STRAND - shows the strand of the students")
+                }
+                style={{
+                  background: "transparent",
+                  fontWeight: "bold",
+                  cursor: "pointer",
+                }}
+              >
                 STRAND
               </th>
-              <th className="p-2" onClick={() => handleHeaderClick("SEC - shows the section of the students.")}>
+              <th
+                className="p-2"
+                onClick={() =>
+                  handleHeaderClick("SEC - shows the section of the students.")
+                }
+                style={{
+                  background: "transparent",
+                  fontWeight: "bold",
+                  cursor: "pointer",
+                }}
+              >
                 SEC
               </th>
               <th
@@ -179,11 +218,17 @@ function TodayAttendance() {
                     "SCANNED - shows the time the students was scanned for the day, red means late, yellow means on time, and green means early."
                   )
                 }
+                style={{
+                  background: "transparent",
+                  fontWeight: "bold",
+                  cursor: "pointer",
+                }}
               >
                 SCANNED:
               </th>
             </tr>
           </thead>
+
           <tbody>
             {sortedAttendance.map((student, index) => (
               <tr

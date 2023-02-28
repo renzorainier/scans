@@ -37,3 +37,15 @@ body {
   z-index: 9999;
   max-width: 90%;
 }
+
+th {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+th:hover {
+  background-color: #e5e5e5;
+}
+
