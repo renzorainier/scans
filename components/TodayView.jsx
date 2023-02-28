@@ -115,72 +115,92 @@ function TodayAttendance() {
     setShowInfo(true);
     setInfoText(text);
   }
-  return (
-    <div className="w-full mx-auto mt-4 max-w-90%">
-      <div className="bg-white p-5 rounded-lg shadow-lg">
-        <h2 className="text-xl font-bold text-center text-gray-700">
-          Attendance For Today
-        </h2>
-        <h1 className="mb-4 text-base font-bold text-center text-gray-700">
-          ({new Date().toLocaleDateString()})
-        </h1>
-        <div className="flex justify-between items-center mb-4">
-          <div className="flex-grow">
-            <select
-              value={selectedSection}
-              onChange={handleSectionChange}
-              className="w-full py-1 px-2 text-gray-700 border rounded-md"
-            >
-              <option value="">All</option>
-              {sections.map((section) => (
-                <option key={section} value={section}>
-                  {section}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div className="flex-grow">
-            <input
-              type="text"
-              value={searchQuery}
-              onChange={handleSearchQueryChange}
-              className="w-full py-1 px-2 text-gray-700 border rounded-md"
-              placeholder="Search by name"
-            />
-          </div>
-        </div>
 
-        <div className="overflow-x-auto rounded-lg">
-          <table className="table-auto w-full text-center">
-            <thead className="bg-gray-200 text-gray-700">
-              <tr className="font-bold p-2">
-                {headerData.map(({ label, tooltip }, index) => (
-                  <th
-                    key={index}
-                    className="p-2 pb-4 pt-4 cursor-pointer"
-                    onClick={() => handleHeaderClick(tooltip)}
-                  >
-                    {label}
-                  </th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {sortedAttendance.map((student, index) => (
-                <tr
-                  key={student.id}
-                  className={`${index % 2 === 0 ? "bg-gray-100" : "bg-gray-200"} rounded-lg mb-2`}
-                >
-                  <td className="p-2">{sortedAttendance.length - index}</td>
-                  <td className="p-2 font-bold whitespace-nowrap">
-                    {student.name}
-                  </td>
-                  <td className="p-2">{student.strand}</td>
-                  <td className="p-2">{student.section}</td>
-                  <td className="p-2 whitespace-nowrap">
-                    <div
-                      className={`bg-${student.color} h-3 w-9 rounded-sm inline-block mr-1`}
-                    >
+  return (
+    <div
+      className="w-full ml-4 mt-4 text-gray-700 bg-white p-5 text-sm rounded-lg shadow-lg inline-block mx-auto"
+      style={{ maxWidth: "90%" }}
+    >
+      <h2 className="text-gray-700 text-xl font-bold text-center">
+        Attendance For Today
+      </h2>
+      <h1 className="text-gray-700 font-bold text-base mb-4 text-center">
+        ({new Date().toLocaleDateString()})
+      </h1>
+      <div className="flex justify-between items-center mb-4">
+        <div className="flex items-center flex-grow">
+          <select
+            value={selectedSection}
+            onChange={handleSectionChange}
+            className="border rounded-md py-1 px-2 text-gray-700 w-full"
+          >
+            <option value="">All</option>
+            {sections.map((section) => (
+              <option key={section} value={section}>
+                {section}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div className="flex items-center flex-grow">
+          <input
+            type="text"
+            value={searchQuery}
+            onChange={handleSearchQueryChange}
+            className="border rounded-md py-1 px-2 text-gray-700 w-full"
+            placeholder="Search by name"
+          />
+        </div>
+      </div>
+
+      <div className="overflow-x-auto rounded-lg">
+        <table className="table-auto w-full text-center">
+          <thead className="bg-gray-200 text-">
+            <tr className="p-2 font-bold">
+              <th
+                className="p-2 pb-4 pt-4"
+                onClick={() => handleHeaderClick("Index - shows the index of the students baseds on their scan time.")}
+              >
+                #
+              </th>
+              <th className="p-2" onClick={() => handleHeaderClick("NAME - shows the name of the students")}>
+                NAME
+              </th>
+              <th className="p-2" onClick={() => handleHeaderClick("STRAND - shows the strand of the students")}>
+                STRAND
+              </th>
+              <th className="p-2" onClick={() => handleHeaderClick("SEC - shows the section of the students.")}>
+                SEC
+              </th>
+              <th
+                className="p-2"
+                onClick={() =>
+                  handleHeaderClick(
+                    "SCANNED - shows the time the students was scanned for the day, red means late, yellow means on time, and green means early."
+                  )
+                }
+              >
+                SCANNED:
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {sortedAttendance.map((student, index) => (
+              <tr
+                className={`${
+                  index % 2 === 0 ? "bg-gray-100" : "bg-gray-200"
+                } rounded-lg mb-2`}
+                key={student.id}
+              >
+                <td className="p-2">{sortedAttendance.length - index}</td>
+                <td className="p-2 font-bold whitespace-nowrap">
+                  {student.name}
+                </td>
+                <td className="p-2">{student.strand}</td>
+                <td className="p-2 ">{student.section}</td>
+                <td className="p-2 whitespace-nowrap">
+                  {student.attendanceStatus === "late" && (
+                    <div className="bg-[#EC7063] h-3 w-9 rounded-sm inline-block mr-1">
                       {student.lastScan
                         ? student.lastScan.toLocaleTimeString([], {
                             hour: "numeric",
@@ -188,24 +208,43 @@ function TodayAttendance() {
                           })
                         : "N/A"}
                     </div>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-
+                  )}
+                  {student.attendanceStatus === "ontime" && (
+                    <div className="bg-[#F7DC6F] h-3 w-9 rounded-sm inline-block mr-1">
+                      {student.lastScan
+                        ? student.lastScan.toLocaleTimeString([], {
+                            hour: "numeric",
+                            minute: "2-digit",
+                          })
+                        : "N/A"}
+                    </div>
+                  )}
+                  {student.attendanceStatus === "early" && (
+                    <div className="bg-[#2ECC71] h-3 w-9 rounded-sm inline-block mr-1">
+                      {student.lastScan
+                        ? student.lastScan.toLocaleTimeString([], {
+                            hour: "numeric",
+                            minute: "2-digit",
+                          })
+                        : "N/A"}
+                    </div>
+                  )}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
         {showInfo && (
-  <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 max-w-90% bg-white p-5 rounded-lg shadow-lg inline-block">
-    <p className="text-center text-gray-700">{infoText}</p>
-    <button
-      className="block mx-auto mt-4 px-4 py-2 rounded-lg text-white bg-gray-700 hover:bg-gray-600"
-      onClick={() => setShowInfo(false)}>
-      Close
-    </button>
-  </div>
-)}
-
+          <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2  max-w-90% bg-white p-5 rounded-lg shadow-lg inline-block">
+            <p className="text-gray-700 text-center">{infoText}</p>
+            <button
+              className="block mx-auto mt-4 px-4 py-2 bg-gray-700 text-white rounded-lg hover:bg-gray-600"
+              onClick={() => setShowInfo(false)}
+            >
+              Close
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );
