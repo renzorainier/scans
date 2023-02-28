@@ -124,7 +124,7 @@ function TodayAttendance() {
       >
         <div className="bg-gray-200 relative">
           <img
-            src=""
+            src="https://static.planetminecraft.com/files/profile_banner/3800851_1.gif"
             alt="background gif"
             className="absolute top-0 left-0 w-full h-full object-cover z-0"
           />
