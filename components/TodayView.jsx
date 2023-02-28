@@ -159,24 +159,24 @@ function TodayAttendance() {
             <tr className="p-2 font-bold">
               <th
                 className="p-2 pb-4 pt-4"
-                onClick={() => handleHeaderClick("STATUS")}
+                onClick={() => handleHeaderClick("Index - shows the index of the students baseds on their scan time.")}
               >
                 #
               </th>
-              <th className="p-2" onClick={() => handleHeaderClick("NAME")}>
+              <th className="p-2" onClick={() => handleHeaderClick("NAME - shows the name of the students")}>
                 NAME
               </th>
-              <th className="p-2" onClick={() => handleHeaderClick("STRAND - ")}>
+              <th className="p-2" onClick={() => handleHeaderClick("STRAND - shows the strand of the students")}>
                 STRAND
               </th>
-              <th className="p-2" onClick={() => handleHeaderClick("SEC - shows the section of students.")}>
+              <th className="p-2" onClick={() => handleHeaderClick("SEC - shows the section of the students.")}>
                 SEC
               </th>
               <th
                 className="p-2"
                 onClick={() =>
                   handleHeaderClick(
-                    "SCANNED - shows the time the student was scanned for the day, red means late, yellow means on time, and green means early."
+                    "SCANNED - shows the time the students was scanned for the day, red means late, yellow means on time, and green means early."
                   )
                 }
               >
