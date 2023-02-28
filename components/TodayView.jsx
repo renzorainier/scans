@@ -235,16 +235,16 @@ function TodayAttendance() {
           </tbody>
         </table>
         {showInfo && (
-          <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2  max-w-90% bg-white p-5 rounded-lg shadow-lg inline-block">
-            <p className="text-gray-700 text-center">{infoText}</p>
-            <button
-              className="block mx-auto mt-4 px-4 py-2 bg-gray-700 text-white rounded-lg hover:bg-gray-600"
-              onClick={() => setShowInfo(false)}
-            >
-              Close
-            </button>
-          </div>
-        )}
+  <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 max-w-90% bg-white p-5 rounded-lg shadow-lg inline-block">
+    <p className="text-center text-gray-700">{infoText}</p>
+    <button
+      className="block mx-auto mt-4 px-4 py-2 rounded-lg text-white bg-gray-700 hover:bg-gray-600"
+      onClick={() => setShowInfo(false)}>
+      Close
+    </button>
+  </div>
+)}
+
       </div>
     </div>
   );
