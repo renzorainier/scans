@@ -122,11 +122,11 @@ function TodayAttendance() {
         className="w-full text-gray-700 bg-white p-5 text-sm rounded-lg shadow-lg mx-auto"
         style={{ maxWidth: "90%" }}
       >
-        <div className="bg-gray-200 relative">
+        <div className="bg-gray-200 relative rounded-lg">
           <img
             src="https://static.planetminecraft.com/files/profile_banner/3800851_1.gif"
             alt="background gif"
-            className="absolute top-0 left-0 w-full h-full object-cover z-0"
+            className="absolute top-0 left-0 w-full h-full object-cover z-0 rounded-lg"
           />
           <div className="relative z-10">
             <h2 className="text-gray-700 text-xl font-bold text-center">
