@@ -122,7 +122,7 @@ function TodayAttendance() {
         className="w-full text-gray-700 bg-white p-5 text-sm rounded-lg shadow-lg mx-auto"
         style={{ maxWidth: "90%" }}
       >
-        <div className="bg-red-500">
+        <div className="bg-gray-200">
           <h2 className="text-gray-700 text-xl font-bold text-center">
             Attendance For Today
           </h2>
