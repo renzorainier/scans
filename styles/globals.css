@@ -48,7 +48,7 @@ th:hover {
   animation: pop 0.3s linear 1;
 }
 #show {
-  animation: pop 0.3s linear 1;
+  animation: pulse 0.5s ease-in infinite;
 }
 
 
