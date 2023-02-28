@@ -27,57 +27,7 @@ function Scan() {
           'startTime': '08:00:00',
         },
       },
-      '1B': {
-        'Monday': {
-          'startTime': '08:00:00',
-        },
-        'Tuesday': {
-          'startTime': '18:00:00',
-        },
-        'Wednesday': {
-          'startTime': '08:00:00',
-        },
-        'Thursday': {
-          'startTime': '08:00:00',
-        },
-        'Friday': {
-          'startTime': '08:00:00',
-        },
-      },
-      '1C': {
-        'Monday': {
-          'startTime': '08:00:00',
-        },
-        'Tuesday': {
-          'startTime': '08:00:00',
-        },
-        'Wednesday': {
-          'startTime': '08:00:00',
-        },
-        'Thursday': {
-          'startTime': '08:00:00',
-        },
-        'Friday': {
-          'startTime': '08:00:00',
-        },
-      },
-      '1D': {
-        'Monday': {
-          'startTime': '08:00:00',
-        },
-        'Tuesday': {
-          'startTime': '08:00:00',
-        },
-        'Wednesday': {
-          'startTime': '08:00:00',
-        },
-        'Thursday': {
-          'startTime': '08:00:00',
-        },
-        'Friday': {
-          'startTime': '08:00:00',
-        },
-      },
+
     },
   };
 
@@ -287,3 +237,58 @@ export default Scan;
 //     return undefined;
 //   }
 // };
+
+
+
+
+// '1B': {
+//   'Monday': {
+//     'startTime': '08:00:00',
+//   },
+//   'Tuesday': {
+//     'startTime': '18:00:00',
+//   },
+//   'Wednesday': {
+//     'startTime': '08:00:00',
+//   },
+//   'Thursday': {
+//     'startTime': '08:00:00',
+//   },
+//   'Friday': {
+//     'startTime': '08:00:00',
+//   },
+// },
+// '1C': {
+//   'Monday': {
+//     'startTime': '08:00:00',
+//   },
+//   'Tuesday': {
+//     'startTime': '08:00:00',
+//   },
+//   'Wednesday': {
+//     'startTime': '08:00:00',
+//   },
+//   'Thursday': {
+//     'startTime': '08:00:00',
+//   },
+//   'Friday': {
+//     'startTime': '08:00:00',
+//   },
+// },
+// '1D': {
+//   'Monday': {
+//     'startTime': '08:00:00',
+//   },
+//   'Tuesday': {
+//     'startTime': '08:00:00',
+//   },
+//   'Wednesday': {
+//     'startTime': '08:00:00',
+//   },
+//   'Thursday': {
+//     'startTime': '08:00:00',
+//   },
+//   'Friday': {
+//     'startTime': '08:00:00',
+//   },
+// },
