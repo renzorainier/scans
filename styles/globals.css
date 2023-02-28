@@ -40,13 +40,11 @@ body {
 
 th {
   border: none;
-  background-color: transparent;
   cursor: pointer;
   font-weight: bold;
 }
 
 th:hover {
-  background-color: #e5e5e5;
   animation: pop 0.3s linear 1;
 }
 @keyframes pop{
