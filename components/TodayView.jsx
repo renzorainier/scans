@@ -230,17 +230,6 @@ function TodayAttendance() {
                     </div>
                   )}
                 </td>
-                {/* <td className="p-2 whitespace-nowrap">
-            {student.attendanceStatus === "late" && (
-              <div className="bg-red-500 h-3 w-3 rounded-sm inline-block mr-1"></div>
-            )}
-            {student.attendanceStatus === "ontime" && (
-              <div className="bg-yellow-300 h-3 w-3 rounded-sm inline-block mr-1"></div>
-            )}
-            {student.attendanceStatus === "early" && (
-              <div className="bg-green-500 h-3 w-3 rounded-sm inline-block mr-1"></div>
-            )}
-          </td> */}
               </tr>
             ))}
           </tbody>
