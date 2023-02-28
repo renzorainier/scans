@@ -122,14 +122,22 @@ function TodayAttendance() {
         className="w-full text-gray-700 bg-white p-5 text-sm rounded-lg shadow-lg mx-auto"
         style={{ maxWidth: "90%" }}
       >
-        <div className="bg-gray-200">
-          <h2 className="text-gray-700 text-xl font-bold text-center">
-            Attendance For Today
-          </h2>
-          <h1 className="text-gray-700 font-bold text-base mb-4 text-center">
-            ({new Date().toLocaleDateString()})
-          </h1>
+        <div className="bg-gray-200 relative">
+          <img
+            src="your-gif-url.gif"
+            alt="background gif"
+            className="absolute top-0 left-0 w-full h-full object-cover z-0"
+          />
+          <div className="relative z-10">
+            <h2 className="text-gray-700 text-xl font-bold text-center">
+              Attendance For Today
+            </h2>
+            <h1 className="text-gray-700 font-bold text-base mb-4 text-center">
+              ({new Date().toLocaleDateString()})
+            </h1>
+          </div>
         </div>
+
         <div className="flex justify-between items-center mb-4">
           <div className="flex items-center flex-grow">
             <select
