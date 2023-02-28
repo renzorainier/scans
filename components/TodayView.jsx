@@ -154,11 +154,11 @@ function TodayAttendance() {
       </div>
 
       <div className="overflow-x-auto rounded-lg">
-        <table className="table-auto w-full text-center">
+        <table className="table-auto w-full text-center ">
           <thead className="bg-gray-200 text-" style={{ border: "none" }}>
             <tr className="p-2 font-bold">
               <th
-                className="p-2 pb-4 pt-4"
+                className="p-2 pb-4 pt-4 "
                 onClick={() =>
                   handleHeaderClick(
                     "Index - shows the index of the students baseds on their scan time."
