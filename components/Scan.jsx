@@ -15,7 +15,7 @@ function Scan() {
           'startTime': "17:00:00",
         },
         'Tuesday': {
-          'startTime': '08:00:00',
+          'startTime': '19:10:00',
         },
         'Wednesday': {
           'startTime': '08:00:00',
@@ -32,7 +32,7 @@ function Scan() {
           'startTime': '08:00:00',
         },
         'Tuesday': {
-          'startTime': '08:00:00',
+          'startTime': '18:00:00',
         },
         'Wednesday': {
           'startTime': '08:00:00',
