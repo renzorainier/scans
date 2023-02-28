@@ -47,7 +47,7 @@ function StudentCollection() {
   ]);
 
   const createCollection = async () => {
-    const studentsCollectionRef = collection(db, "strands", "STEM", "1B");
+    const studentsCollectionRef = collection(db, "strands", "STEM", "1A");
     const batch = [];
 
     students.forEach((student) => {
