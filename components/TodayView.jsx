@@ -50,7 +50,7 @@ function TodayAttendance() {
     };
 
     fetchAttendance();
-  }, []);
+  }, [sections]);
 
   useEffect(() => {
     const filteredStudents = todayAttendance.filter(
