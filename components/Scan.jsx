@@ -1,35 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { QrReader } from "react-qr-reader";
-import { collection, doc, getDoc, setDoc } from "firebase/firestore";
+import { doc, getDoc, setDoc } from "firebase/firestore";
 import { db } from "./firebase.js";
 
 function Scan() {
   const [lastScanned, setLastScanned] = useState(null);
   const [data, setData] = useState("");
   const [log, setLog] = useState([]);
-
-  const schedules = {
-    'STEM': {
-      '1A': {
-        'Monday': {
-          'startTime': "17:00:00",
-        },
-        'Tuesday': {
-          'startTime': '19:10:00',
-        },
-        'Wednesday': {
-          'startTime': '08:00:00',
-        },
-        'Thursday': {
-          'startTime': '08:00:00',
-        },
-        'Friday': {
-          'startTime': '08:00:00',
-        },
-      },
-
-    },
-  };
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
@@ -38,72 +15,53 @@ function Scan() {
     return () => clearTimeout(timeoutId);
   }, [data]);
 
-  const handleMarkPresent = async (strand, section, id) => {
-    // Get student data from Firestore
-    const studentRef = doc(db, "strands", strand, section, id);
-    const docSnapshot = await getDoc(studentRef);
-
-    if (docSnapshot.exists()) {
-      const studentData = docSnapshot.data();
-      const currentDay = new Date().toLocaleDateString("en-US", { weekday: "long" });
-
-      // Check student's attendance status and update it
-      let attendanceStatus = "";
-      const scheduleData = schedules[strand][section][currentDay];
-
-      const startTimeParts = scheduleData.startTime.split(":");
-      const classStartTime = new Date();
-      classStartTime.setHours(parseInt(startTimeParts[0]));
-      classStartTime.setMinutes(parseInt(startTimeParts[1]));
-      classStartTime.setSeconds(parseInt(startTimeParts[2]));
-
-      const scanTime = new Date();
-      const timeDifference = scanTime.getTime() - classStartTime.getTime();
-
-      console.log('Time Differenceeeeeeg:', timeDifference);
-
-
-      if (timeDifference < -300000) {
-        // Student is early (5 minutes before class start time)
-        attendanceStatus = "early";
-      }  else if (timeDifference > 600000) {
-        // Student is late (more than 10 minutes after class start time)
-        attendanceStatus = "late";
-      } else {
-        // Student is on time (within 10 minutes of class start time)
-        attendanceStatus = "ontime";
+  const handleMarkPresent = async (code) => {
+    try {
+      const studentInfo = await markStudentPresent(code);
+      if (studentInfo) {
+        const { name, time } = studentInfo;
+        setData(`Name: ${name}, Scanned at: ${time}`);
       }
+    } catch (e) {
+      console.error("Error marking student as present: ", e);
+    }
+  };
 
-
-      if (!studentData.present) {
-        await setDoc(
-          studentRef,
-          { present: true, lastScan: new Date(), attendanceStatus, attendanceDifference: timeDifference },
-          { merge: true }
-        );
+  const markStudentPresent = async (code) => {
+    const [strand, section, id, lrn] = code.split("-");
+    const sectionRef = doc(db, strand, section);
+    const sectionDoc = await getDoc(sectionRef);
+    if (sectionDoc.exists()) {
+      const sectionData = sectionDoc.data();
+      const studentKeys = Object.keys(sectionData).filter((key) =>
+        key.startsWith(id)
+      );
+      if (studentKeys.length > 0) {
+        const studentData = {};
+        studentKeys.forEach((key) => {
+          studentData[key + "present"] = true;
+          studentData[key + "lastScan"] = new Date();
+        });
+        await setDoc(sectionRef, studentData, { merge: true });
         console.log(`Student ${id} marked as present`);
-      } else {
-        console.log(`Student ${id} is already marked as present`);
-      }
-
-      const timeString = studentData.lastScan
-        .toDate()
-        .toLocaleTimeString("en-US", {
+        const timeString = new Date().toLocaleTimeString("en-US", {
           hour: "numeric",
           minute: "numeric",
           hour12: true,
         });
-
-      return {
-        name: studentData.name,
-        time: timeString,
-      };
+        return {
+          name: sectionData[id + "name"],
+          time: timeString,
+        };
+      } else {
+        console.log(`No student found with ID ${id}`);
+        return undefined;
+      }
     } else {
-      console.log(`No student found with ID ${id}`);
+      console.log(`No section found with Strand ${strand} and Section ${section}`);
       return undefined;
     }
   };
-
 
   useEffect(() => {
     if (data) {
@@ -112,7 +70,6 @@ function Scan() {
         info: data,
       };
 
-      // Remove duplicates
       const existingEntryIndex = log.findIndex(
         (entry) => entry.id === lastScanned
       );
@@ -133,23 +90,15 @@ function Scan() {
         onResult={async (result) => {
           if (!!result) {
             const code = result.text;
-            const [strand, section, id] = code.split("-");
-            if (strand && section && id && code !== lastScanned) {
+            if (code !== lastScanned) {
               setLastScanned(code);
-              const studentInfo = await handleMarkPresent(strand, section, id);
-              if (studentInfo) {
-                const { name, time } = studentInfo;
-                setData(`Name: ${name}, Scanned at: ${time}`);
-              }
+              handleMarkPresent(code);
             }
           }
         }}
-        // This is facing mode: "environment". It will open the back camera of
-        // the smartphone and if not found, will open the front camera
         constraints={{ facingMode: "environment" }}
         style={{ width: "100%", height: "100%" }}
       />
-
       <p className="text-xl font-bold mt-6">Scan result:</p>
       <p className="text-xl">{data}</p>
       <h1 className="text-3xl font-semibold mt-8">Recent Logs</h1>
