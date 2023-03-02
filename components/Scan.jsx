@@ -47,6 +47,7 @@ function Scan() {
         const { name, time } = studentInfo;
         setData(`Name: ${name}, Scanned at: ${time}`);
       }
+      setScannedCodes([...scannedCodes, code]); // add the current code to the scannedCodes array
     } catch (e) {
       console.error("Error marking student as present: ", e);
     }
