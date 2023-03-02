@@ -1,5 +1,3 @@
-
-
 import { useState } from "react";
 import { collection, addDoc, doc, setDoc, deleteDocs, getDocs, batch } from "firebase/firestore";
 import { db } from "./firebase";
@@ -11,14 +9,14 @@ function StudentCollection() {
 
   const createCollection = async () => {
     const studentsCollectionRef = collection(db, "STEM", "1B");
-    const batch = [];
+    const batchOps = [];
 
     students.forEach((student) => {
       const studentRef = doc(studentsCollectionRef, student.id);
-      batch.push(setDoc(studentRef, { strand: student.strand, name: student.name, section: student.section}));
+      batchOps.push(setDoc(studentRef, { strand: student.strand, name: student.name, section: student.section}));
     });
     try {
-      await Promise.all(batch);
+      await Promise.all(batchOps);
       console.log("Students collection created successfully");
     } catch (e) {
       console.error("Error creating students collection: ", e);
@@ -28,14 +26,14 @@ function StudentCollection() {
   const deleteCollection = async () => {
     const studentsCollectionRef = collection(db, "STEM");
     const querySnapshot = await getDocs(studentsCollectionRef);
-    const batch = batch();
+    const batchOps = batch();
 
     querySnapshot.forEach((doc) => {
-      batch.delete(doc.ref);
+      batchOps.delete(doc.ref);
     });
 
     try {
-      await batch.commit();
+      await batchOps.commit();
       console.log("Students collection deleted successfully");
     } catch (e) {
       console.error("Error deleting students collection: ", e);
@@ -53,6 +51,3 @@ function StudentCollection() {
 }
 
 export default StudentCollection;
-
-
-
