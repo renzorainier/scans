@@ -41,6 +41,10 @@ function Scan() {
   }, [data]);
 
   const handleMarkPresent = async (code) => {
+    if (scannedCodes.includes(code)) {
+      console.log(`Code ${code} has already been scanned`);
+      return;
+    }
     try {
       const studentInfo = await markStudentPresent(code);
       if (studentInfo) {
