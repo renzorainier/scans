@@ -41,6 +41,7 @@ function Scan() {
         studentKeys.forEach((key) => {
           studentData[key] = new Date();
         });
+        studentData[`${id}-present`] = true; // add this line to set the "present" field to true
         await updateDoc(sectionRef, studentData);
         console.log(`Student ${id} marked as present`);
         const timeString = new Date().toLocaleTimeString("en-US", {
