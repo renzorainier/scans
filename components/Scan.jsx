@@ -8,6 +8,29 @@ function Scan() {
   const [data, setData] = useState("");
   const [log, setLog] = useState([]);
 
+  const schedules = {
+    'STEM': {
+      '1A': {
+        'Monday': {
+          'startTime': "17:00:00",
+        },
+        'Tuesday': {
+          'startTime': '19:10:00',
+        },
+        'Wednesday': {
+          'startTime': '08:00:00',
+        },
+        'Thursday': {
+          'startTime': '08:00:00',
+        },
+        'Friday': {
+          'startTime': '08:00:00',
+        },
+      },
+
+    },
+  };
+
   useEffect(() => {
     const timeoutId = setTimeout(() => {
       setData("");
@@ -41,9 +64,36 @@ function Scan() {
         studentKeys.forEach((key) => {
           studentData[key] = new Date();
         });
-        studentData[`${id}present`] = true; // add this line to set the "present" field to true
+        const currentDay = new Date().toLocaleDateString("en-US", { weekday: "long" });
+
+        // Check student's attendance status and update it
+        let attendanceStatus = "";
+        const scheduleData = schedules[strand][section][currentDay];
+
+        const startTimeParts = scheduleData.startTime.split(":");
+        const classStartTime = new Date();
+        classStartTime.setHours(parseInt(startTimeParts[0]));
+        classStartTime.setMinutes(parseInt(startTimeParts[1]));
+        classStartTime.setSeconds(parseInt(startTimeParts[2]));
+
+        const scanTime = new Date();
+        const timeDifference = scanTime.getTime() - classStartTime.getTime();
+
+        if (timeDifference < -300000) {
+          // Student is early (5 minutes before class start time)
+          attendanceStatus = "early";
+        }  else if (timeDifference > 600000) {
+          // Student is late (more than 10 minutes after class start time)
+          attendanceStatus = "late";
+        } else {
+          // Student is on time (within 10 minutes of class start time)
+          attendanceStatus = "ontime";
+        }
+
+        studentData[`${id}present`] = true;
+        studentData[`${id}status`] = attendanceStatus; // add this line to set the "attendance" field
         await updateDoc(sectionRef, studentData);
-        console.log(`Student ${id} marked as present`);
+        console.log(`Student ${id} marked as present with ${attendanceStatus} status`);
         const timeString = new Date().toLocaleTimeString("en-US", {
           hour: "numeric",
           minute: "numeric",
@@ -64,6 +114,7 @@ function Scan() {
       return undefined;
     }
   };
+
 
   useEffect(() => {
     if (data) {
