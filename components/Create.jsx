@@ -1,7 +1,7 @@
 
 
 import { useState } from "react";
-import { collection, addDoc, doc, setDoc, deleteDocs, getDocs } from "firebase/firestore";
+import { collection, addDoc, doc, setDoc, deleteDocs, getDocs, bacth } from "firebase/firestore";
 import { db } from "./firebase";
 
 const deleteCollection = async (collectionRef) => {
