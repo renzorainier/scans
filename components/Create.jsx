@@ -4,7 +4,7 @@ import { db } from "./firebase";
 
 function StudentCollection() {
   const [students, setStudents] = useState([
-    { id: "01", name: "ALARCON, RHYZEA", section: "ST-1A", strand: "STEM", present: false },
+    { id: "01", lrn: "402969160037", name: "ALARCON, RHYZEA", section: "ST-1A", strand: "STEM", present: false },
     { id: "02", name: "Student 2", section: "1A", strand: "STEM", present: false },
     { id: "03", name: "Student 3", section: "1A", strand: "STEM", present: false },
   ]);
