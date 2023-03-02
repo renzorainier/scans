@@ -28,7 +28,7 @@ function StudentCollection() {
   const deleteCollection = async () => {
     const studentsCollectionRef = collection(db, "STEM");
     const querySnapshot = await getDocs(studentsCollectionRef);
-    const batch = bacth();
+    const batch = batch();
 
     querySnapshot.forEach((doc) => {
       batch.delete(doc.ref);
