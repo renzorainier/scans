@@ -149,6 +149,7 @@ function Scan() {
       <QrReader
         onResult={async (result) => {
           if (!!result) {
+            const code = result.text;
             const [strand, section, id, lrn] = code.split("-");
             if (strand && section && id && lrn && code !== lastScanned){
               setLastScanned(code);
