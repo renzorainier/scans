@@ -9,7 +9,7 @@ function StudentCollection() {
 
   const createCollection = async () => {
     const studentsCollectionRef = collection(db, "STEM", "1B");
-    const batchOps = [];
+    const batchOps = batch();
 
     students.forEach((student) => {
       const studentRef = doc(studentsCollectionRef, student.id);
