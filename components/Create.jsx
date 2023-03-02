@@ -13,10 +13,10 @@ function StudentCollection() {
 
     students.forEach((student) => {
       const studentRef = doc(studentsCollectionRef, student.id);
-      batchOps.push(setDoc(studentRef, { strand: student.strand, name: student.name, section: student.section}));
+      batchOps.set(studentRef, { strand: student.strand, name: student.name, section: student.section});
     });
     try {
-      await Promise.all(batchOps);
+      await batchOps.commit();
       console.log("Students collection created successfully");
     } catch (e) {
       console.error("Error creating students collection: ", e);
@@ -26,7 +26,7 @@ function StudentCollection() {
   const deleteCollection = async () => {
     const studentsCollectionRef = collection(db, "STEM");
     const querySnapshot = await getDocs(studentsCollectionRef);
-    const batchOps = []
+    const batchOps = batch();
 
     querySnapshot.forEach((doc) => {
       batchOps.delete(doc.ref);
@@ -44,8 +44,7 @@ function StudentCollection() {
   return (
     <div>
       <button onClick={createCollection}>Create Students Collection</button>
-      <button onClick={deleteCollection}>Delete Students Collectn</button>
-
+      <button onClick={deleteCollection}>Delete Students Collection</button>
     </div>
   );
 }
