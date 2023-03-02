@@ -25,9 +25,29 @@ function StudentCollection() {
     }
   };
 
+  const deleteCollection = async () => {
+    const studentsCollectionRef = collection(db, "STEM");
+    const querySnapshot = await getDocs(studentsCollectionRef);
+    const batch = bacth();
+
+    querySnapshot.forEach((doc) => {
+      batch.delete(doc.ref);
+    });
+
+    try {
+      await batch.commit();
+      console.log("Students collection deleted successfully");
+    } catch (e) {
+      console.error("Error deleting students collection: ", e);
+    }
+  };
+
+
   return (
     <div>
       <button onClick={createCollection}>Create Students Collection</button>
+      <button onClick={deleteCollection}>Delete Students Collectn</button>
+
     </div>
   );
 }
