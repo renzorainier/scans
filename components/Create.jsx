@@ -23,20 +23,13 @@ function StudentCollection() {
     }
   };
 
-  const deleteCollection = async () => {
-    const studentsCollectionRef = collection(db, "STEM");
-    const querySnapshot = await getDocs(studentsCollectionRef);
-    const batchOps = batch();
-
-    querySnapshot.forEach((doc) => {
-      batchOps.delete(doc.ref);
-    });
-
+  const deleteDocument = async () => {
+    const studentRef = doc(db, "STEM", "1B");
     try {
-      await batchOps.commit();
-      console.log("Students collection deleted successfully");
+      await deleteDoc(studentRef);
+      console.log("Document deleted successfully");
     } catch (e) {
-      console.error("Error deleting students collection: ", e);
+      console.error("Error deleting document: ", e);
     }
   };
 
@@ -44,7 +37,7 @@ function StudentCollection() {
   return (
     <div>
       <button onClick={createCollection}>Create Students Collection</button>
-      <button onClick={deleteCollection}>Delete Students Collection</button>
+      <button onClick={deleteDocument}>Delete Document 1B</button>
     </div>
   );
 }
