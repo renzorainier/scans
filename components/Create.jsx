@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { collection, addDoc, doc, setDoc, deleteDocs, getDocs, batch } from "firebase/firestore";
+import { collection, addDoc, doc, setDoc, deleteDoc, getDocs, batch } from "firebase/firestore";
 import { db } from "./firebase";
 
 function StudentCollection() {
