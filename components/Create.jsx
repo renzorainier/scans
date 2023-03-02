@@ -14,7 +14,7 @@ function StudentCollection() {
     const sectionData = {};
 
     students.forEach((student) => {
-      const { id, name, section, strand, present } = student;
+      const { id, name, section, strand, present, lrn, } = student;
       sectionData[`${id}name`] = name;
       sectionData[`${id}lastScan`] = "";
       sectionData[`${id}present`] = present;
