@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { QrReader } from "react-qr-reader";
-import { doc, getDoc, setDoc } from "firebase/firestore";
+import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { db } from "./firebase.js";
 
 function Scan() {
@@ -33,16 +33,15 @@ function Scan() {
     const sectionDoc = await getDoc(sectionRef);
     if (sectionDoc.exists()) {
       const sectionData = sectionDoc.data();
-      const studentKeys = Object.keys(sectionData).filter((key) =>
-        key.startsWith(id)
+      const studentKeys = Object.keys(sectionData).filter(
+        (key) => key.startsWith(id) && key.endsWith("lastScan")
       );
       if (studentKeys.length > 0) {
         const studentData = {};
         studentKeys.forEach((key) => {
-          studentData[key + "present"] = true;
-          studentData[key + "lastScan"] = new Date();
+          studentData[key] = new Date();
         });
-        await setDoc(sectionRef, studentData, { merge: true });
+        await updateDoc(sectionRef, studentData);
         console.log(`Student ${id} marked as present`);
         const timeString = new Date().toLocaleTimeString("en-US", {
           hour: "numeric",
@@ -101,7 +100,8 @@ function Scan() {
       />
       <p className="text-xl font-bold mt-6">Scan result:</p>
       <p className="text-xl">{data}</p>
-      <h1 className="text-3xl font-semibold mt-8">Recent Logs</h1>
+      <h1 className="text-3xl font-semibold mt-8">Recent Logs
+</h1>
       <div className="bg-white rounded-lg shadow-lg mt-6 w-full max-w-md">
         <ul className="text-gray-500 divide-y divide-gray-300">
           {log.map((entry, index) => (
