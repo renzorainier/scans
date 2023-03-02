@@ -7,7 +7,7 @@ function Scan() {
   const [lastScanned, setLastScanned] = useState(null);
   const [data, setData] = useState("");
   const [log, setLog] = useState([]);
-  // const [scannedCodes, setScannedCodes] = useState([]);
+  const [scannedCodes, setScannedCodes] = useState([]);
 
 
   const schedules = {
@@ -41,17 +41,18 @@ function Scan() {
   }, [data]);
 
   const handleMarkPresent = async (code) => {
-    // if (scannedCodes.includes(code)) {
-    //   console.log(`Code ${code} has already been scanned`);
-    //   return;
-    // }
+    if (scannedCodes.includes(code)) {
+      console.log(`Code ${code} has already been scanned`);
+      return;
+    }
+
     try {
       const studentInfo = await markStudentPresent(code);
       if (studentInfo) {
         const { name, time } = studentInfo;
         setData(`Name: ${name}, Scanned at: ${time}`);
       }
-      // setScannedCodes([...scannedCodes, code]); // add the current code to the scannedCodes array
+      setScannedCodes([...scannedCodes, code]); // add the current code to the scannedCodes array
     } catch (e) {
       console.error("Error marking student as present: ", e);
     }
@@ -150,8 +151,7 @@ function Scan() {
         onResult={async (result) => {
           if (!!result) {
             const code = result.text;
-            const [strand, section, id, lrn] = code.split("-");
-            if (strand && section && id && lrn && code !== lastScanned){
+            if (code !== lastScanned) {
               setLastScanned(code);
               handleMarkPresent(code);
             }
