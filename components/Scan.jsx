@@ -4,7 +4,7 @@ import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { db } from "./firebase.js";
 
 function Scan() {
-  const [lastScanned, setLastScanned] = useState(null);
+  const [lastScanned, setLastScanned] = useState("");
   const [data, setData] = useState("");
   const [log, setLog] = useState([]);
   const [scannedCodes, setScannedCodes] = useState([]);
