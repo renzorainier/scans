@@ -7,6 +7,8 @@ function Scan() {
   const [lastScanned, setLastScanned] = useState(null);
   const [data, setData] = useState("");
   const [log, setLog] = useState([]);
+  const [scannedCodes, setScannedCodes] = useState([]);
+
 
   const schedules = {
     'STEM': {
