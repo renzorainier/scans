@@ -1,17 +1,16 @@
 import { useState } from "react";
-import { collection, doc, setDoc } from "firebase/firestore";
+import { doc, setDoc } from "firebase/firestore";
 import { db } from "./firebase";
 
 function StudentCollection() {
   const [students, setStudents] = useState([
-    { id: "01", name: "Student 1", section: "ST-1A", strand: "STEM",  present: false, },
-    { id: "02", name: "Student 2", section: "ST-1A", strand: "STEM",  present: false, },
-    { id: "03", name: "Student 3", section: "ST-1A", strand: "STEM",  present: false, },
+    { id: "01", name: "Student 1", section: "1A", strand: "STEM", present: false },
+    { id: "02", name: "Student 2", section: "1A", strand: "STEM", present: false },
+    { id: "03", name: "Student 3", section: "1A", strand: "STEM", present: false },
   ]);
 
   const createCollection = async () => {
-    const studentsCollectionRef = collection(db, "sections");
-    const sectionDocRef = doc(studentsCollectionRef, "ST-1A");
+    const sectionDocRef = doc(db, "STEM", "1A");
     const sectionData = {};
 
     students.forEach((student) => {
