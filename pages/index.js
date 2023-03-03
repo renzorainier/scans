@@ -1,11 +1,10 @@
 import Head from "next/head";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import Scan from "components/Scan";
 import PastAttendance from "/components/PastView";
 import TodayAttendance from "/components/TodayView";
 import SavePresentStudents from "components/Save";
 import Generate from "components/Generate";
-import { useEffect } from "react";
 import StudentCollection from "components/Create";
 import TabSelector from "components/Tab";
 import useAttendanceData from "components/T";
