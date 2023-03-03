@@ -34,42 +34,42 @@ function Scan() {
 
 
 
-    'STEM': {
-      '1A': {
-        '01': {
-          'name': "sample",
-          'lastScan': "sample",
-          'status': "sample",
-        },
-        '02': {
-          'name': "sample",
-          'lastScan': "sample",
-          'status': "sample",
-        },
-        '03': {
-          'name': "sample",
-          'lastScan': "sample",
-          'status': "sample",
-        },
-      },
-      '1B': {
-        '01': {
-          'name': "sample",
-          'lastScan': "sample",
-          'status': "sample",
-        },
-        '02': {
-          'name': "sample",
-          'lastScan': "sample",
-          'status': "sample",
-        },
-        '03': {
-          'name': "sample",
-          'lastScan': "sample",
-          'status': "sample",
-        },
-      },
-    },
+    // 'STEM': {
+    //   '1A': {
+    //     '01': {
+    //       'name': "sample",
+    //       'lastScan': "sample",
+    //       'status': "sample",
+    //     },
+    //     '02': {
+    //       'name': "sample",
+    //       'lastScan': "sample",
+    //       'status': "sample",
+    //     },
+    //     '03': {
+    //       'name': "sample",
+    //       'lastScan': "sample",
+    //       'status': "sample",
+    //     },
+    //   },
+    //   '1B': {
+    //     '01': {
+    //       'name': "sample",
+    //       'lastScan': "sample",
+    //       'status': "sample",
+    //     },
+    //     '02': {
+    //       'name': "sample",
+    //       'lastScan': "sample",
+    //       'status': "sample",
+    //     },
+    //     '03': {
+    //       'name': "sample",
+    //       'lastScan': "sample",
+    //       'status': "sample",
+    //     },
+    //   },
+    // },
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
