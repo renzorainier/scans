@@ -1,6 +1,14 @@
-import { collection, getDocs } from "firebase/firestore";
-import { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
+import {
+  collection,
+  query,
+  where,
+  getDocs,
+  getDoc,
+  doc,
+} from "firebase/firestore";
 import { db } from "./firebase.js";
+
 
 function useAttendanceData() {
   const [attendanceData, setAttendanceData] = useState({});
