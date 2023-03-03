@@ -45,9 +45,7 @@ function useAttendanceData() {
 
   return (
     <div>
-      <p>
-        asdfhjasdfkhsadfkhasdfkashdf
-      </p>
+      <p>adfasdf</p>
     <table>
       <thead>
         <tr>
