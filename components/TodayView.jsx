@@ -54,12 +54,13 @@ function TodayAttendance() {
             lastScan: student.lastScan?.toDate() || null,
             section,
             strand: sectionData.strand,
-            status: student.attendanceStatus,
+            present: student.present
+            status: student.status,
             attendanceDifference: student.attendanceDifference,
           };
         });
 
-        return presentStudents.filter((student) => student.attendanceStatus === "present");
+        return presentStudents.filter((student) => student.present == "true");
       } else {
         return [];
       }
