@@ -27,7 +27,7 @@ function TodayAttendance() {
       for (const section of sections) {
         const sectionData = {};
         const sectionQuerySnapshot = await getDocs(
-          collection(db, "STEM", section)
+          collection(db, "STEM")
         );
         sectionQuerySnapshot.forEach((doc) => {
           const data = doc.data();
