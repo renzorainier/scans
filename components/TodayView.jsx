@@ -18,6 +18,8 @@ function TodayAttendance() {
   const [showInfo, setShowInfo] = useState(false);
   const [infoText, setInfoText] = useState("");
 
+
+
   const handleSectionChange = (event) => {
     setSelectedSection(event.target.value);
   };
@@ -38,7 +40,7 @@ function TodayAttendance() {
 
   useEffect(() => {
     const fetchAttendance = async (section) => {
-      const sectionDocRef = doc(db, "STEM", "1A");
+      const sectionDocRef = doc(db, "STEM", section);
       const sectionDocSnapshot = await getDoc(sectionDocRef);
       const sectionData = sectionDocSnapshot.data();
       const students = sectionData.students || [];
