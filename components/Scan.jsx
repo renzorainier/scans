@@ -1,10 +1,9 @@
-can you implement a feature that doesnt allow previously scanned codes to be rescanned again"import React, { useState, useEffect } from "react";
 import { QrReader } from "react-qr-reader";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { db } from "./firebase.js";
 
 function Scan() {
-  const [lastScanned, setLastScanned] = useState(null);
+  const [lastScanned, setLastScanned] = useState();
   const [data, setData] = useState("");
   const [log, setLog] = useState([]);
   const [scannedCodes, setScannedCodes] = useState(new Set());
@@ -176,7 +175,7 @@ function Scan() {
   );
 }
 
-export default Scan;"
+export default Scan;
 // const handleMarkPresent = async (strand, section, id) => {
 //   // Get student data from Firestore
 //   const studentRef = doc(db, "strands", strand, section, id);
