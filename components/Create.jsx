@@ -21,8 +21,8 @@ function StudentCollection() {
       sectionData[`${id}lrn`] = lrn;
       sectionData[`${id}status`] = "";
       sectionData[`${id}dif`] = "";
-      sectionData["strand"] = strand;
-      sectionData["section"] = section;
+      sectionData[`${id}strand`] = strand;
+      sectionData[`${id}section`] = section;
     });
 
     try {

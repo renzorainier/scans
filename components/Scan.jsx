@@ -98,7 +98,7 @@ function Scan() {
 
         studentData[`${id}present`] = true;
         studentData[`${id}status`] = attendanceStatus;
-        studentData[`${id}diff`] = timeDifference; // add this line to set the "attendance" field
+        studentData[`${id}dif`] = timeDifference; // add this line to set the "attendance" field
         // add this line to set the "attendance" field
         await updateDoc(sectionRef, studentData);
         console.log(`Student ${id} marked as present with ${attendanceStatus} status`);
