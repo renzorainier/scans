@@ -19,35 +19,35 @@ function TodayAttendance() {
   const [infoText, setInfoText] = useState("");
 
   const sections = ["1A", "1B", "1C", "1D", "2A"];
+  
+  const fetchAttendance = async () => {
+    const presentStudentsObject = {};
+    for (const section of sections) {
+      const sectionDoc = doc(db, "strands", "STEM", section);
+      const sectionDocSnapshot = await getDoc(sectionDoc);
+      const sectionData = sectionDocSnapshot.data();
 
-  useEffect(() => {
-    const fetchAttendance = async () => {
-      const presentStudents = [];
-      for (const section of sections) {
-        const presentStudentsQuery = query(
-          collection(db, "strands", "STEM", section),
-          where("present", "==", true)
-        );
-        const presentStudentsQuerySnapshot = await getDocs(
-          presentStudentsQuery
-        );
-        presentStudents.push(
-          ...presentStudentsQuerySnapshot.docs.map((doc) => ({
-            id: doc.id,
-            name: doc.data().name,
-            lastScan: doc.data().lastScan?.toDate() || null,
+      if (sectionData) {
+        const students = sectionData.students;
+        const presentStudents = Object.entries(students).map(
+          ([id, student]) => ({
+            id,
+            name: student.name,
+            lastScan: student.lastScan?.toDate() || null,
+            strand: sectionData.strand,
+            attendanceStatus: student.attendanceStatus,
+            attendanceDifference: student.attendanceDifference,
             section,
-            strand: doc.data().strand,
-            attendanceStatus: doc.data().attendanceStatus,
-            attendanceDifference: doc.data().attendanceDifference,
-          }))
+          })
         );
+        presentStudentsObject[section] = presentStudents;
       }
-      presentStudents.sort((a, b) => b.lastScan - a.lastScan);
-      setTodayAttendance(presentStudents);
-      setFilteredAttendance(presentStudents);
-      setIsLoading(false);
-    };
+    }
+
+    setTodayAttendance(presentStudentsObject);
+    setFilteredAttendance(presentStudentsObject);
+    setIsLoading(false);
+  };
 
     fetchAttendance();
   }, [sections]);
