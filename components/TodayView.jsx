@@ -18,50 +18,6 @@ function TodayAttendance() {
   const [showInfo, setShowInfo] = useState(false);
   const [infoText, setInfoText] = useState("");
 
-  const sections = ["1A", "1B", "1C", "1D", "2A"];
-
-  useEffect(() => {
-    const fetchAttendance = async () => {
-      const presentStudents = [];
-      for (const section of sections) {
-        const presentStudentsQuery = query(
-          collection(db, "strands", "STEM", section),
-          where("present", "==", true)
-        );
-        const presentStudentsQuerySnapshot = await getDocs(
-          presentStudentsQuery
-        );
-        presentStudents.push(
-          ...presentStudentsQuerySnapshot.docs.map((doc) => ({
-            id: doc.id,
-            name: doc.data().name,
-            lastScan: doc.data().lastScan?.toDate() || null,
-            section,
-            strand: doc.data().strand,
-            attendanceStatus: doc.data().attendanceStatus,
-            attendanceDifference: doc.data().attendanceDifference,
-          }))
-        );
-      }
-      presentStudents.sort((a, b) => b.lastScan - a.lastScan);
-      setTodayAttendance(presentStudents);
-      setFilteredAttendance(presentStudents);
-      setIsLoading(false);
-    };
-
-    fetchAttendance();
-  }, [sections]);
-
-  useEffect(() => {
-    const filteredStudents = todayAttendance.filter(
-      (student) =>
-        (!selectedSection || student.section === selectedSection) &&
-        (!searchQuery ||
-          student.name.toLowerCase().includes(searchQuery.toLowerCase()))
-    );
-    setFilteredAttendance(filteredStudents);
-  }, [selectedSection, searchQuery, todayAttendance]);
-
   const handleSectionChange = (event) => {
     setSelectedSection(event.target.value);
   };
@@ -80,8 +36,56 @@ function TodayAttendance() {
     }
   });
 
+  useEffect(() => {
+    const fetchAttendance = async (section) => {
+      const sectionDocRef = doc(db, "strands", "STEM", section);
+      const sectionDocSnapshot = await getDoc(sectionDocRef);
+      const sectionData = sectionDocSnapshot.data();
+      const students = sectionData.students || [];
+
+      const presentStudents = students.map((student) => {
+        return {
+          id: student.id,
+          name: student.name,
+          lastScan: student.lastScan?.toDate() || null,
+          section,
+          strand: sectionData.strand,
+          attendanceStatus: student.attendanceStatus,
+          attendanceDifference: student.attendanceDifference,
+        };
+      });
+
+      return presentStudents.filter((student) => student.attendanceStatus === "present");
+    };
+
+    const fetchTodayAttendance = async () => {
+      const presentStudents = [];
+      for (const section of ["1A", "1B", "1C", "1D", "2A"]) {
+        const sectionPresentStudents = await fetchAttendance(section);
+        presentStudents.push(...sectionPresentStudents);
+      }
+      presentStudents.sort((a, b) => b.lastScan - a.lastScan);
+      setTodayAttendance(presentStudents);
+      setFilteredAttendance(presentStudents);
+      setIsLoading(false);
+    };
+
+    fetchTodayAttendance();
+  }, []);
+
+  useEffect(() => {
+    const filteredStudents = todayAttendance.filter(
+      (student) =>
+        (!selectedSection || student.section === selectedSection) &&
+        (!searchQuery ||
+          student.name.toLowerCase().includes(searchQuery.toLowerCase()))
+    );
+    setFilteredAttendance(filteredStudents);
+  }, [selectedSection, searchQuery, todayAttendance]);
+
   if (isLoading) {
     return (
+
       <div className="container py-10 px-10 mx-0 min-w-full flex flex-col items-center">
         <button
           disabled
