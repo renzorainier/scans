@@ -7,6 +7,7 @@ function Scan() {
   const [lastScanned, setLastScanned] = useState(null);
   const [data, setData] = useState("");
   const [log, setLog] = useState([]);
+  const [scannedCodes, setScannedCodes] = useState(new Set());
 
   const schedules = {
     'STEM': {
@@ -39,11 +40,16 @@ function Scan() {
   }, [data]);
 
   const handleMarkPresent = async (code) => {
+    if (scannedCodes.has(code)) {
+      console.log(`Code ${code} has already been scanned`);
+      return;
+    }
     try {
       const studentInfo = await markStudentPresent(code);
       if (studentInfo) {
         const { name, time } = studentInfo;
         setData(`Name: ${name}, Scanned at: ${time}`);
+        setScannedCodes(new Set(scannedCodes.add(code)));
       }
     } catch (e) {
       console.error("Error marking student as present: ", e);
