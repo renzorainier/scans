@@ -38,7 +38,7 @@ function TodayAttendance() {
 
   useEffect(() => {
     const fetchAttendance = async (section) => {
-      const sectionDocRef = doc(db, "strands", "STEM", section);
+      const sectionDocRef = doc(db, "STEM");
       const sectionDocSnapshot = await getDoc(sectionDocRef);
       const sectionData = sectionDocSnapshot.data();
       const students = sectionData.students || [];
