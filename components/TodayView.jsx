@@ -41,24 +41,28 @@ function TodayAttendance() {
 
   useEffect(() => {
     const fetchAttendance = async (section) => {
-      const sectionDocRef = doc(db, "STEM", "1A");
+      const sectionDocRef = doc(db, "STEM", section);
       const sectionDocSnapshot = await getDoc(sectionDocRef);
-      const sectionData = sectionDocSnapshot.data();
-      const students = sectionData.students || [];
+      if (sectionDocSnapshot.exists()) {
+        const sectionData = sectionDocSnapshot.data();
+        const students = sectionData.students || [];
 
-      const presentStudents = students.map((student) => {
-        return {
-          id: student.id,
-          name: student.name,
-          lastScan: student.lastScan?.toDate() || null,
-          section,
-          strand: sectionData.strand,
-          attendanceStatus: student.attendanceStatus,
-          attendanceDifference: student.attendanceDifference,
-        };
-      });
+        const presentStudents = students.map((student) => {
+          return {
+            id: student.id,
+            name: student.name,
+            lastScan: student.lastScan?.toDate() || null,
+            section,
+            strand: sectionData.strand,
+            attendanceStatus: student.attendanceStatus,
+            attendanceDifference: student.attendanceDifference,
+          };
+        });
 
-      return presentStudents.filter((student) => student.attendanceStatus === "present");
+        return presentStudents.filter((student) => student.attendanceStatus === "present");
+      } else {
+        return [];
+      }
     };
 
     const fetchTodayAttendance = async () => {
