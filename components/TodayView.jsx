@@ -23,26 +23,28 @@ function TodayAttendance() {
   useEffect(() => {
     const fetchAttendance = async () => {
       const presentStudents = [];
+
       for (const section of sections) {
-        const presentStudentsQuery = query(
-          collection(db, "strands", "STEM", section),
-          where("present", "==", true)
+        const sectionData = {};
+        const sectionQuerySnapshot = await getDocs(
+          collection(db, "STEM", section)
         );
-        const presentStudentsQuerySnapshot = await getDocs(
-          presentStudentsQuery
-        );
-        presentStudents.push(
-          ...presentStudentsQuerySnapshot.docs.map((doc) => ({
-            id: doc.id,
-            name: doc.data().name,
-            lastScan: doc.data().lastScan?.toDate() || null,
-            section,
-            strand: doc.data().strand,
-            attendanceStatus: doc.data().attendanceStatus,
-            attendanceDifference: doc.data().attendanceDifference,
-          }))
-        );
+        sectionQuerySnapshot.forEach((doc) => {
+          const data = doc.data();
+          Object.keys(data).forEach((key) => {
+            const studentId = key.slice(0, 2);
+            const fieldName = key.slice(2);
+            const studentData = sectionData[studentId] || {
+              id: studentId,
+              section,
+            };
+            studentData[fieldName] = data[key];
+            sectionData[studentId] = studentData;
+          });
+        });
+        presentStudents.push(...Object.values(sectionData));
       }
+
       presentStudents.sort((a, b) => b.lastScan - a.lastScan);
       setTodayAttendance(presentStudents);
       setFilteredAttendance(presentStudents);
@@ -50,14 +52,16 @@ function TodayAttendance() {
     };
 
     fetchAttendance();
-  }, [sections]);
+  }, [db, sections]);
 
   useEffect(() => {
     const filteredStudents = todayAttendance.filter(
       (student) =>
         (!selectedSection || student.section === selectedSection) &&
         (!searchQuery ||
-          student.name.toLowerCase().includes(searchQuery.toLowerCase()))
+          `${student["name"]} ${student["surname"]}`
+            .toLowerCase()
+            .includes(searchQuery.toLowerCase()))
     );
     setFilteredAttendance(filteredStudents);
   }, [selectedSection, searchQuery, todayAttendance]);
