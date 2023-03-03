@@ -7,7 +7,8 @@ import SavePresentStudents from "components/Save";
 import Generate from "components/Generate";
 import { useEffect } from "react";
 import StudentCollection from "components/Create";
-import TabSelector  from "components/Tab";
+import TabSelector from "components/Tab";
+import useAttendanceData from "components/T";
 
 export default function Home() {
   const [component, setComponent] = useState("");
@@ -15,8 +16,6 @@ export default function Home() {
   const handleClick = (event) => {
     setComponent(event.target.value);
   };
-
-
 
   const renderComponent = () => {
     switch (component) {
@@ -32,8 +31,10 @@ export default function Home() {
         return <Generate />;
       case "Create":
         return <StudentCollection />;
-        case "Tab":
-        return <TabSelector />
+      case "Tab":
+        return <TabSelector />;
+      case "T":
+        return <useAttendanceData />;
       default:
         return (
           <>
@@ -93,6 +94,13 @@ export default function Home() {
               >
                 Tab
               </button>
+              <button
+                value="T"
+                className="bg-blue-600 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded transition-colors duration-200"
+                onClick={handleClick}
+              >
+                T
+              </button>
             </div>
           </>
         );
@@ -114,13 +122,13 @@ export default function Home() {
         <meta name="description" content="Welcome to Scas Attendance Scan" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
-        <link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400&amp;display=swap" rel="stylesheet"/>
-
+        <link
+          href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400&amp;display=swap"
+          rel="stylesheet"
+        />
       </Head>
       <main className="container mx-auto ">{renderComponent()}</main>
-      <div>
-
-      </div>
+      <div></div>
     </>
   );
 }
