@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from "react";
 import { QrReader } from "react-qr-reader";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { db } from "./firebase.js";
