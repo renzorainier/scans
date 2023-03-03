@@ -9,291 +9,74 @@ import {
 } from "firebase/firestore";
 import { db } from "./firebase.js";
 
-function TodayAttendance() {
-  const [todayAttendance, setTodayAttendance] = useState([]);
-  const [filteredAttendance, setFilteredAttendance] = useState([]);
-  const [selectedSection, setSelectedSection] = useState("");
-  const [searchQuery, setSearchQuery] = useState("");
-  const [isLoading, setIsLoading] = useState(true);
-  const [showInfo, setShowInfo] = useState(false);
-  const [infoText, setInfoText] = useState("");
 
+function useAttendanceData() {
+  const [attendanceData, setAttendanceData] = useState({});
   const sections = ["1A", "1B", "1C", "1D", "2A"];
 
   useEffect(() => {
-    const fetchAttendance = async () => {
-      const presentStudents = [];
-
+    const fetchData = async () => {
+      const data = {};
       for (const section of sections) {
         const sectionData = {};
-        const sectionQuerySnapshot = await getDocs(
-          collection(db, "STEM")
-        );
-        sectionQuerySnapshot.forEach((doc) => {
-          const data = doc.data();
-          Object.keys(data).forEach((key) => {
-            const studentId = key.slice(0, 2);
-            const fieldName = key.slice(2);
-            const studentData = sectionData[studentId] || {
-              id: studentId,
-              section,
-            };
-            studentData[fieldName] = data[key];
-            sectionData[studentId] = studentData;
+        const sectionDocs = await getDocs(collection(db, "STEM", section));
+        sectionDocs.forEach((doc) => {
+          const fields = doc.data();
+          const studentIdRegex = /(\d+)(.*)/;
+          Object.keys(fields).forEach((fieldName) => {
+            const match = fieldName.match(studentIdRegex);
+            if (match) {
+              const studentId = match[1];
+              const fieldSuffix = match[2];
+              if (!sectionData[studentId]) {
+                sectionData[studentId] = {};
+              }
+              sectionData[studentId][fieldSuffix] = fields[fieldName];
+            }
           });
         });
-        presentStudents.push(...Object.values(sectionData));
+        data[section] = sectionData;
       }
-
-      presentStudents.sort((a, b) => b.lastScan - a.lastScan);
-      setTodayAttendance(presentStudents);
-      setFilteredAttendance(presentStudents);
-      setIsLoading(false);
+      setAttendanceData(data);
     };
 
-    fetchAttendance();
-  }, [db, sections]);
+    fetchData();
+  }, []);
 
-  useEffect(() => {
-    const filteredStudents = todayAttendance.filter(
-      (student) =>
-        (!selectedSection || student.section === selectedSection) &&
-        (!searchQuery ||
-          `${student["name"]} ${student["surname"]}`
-            .toLowerCase()
-            .includes(searchQuery.toLowerCase()))
-    );
-    setFilteredAttendance(filteredStudents);
-  }, [selectedSection, searchQuery, todayAttendance]);
-
-  const handleSectionChange = (event) => {
-    setSelectedSection(event.target.value);
-  };
-
-  const handleSearchQueryChange = (event) => {
-    setSearchQuery(event.target.value);
-  };
-
-  const sortedAttendance = filteredAttendance.slice().sort((a, b) => {
-    if (a.lastScan && b.lastScan) {
-      return b.lastScan.getTime() - a.lastScan.getTime();
-    } else if (a.lastScan) {
-      return -1;
-    } else {
-      return 1;
-    }
-  });
-
-  if (isLoading) {
-    return (
-      <div>
-      </div>
-    );
-  }
-
-  function handleHeaderClick(text) {
-    setShowInfo(true);
-    setInfoText(text);
-  }
   return (
-    <div className="flex justify-center pt-1 items-center">
-      <div
-        className="w-full text-gray-700 bg-white p-5 text-sm rounded-lg shadow-lg mx-auto"
-        style={{ maxWidth: "90%" }}
-      >
-        <div className="bg-gray-200 relative rounded-lg">
-          {/* <img
-            src="https://static.planetminecraft.com/files/profile_banner/3800851_1.gif"
-            alt="background gif"
-            className="absolute top-0 left-0 w-full h-full object-cover z-0 rounded-lg"
-          /> */}
-          <div className="relative z-10">
-            <h2 className="text-gray-700 text-xl font-bold text-center">
-              Attendance For Today
-            </h2>
-            <h1 className="text-gray-700 font-bold text-base mb-4 text-center">
-              ({new Date().toLocaleDateString()})
-            </h1>
-          </div>
-        </div>
-
-        <div className="flex justify-between items-center mb-4">
-          <div className="flex items-center flex-grow">
-            <select
-              value={selectedSection}
-              onChange={handleSectionChange}
-              className="border rounded-md py-1 px-2 text-gray-700 w-full"
-            >
-              <option value="">All</option>
-              {sections.map((section) => (
-                <option key={section} value={section}>
-                  {section}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div className="flex items-center flex-grow">
-            <input
-              type="text"
-              value={searchQuery}
-              onChange={handleSearchQueryChange}
-              className="border rounded-md py-1 px-2 text-gray-700 w-full"
-              placeholder="Search by name"
-            />
-          </div>
-        </div>
-
-        <div className="overflow-x-auto rounded-lg">
-          <table className="table-auto w-full text-center ">
-            <thead className="bg-gray-200 text-" style={{ border: "none" }}>
-              <tr className="p-2 font-bold">
-                <th
-                  className="p-2 pb-4 pt-4 "
-                  onClick={() =>
-                    handleHeaderClick(
-                      "Index - shows the index of the students baseds on their scan time."
-                    )
-                  }
-                  style={{
-                    background: "transparent",
-                    fontWeight: "bold",
-                    cursor: "pointer",
-                  }}
-                >
-                  #
-                </th>
-                <th
-                  className="p-2"
-                  onClick={() =>
-                    handleHeaderClick("NAME - shows the name of the students")
-                  }
-                  style={{
-                    background: "transparent",
-                    fontWeight: "bold",
-                    cursor: "pointer",
-                  }}
-                >
-                  NAME
-                </th>
-                <th
-                  className="p-2"
-                  onClick={() =>
-                    handleHeaderClick(
-                      "STRAND - shows the strand of the students"
-                    )
-                  }
-                  style={{
-                    background: "transparent",
-                    fontWeight: "bold",
-                    cursor: "pointer",
-                  }}
-                >
-                  STRAND
-                </th>
-                <th
-                  className="p-2"
-                  onClick={() =>
-                    handleHeaderClick(
-                      "SEC - shows the section of the students."
-                    )
-                  }
-                  style={{
-                    background: "transparent",
-                    fontWeight: "bold",
-                    cursor: "pointer",
-                  }}
-                >
-                  SEC
-                </th>
-                <th
-                  className="p-2"
-                  onClick={() =>
-                    handleHeaderClick(
-                      "SCANNED - shows the time the students was scanned for the day, red means late, yellow means on time, and green means early."
-                    )
-                  }
-                  style={{
-                    background: "transparent",
-                    fontWeight: "bold",
-                    cursor: "pointer",
-                  }}
-                >
-                  SCANNED:
-                </th>
+    <div>
+      <p>adfasdf</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Student ID</th>
+          <th>Name</th>
+          <th>Last Scan</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        {Object.keys(attendanceData).map((section) => {
+          return Object.keys(attendanceData[section]).map((studentId) => {
+            const studentFields = attendanceData[section][studentId];
+            return (
+              <tr key={`${section}-${studentId}`}>
+                <td>{studentId}</td>
+                <td>{studentFields.name}</td>
+                <td>{studentFields.lastScan}</td>
+                <td>{studentFields.status}</td>
               </tr>
-            </thead>
-
-            <tbody>
-              {sortedAttendance.map((student, index) => (
-                <tr
-                  className={`${
-                    index % 2 === 0 ? "bg-gray-100" : "bg-gray-200"
-                  } rounded-lg mb-2`}
-                  key={student.id}
-                >
-                  <td className="p-2">{sortedAttendance.length - index}</td>
-                  <td className="p-2 font-bold whitespace-nowrap">
-                    {student.name}
-                  </td>
-                  <td className="p-2">{student.strand}</td>
-                  <td className="p-2 ">{student.section}</td>
-                  <td className="p-2 whitespace-nowrap">
-                    {student.attendanceStatus === "late" && (
-                      <div className="bg-[#EC7063] h-3 w-9 rounded-sm inline-block mr-1">
-                        {student.lastScan
-                          ? student.lastScan.toLocaleTimeString([], {
-                              hour: "numeric",
-                              minute: "2-digit",
-                            })
-                          : "N/A"}
-                      </div>
-                    )}
-                    {student.attendanceStatus === "ontime" && (
-                      <div className="bg-[#F7DC6F] h-3 w-9 rounded-sm inline-block mr-1">
-                        {student.lastScan
-                          ? student.lastScan.toLocaleTimeString([], {
-                              hour: "numeric",
-                              minute: "2-digit",
-                            })
-                          : "N/A"}
-                      </div>
-                    )}
-                    {student.attendanceStatus === "early" && (
-                      <div className="bg-[#2ECC71] h-3 w-9 rounded-sm inline-block mr-1">
-                        {student.lastScan
-                          ? student.lastScan.toLocaleTimeString([], {
-                              hour: "numeric",
-                              minute: "2-digit",
-                            })
-                          : "N/A"}
-                      </div>
-                    )}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-          {showInfo && (
-            <div
-              id="show"
-              className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2  max-w-90% bg-white p-5 rounded-lg shadow-lg inline-block"
-            >
-              <p className="text-gray-700 text-center">{infoText}</p>
-              <button
-                className="block mx-auto mt-4 px-4 py-2 bg-gray-700 text-white rounded-lg hover:bg-gray-600"
-                onClick={() => setShowInfo(false)}
-              >
-                Close
-              </button>
-            </div>
-          )}
-        </div>
-      </div>
+            );
+          });
+        })}
+      </tbody>
+    </table>
     </div>
+
   );
 }
 
-export default TodayAttendance;
+export default useAttendanceData
 
 
 
