@@ -44,6 +44,7 @@ function useAttendanceData() {
   }, []);
 
   return (
+    <div>
     <table>
       <thead>
         <tr>
@@ -69,6 +70,8 @@ function useAttendanceData() {
         })}
       </tbody>
     </table>
+    </div>
+
   );
 }
 
