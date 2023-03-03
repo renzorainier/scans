@@ -54,7 +54,7 @@ function TodayAttendance() {
             lastScan: student.lastScan?.toDate() || null,
             section,
             strand: sectionData.strand,
-            present: student.present
+            present: student.present,
             status: student.status,
             attendanceDifference: student.attendanceDifference,
           };
