@@ -15,25 +15,23 @@ function useAttendanceData() {
   useEffect(() => {
     const fetchData = async () => {
       const data = {};
-      const stemDocs = await getDocs(collection(db, "STEM"));
-      stemDocs.forEach((stemDoc) => {
-        const stem = stemDoc.id;
-        const sections = stemDoc.data();
-        if (!data[stem]) {
-          data[stem] = {};
+      const sectionDocs = await getDocs(collection(db, "STEM"));
+      sectionDocs.forEach((doc) => {
+        const fields = doc.data();
+        const section = doc.id;
+        if (!data[section]) {
+          data[section] = {};
         }
-        Object.keys(sections).forEach((section) => {
-          const sectionData = sections[section];
-          if (!data[stem][section]) {
-            data[stem][section] = {};
+        Object.keys(fields).forEach((fieldName) => {
+          const studentId = fieldName.substring(0, 2);
+          const dateId = fieldName.substring(2);
+          if (!data[section][studentId]) {
+            data[section][studentId] = {};
           }
-          Object.keys(sectionData).forEach((studentId) => {
-            const studentData = sectionData[studentId];
-            if (!data[stem][section][studentId]) {
-              data[stem][section][studentId] = {};
-            }
-            data[stem][section][studentId] = studentData;
-          });
+          if (!data[section][studentId][dateId]) {
+            data[section][studentId][dateId] = {};
+          }
+          data[section][studentId][dateId][fieldName] = fields[fieldName];
         });
       });
       setAttendanceData(data);
@@ -45,11 +43,10 @@ function useAttendanceData() {
 
   return (
     <div>
+      <p>adfasdf</p>
       <table>
         <thead>
           <tr>
-            <th>STEM</th>
-            <th>Section</th>
             <th>Student ID</th>
             <th>Name</th>
             <th>Last Scan</th>
@@ -57,28 +54,28 @@ function useAttendanceData() {
           </tr>
         </thead>
         <tbody>
-          {Object.keys(attendanceData).map((stem) => (
-            Object.keys(attendanceData[stem]).map((section) => (
-              Object.keys(attendanceData[stem][section]).map((studentId) => {
-                const student = attendanceData[stem][section][studentId];
-                return (
-                  <tr key={`${stem}-${section}-${studentId}`}>
-                    <td>{stem}</td>
-                    <td>{section}</td>
-                    <td>{studentId}</td>
-                    <td>{student.name}</td>
-                    <td>{student.lastScan}</td>
-                    <td>{student.status}</td>
-                  </tr>
-                );
-              })
-            ))
-          ))}
+          {Object.keys(attendanceData).map((section) => {
+            return Object.keys(attendanceData[section]).map((studentId) => {
+              return (
+                <tr key={`${section}-${studentId}`}>
+                  <td>{studentId}</td>
+                  <td>
+                    {attendanceData[section][studentId]["01"]["name"]}
+                  </td>
+                  <td>
+                    {attendanceData[section][studentId]["01"]["lastScan"]}
+                  </td>
+                  <td>
+                    {attendanceData[section][studentId]["01"]["status"]}
+                  </td>
+                </tr>
+              );
+            });
+          })}
         </tbody>
       </table>
     </div>
   );
-
 }
 
 export default useAttendanceData;
