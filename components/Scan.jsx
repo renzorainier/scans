@@ -27,6 +27,12 @@ function Scan() {
         'Friday': {
           'startTime': '08:00:00',
         },
+        'Saturday': {
+          'startTime': '08:00:00',
+        },
+        'Sunday': {
+          'startTime': '08:00:00',
+        },
       },
 
     },
