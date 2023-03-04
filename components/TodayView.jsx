@@ -21,7 +21,7 @@ function useAttendanceData() {
         const sectionDocs = await getDocs(collection(db, "STEM"));
         sectionDocs.forEach((doc) => {
           const fields = doc.data();
-          const studentIdRegex = /(\d+)(.*)/;
+          const studentIdRegex = /(\d{2})(.*)/;
           Object.keys(fields).forEach((fieldName) => {
             const match = fieldName.match(studentIdRegex);
             if (match) {
@@ -30,7 +30,10 @@ function useAttendanceData() {
               if (!sectionData[fieldSuffix]) {
                 sectionData[fieldSuffix] = {};
               }
-              sectionData[fieldSuffix][studentId] = fields[fieldName];
+              if (!sectionData[fieldSuffix][studentId]) {
+                sectionData[fieldSuffix][studentId] = {};
+              }
+              sectionData[fieldSuffix][studentId][doc.id] = fields[fieldName];
             }
           });
         });
@@ -60,12 +63,21 @@ function useAttendanceData() {
               const studentFields = attendanceData[section][fieldSuffix];
               return Object.keys(studentFields).map((studentId) => {
                 const student = studentFields[studentId];
+                const studentData = Object.values(student).reduce(
+                  (acc, curr) => {
+                    return {
+                      ...acc,
+                      ...curr,
+                    };
+                  },
+                  {}
+                );
                 return (
                   <tr key={`${section}-${fieldSuffix}-${studentId}`}>
                     <td>{studentId}</td>
-                    <td>{student.name}</td>
-                    <td>{student.lastScan}</td>
-                    <td>{student.status}</td>
+                    <td>{studentData.name}</td>
+                    <td>{studentData.lastScan}</td>
+                    <td>{studentData.status}</td>
                   </tr>
                 );
               });
@@ -77,7 +89,7 @@ function useAttendanceData() {
   );
 }
 
-export default useAttendanceData;
+export default useAttendanceData
 
 
 
