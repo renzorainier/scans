@@ -29,7 +29,10 @@ function useAttendanceData() {
             data[section][studentId] = {};
           }
           if (!data[section][studentId][dateId]) {
-            data[section][studentId][dateId] = {};
+            data[section][studentId][dateId] = {
+              studentId: studentId,
+              dateId: dateId,
+            };
           }
           data[section][studentId][dateId][fieldName] = fields[fieldName];
         });
@@ -40,6 +43,7 @@ function useAttendanceData() {
 
     fetchData();
   }, []);
+
 
   return (
     <div>
