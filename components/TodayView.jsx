@@ -53,10 +53,15 @@ function AttendanceTable() {
       Object.keys(sectionData).forEach((studentId) => {
         const studentData = sectionData[studentId];
         if (studentData.present === true) {
+          // Convert the lastScan object to a string
+          const lastScan = new Date(
+            studentData.lastScan.seconds * 1000
+          ).toLocaleString();
           presentStudents.push({
             section,
             studentId,
             ...studentData,
+            lastScan
           });
         }
       });
@@ -92,6 +97,7 @@ function AttendanceTable() {
     </div>
   );
 }
+
 
 export default AttendanceTable;
 
