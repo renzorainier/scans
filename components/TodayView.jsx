@@ -9,7 +9,6 @@ import {
 } from "firebase/firestore";
 import { db } from "./firebase.js";
 
-
 function useAttendanceData() {
   const [attendanceData, setAttendanceData] = useState({});
   const sections = ["1A", "1B", "1C", "1D", "2A"];
@@ -28,10 +27,10 @@ function useAttendanceData() {
             if (match) {
               const studentId = match[1];
               const fieldSuffix = match[2];
-              if (!sectionData[studentId]) {
-                sectionData[studentId] = {};
+              if (!sectionData[fieldSuffix]) {
+                sectionData[fieldSuffix] = {};
               }
-              sectionData[studentId][fieldSuffix] = fields[fieldName];
+              sectionData[fieldSuffix][studentId] = fields[fieldName];
             }
           });
         });
@@ -46,37 +45,40 @@ function useAttendanceData() {
   return (
     <div>
       <p>adfasdf</p>
-    <table>
-      <thead>
-        <tr>
-          <th>Student ID</th>
-          <th>Name</th>
-          <th>Last Scan</th>
-          <th>Status</th>
-        </tr>
-      </thead>
-      <tbody>
-        {Object.keys(attendanceData).map((section) => {
-          return Object.keys(attendanceData[section]).map((studentId) => {
-            const studentFields = attendanceData[section][studentId];
-            return (
-              <tr key={`${section}-${studentId}`}>
-                <td>{studentId}</td>
-                <td>{studentFields.name}</td>
-                <td>{studentFields.lastScan}</td>
-                <td>{studentFields.status}</td>
-              </tr>
-            );
-          });
-        })}
-      </tbody>
-    </table>
+      <table>
+        <thead>
+          <tr>
+            <th>Student ID</th>
+            <th>Name</th>
+            <th>Last Scan</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          {Object.keys(attendanceData).map((section) => {
+            return Object.keys(attendanceData[section]).map((fieldSuffix) => {
+              const studentFields = attendanceData[section][fieldSuffix];
+              return Object.keys(studentFields).map((studentId) => {
+                const student = studentFields[studentId];
+                return (
+                  <tr key={`${section}-${fieldSuffix}-${studentId}`}>
+                    <td>{studentId}</td>
+                    <td>{student.name}</td>
+                    <td>{student.lastScan}</td>
+                    <td>{student.status}</td>
+                  </tr>
+                );
+              });
+            });
+          })}
+        </tbody>
+      </table>
     </div>
-
   );
 }
 
-export default useAttendanceData
+export default useAttendanceData;
+
 
 
 
