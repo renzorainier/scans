@@ -117,10 +117,11 @@ function AttendanceTable() {
             value={searchQuery}
             onChange={handleSearchQueryChange}
             className="border rounded-md py-1 px-2 text-gray-700 w-full"
-            placeholder="Search by"
-            />
+            placeholder="Search by name"
+          />
+        </div>
       </div>
-      </div>
+
       <table>
         <thead>
           <tr>
@@ -129,18 +130,17 @@ function AttendanceTable() {
             <th>Strand</th>
             <th>Sec</th>
             <th>Status</th>
-            {/* Add more table headers here */}
           </tr>
         </thead>
         <tbody>
-          {attendanceData.map((student, index) => (
+          {filteredAttendance.map((student, index) => (
             <tr
               className={`${
                 index % 2 === 0 ? "bg-gray-100" : "bg-gray-200"
               } rounded-lg mb-2`}
               key={student.studentId}
             >
-              <td className="p-2">{attendanceData.length - index}</td>
+              <td className="p-2">{filteredAttendance.length - index}</td>
               <td>{student.name}</td>
               <td className="p-2">{student.strand}</td>
               <td className="p-2 ">{student.section}</td>
@@ -161,13 +161,13 @@ function AttendanceTable() {
                   </div>
                 )}
               </td>
-              {/* Add more table cells here */}
             </tr>
           ))}
         </tbody>
       </table>
     </div>
   );
+
 }
 
 export default AttendanceTable;
