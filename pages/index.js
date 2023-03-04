@@ -7,7 +7,6 @@ import SavePresentStudents from "components/Save";
 import Generate from "components/Generate";
 import StudentCollection from "components/Create";
 import TabSelector from "components/Tab";
-import useAttendanceData from "components/T";
 
 export default function Home() {
   const [component, setComponent] = useState("");
@@ -32,8 +31,7 @@ export default function Home() {
         return <StudentCollection />;
       case "Tab":
         return <TabSelector />;
-      case "T":
-        return <useAttendanceData />;
+
       default:
         return (
           <>
@@ -93,13 +91,7 @@ export default function Home() {
               >
                 Tab
               </button>
-              <button
-                value="T"
-                className="bg-blue-600 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded transition-colors duration-200"
-                onClick={handleClick}
-              >
-                T
-              </button>
+          
             </div>
           </>
         );
