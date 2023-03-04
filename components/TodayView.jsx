@@ -108,9 +108,9 @@ function AttendanceTable() {
             onChange={(event) => setSearchText(event.target.value)}
           >
             <option value="">All</option>
-            <option value="10-">10-</option>
-            <option value="11-">11-</option>
-            <option value="12-">12-</option>
+            <option value="1A">1A</option>
+            <option value="1B">1B</option>
+            <option value="1C">1C</option>
           </select>
         </div>
         </div>
