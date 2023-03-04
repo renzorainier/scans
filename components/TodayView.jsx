@@ -77,7 +77,6 @@ function AttendanceTable() {
       <table>
         <thead>
           <tr>
-            <th>Student Id</th>
             <th>Name</th>
             <th>Last Scan</th>
             <th>Status</th>
@@ -87,7 +86,6 @@ function AttendanceTable() {
         <tbody>
           {presentStudents.map((student) => (
             <tr key={student.studentId}>
-              <td>{student.studentId}</td>
               <td>{student.name}</td>
               <td>{student.lastScan}</td>
               <td>{student.status}</td>
