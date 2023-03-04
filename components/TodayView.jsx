@@ -480,49 +480,49 @@ export default AttendanceTable;
 //       <table>
 //         <thead>
 //           <tr>"p-2">{student.strand}</td>
-              <td className="p-2 ">{student.section}</td>
-              <td className="p-2 whitespace-nowrap">
-                {student.status === "late" && (
-                  <div className="bg-[#EC7063] h-3 w-9 rounded-sm inline-block mr-1">
-                    {student.lastScanTime}
-                  </div>
-                )}
-                {student.status === "ontime" && (
-                  <div className="bg-[#F7DC6F] h-3 w-9 rounded-sm inline-block mr-1">
-                    {student.lastScanTime}
-                  </div>
-                )}
-                {student.status === "early" && (
-                  <div className="bg-[#2ECC71] h-3 w-9 rounded-sm inline-block mr-1">
-                    {student.lastScanTime}
-                  </div>
-                )}
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-  );
+//               <td className="p-2 ">{student.section}</td>
+//               <td className="p-2 whitespace-nowrap">
+//                 {student.status === "late" && (
+//                   <div className="bg-[#EC7063] h-3 w-9 rounded-sm inline-block mr-1">
+//                     {student.lastScanTime}
+//                   </div>
+//                 )}
+//                 {student.status === "ontime" && (
+//                   <div className="bg-[#F7DC6F] h-3 w-9 rounded-sm inline-block mr-1">
+//                     {student.lastScanTime}
+//                   </div>
+//                 )}
+//                 {student.status === "early" && (
+//                   <div className="bg-[#2ECC71] h-3 w-9 rounded-sm inline-block mr-1">
+//                     {student.lastScanTime}
+//                   </div>
+//                 )}
+//               </td>
+//             </tr>
+//           ))}
+//         </tbody>
+//       </table>
+//     </div>
+//   );
 
-}
+// }
 
-export default AttendanceTable;
-            <th>#</th>
-            <th>Name</th>
-            <th>Strand</th>
-            <th>Sec</th>
-            <th>Status</th>
-          </tr>
-        </thead>
-        <tbody>
-          {filteredAttendance.map((student, index) => (
-            <tr
-              className={`${
-                index % 2 === 0 ? "bg-gray-100" : "bg-gray-200"
-              } rounded-lg mb-2`}
-              key={student.studentId}
-            >
-              <td className="p-2">{filteredAttendance.length - index}</td>
-              <td>{student.name}</td>
-              <td className=
+// export default AttendanceTable;
+//             <th>#</th>
+//             <th>Name</th>
+//             <th>Strand</th>
+//             <th>Sec</th>
+//             <th>Status</th>
+//           </tr>
+//         </thead>
+//         <tbody>
+//           {filteredAttendance.map((student, index) => (
+//             <tr
+//               className={`${
+//                 index % 2 === 0 ? "bg-gray-100" : "bg-gray-200"
+//               } rounded-lg mb-2`}
+//               key={student.studentId}
+//             >
+//               <td className="p-2">{filteredAttendance.length - index}</td>
+//               <td>{student.name}</td>
+//               <td className=
