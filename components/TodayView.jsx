@@ -18,7 +18,7 @@ function useAttendanceData() {
       const data = {};
       for (const section of sections) {
         const sectionData = {};
-        const sectionDocs = await getDocs(collection(db, "STEM", section));
+        const sectionDocs = await getDocs(collection(db, "STEM"));
         sectionDocs.forEach((doc) => {
           const fields = doc.data();
           const studentIdRegex = /(\d+)(.*)/;
