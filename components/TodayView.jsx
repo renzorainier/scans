@@ -65,30 +65,32 @@ function useAttendanceData() {
   };
 }
 
-function AttendanceTable() {
-  const { presentStudents } = useAttendanceData();
+function AttendanceTable({attendanceData}) {
+  const presentStudents = getPresentStudents(attendanceData);
 
   return (
-    <table>
-      <thead>
-        <tr>
-          <th>StudentId</th>
-          <th>Name</th>
-          <th>Last Scan</th>
-          {/* add more headers for additional fields */}
-        </tr>
-      </thead>
-      <tbody>
-        {presentStudents.map((student) => (
-          <tr key={`${student.section}-${student.studentId}`}>
-            <td>{student.studentId}</td>
-            <td>{`${student.firstName} ${student.lastName}`}</td>
-            <td>{student.lastScan}</td>
-            {/* add more columns for additional fields */}
+    <div>
+      <table>
+        <thead>
+          <tr>
+            <th>Student Id</th>
+            <th>Name</th>
+            <th>Last Scan</th>
+            {/* Add more table headers here */}
           </tr>
-        ))}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {presentStudents.map((student) => (
+            <tr key={student.studentId}>
+              <td>{student.studentId}</td>
+              <td>{student.name}</td>
+              <td>{student.lastScan}</td>
+              {/* Add more table cells here */}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 }
 
