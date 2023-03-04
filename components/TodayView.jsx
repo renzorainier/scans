@@ -24,7 +24,7 @@ function useAttendanceData() {
         }
         Object.keys(fields).forEach((fieldName) => {
           const studentId = fieldName.substring(0, 2);
-          const fieldNameWithoutNumber = fieldName.replace(/[0-9]/g, '');
+          const fieldNameWithoutNumber = fieldName.replace(/[0-9]g/, '');
           if (!data[section][studentId]) {
             data[section][studentId] = {};
           }
