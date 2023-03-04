@@ -21,20 +21,13 @@ function useAttendanceData() {
         const sectionDocs = await getDocs(collection(db, "STEM"));
         sectionDocs.forEach((doc) => {
           const fields = doc.data();
-          const studentIdRegex = /(\d{2})(.*)/;
           Object.keys(fields).forEach((fieldName) => {
-            const match = fieldName.match(studentIdRegex);
-            if (match) {
-              const studentId = match[1];
-              const fieldSuffix = match[2];
-              if (!sectionData[fieldSuffix]) {
-                sectionData[fieldSuffix] = {};
-              }
-              if (!sectionData[fieldSuffix][studentId]) {
-                sectionData[fieldSuffix][studentId] = {};
-              }
-              sectionData[fieldSuffix][studentId][doc.id] = fields[fieldName];
+            const prefix = fieldName.substring(0, 2);
+            const studentId = fieldName.substring(2);
+            if (!sectionData[prefix]) {
+              sectionData[prefix] = {};
             }
+            sectionData[prefix][studentId] = fields[fieldName];
           });
         });
         data[section] = sectionData;
@@ -59,25 +52,16 @@ function useAttendanceData() {
         </thead>
         <tbody>
           {Object.keys(attendanceData).map((section) => {
-            return Object.keys(attendanceData[section]).map((fieldSuffix) => {
-              const studentFields = attendanceData[section][fieldSuffix];
+            return Object.keys(attendanceData[section]).map((prefix) => {
+              const studentFields = attendanceData[section][prefix];
               return Object.keys(studentFields).map((studentId) => {
                 const student = studentFields[studentId];
-                const studentData = Object.values(student).reduce(
-                  (acc, curr) => {
-                    return {
-                      ...acc,
-                      ...curr,
-                    };
-                  },
-                  {}
-                );
                 return (
-                  <tr key={`${section}-${fieldSuffix}-${studentId}`}>
+                  <tr key={`${section}-${prefix}-${studentId}`}>
                     <td>{studentId}</td>
-                    <td>{studentData.name}</td>
-                    <td>{studentData.lastScan}</td>
-                    <td>{studentData.status}</td>
+                    <td>{student.name}</td>
+                    <td>{student.lastScan}</td>
+                    <td>{student.status}</td>
                   </tr>
                 );
               });
@@ -89,8 +73,7 @@ function useAttendanceData() {
   );
 }
 
-export default useAttendanceData
-
+export default useAttendanceData;
 
 
 
