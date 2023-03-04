@@ -4,13 +4,23 @@ import { db } from "./firebase";
 
 function StudentCollection() {
   const [students, setStudents] = useState([
-    { id: "01", lrn: "402969160037", name: "ALARCON, RHYZEA", section: "ST-1A", strand: "STEM", present: false },
-    { id: "02", lrn: "109339100105", name: "BANTOG, THAMZ JAZLEY", section: "1A", strand: "STEM", present: false },
-    { id: "03", lrn: "114235070063", name: "BUCOG, JESSIELYN", section: "1A", strand: "STEM", present: false },
+    { id: "01", lrn: "109351121643", name: "PUREZA, XEDRICK", section: "ST-1B", strand: "STEM", present: false },
+    { id: "02", lrn: "109311100219", name: "ILAO, GIAN RUSSEL", section: "1B", strand: "STEM", present: false },
+    { id: "03", lrn: "425707150124", name: "REGIS, YESTIN GABRIEL", section: "1B", strand: "STEM", present: false },
   ]);
 
+
+  // { id: "109351121643", name: "PUREZA, XEDRICK", section: "ST-1A", strand: "STEM" },
+  // { id: "109311100219", name: "ILAO, GIAN RUSSEL", section: "ST-1A", strand: "STEM" },
+  // { id: "425707150124", name: "REGIS, YESTIN GABRIEL", section: "ST-1A", strand: "STEM" }
+
+
+  // { id: "01", lrn: "402969160037", name: "ALARCON, RHYZEA", section: "ST-1A", strand: "STEM", present: false },
+  // { id: "02", lrn: "109339100105", name: "BANTOG, THAMZ JAZLEY", section: "1A", strand: "STEM", present: false },
+  // { id: "03", lrn: "114235070063", name: "BUCOG, JESSIELYN", section: "1A", strand: "STEM", present: false },
+
   const createCollection = async () => {
-    const sectionDocRef = doc(db, "STEM", "1A");
+    const sectionDocRef = doc(db, "STEM", "1B");
     const sectionData = {};
 
     students.forEach((student) => {
