@@ -11,27 +11,22 @@ import { db } from "./firebase.js";
 
 function useAttendanceData() {
   const [attendanceData, setAttendanceData] = useState({});
-  const sections = ["1A", "1B", "1C", "1D", "2A"];
 
   useEffect(() => {
     const fetchData = async () => {
       const data = {};
-      for (const section of sections) {
-        const sectionData = {};
-        const sectionDocs = await getDocs(collection(db, "STEM"));
-        sectionDocs.forEach((doc) => {
-          const fields = doc.data();
-          Object.keys(fields).forEach((fieldName) => {
-            const prefix = fieldName.substring(0, 2);
-            const studentId = fieldName.substring(2);
-            if (!sectionData[prefix]) {
-              sectionData[prefix] = {};
-            }
-            sectionData[prefix][studentId] = fields[fieldName];
-          });
+      const sectionDocs = await getDocs(collection(db, "STEM"));
+      sectionDocs.forEach((doc) => {
+        const fields = doc.data();
+        Object.keys(fields).forEach((fieldName) => {
+          const prefix = fieldName.substring(0, 2);
+          const studentId = fieldName.substring(2);
+          if (!data[prefix]) {
+            data[prefix] = {};
+          }
+          data[prefix][studentId] = fields[fieldName];
         });
-        data[section] = sectionData;
-      }
+      });
       setAttendanceData(data);
       console.log(data); // log the formatted data to the console
     };
@@ -52,20 +47,18 @@ function useAttendanceData() {
           </tr>
         </thead>
         <tbody>
-          {Object.keys(attendanceData).map((section) => {
-            return Object.keys(attendanceData[section]).map((prefix) => {
-              const studentFields = attendanceData[section][prefix];
-              return Object.keys(studentFields).map((studentId) => {
-                const student = studentFields[studentId];
-                return (
-                  <tr key={`${section}-${prefix}-${studentId}`}>
-                    <td>{studentId}</td>
-                    <td>{student.name}</td>
-                    <td>{student.lastScan}</td>
-                    <td>{student.status}</td>
-                  </tr>
-                );
-              });
+          {Object.keys(attendanceData).map((prefix) => {
+            const studentFields = attendanceData[prefix];
+            return Object.keys(studentFields).map((studentId) => {
+              const student = studentFields[studentId];
+              return (
+                <tr key={`${prefix}-${studentId}`}>
+                  <td>{studentId}</td>
+                  <td>{student.name}</td>
+                  <td>{student.lastScan}</td>
+                  <td>{student.status}</td>
+                </tr>
+              );
             });
           })}
         </tbody>
@@ -75,6 +68,7 @@ function useAttendanceData() {
 }
 
 export default useAttendanceData;
+
 
 
 
