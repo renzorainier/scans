@@ -24,14 +24,13 @@ function useAttendanceData() {
         }
         Object.keys(fields).forEach((fieldName) => {
           const studentId = fieldName.substring(0, 2);
-          const dateId = fieldName.substring(2);
           if (!data[section][studentId]) {
             data[section][studentId] = {};
           }
-          if (!data[section][studentId][dateId]) {
-            data[section][studentId][dateId] = {};
+          if (!data[section][studentId]) {
+            data[section][studentId] = {};
           }
-          data[section][studentId][dateId][fieldName] = fields[fieldName];
+          data[section][studentId][fieldName] = fields[fieldName];
         });
       });
       setAttendanceData(data);
