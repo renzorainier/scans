@@ -126,14 +126,14 @@ function AttendanceTable() {
           </tr>
         </thead>
         <tbody>
-          {filteredAttendance.map((student, index) => (
+          {filteredStudents.map((student, index) => (
             <tr
               className={`${
                 index % 2 === 0 ? "bg-gray-100" : "bg-gray-200"
               } rounded-lg mb-2`}
               key={student.studentId}
             >
-              <td className="p-2">{filteredAttendance.length - index}</td>
+              <td className="p-2">{filteredStudents.length - index}</td>
               <td>{student.name}</td>
               <td className="p-2">{student.strand}</td>
               <td className="p-2 ">{student.section}</td>
