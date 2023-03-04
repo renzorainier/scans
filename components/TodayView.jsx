@@ -17,12 +17,17 @@ function useAttendanceData() {
       const data = {};
       const sectionDocs = await getDocs(collection(db, "STEM"));
       sectionDocs.forEach((doc) => {
-        const section = doc.id;
-        data[section] = {};
         const fields = doc.data();
+        const section = doc.id;
+        if (!data[section]) {
+          data[section] = {};
+        }
         Object.keys(fields).forEach((fieldName) => {
           const studentId = fieldName.substring(2);
-          data[section][studentId] = fields[fieldName];
+          if (!data[section][studentId]) {
+            data[section][studentId] = {};
+          }
+          data[section][studentId][fieldName] = fields[fieldName];
         });
       });
       setAttendanceData(data);
@@ -46,9 +51,8 @@ function useAttendanceData() {
         </thead>
         <tbody>
           {Object.keys(attendanceData).map((section) => {
-            const studentFields = attendanceData[section];
-            return Object.keys(studentFields).map((studentId) => {
-              const student = studentFields[studentId];
+            return Object.keys(attendanceData[section]).map((studentId) => {
+              const student = attendanceData[section][studentId];
               return (
                 <tr key={`${section}-${studentId}`}>
                   <td>{studentId}</td>
