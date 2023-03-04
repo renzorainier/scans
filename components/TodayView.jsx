@@ -24,7 +24,7 @@ function useAttendanceData() {
         }
         Object.keys(fields).forEach((fieldName) => {
           const studentId = fieldName.substring(0, 2);
-          const fieldNameWithoutNumber = fieldName.replace(/[0-9]g/, '');
+          const fieldNameWithoutNumber = fieldName.replace(/[0-9]/g, "");
           if (!data[section][studentId]) {
             data[section][studentId] = {};
           }
@@ -32,50 +32,63 @@ function useAttendanceData() {
         });
       });
       setAttendanceData(data);
-      console.log(data); // log the formatted data to the console
     };
-
 
     fetchData();
   }, []);
 
-  return (
-    <div>
-      <p>adfasdf</p>
-      <table>
-  <thead>
-    <tr>
-      <th>StudentId</th>
-      <th>Name</th>
-      <th>Last scan</th>
-    </tr>
-  </thead>
-  <tbody>
-    {Object.keys(attendanceData).map((sectionId) => {
-      return Object.keys(attendanceData[sectionId]).map((studentId) => {
-        const studentData = attendanceData[sectionId][studentId];
-        const isPresent = Object.keys(studentData).some((dateId) => {
-          const fieldData = studentData[dateId];
-          return fieldData.present === true;
-        });
-        if (isPresent) {
-          // Render a row for this student
-          return (
-            <tr key={`${sectionId}-${studentId}`}>
-              <td>{studentId}</td>
-              <td>{studentData.name}</td>
-              <td>{studentData.lastScan}</td>
-              {/* Render more table cells as needed */}
-            </tr>
-          );
-        } else {
-          return null; // Don't render anything for this student
+  const getPresentStudents = () => {
+    const presentStudents = [];
+
+    Object.keys(attendanceData).forEach((section) => {
+      const sectionData = attendanceData[section];
+      Object.keys(sectionData).forEach((studentId) => {
+        const studentData = sectionData[studentId];
+        if (studentData.present === true) {
+          presentStudents.push({
+            section,
+            studentId,
+            ...studentData,
+          });
         }
       });
-    })}
-  </tbody>
-</table>
-    </div>
+    });
+
+    return presentStudents;
+  };
+
+  const presentStudents = getPresentStudents();
+
+  return {
+    attendanceData,
+    presentStudents,
+  };
+}
+
+function AttendanceTable() {
+  const { presentStudents } = useAttendanceData();
+
+  return (
+    <table>
+      <thead>
+        <tr>
+          <th>StudentId</th>
+          <th>Name</th>
+          <th>Last Scan</th>
+          {/* add more headers for additional fields */}
+        </tr>
+      </thead>
+      <tbody>
+        {presentStudents.map((student) => (
+          <tr key={`${student.section}-${student.studentId}`}>
+            <td>{student.studentId}</td>
+            <td>{`${student.firstName} ${student.lastName}`}</td>
+            <td>{student.lastScan}</td>
+            {/* add more columns for additional fields */}
+          </tr>
+        ))}
+      </tbody>
+    </table>
   );
 }
 
