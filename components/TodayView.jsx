@@ -17,14 +17,12 @@ function useAttendanceData() {
       const data = {};
       const sectionDocs = await getDocs(collection(db, "STEM"));
       sectionDocs.forEach((doc) => {
+        const section = doc.id;
+        data[section] = {};
         const fields = doc.data();
         Object.keys(fields).forEach((fieldName) => {
-          const prefix = fieldName.substring(0, 2);
           const studentId = fieldName.substring(2);
-          if (!data[prefix]) {
-            data[prefix] = {};
-          }
-          data[prefix][studentId] = fields[fieldName];
+          data[section][studentId] = fields[fieldName];
         });
       });
       setAttendanceData(data);
@@ -47,12 +45,12 @@ function useAttendanceData() {
           </tr>
         </thead>
         <tbody>
-          {Object.keys(attendanceData).map((prefix) => {
-            const studentFields = attendanceData[prefix];
+          {Object.keys(attendanceData).map((section) => {
+            const studentFields = attendanceData[section];
             return Object.keys(studentFields).map((studentId) => {
               const student = studentFields[studentId];
               return (
-                <tr key={`${prefix}-${studentId}`}>
+                <tr key={`${section}-${studentId}`}>
                   <td>{studentId}</td>
                   <td>{student.name}</td>
                   <td>{student.lastScan}</td>
@@ -68,8 +66,6 @@ function useAttendanceData() {
 }
 
 export default useAttendanceData;
-
-
 
 
 
