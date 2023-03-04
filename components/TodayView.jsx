@@ -55,7 +55,7 @@ function AttendanceTable() {
       .map((section) =>
         Object.keys(attendanceData[section]).map((studentId) => {
           const studentData = attendanceData[section][studentId];
-          if (studentData.present === true) {
+          if (studentData.present === true && studentData.name) { // Fix null name error
             const lastScanDate = new Date(studentData.lastScan.seconds * 1000);
             const lastScanTime = lastScanDate.toLocaleTimeString([], {
               hour: "numeric",
