@@ -46,81 +46,74 @@ function useAttendanceData() {
 function AttendanceTable() {
   const { attendanceData } = useAttendanceData();
 
-  const [selectedSection, setSelectedSection] = useState("");
-  const [searchQuery, setSearchQuery] = useState("");
-  const [filteredAttendance, setFilteredAttendance] = useState([]);
+  const [searchText, setSearchText] = useState("");
+  const [filteredStudents, setFilteredStudents] = useState([]);
+
+  const getPresentStudents = () => {
+    const presentStudents = [];
+
+    Object.keys(attendanceData).forEach((section) => {
+      const sectionData = attendanceData[section];
+      Object.keys(sectionData).forEach((studentId) => {
+        const studentData = sectionData[studentId];
+        if (studentData.present === true) {
+          // Convert the lastScan object to a string and timestamp
+          const lastScanDate = new Date(studentData.lastScan.seconds * 1000);
+          const lastScanTime = lastScanDate.toLocaleTimeString([], {
+            hour: "numeric",
+            minute: "2-digit",
+          })
+          const lastScanTimestamp = lastScanDate.getTime();
+
+          presentStudents.push({
+            section,
+            studentId,
+            ...studentData,
+            lastScanTime,
+            lastScanTimestamp,
+          });
+        }
+      });
+    });
+
+    // Sort presentStudents by lastScanTimestamp in descending order
+    presentStudents.sort((a, b) => b.lastScanTimestamp - a.lastScanTimestamp);
+
+    return presentStudents;
+  };
 
   useEffect(() => {
-    const filteredStudents = Object.keys(attendanceData)
-      .map((section) =>
-        Object.keys(attendanceData[section]).map((studentId) => {
-          const studentData = attendanceData[section][studentId];
-          if (studentData.present === true && studentData.name) { // Fix null name error
-            const lastScanDate = new Date(studentData.lastScan.seconds * 1000);
-            const lastScanTime = lastScanDate.toLocaleTimeString([], {
-              hour: "numeric",
-              minute: "2-digit",
-            });
-            const lastScanTimestamp = lastScanDate.getTime();
+    const presentStudents = getPresentStudents();
+    const filteredStudents = presentStudents.filter((student) =>
+      student.name.toLowerCase().includes(searchText.toLowerCase())
+    );
+    setFilteredStudents(filteredStudents);
+  }, [attendanceData, searchText]);
 
-            return {
-              section,
-              studentId,
-              ...studentData,
-              lastScanTime,
-              lastScanTimestamp,
-            };
-          } else {
-            return null;
-          }
-        })
-      )
-      .flat()
-      .filter(
-        (student) =>
-          (!selectedSection || student.section === selectedSection) &&
-          (!searchQuery ||
-            student.name.toLowerCase().includes(searchQuery.toLowerCase()))
-      );
-
-    setFilteredAttendance(filteredStudents);
-  }, [selectedSection, searchQuery, attendanceData]);
-
-  const handleSectionChange = (event) => {
-    setSelectedSection(event.target.value);
-  };
-
-  const handleSearchQueryChange = (event) => {
-    setSearchQuery(event.target.value);
-  };
+  const presentStudents = filteredStudents;
 
   return (
     <div>
       <div className="flex justify-between items-center mb-4">
-        <div className="flex items-center flex-grow">
+        <div className="flex">
+          <input
+            className="border border-gray-400 rounded-lg py-2 px-4 mr-2"
+            type="text"
+            placeholder="Search students..."
+            value={searchText}
+            onChange={(event) => setSearchText(event.target.value)}
+          />
           <select
-            value={selectedSection}
-            onChange={handleSectionChange}
-            className="border rounded-md py-1 px-2 text-gray-700 w-full"
+            className="border border-gray-400 rounded-lg py-2 px-4"
+            onChange={(event) => setSearchText(event.target.value)}
           >
             <option value="">All</option>
-            {Object.keys(attendanceData).map((section) => (
-              <option key={section} value={section}>
-                {section}
-              </option>
-            ))}
+            <option value="10-">10-</option>
+            <option value="11-">11-</option>
+            <option value="12-">12-</option>
           </select>
         </div>
-        <div className="flex items-center flex-grow">
-          <input
-            type="text"
-            value={searchQuery}
-            onChange={handleSearchQueryChange}
-            className="border rounded-md py-1 px-2 text-gray-700 w-full"
-            placeholder="Search by name"
-          />
         </div>
-      </div>
 
       <table>
         <thead>
