@@ -35,6 +35,7 @@ function useAttendanceData() {
         });
       });
       setAttendanceData(data);
+      console.log(data); // log the formatted data to the console
     };
 
     fetchData();
@@ -42,39 +43,37 @@ function useAttendanceData() {
 
   return (
     <div>
-      {Object.keys(attendanceData).map((section) => {
-        return (
-          <div key={section}>
-            <h3>{section}</h3>
-            <table>
-              <thead>
-                <tr>
-                  <th>Student ID</th>
-                  <th>Name</th>
-                  <th>Last Scan</th>
-                  <th>Status</th>
+      <p>adfasdf</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Student ID</th>
+            <th>Name</th>
+            <th>Last Scan</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          {Object.keys(attendanceData).map((section) => {
+            return Object.keys(attendanceData[section]).map((studentId) => {
+              return (
+                <tr key={`${section}-${studentId}`}>
+                  <td>{studentId}</td>
+                  <td>
+                    {attendanceData[section][studentId]["01"]["name"]}
+                  </td>
+                  <td>
+                    {attendanceData[section][studentId]["01"]["lastScan"]}
+                  </td>
+                  <td>
+                    {attendanceData[section][studentId]["01"]["status"]}
+                  </td>
                 </tr>
-              </thead>
-              <tbody>
-                {Object.keys(attendanceData[section]).map((studentId) => {
-                  const student = attendanceData[section][studentId];
-                  return Object.keys(student).map((dateId) => {
-                    const attendance = student[dateId];
-                    return (
-                      <tr key={`${section}-${studentId}-${dateId}`}>
-                        <td>{studentId}</td>
-                        <td>{attendance.name}</td>
-                        <td>{attendance.lastScan}</td>
-                        <td>{attendance.status}</td>
-                      </tr>
-                    );
-                  });
-                })}
-              </tbody>
-            </table>
-          </div>
-        );
-      })}
+              );
+            });
+          })}
+        </tbody>
+      </table>
     </div>
   );
 }
