@@ -45,35 +45,38 @@ function useAttendanceData() {
     <div>
       <p>adfasdf</p>
       <table>
-        <thead>
-          <tr>
-            <th>Student ID</th>
-            <th>Name</th>
-            <th>Last Scan</th>
-            <th>Status</th>
-          </tr>
-        </thead>
-        <tbody>
-          {Object.keys(attendanceData).map((section) => {
-            return Object.keys(attendanceData[section]).map((studentId) => {
-              return (
-                <tr key={`${section}-${studentId}`}>
-                  <td>{studentId}</td>
-                  <td>
-                    {attendanceData[section][studentId]["01"]["name"]}
-                  </td>
-                  <td>
-                    {attendanceData[section][studentId]["01"]["lastScan"]}
-                  </td>
-                  <td>
-                    {attendanceData[section][studentId]["01"]["status"]}
-                  </td>
-                </tr>
-              );
-            });
-          })}
-        </tbody>
-      </table>
+  <thead>
+    <tr>
+      <th>StudentId</th>
+      <th>Name</th>
+      <th>Last scan</th>
+    </tr>
+  </thead>
+  <tbody>
+    {Object.keys(attendanceData).map((sectionId) => {
+      return Object.keys(attendanceData[sectionId]).map((studentId) => {
+        const studentData = attendanceData[sectionId][studentId];
+        const isPresent = Object.keys(studentData).some((dateId) => {
+          const fieldData = studentData[dateId];
+          return fieldData.present === true;
+        });
+        if (isPresent) {
+          // Render a row for this student
+          return (
+            <tr key={`${sectionId}-${studentId}`}>
+              <td>{studentId}</td>
+              <td>{studentData.name}</td>
+              <td>{studentData.lastScan}</td>
+              {/* Render more table cells as needed */}
+            </tr>
+          );
+        } else {
+          return null; // Don't render anything for this student
+        }
+      });
+    })}
+  </tbody>
+</table>
     </div>
   );
 }
