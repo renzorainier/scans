@@ -34,6 +34,29 @@ function Scan() {
           'startTime': '08:00:00',
         },
       },
+      '1B': {
+        'Monday': {
+          'startTime': "17:00:00",
+        },
+        'Tuesday': {
+          'startTime': '19:10:00',
+        },
+        'Wednesday': {
+          'startTime': '08:00:00',
+        },
+        'Thursday': {
+          'startTime': '08:00:00',
+        },
+        'Friday': {
+          'startTime': '08:00:00',
+        },
+        'Saturday': {
+          'startTime': '08:00:00',
+        },
+        'Sunday': {
+          'startTime': '08:00:00',
+        },
+      },
 
     },
   };
