@@ -33,6 +33,7 @@ function useAttendanceData() {
         data[section] = sectionData;
       }
       setAttendanceData(data);
+      console.log(data); // log the formatted data to the console
     };
 
     fetchData();
@@ -74,7 +75,6 @@ function useAttendanceData() {
 }
 
 export default useAttendanceData;
-
 
 
 
