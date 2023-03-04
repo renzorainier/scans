@@ -24,18 +24,17 @@ function useAttendanceData() {
         }
         Object.keys(fields).forEach((fieldName) => {
           const studentId = fieldName.substring(0, 2);
+          const fieldNameWithoutNumber = fieldName.replace(/[0-9]/g, '');
           if (!data[section][studentId]) {
             data[section][studentId] = {};
           }
-          if (!data[section][studentId]) {
-            data[section][studentId] = {};
-          }
-          data[section][studentId][fieldName] = fields[fieldName];
+          data[section][studentId][fieldNameWithoutNumber] = fields[fieldName];
         });
       });
       setAttendanceData(data);
       console.log(data); // log the formatted data to the console
     };
+
 
     fetchData();
   }, []);
