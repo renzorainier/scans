@@ -80,6 +80,9 @@ function AttendanceTable() {
             <th>Student Id</th>
             <th>Name</th>
             <th>Last Scan</th>
+            <th>Last Scan</th>
+            <th>Last Scan</th>
+            <th>Last Scan</th>
             {/* Add more table headers here */}
           </tr>
         </thead>
