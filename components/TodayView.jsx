@@ -17,28 +17,29 @@ function useAttendanceData() {
       const data = {};
       const stemDocs = await getDocs(collection(db, "STEM"));
       stemDocs.forEach((stemDoc) => {
-        const sections = stemDoc.data();
         const stem = stemDoc.id;
+        const sections = stemDoc.data();
         if (!data[stem]) {
           data[stem] = {};
         }
-        Object.keys(sections).forEach((sectionName) => {
-          const studentIds = sections[sectionName];
-          if (!data[stem][sectionName]) {
-            data[stem][sectionName] = {};
+        Object.keys(sections).forEach((section) => {
+          const sectionData = sections[section];
+          if (!data[stem][section]) {
+            data[stem][section] = {};
           }
-          Object.keys(studentIds).forEach((studentId) => {
-            const fields = studentIds[studentId];
-            if (!data[stem][sectionName][studentId]) {
-              data[stem][sectionName][studentId] = {};
+          Object.keys(sectionData).forEach((studentId) => {
+            const studentData = sectionData[studentId];
+            if (!data[stem][section][studentId]) {
+              data[stem][section][studentId] = {};
             }
-            data[stem][sectionName][studentId] = fields;
+            data[stem][section][studentId] = studentData;
           });
         });
       });
       setAttendanceData(data);
       console.log(data); // log the formatted data to the console
     };
+
     fetchData();
   }, []);
 
