@@ -19,10 +19,10 @@ function useAttendanceData() {
       const data = {};
       for (const section of sections) {
         const sectionData = {};
-        const sectionDocs = await getDocs(collection(db, "STEM"));
-        sectionDocs.slice(0, 8).forEach((doc) => { // Only read at most 8 documents
+        const sectionDocs = await getDocs(collection(db, "STEM", section));
+        sectionDocs.forEach((doc) => {
           const fields = doc.data();
-          const studentIdRegex = /^(\d+)(.*)/; // Match number at the start of the field name
+          const studentIdRegex = /(\d+)(.*)/;
           Object.keys(fields).forEach((fieldName) => {
             const match = fieldName.match(studentIdRegex);
             if (match) {
@@ -46,36 +46,38 @@ function useAttendanceData() {
   return (
     <div>
       <p>adfasdf</p>
-      <table>
-        <thead>
-          <tr>
-            <th>Student ID</th>
-            <th>Name</th>
-            <th>Last Scan</th>
-            <th>Status</th>
-          </tr>
-        </thead>
-        <tbody>
-          {Object.keys(attendanceData).map((section) => {
-            return Object.keys(attendanceData[section]).map((studentId) => {
-              const studentFields = attendanceData[section][studentId];
-              return (
-                <tr key={`${section}-${studentId}`}>
-                  <td>{studentId}</td>
-                  <td>{studentFields.name}</td>
-                  <td>{studentFields.lastScan}</td>
-                  <td>{studentFields.status}</td>
-                </tr>
-              );
-            });
-          })}
-        </tbody>
-      </table>
+    <table>
+      <thead>
+        <tr>
+          <th>Student ID</th>
+          <th>Name</th>
+          <th>Last Scan</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        {Object.keys(attendanceData).map((section) => {
+          return Object.keys(attendanceData[section]).map((studentId) => {
+            const studentFields = attendanceData[section][studentId];
+            return (
+              <tr key={`${section}-${studentId}`}>
+                <td>{studentId}</td>
+                <td>{studentFields.name}</td>
+                <td>{studentFields.lastScan}</td>
+                <td>{studentFields.status}</td>
+              </tr>
+            );
+          });
+        })}
+      </tbody>
+    </table>
     </div>
+
   );
 }
 
-export default useAttendanceData;
+export default useAttendanceData
+
 
 
 
