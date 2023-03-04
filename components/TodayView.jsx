@@ -37,6 +37,14 @@ function useAttendanceData() {
     fetchData();
   }, []);
 
+  return {
+    attendanceData,
+  };
+}
+
+function AttendanceTable() {
+  const { attendanceData } = useAttendanceData();
+
   const getPresentStudents = () => {
     const presentStudents = [];
 
@@ -58,15 +66,6 @@ function useAttendanceData() {
   };
 
   const presentStudents = getPresentStudents();
-
-  return {
-    attendanceData,
-    presentStudents,
-  };
-}
-
-function AttendanceTable({attendanceData}) {
-  const presentStudents = getPresentStudents(attendanceData);
 
   return (
     <div>
@@ -94,9 +93,7 @@ function AttendanceTable({attendanceData}) {
   );
 }
 
-export default useAttendanceData;
-
-
+export default AttendanceTable;
 
 // import React, { useState, useEffect } from "react";
 // import {
