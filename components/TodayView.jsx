@@ -38,7 +38,7 @@ function useAttendanceData() {
   }, []);
 
   const getPresentStudents = () => {
-    const presentStudents = {};
+    const presentStudents = [];
 
     Object.keys(attendanceData).forEach((section) => {
       const sectionData = attendanceData[section];
