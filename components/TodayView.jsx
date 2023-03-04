@@ -19,7 +19,7 @@ function useAttendanceData() {
       const data = {};
       for (const section of sections) {
         const sectionData = {};
-        const sectionDocs = await getDocs(collection(db, "STEM", section));
+        const sectionDocs = await getDocs(collection(db, "STEM"));
         sectionDocs.slice(0, 8).forEach((doc) => { // Only read at most 8 documents
           const fields = doc.data();
           const studentIdRegex = /^(\d+)(.*)/; // Match number at the start of the field name
