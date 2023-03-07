@@ -90,7 +90,7 @@ function AttendanceTable() {
     setFilteredStudents(filteredStudents);
   }, [attendanceData, searchText]);
 
-  const presentStudents = filteredStudents;
+  const presentStudents = filteredStudendsf ts;
 
   return (
     <div>
