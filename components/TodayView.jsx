@@ -31,7 +31,7 @@ function useAttendanceData() {
           data[section][studentId][fieldNameWithoutNumber] = fields[fieldName];
         });
       });
-      console.log(data)
+      console.log(data);
 
       setAttendanceData(data);
     };
@@ -47,11 +47,11 @@ function AttendanceTable() {
   const { attendanceData } = useAttendanceData();
 
   const [searchText, setSearchText] = useState("");
-  const [filteredStudents, setFilteredStudents] = useState([]);
+  const [selectedSection, setSelectedSection] = useState("");
+  const [presentStudents, setPresentStudents] = useState([]);
 
-  const getPresentStudents = () => {
+  useEffect(() => {
     const presentStudents = [];
-
     Object.keys(attendanceData).forEach((section) => {
       const sectionData = attendanceData[section];
       Object.keys(sectionData).forEach((studentId) => {
@@ -62,7 +62,7 @@ function AttendanceTable() {
           const lastScanTime = lastScanDate.toLocaleTimeString([], {
             hour: "numeric",
             minute: "2-digit",
-          })
+          });
           const lastScanTimestamp = lastScanDate.getTime();
 
           presentStudents.push({
@@ -78,19 +78,40 @@ function AttendanceTable() {
 
     // Sort presentStudents by lastScanTimestamp in descending order
     presentStudents.sort((a, b) => b.lastScanTimestamp - a.lastScanTimestamp);
+    setPresentStudents(presentStudents);
+  }, [attendanceData]);
 
-    return presentStudents;
+  const filterStudents = (students) => {
+    return students.filter((student) => {
+      if (selectedSection && student.section !== selectedSection) {
+        return false;
+      }
+      if (searchText === "") {
+        return true;
+      }
+      const lowerCaseSearchText = searchText.toLowerCase();
+      const name = student.name.toLowerCase();
+      const studentId = student.studentId.toLowerCase();
+      const strand = student.strand.toLowerCase();
+      const section = student.section.toLowerCase();
+      return (
+        name.includes(lowerCaseSearchText) ||
+        studentId.includes(lowerCaseSearchText) ||
+        strand.includes(lowerCaseSearchText) ||
+        section.includes(lowerCaseSearchText)
+      );
+    });
   };
 
-  useEffect(() => {
-    const presentStudents = getPresentStudents();
-    const filteredStudents = presentStudents.filter((student) =>
-      student.name.toLowerCase().includes(searchText.toLowerCase())
-    );
-    setFilteredStudents(filteredStudents);
-  }, [attendanceData, searchText]);
+  const filteredStudents = filterStudents(presentStudents);
 
-  const presentStudents = filteredStudendsf ts;
+  const handleSearchTextChange = (event) => {
+    setSearchText(event.target.value);
+  };
+
+  const handleSectionChange = (event) => {
+    setSelectedSection(event.target.value);
+  };
 
   return (
     <div>
@@ -101,11 +122,12 @@ function AttendanceTable() {
             type="text"
             placeholder="Search students..."
             value={searchText}
-            onChange={(event) => setSearchText(event.target.value)}
+            onChange={handleSearchTextChange}
           />
           <select
             className="border border-gray-400 rounded-lg py-2 px-4"
-            onChange={(event) => setSearchText(event.target.value)}
+            value={selectedSection}
+            onChange={handleSectionChange}
           >
             <option value="">All</option>
             <option value="1A">1A</option>
@@ -113,7 +135,7 @@ function AttendanceTable() {
             <option value="1C">1C</option>
           </select>
         </div>
-        </div>
+      </div>
 
       <table>
         <thead>
@@ -160,12 +182,9 @@ function AttendanceTable() {
       </table>
     </div>
   );
-
 }
 
 export default AttendanceTable;
-
-
 
 // can you add this search section and name fucntionality to the present setudents like this" useEffect(() => {
 //   const filteredStudents = todayAttendance.filter(
@@ -343,8 +362,6 @@ export default AttendanceTable;
 // }
 
 // export default AttendanceTable;"
-
-
 
 // import React, { useState, useEffect } from "react";
 // import {
