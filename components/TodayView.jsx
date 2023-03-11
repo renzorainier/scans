@@ -4,6 +4,8 @@ import { db } from "./firebase.js";
 
 function useAttendanceData() {
   const [attendanceData, setAttendanceData] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -27,6 +29,7 @@ function useAttendanceData() {
       console.log(data);
 
       setAttendanceData(data);
+      setIsLoading(false);
     };
 
     fetchData();
@@ -42,7 +45,6 @@ function AttendanceTable() {
   const [selectedSection, setSelectedSection] = useState("");
   const [presentStudents, setPresentStudents] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
-  const [isLoading, setIsLoading] = useState(true);
   const [showInfo, setShowInfo] = useState(false);
   const [infoText, setInfoText] = useState("");
 
