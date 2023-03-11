@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {
-  collection,
-  getDocs,
-} from "firebase/firestore";
+import { collection, getDocs } from "firebase/firestore";
 import { db } from "./firebase.js";
 
 function useAttendanceData() {
@@ -40,11 +37,15 @@ function useAttendanceData() {
 }
 
 function AttendanceTable() {
-  const { attendanceData } = useAttendanceData();
 
+  const { attendanceData } = useAttendanceData();
   const [selectedSection, setSelectedSection] = useState("");
   const [presentStudents, setPresentStudents] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
+  const [showInfo, setShowInfo] = useState(false);
+  const [infoText, setInfoText] = useState("");
+
 
   useEffect(() => {
     const presentStudents = [];
@@ -82,7 +83,10 @@ function AttendanceTable() {
       if (selectedSection && student.section !== selectedSection) {
         return false;
       }
-      if (searchQuery && !student.name.toLowerCase().includes(searchQuery.toLowerCase())) {
+      if (
+        searchQuery &&
+        !student.name.toLowerCase().includes(searchQuery.toLowerCase())
+      ) {
         return false;
       }
       return true;
@@ -100,29 +104,29 @@ function AttendanceTable() {
   };
 
   return (
-   <div>
-    <div className="flex justify-between items-center mb-4">
-      <div className="flex">
-        <select
-          className="border border-gray-400 rounded-lg py-2 px-4"
-          value={selectedSection}
-          onChange={handleSectionChange}
-        >
-          <option value="">All</option>
-          <option value="1A">1A</option>
-          <option value="1B">1B</option>
-          <option value="1C">1C</option>
-        </select>
-        <input
-          type="text"
-          className="border border-gray-400 rounded-lg py-2 px-4 ml-4"
-          placeholder="Search name..."
-          value={searchQuery}
-          onChange={handleSearchQueryChange}
-          disabled={selectedSection === ""}
-        />
+    <div>
+      <div className="flex justify-between items-center mb-4">
+        <div className="flex">
+          <select
+            className="border border-gray-400 rounded-lg py-2 px-4"
+            value={selectedSection}
+            onChange={handleSectionChange}
+          >
+            <option value="">All</option>
+            <option value="1A">1A</option>
+            <option value="1B">1B</option>
+            <option value="1C">1C</option>
+          </select>
+          <input
+            type="text"
+            className="border border-gray-400 rounded-lg py-2 px-4 ml-4"
+            placeholder="Search name..."
+            value={searchQuery}
+            onChange={handleSearchQueryChange}
+            disabled={selectedSection === ""}
+          />
+        </div>
       </div>
-    </div>
       <table>
         <thead>
           <tr>
