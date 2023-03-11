@@ -44,6 +44,7 @@ function AttendanceTable() {
 
   const [selectedSection, setSelectedSection] = useState("");
   const [presentStudents, setPresentStudents] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     const presentStudents = [];
@@ -81,6 +82,9 @@ function AttendanceTable() {
       if (selectedSection && student.section !== selectedSection) {
         return false;
       }
+      if (searchQuery && !student.name.toLowerCase().includes(searchQuery.toLowerCase())) {
+        return false;
+      }
       return true;
     });
   };
@@ -91,8 +95,12 @@ function AttendanceTable() {
     setSelectedSection(event.target.value);
   };
 
+  const handleSearchQueryChange = (event) => {
+    setSearchQuery(event.target.value);
+  };
+
   return (
-    <div>
+   <div>
       <div className="flex justify-between items-center mb-4">
         <div className="flex">
           <select
@@ -105,9 +113,16 @@ function AttendanceTable() {
             <option value="1B">1B</option>
             <option value="1C">1C</option>
           </select>
+          <input
+            type="text"
+            className="border border-gray-400 rounded-lg py-2 px-4 ml-4"
+            placeholder="Search name..."
+            value={searchQuery}
+            onChange={handleSearchQueryChange}
+          />
         </div>
       </div>
-
+      
       <table>
         <thead>
           <tr>
