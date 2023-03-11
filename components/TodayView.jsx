@@ -144,7 +144,7 @@ function AttendanceTable() {
         className="w-full text-gray-700 bg-white p-5 text-sm rounded-lg shadow-lg mx-auto"
         style={{ maxWidth: "90%" }}
       >
-          <div className="bg-gray-200 relative rounded-lg">
+        <div className="bg-gray-200 relative rounded-lg">
           <img
             src="https://static.planetminecraft.com/files/profile_banner/3800851_1.gif"
             alt="background gif"
@@ -161,9 +161,9 @@ function AttendanceTable() {
         </div>
 
         <div className="flex justify-between items-center mb-4">
-          <div className="flex">
+          <div className="flex items-center flex-grow">
             <select
-              className="border border-gray-400 rounded-lg py-2 px-4"
+              className="border rounded-md py-1 px-2 text-gray-700 w-full"
               value={selectedSection}
               onChange={handleSectionChange}
             >
