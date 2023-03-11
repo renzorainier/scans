@@ -140,7 +140,8 @@ function AttendanceTable() {
 
 
   return (
-    <div>
+    <div className="flex justify-center pt-1 items-center">
+      
       <div className="flex justify-between items-center mb-4">
         <div className="flex">
           <select
