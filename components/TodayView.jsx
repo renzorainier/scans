@@ -5,8 +5,6 @@ import { db } from "./firebase.js";
 function useAttendanceData() {
   const [attendanceData, setAttendanceData] = useState({});
 
-
-
   useEffect(() => {
     const fetchData = async () => {
       const data = {};
@@ -33,25 +31,18 @@ function useAttendanceData() {
     fetchData();
   }, []);
 
-
   return {
     attendanceData,
   };
-
-
-
-
 }
 
 function AttendanceTable() {
-
-  const { attendanceData } = useAttendanceData();
+  const { attendanceData, isLoading } = useAttendanceData();
   const [selectedSection, setSelectedSection] = useState("");
   const [presentStudents, setPresentStudents] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [showInfo, setShowInfo] = useState(false);
   const [infoText, setInfoText] = useState("");
-
 
   useEffect(() => {
     const presentStudents = [];
@@ -79,11 +70,9 @@ function AttendanceTable() {
       });
     });
 
-
     // Sort presentStudents by lastScanTimestamp in descending order
     presentStudents.sort((a, b) => b.lastScanTimestamp - a.lastScanTimestamp);
     setPresentStudents(presentStudents);
-
   }, [attendanceData]);
 
   const filterStudents = (students) => {
@@ -99,9 +88,7 @@ function AttendanceTable() {
       }
       return true;
     });
-
   };
-
 
   const filteredStudents = filterStudents(presentStudents);
 
@@ -113,8 +100,9 @@ function AttendanceTable() {
     setSearchQuery(event.target.value);
   };
 
-
-
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div>
@@ -124,6 +112,7 @@ function AttendanceTable() {
             className="border border-gray-400 rounded-lg py-2 px-4"
             value={selectedSection}
             onChange={handleSectionChange}
+            disabled={selectedSection === ""}
           >
             <option value="">All</option>
             <option value="1A">1A</option>
