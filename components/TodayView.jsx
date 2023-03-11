@@ -273,7 +273,7 @@ function AttendanceTable() {
                 key={student.studentId}
               >
                 <td className="p-2">{filteredStudents.length - index}</td>
-                <td>{student.name}</td>
+                <td className="p-2 font-bold whitespace-nowrap">{student.name}</td>
                 <td className="p-2">{student.strand}</td>
                 <td className="p-2 ">{student.section}</td>
                 <td className="p-2 whitespace-nowrap">
