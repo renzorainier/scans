@@ -138,76 +138,79 @@ function AttendanceTable() {
     setInfoText(text);
   }
 
-
   return (
     <div className="flex justify-center pt-1 items-center">
-      
-      <div className="flex justify-between items-center mb-4">
-        <div className="flex">
-          <select
-            className="border border-gray-400 rounded-lg py-2 px-4"
-            value={selectedSection}
-            onChange={handleSectionChange}
-            disabled={selectedSection === ""}
-          >
-            <option value="">All</option>
-            <option value="1A">1A</option>
-            <option value="1B">1B</option>
-            <option value="1C">1C</option>
-          </select>
-          <input
-            type="text"
-            className="border border-gray-400 rounded-lg py-2 px-4 ml-4"
-            placeholder="Search name..."
-            value={searchQuery}
-            onChange={handleSearchQueryChange}
-            disabled={selectedSection === ""}
-          />
-        </div>
-      </div>
-      <table>
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Name</th>
-            <th>Strand</th>
-            <th>Sec</th>
-            <th>Status</th>
-          </tr>
-        </thead>
-        <tbody>
-          {filteredStudents.map((student, index) => (
-            <tr
-              className={`${
-                index % 2 === 0 ? "bg-gray-100" : "bg-gray-200"
-              } rounded-lg mb-2`}
-              key={student.studentId}
+      <div
+        className="w-full text-gray-700 bg-white p-5 text-sm rounded-lg shadow-lg mx-auto"
+        style={{ maxWidth: "90%" }}
+      >
+        <div className="flex justify-between items-center mb-4">
+          <div className="flex">
+            <select
+              className="border border-gray-400 rounded-lg py-2 px-4"
+              value={selectedSection}
+              onChange={handleSectionChange}
+              disabled={selectedSection === ""}
             >
-              <td className="p-2">{filteredStudents.length - index}</td>
-              <td>{student.name}</td>
-              <td className="p-2">{student.strand}</td>
-              <td className="p-2 ">{student.section}</td>
-              <td className="p-2 whitespace-nowrap">
-                {student.status === "late" && (
-                  <div className="bg-[#EC7063] h-3 w-9 rounded-sm inline-block mr-1">
-                    {student.lastScanTime}
-                  </div>
-                )}
-                {student.status === "ontime" && (
-                  <div className="bg-[#F7DC6F] h-3 w-9 rounded-sm inline-block mr-1">
-                    {student.lastScanTime}
-                  </div>
-                )}
-                {student.status === "early" && (
-                  <div className="bg-[#2ECC71] h-3 w-9 rounded-sm inline-block mr-1">
-                    {student.lastScanTime}
-                  </div>
-                )}
-              </td>
+              <option value="">All</option>
+              <option value="1A">1A</option>
+              <option value="1B">1B</option>
+              <option value="1C">1C</option>
+            </select>
+            <input
+              type="text"
+              className="border border-gray-400 rounded-lg py-2 px-4 ml-4"
+              placeholder="Search name..."
+              value={searchQuery}
+              onChange={handleSearchQueryChange}
+              disabled={selectedSection === ""}
+            />
+          </div>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Name</th>
+              <th>Strand</th>
+              <th>Sec</th>
+              <th>Status</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {filteredStudents.map((student, index) => (
+              <tr
+                className={`${
+                  index % 2 === 0 ? "bg-gray-100" : "bg-gray-200"
+                } rounded-lg mb-2`}
+                key={student.studentId}
+              >
+                <td className="p-2">{filteredStudents.length - index}</td>
+                <td>{student.name}</td>
+                <td className="p-2">{student.strand}</td>
+                <td className="p-2 ">{student.section}</td>
+                <td className="p-2 whitespace-nowrap">
+                  {student.status === "late" && (
+                    <div className="bg-[#EC7063] h-3 w-9 rounded-sm inline-block mr-1">
+                      {student.lastScanTime}
+                    </div>
+                  )}
+                  {student.status === "ontime" && (
+                    <div className="bg-[#F7DC6F] h-3 w-9 rounded-sm inline-block mr-1">
+                      {student.lastScanTime}
+                    </div>
+                  )}
+                  {student.status === "early" && (
+                    <div className="bg-[#2ECC71] h-3 w-9 rounded-sm inline-block mr-1">
+                      {student.lastScanTime}
+                    </div>
+                  )}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }
