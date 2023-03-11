@@ -172,24 +172,96 @@ function AttendanceTable() {
               <option value="1B">1B</option>
               <option value="1C">1C</option>
             </select>
-            <input
-              type="text"
-              className="border border-gray-400 rounded-lg py-2 px-4 ml-4"
-              placeholder="Search name..."
-              value={searchQuery}
-              onChange={handleSearchQueryChange}
-              disabled={selectedSection === ""}
-            />
+            <div className="flex items-center flex-grow">
+              <input
+                type="text"
+                className="border rounded-md py-1 px-2 text-gray-700 w-full"
+                placeholder="Search name..."
+                value={searchQuery}
+                onChange={handleSearchQueryChange}
+                disabled={selectedSection === ""}
+              />
+            </div>
           </div>
         </div>
-        <table>
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Name</th>
-              <th>Strand</th>
-              <th>Sec</th>
-              <th>Status</th>
+
+        <div className="overflow-x-auto rounded-lg">
+        <table className="table-auto w-full text-center ">
+        <thead className="bg-gray-200 text-" style={{ border: "none" }}>
+        <tr className="p-2 font-bold">
+        <th
+                  className="p-2 pb-4 pt-4 "
+                  onClick={() =>
+                    handleHeaderClick(
+                      "Index - shows the index of the students baseds on their scan time."
+                    )
+                  }
+                  style={{
+                    background: "transparent",
+                    fontWeight: "bold",
+                    cursor: "pointer",
+                  }}
+                >
+                  #
+                </th>
+                <th
+                  className="p-2"
+                  onClick={() =>
+                    handleHeaderClick("NAME - shows the name of the students")
+                  }
+                  style={{
+                    background: "transparent",
+                    fontWeight: "bold",
+                    cursor: "pointer",
+                  }}
+                >
+                  NAME
+                </th>
+                <th
+                  className="p-2"
+                  onClick={() =>
+                    handleHeaderClick(
+                      "STRAND - shows the strand of the students"
+                    )
+                  }
+                  style={{
+                    background: "transparent",
+                    fontWeight: "bold",
+                    cursor: "pointer",
+                  }}
+                >
+                  STRAND
+                </th>
+                <th
+                  className="p-2"
+                  onClick={() =>
+                    handleHeaderClick(
+                      "SEC - shows the section of the students."
+                    )
+                  }
+                  style={{
+                    background: "transparent",
+                    fontWeight: "bold",
+                    cursor: "pointer",
+                  }}
+                >
+                  SEC
+                </th>
+                <th
+                  className="p-2"
+                  onClick={() =>
+                    handleHeaderClick(
+                      "SCANNED - shows the time the students was scanned for the day, red means late, yellow means on time, and green means early."
+                    )
+                  }
+                  style={{
+                    background: "transparent",
+                    fontWeight: "bold",
+                    cursor: "pointer",
+                  }}
+                >
+                  SCANNED:
+                </th>
             </tr>
           </thead>
           <tbody>
@@ -225,6 +297,8 @@ function AttendanceTable() {
             ))}
           </tbody>
         </table>
+        </div>
+
       </div>
     </div>
   );
