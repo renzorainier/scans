@@ -100,6 +100,7 @@ function AttendanceTable() {
     });
   };
 
+
   const filteredStudents = filterStudents(presentStudents);
 
   const handleSectionChange = (event) => {
@@ -109,6 +110,7 @@ function AttendanceTable() {
   const handleSearchQueryChange = (event) => {
     setSearchQuery(event.target.value);
   };
+
 
   if (isLoading) {
     return (
