@@ -122,7 +122,7 @@ function AttendanceTable() {
           />
         </div>
       </div>
-      
+
       <table>
         <thead>
           <tr>
