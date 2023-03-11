@@ -163,7 +163,7 @@ function AttendanceTable() {
               placeholder="Search name..."
               value={searchQuery}
               onChange={handleSearchQueryChange}
-              disabled={selectedSection === ""}
+
             />
           </div>
         </div>
