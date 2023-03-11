@@ -16,7 +16,7 @@ function StudentCollection() {
   { id: "01", lrn: "109329100329", name: "MALICDEM, CARLO", section: "ST-1A", strand: "STEM", present: false },
   { id: "02", lrn: "109351121643", name: "PUREZA, XEDRICK", section: "1A", strand: "STEM", present: false },
   { id: "03", lrn: "109311100219", name: "ILAO, GIAN RUSSEL", section: "1A", strand: "STEM", present: false },
-  { id: "03", lrn: "425707150124", name: "REGIS, YESTIN GABRIEL", section: "1A", strand: "STEM", present: false },
+  { id: "04", lrn: "425707150124", name: "REGIS, YESTIN GABRIEL", section: "1A", strand: "STEM", present: false },
 
 
 
