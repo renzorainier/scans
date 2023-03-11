@@ -1,11 +1,7 @@
 import React, { useState, useEffect } from "react";
 import {
   collection,
-  query,
-  where,
   getDocs,
-  getDoc,
-  doc,
 } from "firebase/firestore";
 import { db } from "./firebase.js";
 
@@ -46,7 +42,6 @@ function useAttendanceData() {
 function AttendanceTable() {
   const { attendanceData } = useAttendanceData();
 
-  const [searchText, setSearchText] = useState("");
   const [selectedSection, setSelectedSection] = useState("");
   const [presentStudents, setPresentStudents] = useState([]);
 
@@ -86,28 +81,11 @@ function AttendanceTable() {
       if (selectedSection && student.section !== selectedSection) {
         return false;
       }
-      if (searchText === "") {
-        return true;
-      }
-      const lowerCaseSearchText = searchText.toLowerCase();
-      const name = student.name.toLowerCase();
-      const studentId = student.studentId.toLowerCase();
-      const strand = student.strand.toLowerCase();
-      const section = student.section.toLowerCase();
-      return (
-        name.includes(lowerCaseSearchText) ||
-        studentId.includes(lowerCaseSearchText) ||
-        strand.includes(lowerCaseSearchText) ||
-        section.includes(lowerCaseSearchText)
-      );
+      return true;
     });
   };
 
   const filteredStudents = filterStudents(presentStudents);
-
-  const handleSearchTextChange = (event) => {
-    setSearchText(event.target.value);
-  };
 
   const handleSectionChange = (event) => {
     setSelectedSection(event.target.value);
@@ -117,13 +95,6 @@ function AttendanceTable() {
     <div>
       <div className="flex justify-between items-center mb-4">
         <div className="flex">
-          <input
-            className="border border-gray-400 rounded-lg py-2 px-4 mr-2"
-            type="text"
-            placeholder="Search students..."
-            value={searchText}
-            onChange={handleSearchTextChange}
-          />
           <select
             className="border border-gray-400 rounded-lg py-2 px-4"
             value={selectedSection}
