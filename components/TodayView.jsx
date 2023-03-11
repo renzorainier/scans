@@ -101,28 +101,28 @@ function AttendanceTable() {
 
   return (
    <div>
-      <div className="flex justify-between items-center mb-4">
-        <div className="flex">
-          <select
-            className="border border-gray-400 rounded-lg py-2 px-4"
-            value={selectedSection}
-            onChange={handleSectionChange}
-          >
-            <option value="">All</option>
-            <option value="1A">1A</option>
-            <option value="1B">1B</option>
-            <option value="1C">1C</option>
-          </select>
-          <input
-            type="text"
-            className="border border-gray-400 rounded-lg py-2 px-4 ml-4"
-            placeholder="Search name..."
-            value={searchQuery}
-            onChange={handleSearchQueryChange}
-          />
-        </div>
+    <div className="flex justify-between items-center mb-4">
+      <div className="flex">
+        <select
+          className="border border-gray-400 rounded-lg py-2 px-4"
+          value={selectedSection}
+          onChange={handleSectionChange}
+        >
+          <option value="">All</option>
+          <option value="1A">1A</option>
+          <option value="1B">1B</option>
+          <option value="1C">1C</option>
+        </select>
+        <input
+          type="text"
+          className="border border-gray-400 rounded-lg py-2 px-4 ml-4"
+          placeholder="Search name..."
+          value={searchQuery}
+          onChange={handleSearchQueryChange}
+          disabled={selectedSection === ""}
+        />
       </div>
-
+    </div>
       <table>
         <thead>
           <tr>
