@@ -4,10 +4,10 @@ import { db } from "./firebase";
 
 function StudentCollection() {
   const [students, setStudents] = useState([
-    { id: "01", lrn: "109351121643", name: "PUREZA, XEDRICK", section: "ST-1B", strand: "STEM", present: false },
-    { id: "02", lrn: "109311100219", name: "ILAO, GIAN RUSSEL", section: "1B", strand: "STEM", present: false },
-    { id: "03", lrn: "425707150124", name: "REGIS, YESTIN GABRIEL", section: "1B", strand: "STEM", present: false },
-    { id: "04", lrn: "109329100329", name: "MALICDEM, CARLO", section: "1B", strand: "STEM", present: false },
+    { id: "01", lrn: "109329100333", name: "MALLARI, JHAZREAL", section: "1C", strand: "STEM", present: false },
+    { id: "02", lrn: "109350100604", name: "NALZARO, CHRISTIAN", section: "1C", strand: "STEM", present: false },
+    { id: "03", lrn: "109311100426", name: "VALLECERA, ROEL", section: "1C", strand: "STEM", present: false },
+    { id: "04", lrn: "109336100225", name: "INAS, JUSTIN", section: "1C", strand: "STEM", present: false },
 
   ]);
 
@@ -23,7 +23,7 @@ function StudentCollection() {
   // { id: "03", lrn: "114235070063", name: "BUCOG, JESSIELYN", section: "1A", strand: "STEM", present: false },
 
   const createCollection = async () => {
-    const sectionDocRef = doc(db, "STEM", "1B");
+    const sectionDocRef = doc(db, "STEM", "1C");
     const sectionData = {};
 
     students.forEach((student) => {
