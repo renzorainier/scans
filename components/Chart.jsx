@@ -1,19 +1,28 @@
 import React, { useEffect, useRef } from 'react';
 import Chart from 'chart.js/auto';
 
-const LineGraph = () => {
+const LineGraph = ({ attendanceData }) => {
   const chartRef = useRef();
   const chartInstanceRef = useRef(null);
 
   useEffect(() => {
     const chartCtx = chartRef.current.getContext('2d');
 
-    const mockData = {
-      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', "Jul"],
+    const data = [];
+    Object.keys(attendanceData).forEach((studentId) => {
+      Object.keys(attendanceData[studentId]).forEach((time) => {
+        data.push({
+          x: time,
+          y: attendanceData[studentId][time],
+        });
+      });
+    });
+
+    const chartData = {
       datasets: [
         {
           label: 'Scanning Data',
-          data: [12, 19, 3, 5, 2, 3],
+          data,
           fill: false,
           borderColor: '#4FD1C5',
           backgroundColor: '#4FD1C5',
@@ -31,7 +40,7 @@ const LineGraph = () => {
 
     chartInstanceRef.current = new Chart(chartCtx, {
       type: 'line',
-      data: mockData,
+      data: chartData,
       options: {
         scales: {
           yAxes: [{
@@ -80,10 +89,9 @@ const LineGraph = () => {
         chartInstanceRef.current.destroy();
       }
     };
-  }, []);
+  }, [attendanceData]);
 
   return (
-
     <div className="bg-white rounded-lg shadow-md m-4 overflow-hidden">
       <canvas ref={chartRef} className="w-full h-full"></canvas>
     </div>

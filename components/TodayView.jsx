@@ -24,8 +24,17 @@ function useAttendanceData() {
           data[section][studentId][fieldNameWithoutNumber] = fields[fieldName];
         });
       });
-      console.log(data);
-      setAttendanceData(data);
+      const timeData = {};
+      Object.keys(data).forEach((section) => {
+        Object.keys(data[section]).forEach((studentId) => {
+          const studentData = data[section][studentId];
+          const studentTimes = Object.keys(studentData)
+            .filter((fieldName) => fieldName.includes("time"))
+            .map((fieldName) => studentData[fieldName]);
+          timeData[`${section}_${studentId}`] = studentTimes;
+        });
+      });
+      setAttendanceData(timeData);
     };
 
     fetchData();
