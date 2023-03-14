@@ -9,7 +9,7 @@ const LineGraph = () => {
     const chartCtx = chartRef.current.getContext('2d');
 
     const mockData = {
-      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', "Jul"],
       datasets: [
         {
           label: 'Scanning Data',
@@ -83,7 +83,8 @@ const LineGraph = () => {
   }, []);
 
   return (
-    <div className="bg-white rounded-lg shadow-md overflow-hidden">
+
+    <div className="bg-white rounded-lg shadow-md m-4 overflow-hidden">
       <canvas ref={chartRef} className="w-full h-full"></canvas>
     </div>
   );
