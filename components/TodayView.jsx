@@ -161,35 +161,35 @@ function AttendanceTable() {
         </div>
 
         <div className="flex justify-between items-center mb-4">
-          <div className="flex items-center flex-grow">
+          <div className="flex items-center w-full">
+            <input
+              type="text"
+              className="border rounded-md py-1 px-2 text-gray-700 w-4/5 mr-2"
+              placeholder="Search name..."
+              value={searchQuery}
+              onChange={handleSearchQueryChange}
+              disabled={selectedSection === ""}
+            />
+
             <select
-              className="border rounded-md py-1 px-2 text-gray-700 w-full"
+              className="border rounded-md py-1 px-2 text-gray-700 w-1/5"
               value={selectedSection}
               onChange={handleSectionChange}
+              placeholder="Search name..."
             >
               <option value="">All</option>
               <option value="1A">1A</option>
               <option value="1B">1B</option>
               <option value="1C">1C</option>
             </select>
-            <div className="flex items-center flex-grow">
-              <input
-                type="text"
-                className="border rounded-md py-1 px-2 text-gray-700 w-full"
-                placeholder="Search name..."
-                value={searchQuery}
-                onChange={handleSearchQueryChange}
-                disabled={selectedSection === ""}
-              />
-            </div>
           </div>
         </div>
 
         <div className="overflow-x-auto rounded-lg">
-        <table className="table-auto w-full text-center ">
-        <thead className="bg-gray-200 text-" style={{ border: "none" }}>
-        <tr className="p-2 font-bold">
-        <th
+          <table className="table-auto w-full text-center ">
+            <thead className="bg-gray-200 text-" style={{ border: "none" }}>
+              <tr className="p-2 font-bold">
+                <th
                   className="p-2 pb-4 pt-4 "
                   onClick={() =>
                     handleHeaderClick(
@@ -262,42 +262,44 @@ function AttendanceTable() {
                 >
                   SCANNED:
                 </th>
-            </tr>
-          </thead>
-          <tbody>
-            {filteredStudents.map((student, index) => (
-              <tr
-                className={`${
-                  index % 2 === 0 ? "bg-gray-100" : "bg-gray-200"
-                } rounded-lg mb-2`}
-                key={student.studentId}
-              >
-                <td className="p-2">{filteredStudents.length - index}</td>
-                <td className="p-2 font-bold whitespace-nowrap">{student.name}</td>
-                <td className="p-2">{student.strand}</td>
-                <td className="p-2 ">{student.section}</td>
-                <td className="p-2 whitespace-nowrap">
-                  {student.status === "late" && (
-                    <div className="bg-[#EC7063] h-3 w-9 rounded-sm inline-block mr-1">
-                      {student.lastScanTime}
-                    </div>
-                  )}
-                  {student.status === "ontime" && (
-                    <div className="bg-[#F7DC6F] h-3 w-9 rounded-sm inline-block mr-1">
-                      {student.lastScanTime}
-                    </div>
-                  )}
-                  {student.status === "early" && (
-                    <div className="bg-[#2ECC71] h-3 w-9 rounded-sm inline-block mr-1">
-                      {student.lastScanTime}
-                    </div>
-                  )}
-                </td>
               </tr>
-            ))}
-          </tbody>
-        </table>
-        {showInfo && (
+            </thead>
+            <tbody>
+              {filteredStudents.map((student, index) => (
+                <tr
+                  className={`${
+                    index % 2 === 0 ? "bg-gray-100" : "bg-gray-200"
+                  } rounded-lg mb-2 py-2`}
+                  key={student.studentId}
+                >
+                  <td className="p-2">{filteredStudents.length - index}</td>
+                  <td className="p-2 font-bold whitespace-nowrap">
+                    {student.name}
+                  </td>
+                  <td className="p-2">{student.strand}</td>
+                  <td className="p-2 ">{student.section}</td>
+                  <td className="p-2 whitespace-nowrap">
+                    {student.status === "late" && (
+                      <div className="bg-[#EC7063] h-3 w-9 rounded-sm inline-block mr-1">
+                        {student.lastScanTime}
+                      </div>
+                    )}
+                    {student.status === "ontime" && (
+                      <div className="bg-[#F7DC6F] h-3 w-9 rounded-sm inline-block mr-1">
+                        {student.lastScanTime}
+                      </div>
+                    )}
+                    {student.status === "early" && (
+                      <div className="bg-[#2ECC71] h-3 w-9 rounded-sm inline-block mr-1">
+                        {student.lastScanTime}
+                      </div>
+                    )}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          {showInfo && (
             <div
               id="show"
               className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2  max-w-90% bg-white p-5 rounded-lg shadow-lg inline-block"
@@ -312,7 +314,6 @@ function AttendanceTable() {
             </div>
           )}
         </div>
-
       </div>
     </div>
   );
