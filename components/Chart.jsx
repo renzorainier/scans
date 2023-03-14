@@ -15,8 +15,11 @@ const LineGraph = () => {
           label: 'Scanning Data',
           data: [12, 19, 3, 5, 2, 3],
           fill: false,
-          borderColor: 'rgba(75,192,192,1)',
-          lineTension: 0.1,
+          borderColor: '#4FD1C5',
+          backgroundColor: '#4FD1C5',
+          pointBorderColor: 'transparent',
+          pointBackgroundColor: 'transparent',
+          lineTension: 0.3,
         },
       ],
     };
@@ -32,10 +35,41 @@ const LineGraph = () => {
       options: {
         scales: {
           yAxes: [{
+            gridLines: {
+              color: '#F5F5F5',
+              zeroLineColor: '#F5F5F5',
+            },
             ticks: {
+              fontColor: '#888',
               beginAtZero: true,
+              maxTicksLimit: 5,
+              padding: 10,
             },
           }],
+          xAxes: [{
+            gridLines: {
+              color: '#F5F5F5',
+              zeroLineColor: '#F5F5F5',
+            },
+            ticks: {
+              fontColor: '#888',
+              padding: 5,
+            },
+          }],
+        },
+        legend: {
+          display: false,
+        },
+        tooltips: {
+          backgroundColor: '#4FD1C5',
+          bodyFontColor: '#FFF',
+          titleFontColor: '#FFF',
+          titleMarginBottom: 10,
+          bodySpacing: 5,
+          xPadding: 10,
+          yPadding: 10,
+          mode: 'nearest',
+          intersect: 0,
         },
       },
     });
@@ -49,8 +83,8 @@ const LineGraph = () => {
   }, []);
 
   return (
-    <div>
-      <canvas ref={chartRef} />
+    <div className="bg-white rounded-lg shadow-md overflow-hidden">
+      <canvas ref={chartRef} className="w-full h-full"></canvas>
     </div>
   );
 };
