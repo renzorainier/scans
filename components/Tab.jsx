@@ -2,6 +2,7 @@ import { useState } from "react";
 import PastAttendance from "/components/PastView";
 import TodayAttendance from "/components/TodayView";
 import SavePresentStudents from "components/Save";
+import LineGraph from "components/Chart";
 import { Transition } from "@headlessui/react";
 import { SlGraph } from "react-icons/sl";
 import { MdOutlineToday } from "react-icons/md";
@@ -58,7 +59,7 @@ function TabSelector() {
         <PastAttendance className="tab-content" />
       </div>
       <div className={`${selectedTab === "b" ? "block" : "hidden-component"}`}>
-        <SavePresentStudents className="tab-content" />
+        <LineGraph className="tab-content" />
       </div>
       <div className={`${selectedTab === "c" ? "block" : "hidden-component"}`}>
         <TodayAttendance className="tab-content" />
