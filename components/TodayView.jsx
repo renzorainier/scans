@@ -69,7 +69,10 @@ function useAttendanceData() {
         chartData.datasets[0].data.push(minuteData[minute]);
       });
     });
+    console.log("1")
     console.log(chartData)
+    console.log("2")
+
     return chartData;
   };
 
