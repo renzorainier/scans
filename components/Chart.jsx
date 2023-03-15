@@ -51,9 +51,9 @@ function useAttendanceData() {
       ],
     };
 
+    const minuteData = {};
     Object.keys(attendanceData).forEach((section) => {
       const sectionData = attendanceData[section];
-      const minuteData = {};
       Object.keys(sectionData).forEach((student) => {
         const studentData = sectionData[student];
         const lastScan = studentData["lastScan"];
@@ -66,12 +66,13 @@ function useAttendanceData() {
           }
         }
       });
-
-      Object.keys(minuteData).forEach((minute) => {
-        chartData.labels.push(`${minute}:00`);
-        chartData.datasets[0].data.push(minuteData[minute]);
-      });
     });
+
+    Object.keys(minuteData).forEach((minute) => {
+      chartData.labels.push(`${minute}:00`);
+      chartData.datasets[0].data.push(minuteData[minute]);
+    });
+
     console.log("1")
     console.log(chartData)
     console.log("nice")
