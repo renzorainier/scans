@@ -74,7 +74,7 @@ function useAttendanceData() {
     });
     console.log("1")
     console.log(chartData)
-    console.log("2")
+    console.log("nice")
 
     return chartData;
   };
