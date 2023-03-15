@@ -63,6 +63,7 @@ function useAttendanceData() {
       });
 
       console.log(graphData);
+      console.log("hehe")
       setAttendanceData(graphData);
     };
 
