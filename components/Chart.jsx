@@ -51,41 +51,34 @@ function useAttendanceData() {
       ],
     };
 
-    const minuteData = {};
-    Object.keys(attendanceData).forEach((section) => {
-      const sectionData = attendanceData[section];
-      Object.keys(sectionData).forEach((student) => {
-        const studentData = sectionData[student];
-        const lastScan = studentData["lastScan"];
-        if (lastScan) {
-          const minute = new Date(lastScan.seconds * 1000).getMinutes();
-          if (!minuteData[minute]) {
-            minuteData[minute] = 1;
-          } else {
-            minuteData[minute]++;
-          }
-        }
-      });
-    });
+    const startTime = new Date();
+    startTime.setHours(5, 0, 0, 0); // set start time to 5:00 AM
+    const endTime = new Date();
+    endTime.setHours(7, 0, 0, 0); // set end time to 7:00 AM
 
-    Object.keys(minuteData).forEach((minute) => {
-      chartData.labels.push(`${minute}:00`);
-      chartData.datasets[0].data.push(minuteData[minute]);
-    });
+    let currentTime = startTime;
+    while (currentTime < endTime) {
+      const minute = currentTime.getMinutes();
+      chartData.labels.push(`${currentTime.getHours()}:${minute < 10 ? '0' + minute : minute}`);
+      if (!minuteData[minute]) {
+        chartData.datasets[0].data.push(0);
+      } else {
+        chartData.datasets[0].data.push(minuteData[minute]);
+      }
+      currentTime.setMinutes(currentTime.getMinutes() + 5); // increment time by 5 minutes
+    }
 
-    console.log("1")
-    console.log(chartData)
-    console.log("nice")
+    console.log(chartData);
 
     return chartData;
   };
-  formatChartData()
+
+  formatChartData();
 
   return {
     attendanceData,
     formatChartData,
   };
-
 
 }
 
