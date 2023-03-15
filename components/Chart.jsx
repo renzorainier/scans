@@ -1,6 +1,64 @@
 import React, { useEffect, useRef } from 'react';
 import Chart from 'chart.js/auto';
 
+function useAttendanceData() {
+  const [attendanceData, setAttendanceData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = {};
+      const sectionDocs = await getDocs(collection(db, "STEM"));
+      sectionDocs.forEach((doc) => {
+        const fields = doc.data();
+        const section = doc.id;
+        if (!data[section]) {
+          data[section] = {};
+        }
+        Object.keys(fields).forEach((fieldName) => {
+          const studentId = fieldName.substring(0, 2);
+          const fieldNameWithoutNumber = fieldName.replace(/[0-9]/g, "");
+          if (!data[section][studentId]) {
+            data[section][studentId] = {};
+          }
+          data[section][studentId][fieldNameWithoutNumber] = fields[fieldName];
+        });
+      });
+
+      // Process the data
+      const formattedData = Object.keys(data).map((section) => {
+        const studentScans = {};
+        Object.keys(data[section]).forEach((studentId) => {
+          Object.keys(data[section][studentId]).forEach((fieldName) => {
+            if (fieldName.startsWith("scan")) {
+              const timestamp = data[section][studentId][fieldName];
+              const minute = moment(timestamp).startOf("minute").format();
+              if (!studentScans[minute]) {
+                studentScans[minute] = 0;
+              }
+              studentScans[minute]++;
+            }
+          });
+        });
+        const scansPerMinute = Object.keys(studentScans).map((minute) => ({
+          x: minute,
+          y: studentScans[minute],
+        }));
+        return { section, scansPerMinute };
+      });
+      console.log(data)
+      console.log(formattedData)
+      setAttendanceData(formattedData);
+    };
+
+    fetchData();
+  }, []);
+
+  return {
+    attendanceData,
+  };
+}
+
+
 const LineGraph = () => {
   const chartRef = useRef();
   const chartInstanceRef = useRef(null);
