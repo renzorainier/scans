@@ -26,58 +26,61 @@ function useAttendanceData() {
           data[section][studentId][fieldNameWithoutNumber] = fields[fieldName];
         });
       });
-
-      // Format data for line graph
-      const graphData = {
-        labels: [],
-        datasets: [
-          {
-            label: "Scanning Data",
-            data: [],
-            fill: false,
-            borderColor: "#4FD1C5",
-            backgroundColor: "#4FD1C5",
-            pointBorderColor: "transparent",
-            pointBackgroundColor: "transparent",
-            lineTension: 0.3,
-          },
-        ],
-      };
-
-      Object.keys(data).forEach((section) => {
-        const sectionData = data[section];
-        const studentsByMinute = {};
-        Object.keys(sectionData).forEach((studentId) => {
-          const studentData = sectionData[studentId];
-          if (studentData["lastScan"]) {
-            const scanTime = new Date(studentData["lastScan"]);
-            const minute = scanTime.getMinutes();
-            if (!studentsByMinute[minute]) {
-              studentsByMinute[minute] = 0;
-            }
-            studentsByMinute[minute]++;
-          }
-        });
-
-        Object.keys(studentsByMinute).forEach((minute) => {
-          graphData.labels.push(`${section} - ${minute}`);
-          graphData.datasets[0].data.push(studentsByMinute[minute]);
-        });
-      });
-      console.log(data)
-      console.log(graphData);
-      console.log("hehe")
-      console.log(studentsByMinute)
-      setAttendanceData(graphData);
+      console.log(data);
+      setAttendanceData(data);
     };
 
     fetchData();
   }, []);
 
+  const formatChartData = () => {
+    const chartData = {
+      labels: [],
+      datasets: [
+        {
+          label: "Scanning Data",
+          data: [],
+          fill: false,
+          borderColor: "#4FD1C5",
+          backgroundColor: "#4FD1C5",
+          pointBorderColor: "transparent",
+          pointBackgroundColor: "transparent",
+          lineTension: 0.3,
+        },
+      ],
+    };
+
+    Object.keys(attendanceData).forEach((section) => {
+      const sectionData = attendanceData[section];
+      const minuteData = {};
+      Object.keys(sectionData).forEach((student) => {
+        const studentData = sectionData[student];
+        const lastScan = studentData["lastScan"];
+        if (lastScan) {
+          const minute = new Date(lastScan.seconds * 1000).getMinutes();
+          if (!minuteData[minute]) {
+            minuteData[minute] = 1;
+          } else {
+            minuteData[minute]++;
+          }
+        }
+      });
+
+      Object.keys(minuteData).forEach((minute) => {
+        chartData.labels.push(`${minute}:00`);
+        chartData.datasets[0].data.push(minuteData[minute]);
+      });
+    });
+
+    return chartData;
+  };
+
   return {
     attendanceData,
+    formatChartData,
   };
 }
+
 
 
 
