@@ -93,25 +93,12 @@ function useAttendanceData() {
 const LineGraph = () => {
   const chartRef = useRef();
   const chartInstanceRef = useRef(null);
+  const { formatChartData } = useAttendanceData();
 
   useEffect(() => {
     const chartCtx = chartRef.current.getContext('2d');
 
-    const mockData = {
-      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', "Jul"],
-      datasets: [
-        {
-          label: 'Scanning Data',
-          data: [12, 19, 3, 5, 2, 3],
-          fill: false,
-          borderColor: '#4FD1C5',
-          backgroundColor: '#4FD1C5',
-          pointBorderColor: 'transparent',
-          pointBackgroundColor: 'transparent',
-          lineTension: 0.3,
-        },
-      ],
-    };
+    const chartData = formatChartData();
 
     if (chartInstanceRef.current) {
       // Destroy previous chart if it exists
@@ -120,7 +107,7 @@ const LineGraph = () => {
 
     chartInstanceRef.current = new Chart(chartCtx, {
       type: 'line',
-      data: mockData,
+      data: chartData,
       options: {
         scales: {
           yAxes: [{
@@ -169,10 +156,9 @@ const LineGraph = () => {
         chartInstanceRef.current.destroy();
       }
     };
-  }, []);
+  }, [formatChartData]);
 
   return (
-
     <div className="bg-white rounded-lg shadow-md m-4 overflow-hidden">
       <canvas ref={chartRef} className="w-full h-full"></canvas>
     </div>
@@ -180,3 +166,4 @@ const LineGraph = () => {
 };
 
 export default LineGraph;
+
