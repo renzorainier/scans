@@ -87,6 +87,48 @@ function useAttendanceData() {
 }
 
 
+function AttendanceTable() {
+  const { attendanceData } = useAttendanceData();
+  const [selectedSection, setSelectedSection] = useState("");
+  const [presentStudents, setPresentStudents] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [showInfo, setShowInfo] = useState(false);
+  const [infoText, setInfoText] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const presentStudents = [];
+    Object.keys(attendanceData).forEach((section) => {
+      const sectionData = attendanceData[section];
+      Object.keys(sectionData).forEach((studentId) => {
+        const studentData = sectionData[studentId];
+        if (studentData.present === true) {
+          // Convert the lastScan object to a string and timestamp
+          const lastScanDate = new Date(studentData.lastScan.seconds * 1000);
+          const lastScanTime = lastScanDate.toLocaleTimeString([], {
+            hour: "numeric",
+            minute: "2-digit",
+          });
+          const lastScanTimestamp = lastScanDate.getTime();
+
+          presentStudents.push({
+            section,
+            studentId,
+            ...studentData,
+            lastScanTime,
+            lastScanTimestamp,
+          });
+        }
+        setIsLoading(false);
+      });
+    });
+
+    // Sort presentStudents by lastScanTimestamp in descending order
+    presentStudents.sort((a, b) => b.lastScanTimestamp - a.lastScanTimestamp);
+    setPresentStudents(presentStudents);
+  }, [attendanceData]);
+}
+
 
 const LineGraph = () => {
   const chartRef = useRef();
