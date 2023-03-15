@@ -1,5 +1,8 @@
 import React, { useEffect, useRef } from 'react';
 import Chart from 'chart.js/auto';
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "./firebase.js";
+
 
 function useAttendanceData() {
   const [attendanceData, setAttendanceData] = useState({});
