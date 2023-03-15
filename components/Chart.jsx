@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import Chart from 'chart.js/auto';
 
 function useAttendanceData() {
-  const [attendanceData, setAttendanceData] = useState([]);
+  const [attendanceData, setAttendanceData] = useState({});
 
   useEffect(() => {
     const fetchData = async () => {
@@ -24,30 +24,46 @@ function useAttendanceData() {
         });
       });
 
-      // Process the data
-      const formattedData = Object.keys(data).map((section) => {
-        const studentScans = {};
-        Object.keys(data[section]).forEach((studentId) => {
-          Object.keys(data[section][studentId]).forEach((fieldName) => {
-            if (fieldName.startsWith("scan")) {
-              const timestamp = data[section][studentId][fieldName];
-              const minute = moment(timestamp).startOf("minute").format();
-              if (!studentScans[minute]) {
-                studentScans[minute] = 0;
-              }
-              studentScans[minute]++;
+      // Format data for line graph
+      const graphData = {
+        labels: [],
+        datasets: [
+          {
+            label: "Scanning Data",
+            data: [],
+            fill: false,
+            borderColor: "#4FD1C5",
+            backgroundColor: "#4FD1C5",
+            pointBorderColor: "transparent",
+            pointBackgroundColor: "transparent",
+            lineTension: 0.3,
+          },
+        ],
+      };
+
+      Object.keys(data).forEach((section) => {
+        const sectionData = data[section];
+        const studentsByMinute = {};
+        Object.keys(sectionData).forEach((studentId) => {
+          const studentData = sectionData[studentId];
+          if (studentData["lastScan"]) {
+            const scanTime = new Date(studentData["lastScan"]);
+            const minute = scanTime.getMinutes();
+            if (!studentsByMinute[minute]) {
+              studentsByMinute[minute] = 0;
             }
-          });
+            studentsByMinute[minute]++;
+          }
         });
-        const scansPerMinute = Object.keys(studentScans).map((minute) => ({
-          x: minute,
-          y: studentScans[minute],
-        }));
-        return { section, scansPerMinute };
+
+        Object.keys(studentsByMinute).forEach((minute) => {
+          graphData.labels.push(`${section} - ${minute}`);
+          graphData.datasets[0].data.push(studentsByMinute[minute]);
+        });
       });
-      console.log(data)
-      console.log(formattedData)
-      setAttendanceData(formattedData);
+
+      console.log(graphData);
+      setAttendanceData(graphData);
     };
 
     fetchData();
@@ -57,6 +73,7 @@ function useAttendanceData() {
     attendanceData,
   };
 }
+
 
 
 const LineGraph = () => {
