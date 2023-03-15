@@ -61,9 +61,10 @@ function useAttendanceData() {
           graphData.datasets[0].data.push(studentsByMinute[minute]);
         });
       });
-
+      console.log(data)
       console.log(graphData);
       console.log("hehe")
+      console.log(studentsByMinute)
       setAttendanceData(graphData);
     };
 
