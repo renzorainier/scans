@@ -52,10 +52,11 @@ function useAttendanceData() {
     };
 
     const startTime = new Date();
-    startTime.setHours(5, 0, 0, 0); // set start time to 5:00 AM
+    startTime.setHours(0, 0, 0, 0); // set start time to 5:00 AM
     const endTime = new Date();
-    endTime.setHours(7, 0, 0, 0); // set end time to 7:00 AM
+    endTime.setHours(24, 0, 0, 0); // set end time to 7:00 AM
 
+    const minuteData = {}
     let currentTime = startTime;
     while (currentTime < endTime) {
       const minute = currentTime.getMinutes();
