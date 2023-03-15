@@ -37,17 +37,17 @@ function useAttendanceData() {
   const formatChartData = () => {
     const chartData = {
       labels: [],
-      datasets: [{
-        label: "Attendance",
-        data: [],
-        fill: false,
-        borderColor: "rgb(75, 192, 192)",
-        tension: 0.1
-      }]
+      datasets: [
+        {
+          label: "Attendance",
+          data: [],
+          fill: false,
+          borderColor: "rgb(75, 192, 192)",
+          tension: 0.1,
+        },
+      ],
     };
 
-    // Initialize earliestMinute to 60 to ensure it is set correctly in the first iteration
-    let earliestMinute = 60;
     const minuteData = {};
     Object.keys(attendanceData).forEach((section) => {
       const sectionData = attendanceData[section];
@@ -55,51 +55,42 @@ function useAttendanceData() {
         const studentData = sectionData[student];
         const lastScan = studentData["lastScan"];
         if (lastScan) {
-          const minute = new Date(lastScan.seconds * 1000).getMinutes();
           const hour = new Date(lastScan.seconds * 1000).getHours();
-          const formattedMinute = `${hour.toString().padStart(2, '0')}:${minute.toString().padStart(2, '0')}`;
-          if (minute < earliestMinute) {
-            earliestMinute = minute;
-          }
-          if (!minuteData[formattedMinute]) {
-            minuteData[formattedMinute] = 1;
-          } else {
-            minuteData[formattedMinute]++;
+          const minute = new Date(lastScan.seconds * 1000).getMinutes();
+          if (hour >= 5 && hour < 7) {
+            const minuteIncrement = Math.floor(minute / 5) * 5;
+            const timeLabel = `${hour}:${minuteIncrement < 10 ? "0" : ""}${minuteIncrement}`;
+            if (!minuteData[timeLabel]) {
+              minuteData[timeLabel] = 1;
+            } else {
+              minuteData[timeLabel]++;
+            }
           }
         }
       });
     });
 
-    // Create empty data points for all minutes between earliestMinute and 59
-    for (let i = earliestMinute; i < 60; i++) {
-      const formattedMinute = `00:${i.toString().padStart(2, '0')}`;
-      if (!minuteData[formattedMinute]) {
-        minuteData[formattedMinute] = 0;
-      }
+    const startLabel = "5:00";
+    const endLabel = "7:00";
+    let currentLabel = startLabel;
+    while (currentLabel <= endLabel) {
+      chartData.labels.push(currentLabel);
+      chartData.datasets[0].data.push(minuteData[currentLabel] || 0);
+      const [currentHour, currentMinute] = currentLabel.split(":").map((x) => parseInt(x));
+      const nextMinute = currentMinute + 5;
+      currentLabel = `${currentHour}:${nextMinute < 10 ? "0" : ""}${nextMinute}`;
     }
-    for (let i = 0; i < earliestMinute; i++) {
-      const formattedMinute = `01:${i.toString().padStart(2, '0')}`;
-      if (!minuteData[formattedMinute]) {
-        minuteData[formattedMinute] = 0;
-      }
-    }
-
-    Object.keys(minuteData).forEach((minute) => {
-      chartData.labels.push(minute);
-      chartData.datasets[0].data.push(minuteData[minute]);
-    });
-
-    console.log("1")
-    console.log(chartData)
-    console.log("nice")
 
     return chartData;
   };
+
+  formatChartData();
 
   return {
     attendanceData,
     formatChartData,
   };
+
 
 }
 
