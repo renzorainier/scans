@@ -39,11 +39,14 @@ function useAttendanceData() {
       labels: [],
       datasets: [
         {
-          label: "Attendance",
+          label: "Scanning Data",
           data: [],
           fill: false,
-          borderColor: "rgb(75, 192, 192)",
-          tension: 0.1,
+          borderColor: "#4FD1C5",
+          backgroundColor: "#4FD1C5",
+          pointBorderColor: "transparent",
+          pointBackgroundColor: "transparent",
+          lineTension: 0.3,
         },
       ],
     };
@@ -55,36 +58,28 @@ function useAttendanceData() {
         const studentData = sectionData[student];
         const lastScan = studentData["lastScan"];
         if (lastScan) {
-          const hour = new Date(lastScan.seconds * 1000).getHours();
           const minute = new Date(lastScan.seconds * 1000).getMinutes();
-          if (hour >= 5 && hour < 7) {
-            const minuteIncrement = Math.floor(minute / 5) * 5;
-            const timeLabel = `${hour}:${minuteIncrement < 10 ? "0" : ""}${minuteIncrement}`;
-            if (!minuteData[timeLabel]) {
-              minuteData[timeLabel] = 1;
-            } else {
-              minuteData[timeLabel]++;
-            }
+          if (!minuteData[minute]) {
+            minuteData[minute] = 1;
+          } else {
+            minuteData[minute]++;
           }
         }
       });
     });
 
-    const startLabel = "5:00";
-    const endLabel = "7:00";
-    let currentLabel = startLabel;
-    while (currentLabel <= endLabel) {
-      chartData.labels.push(currentLabel);
-      chartData.datasets[0].data.push(minuteData[currentLabel] || 0);
-      const [currentHour, currentMinute] = currentLabel.split(":").map((x) => parseInt(x));
-      const nextMinute = currentMinute + 5;
-      currentLabel = `${currentHour}:${nextMinute < 10 ? "0" : ""}${nextMinute}`;
-    }
+    Object.keys(minuteData).forEach((minute) => {
+      chartData.labels.push(`${minute}:00`);
+      chartData.datasets[0].data.push(minuteData[minute]);
+    });
+
+    console.log("1")
+    console.log(chartData)
+    console.log("nice")
 
     return chartData;
   };
-
-  formatChartData();
+  formatChartData()
 
   return {
     attendanceData,
