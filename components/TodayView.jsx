@@ -76,13 +76,13 @@ function useAttendanceData() {
 
     return chartData;
   };
+  formatChartData()
 
   return {
     attendanceData,
     formatChartData,
   };
 
-  formatChartData()
 }
 
 function AttendanceTable() {
