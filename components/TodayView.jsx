@@ -85,6 +85,7 @@ function useAttendanceData() {
 
 }
 
+
 function AttendanceTable() {
   const { attendanceData } = useAttendanceData();
   const [selectedSection, setSelectedSection] = useState("");

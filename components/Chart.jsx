@@ -27,6 +27,7 @@ function useAttendanceData() {
         });
       });
       console.log(data);
+      console.log("hehe");
       setAttendanceData(data);
     };
 
@@ -71,16 +72,19 @@ function useAttendanceData() {
         chartData.datasets[0].data.push(minuteData[minute]);
       });
     });
+    console.log("1")
+    console.log(chartData)
+    console.log("2")
 
     return chartData;
   };
+  formatChartData()
 
   return {
     attendanceData,
     formatChartData,
   };
 }
-
 
 
 
