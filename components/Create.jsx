@@ -13,10 +13,11 @@ function StudentCollection() {
   // { id: "02", lrn: "109339100105", name: "BANTOG, THAMZ JAZLEY", section: "1A", strand: "STEM", present: false },
   // { id: "03", lrn: "114235070063", name: "BUCOG, JESSIELYN", section: "1A", strand: "STEM", present: false },
 
-  { id: "01", lrn: "109329100329", name: "MALICDEM, CARLO", section: "1B", strand: "STEM", present: false },
-  { id: "02", lrn: "109351121643", name: "PUREZA, XEDRICK", section: "1B", strand: "STEM", present: false },
-  { id: "03", lrn: "109311100219", name: "ILAO, GIAN RUSSEL", section: "1B", strand: "STEM", present: false },
-  { id: "04", lrn: "425707150124", name: "REGIS, YESTIN GABRIEL", section: "1B", strand: "STEM", present: false },
+  // { id: "01", lrn: "109329100329", name: "MALICDEM, CARLO", section: "1B", strand: "STEM", present: false },
+  // { id: "02", lrn: "109351121643", name: "PUREZA, XEDRICK", section: "1B", strand: "STEM", present: false },
+  // { id: "03", lrn: "109311100219", name: "ILAO, GIAN RUSSEL", section: "1B", strand: "STEM", present: false },
+  // { id: "04", lrn: "425707150124", name: "REGIS, YESTIN GABRIEL", section: "1B", strand: "STEM", present: false },
+  { id: "04", lrn: "109352100024", name: "BELDA, CAMILLE SHAINNE", section: "1D", strand: "STEM", present: false },
 
 
 
@@ -40,7 +41,7 @@ function StudentCollection() {
   // { id: "03", lrn: "114235070063", name: "BUCOG, JESSIELYN", section: "1A", strand: "STEM", present: false },
 
   const createCollection = async () => {
-    const sectionDocRef = doc(db, "STEM", "1B");
+    const sectionDocRef = doc(db, "STEM", "1D");
     const sectionData = {};
 
     students.forEach((student) => {
