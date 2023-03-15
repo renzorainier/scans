@@ -50,7 +50,7 @@ function useAttendanceData() {
         },
       ],
     };
-
+    const minuteData = {}
     const startTime = new Date();
     startTime.setHours(5, 0, 0, 0); // set start time to 5:00 AM
     const endTime = new Date();
