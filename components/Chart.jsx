@@ -50,7 +50,7 @@ function useAttendanceData() {
         },
       ],
     };
-    const minuteData = {}
+
     const startTime = new Date();
     startTime.setHours(5, 0, 0, 0); // set start time to 5:00 AM
     const endTime = new Date();
@@ -70,6 +70,9 @@ function useAttendanceData() {
 
     console.log(chartData);
 
+    // Change chart type to line
+    chartData.datasets[0].type = 'line';
+
     return chartData;
   };
 
@@ -79,6 +82,7 @@ function useAttendanceData() {
     attendanceData,
     formatChartData,
   };
+
 
 }
 
