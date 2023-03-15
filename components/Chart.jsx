@@ -50,36 +50,39 @@ function useAttendanceData() {
         },
       ],
     };
-
-    const minuteData = {};
+    
+    const hourData = {};
     Object.keys(attendanceData).forEach((section) => {
       const sectionData = attendanceData[section];
       Object.keys(sectionData).forEach((student) => {
         const studentData = sectionData[student];
         const lastScan = studentData["lastScan"];
         if (lastScan) {
-          const minute = new Date(lastScan.seconds * 1000).getMinutes();
-          if (!minuteData[minute]) {
-            minuteData[minute] = 1;
-          } else {
-            minuteData[minute]++;
+          const date = new Date(lastScan.seconds * 1000);
+          const hour = date.getHours();
+          const minute = date.getMinutes();
+          if (!hourData[hour]) {
+            hourData[hour] = {};
           }
+          hourData[hour][minute] = (hourData[hour][minute] || 0) + 1;
         }
       });
     });
 
-    Object.keys(minuteData).forEach((minute) => {
-      chartData.labels.push(`${minute}:00`);
-      chartData.datasets[0].data.push(minuteData[minute]);
-    });
+    for (let hour = 0; hour < 24; hour++) {
+      for (let minute = 0; minute < 60; minute++) {
+        const count = hourData[hour]?.[minute] || 0;
+        chartData.labels.push(`${hour.toString().padStart(2, "0")}:${minute.toString().padStart(2, "0")}`);
+        chartData.datasets[0].data.push(count);
+      }
+    }
 
-    console.log("1")
-    console.log(chartData)
-    console.log("nice")
+    console.log(chartData);
 
     return chartData;
   };
-  formatChartData()
+
+  formatChartData();
 
   return {
     attendanceData,
