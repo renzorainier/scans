@@ -25,64 +25,15 @@ function useAttendanceData() {
         });
       });
       console.log(data);
-      console.log("hehe");
       setAttendanceData(data);
     };
 
     fetchData();
   }, []);
 
-  const formatChartData = () => {
-    const chartData = {
-      labels: [],
-      datasets: [
-        {
-          label: "Scanning Data",
-          data: [],
-          fill: false,
-          borderColor: "#4FD1C5",
-          backgroundColor: "#4FD1C5",
-          pointBorderColor: "transparent",
-          pointBackgroundColor: "transparent",
-          lineTension: 0.3,
-        },
-      ],
-    };
-
-    Object.keys(attendanceData).forEach((section) => {
-      const sectionData = attendanceData[section];
-      const minuteData = {};
-      Object.keys(sectionData).forEach((student) => {
-        const studentData = sectionData[student];
-        const lastScan = studentData["lastScan"];
-        if (lastScan) {
-          const minute = new Date(lastScan.seconds * 1000).getMinutes();
-          if (!minuteData[minute]) {
-            minuteData[minute] = 1;
-          } else {
-            minuteData[minute]++;
-          }
-        }
-      });
-
-      Object.keys(minuteData).forEach((minute) => {
-        chartData.labels.push(`${minute}:00`);
-        chartData.datasets[0].data.push(minuteData[minute]);
-      });
-    });
-    console.log("1")
-    console.log(chartData)
-    console.log("2")
-
-    return chartData;
-  };
-  formatChartData()
-
   return {
     attendanceData,
-    formatChartData,
   };
-
 }
 
 function AttendanceTable() {
