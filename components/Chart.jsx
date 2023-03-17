@@ -70,9 +70,20 @@ function useAttendanceData() {
       });
     });
 
-    Object.keys(minuteData).forEach((key) => {
+    // Create an array of timestamps for each minute between the first and last scan
+    const firstScan = new Date(Object.keys(minuteData)[0]);
+    const lastScan = new Date(Object.keys(minuteData)[Object.keys(minuteData).length - 1]);
+    const timestamps = [];
+    for (let i = firstScan; i <= lastScan; i.setMinutes(i.getMinutes() + 1)) {
+      const hour = i.getHours().toString().padStart(2, '0');
+      const minute = i.getMinutes().toString().padStart(2, '0');
+      timestamps.push(`${hour}:${minute}`);
+    }
+
+    // Push each minute's data into the chart data, even if there isn't any data for that minute
+    timestamps.forEach((key) => {
       chartData.labels.push(key);
-      chartData.datasets[0].data.push(minuteData[key]);
+      chartData.datasets[0].data.push(minuteData[key] || 0);
     });
 
     console.log(chartData);
@@ -86,7 +97,6 @@ function useAttendanceData() {
     attendanceData,
     formatChartData,
   };
-
 
 
 }
