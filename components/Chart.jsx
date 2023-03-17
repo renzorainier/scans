@@ -41,17 +41,32 @@ function useAttendanceData() {
         {
           label: "Scanning Data",
           data: [],
-          fill: false,
+          fill: true,
           borderColor: "#4FD1C5",
           backgroundColor: "#4FD1C5",
-          pointBorderColor: "transparent",
-          pointBackgroundColor: "transparent",
+          pointBorderColor: "#FFFFFF",
+          pointBackgroundColor: "#4FD1C5",
+          pointRadius: 3,
+          pointHoverRadius: 5,
           lineTension: 0.3,
         },
       ],
     };
 
     const minuteData = {};
+    const startHour = 18; // 6pm
+    const endHour = 24; // 12pm
+    for (let hour = startHour; hour < endHour; hour++) {
+      for (let minute = 0; minute < 60; minute += 5) {
+        chartData.labels.push(`${hour.toString().padStart(2, "0")}:${minute.toString().padStart(2, "0")}`);
+        if (minuteData[`${hour}:${minute}`]) {
+          chartData.datasets[0].data.push(minuteData[`${hour}:${minute}`]);
+        } else {
+          chartData.datasets[0].data.push(0);
+        }
+      }
+    }
+
     Object.keys(attendanceData).forEach((section) => {
       const sectionData = attendanceData[section];
       Object.keys(sectionData).forEach((student) => {
@@ -60,30 +75,17 @@ function useAttendanceData() {
         if (lastScan) {
           const hour = new Date(lastScan.seconds * 1000).getHours();
           const minute = new Date(lastScan.seconds * 1000).getMinutes();
-          if (hour >= 18 && hour <= 23) {
-            const fiveMinuteInterval = Math.floor(minute / 5) * 5; // round down to nearest 5-minute interval
-            const label = `${hour}:${fiveMinuteInterval.toString().padStart(2, '0')}`;
-            if (!minuteData[label]) {
-              minuteData[label] = 1;
-            } else {
-              minuteData[label]++;
-            }
+          if (hour >= startHour && hour < endHour) {
+            minuteData[`${hour}:${minute}`] = (minuteData[`${hour}:${minute}`] || 0) + 1;
           }
         }
       });
     });
 
-    const labels = Object.keys(minuteData);
-    labels.sort(); // sort labels in ascending order
-    labels.forEach((label) => {
-      chartData.labels.push(label);
-      chartData.datasets[0].data.push(minuteData[label]);
-    });
     console.log(chartData);
 
     return chartData;
   };
-
 
 
   return {
