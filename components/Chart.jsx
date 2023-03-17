@@ -60,7 +60,7 @@ function useAttendanceData() {
         if (lastScan) {
           const hour = new Date(lastScan.seconds * 1000).getHours();
           const minute = new Date(lastScan.seconds * 1000).getMinutes();
-          if (hour >= 18 && hour <= 23) { // only consider data between 6pm and 12pm
+          if (hour >= 3 && hour <= 23) { // only consider data between 6pm and 12pm
             if (minute % 5 === 0) { // only show data at 5 minute increments
               const formattedMinute = minute.toString().padStart(2, "0");
               chartData.labels.push(`${hour}:${formattedMinute}`);
