@@ -41,32 +41,17 @@ function useAttendanceData() {
         {
           label: "Scanning Data",
           data: [],
-          fill: true,
+          fill: false,
           borderColor: "#4FD1C5",
           backgroundColor: "#4FD1C5",
-          pointBorderColor: "#FFFFFF",
-          pointBackgroundColor: "#4FD1C5",
-          pointRadius: 3,
-          pointHoverRadius: 5,
+          pointBorderColor: "transparent",
+          pointBackgroundColor: "transparent",
           lineTension: 0.3,
         },
       ],
     };
 
     const minuteData = {};
-    const startHour = 17; // 6pm
-    const endHour = 21; // 12pm
-    for (let hour = startHour; hour < endHour; hour++) {
-      for (let minute = 0; minute < 60; minute += 1) {
-        chartData.labels.push(`${hour.toString().padStart(2, "0")}:${minute.toString().padStart(2, "0")}`);
-        if (minuteData[`${hour}:${minute}`]) {
-          chartData.datasets[0].data.push(minuteData[`${hour}:${minute}`]);
-        } else {
-          chartData.datasets[0].data.push(0);
-        }
-      }
-    }
-
     Object.keys(attendanceData).forEach((section) => {
       const sectionData = attendanceData[section];
       Object.keys(sectionData).forEach((student) => {
@@ -74,24 +59,44 @@ function useAttendanceData() {
         const lastScan = studentData["lastScan"];
         if (lastScan) {
           const hour = new Date(lastScan.seconds * 1000).getHours();
-          const minute = new Date(lastScan.seconds * 1000).getMinutes();
-          if (hour >= startHour && hour < endHour) {
-            minuteData[`${hour}:${minute}`] = (minuteData[`${hour}:${minute}`] || 0) + 1;
+          if(hour >= 18 || hour <= 23){
+            const minute = new Date(lastScan.seconds * 1000).getMinutes();
+            if (!minuteData[minute]) {
+              minuteData[minute] = 1;
+            } else {
+              minuteData[minute]++;
+            }
           }
         }
       });
     });
 
-    console.log(chartData);
+    let minute = 0;
+    while(minute < 60){
+      if(minuteData[minute]){
+        chartData.labels.push(`${minute}:00`);
+        chartData.datasets[0].data.push(minuteData[minute]);
+      }else{
+        chartData.labels.push(`${minute}:00`);
+        chartData.datasets[0].data.push(0);
+      }
+      minute += 5;
+    }
+
+    console.log("1")
+    console.log(chartData)
+    console.log("nice")
 
     return chartData;
   };
 
+  formatChartData()
 
   return {
     attendanceData,
     formatChartData,
   };
+
 
 
 }
