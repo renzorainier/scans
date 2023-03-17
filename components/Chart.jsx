@@ -59,7 +59,7 @@ function useAttendanceData() {
         const lastScan = studentData["lastScan"];
         if (lastScan) {
           const hour = new Date(lastScan.seconds * 1000).getHours();
-          if(hour >= 18 || hour <= 23){
+          if(hour >= 17 || hour <= 23){
             const minute = new Date(lastScan.seconds * 1000).getMinutes();
             if (!minuteData[minute]) {
               minuteData[minute] = 1;
