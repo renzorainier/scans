@@ -59,38 +59,28 @@ function useAttendanceData() {
         const lastScan = studentData["lastScan"];
         if (lastScan) {
           const hour = new Date(lastScan.seconds * 1000).getHours();
-          if(hour >= 17 || hour <= 23){
-            const minute = new Date(lastScan.seconds * 1000).getMinutes();
-            if (!minuteData[minute]) {
-              minuteData[minute] = 1;
-            } else {
-              minuteData[minute]++;
-            }
+          const minute = new Date(lastScan.seconds * 1000).getMinutes();
+          const key = `${hour}:${minute}`;
+          if (!minuteData[key]) {
+            minuteData[key] = 1;
+          } else {
+            minuteData[key]++;
           }
         }
       });
     });
 
-    let minute = 0;
-    while(minute < 60){
-      if(minuteData[minute]){
-        chartData.labels.push(`${minute}:00`);
-        chartData.datasets[0].data.push(minuteData[minute]);
-      }else{
-        chartData.labels.push(`${minute}:00`);
-        chartData.datasets[0].data.push(0);
-      }
-      minute += 5;
-    }
+    Object.keys(minuteData).forEach((key) => {
+      chartData.labels.push(key);
+      chartData.datasets[0].data.push(minuteData[key]);
+    });
 
-    console.log("1")
-    console.log(chartData)
-    console.log("nice")
+    console.log(chartData);
 
     return chartData;
   };
 
-  formatChartData()
+  formatChartData();
 
   return {
     attendanceData,
