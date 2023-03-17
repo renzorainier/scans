@@ -47,7 +47,6 @@ function useAttendanceData() {
           pointBorderColor: "transparent",
           pointBackgroundColor: "transparent",
           lineTension: 0.3,
-          type: "line", // added to change chart type to line chart
         },
       ],
     };
@@ -60,23 +59,18 @@ function useAttendanceData() {
         const lastScan = studentData["lastScan"];
         if (lastScan) {
           const minute = new Date(lastScan.seconds * 1000).getMinutes();
-          const hour = new Date(lastScan.seconds * 1000).getHours();
-          if (hour >= 18 && hour < 24 && minute >= 0 && minute <= 59) { // added to adjust time range
-            if (!minuteData[minute]) {
-              minuteData[minute] = 1;
-            } else {
-              minuteData[minute]++;
-            }
+          if (!minuteData[minute]) {
+            minuteData[minute] = 1;
+          } else {
+            minuteData[minute]++;
           }
         }
       });
     });
 
     Object.keys(minuteData).forEach((minute) => {
-      if (minute % 5 === 0) { // added to adjust x-axis labels
-        chartData.labels.push(`${minute}:00`);
-        chartData.datasets[0].data.push(minuteData[minute]);
-      }
+      chartData.labels.push(`${minute}:00`);
+      chartData.datasets[0].data.push(minuteData[minute]);
     });
 
     console.log("1")
@@ -85,7 +79,7 @@ function useAttendanceData() {
 
     return chartData;
   };
-
+  formatChartData()
 
   return {
     attendanceData,
