@@ -79,7 +79,6 @@ function useAttendanceData() {
 
     return chartData;
   };
-  formatChartData()
 
   return {
     attendanceData,
