@@ -60,30 +60,26 @@ function useAttendanceData() {
         if (lastScan) {
           const hour = new Date(lastScan.seconds * 1000).getHours();
           const minute = new Date(lastScan.seconds * 1000).getMinutes();
-          if (hour >= 1 && hour <= 23 && minute % 5 === 0) {
-            chartData.labels.push(`${hour}:0${minute}`);
-            if (!minuteData[`${hour}:0${minute}`]) {
-              minuteData[`${hour}:0${minute}`] = 1;
-            } else {
-              minuteData[`${hour}:0${minute}`]++;
+          if (hour >= 18 && hour <= 23) { // only consider data between 6pm and 12pm
+            if (minute % 5 === 0) { // only show data at 5 minute increments
+              const formattedMinute = minute.toString().padStart(2, "0");
+              chartData.labels.push(`${hour}:${formattedMinute}`);
+              if (!minuteData[minute]) {
+                minuteData[minute] = 1;
+              } else {
+                minuteData[minute]++;
+              }
             }
           }
         }
       });
     });
 
-    Object.keys(minuteData).forEach((minute) => {
-      chartData.datasets[0].data.push(minuteData[minute]);
-    });
+    chartData.datasets[0].data = Object.values(minuteData);
 
-
-  console.log("1")
-  console.log(chartData)
-  console.log("nice")
-
+    console.log(chartData)
     return chartData;
   };
-
 
 
   return {
