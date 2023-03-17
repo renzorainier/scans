@@ -54,10 +54,10 @@ function useAttendanceData() {
     };
 
     const minuteData = {};
-    const startHour = 1; // 6pm
-    const endHour = 24; // 12pm
+    const startHour = 19; // 6pm
+    const endHour = 20; // 12pm
     for (let hour = startHour; hour < endHour; hour++) {
-      for (let minute = 0; minute < 60; minute += 5) {
+      for (let minute = 0; minute < 60; minute += 1) {
         chartData.labels.push(`${hour.toString().padStart(2, "0")}:${minute.toString().padStart(2, "0")}`);
         if (minuteData[`${hour}:${minute}`]) {
           chartData.datasets[0].data.push(minuteData[`${hour}:${minute}`]);
