@@ -47,32 +47,41 @@ function useAttendanceData() {
           pointBorderColor: "transparent",
           pointBackgroundColor: "transparent",
           lineTension: 0.3,
+          type: "line", // added to change chart type to line chart
         },
       ],
     };
 
-    const startTime = new Date();
-    startTime.setHours(0, 0, 0, 0); // set start time to 5:00 AM
-    const endTime = new Date();
-    endTime.setHours(24, 0, 0, 0); // set end time to 7:00 AM
+    const minuteData = {};
+    Object.keys(attendanceData).forEach((section) => {
+      const sectionData = attendanceData[section];
+      Object.keys(sectionData).forEach((student) => {
+        const studentData = sectionData[student];
+        const lastScan = studentData["lastScan"];
+        if (lastScan) {
+          const minute = new Date(lastScan.seconds * 1000).getMinutes();
+          const hour = new Date(lastScan.seconds * 1000).getHours();
+          if (hour >= 18 && hour < 24 && minute >= 0 && minute <= 59) { // added to adjust time range
+            if (!minuteData[minute]) {
+              minuteData[minute] = 1;
+            } else {
+              minuteData[minute]++;
+            }
+          }
+        }
+      });
+    });
 
-    const minuteData = {}
-    let currentTime = startTime;
-    while (currentTime < endTime) {
-      const minute = currentTime.getMinutes();
-      chartData.labels.push(`${currentTime.getHours()}:${minute < 10 ? '0' + minute : minute}`);
-      if (!minuteData[minute]) {
-        chartData.datasets[0].data.push(0);
-      } else {
+    Object.keys(minuteData).forEach((minute) => {
+      if (minute % 5 === 0) { // added to adjust x-axis labels
+        chartData.labels.push(`${minute}:00`);
         chartData.datasets[0].data.push(minuteData[minute]);
       }
-      currentTime.setMinutes(currentTime.getMinutes() + 5); // increment time by 5 minutes
-    }
+    });
 
-    console.log(chartData);
-
-    // Change chart type to line
-    chartData.datasets[0].type = 'line';
+    console.log("1")
+    console.log(chartData)
+    console.log("nice")
 
     return chartData;
   };
