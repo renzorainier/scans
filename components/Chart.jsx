@@ -54,7 +54,7 @@ function useAttendanceData() {
     };
 
     const minuteData = {};
-    const startHour = 18; // 6pm
+    const startHour = 1; // 6pm
     const endHour = 24; // 12pm
     for (let hour = startHour; hour < endHour; hour++) {
       for (let minute = 0; minute < 60; minute += 5) {
