@@ -60,7 +60,7 @@ function useAttendanceData() {
         if (lastScan) {
           const hour = new Date(lastScan.seconds * 1000).getHours();
           const minute = new Date(lastScan.seconds * 1000).getMinutes();
-          if (hour >= 18 && hour <= 23 && minute % 5 === 0) {
+          if (hour >= 1 && hour <= 23 && minute % 5 === 0) {
             chartData.labels.push(`${hour}:0${minute}`);
             if (!minuteData[`${hour}:0${minute}`]) {
               minuteData[`${hour}:0${minute}`] = 1;
@@ -80,7 +80,7 @@ function useAttendanceData() {
   console.log("1")
   console.log(chartData)
   console.log("nice")
-  
+
     return chartData;
   };
 
