@@ -70,26 +70,21 @@ function useAttendanceData() {
       });
     });
 
-    const firstScan = Object.keys(minuteData)[0];
-    const lastScan = Object.keys(minuteData)[Object.keys(minuteData).length - 1];
-    const [startHour, startMinute] = firstScan.split(":");
-    const [endHour, endMinute] = lastScan.split(":");
-    let currentHour = parseInt(startHour);
-    let currentMinute = parseInt(startMinute);
-
-    while (currentHour !== parseInt(endHour) || currentMinute !== parseInt(endMinute)) {
-      const key = `${currentHour.toString().padStart(2, "0")}:${currentMinute.toString().padStart(2, "0")}`;
-      chartData.labels.push(key);
-      chartData.datasets[0].data.push(minuteData[key] || 0);
-      currentMinute++;
-      if (currentMinute === 60) {
-        currentHour++;
-        currentMinute = 0;
-      }
+    // Create an array of timestamps for each minute between the first and last scan
+    const firstScan = new Date(Object.keys(minuteData)[0]);
+    const lastScan = new Date(Object.keys(minuteData)[Object.keys(minuteData).length - 1]);
+    const timestamps = [];
+    for (let i = firstScan; i <= lastScan; i.setMinutes(i.getMinutes() + 1)) {
+      const hour = i.getHours().toString().padStart(2, '0');
+      const minute = i.getMinutes().toString().padStart(2, '0');
+      timestamps.push(`${hour}:${minute}`);
     }
 
-    chartData.labels.push(lastScan);
-    chartData.datasets[0].data.push(minuteData[lastScan]);
+    // Push each minute's data into the chart data, even if there isn't any data for that minute
+    timestamps.forEach((key) => {
+      chartData.labels.push(key);
+      chartData.datasets[0].data.push(minuteData[key] || 0);
+    });
 
     console.log(chartData);
 
