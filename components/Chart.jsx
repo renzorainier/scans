@@ -27,7 +27,6 @@ function useAttendanceData() {
         });
       });
       console.log(data);
-      console.log("hehe");
       setAttendanceData(data);
     };
 
