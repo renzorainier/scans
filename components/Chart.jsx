@@ -39,7 +39,7 @@ function useAttendanceData() {
       labels: [],
       datasets: [
         {
-          label: "Scanning Data",
+          label: "Students per minute",
           data: [],
           fill: false,
           borderColor: "#4FD1C5",
