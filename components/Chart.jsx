@@ -33,6 +33,8 @@ function useAttendanceData() {
 
     fetchData();
   }, []);
+
+  
 const formatChartData = () => {
   const chartData = {
     labels: [],
@@ -95,9 +97,8 @@ const formatChartData = () => {
     chartData.datasets[0].data.push(minuteData[minute]);
   });
 
-  console.log("1")
+
   console.log(chartData)
-  console.log("nice")
 
   return chartData;
 };
