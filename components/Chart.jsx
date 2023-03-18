@@ -34,7 +34,7 @@ function useAttendanceData() {
     fetchData();
   }, []);
 
-  
+
 const formatChartData = () => {
   const chartData = {
     labels: [],
@@ -83,12 +83,12 @@ const formatChartData = () => {
   const earliestTime = new Date(earliestScanTime);
   const latestTime = new Date(latestScanTime);
   const hourDiff = latestTime.getHours() - earliestTime.getHours();
-  for (let i = 0; i <= hourDiff; i++) {
-    for (let j = 0; j < 60; j++) {
-      const formattedMinute = `${(earliestTime.getHours() + i).toString().padStart(2, '0')}:${j.toString().padStart(2, '0')}`;
-      if (!minuteData[formattedMinute]) {
-        minuteData[formattedMinute] = 0;
-      }
+
+  // Create empty data points for all minutes between earliest and latest scan time
+  for (let i = earliestTime.getMinutes(); i <= latestTime.getMinutes(); i++) {
+    const formattedMinute = `${earliestTime.getHours().toString().padStart(2, '0')}:${i.toString().padStart(2, '0')}`;
+    if (!minuteData[formattedMinute]) {
+      minuteData[formattedMinute] = 0;
     }
   }
 
@@ -107,6 +107,7 @@ return {
   attendanceData,
   formatChartData,
 };
+
 }
 
 
