@@ -33,79 +33,80 @@ function useAttendanceData() {
 
     fetchData();
   }, []);
+const formatChartData = () => {
+  const chartData = {
+    labels: [],
+    datasets: [
+      {
+        label: "Scanning Data",
+        data: [],
+        fill: false,
+        borderColor: "#4FD1C5",
+        backgroundColor: "#4FD1C5",
+        pointBorderColor: "transparent",
+        pointBackgroundColor: "transparent",
+        lineTension: 0.3,
+      },
+    ],
+  };
 
-  const formatChartData = () => {
-    const chartData = {
-      labels: [],
-      datasets: [
-        {
-          label: "Scanning Data",
-          data: [],
-          fill: false,
-          borderColor: "#4FD1C5",
-          backgroundColor: "#4FD1C5",
-          pointBorderColor: "transparent",
-          pointBackgroundColor: "transparent",
-          lineTension: 0.3,
-        },
-      ],
-    };
-
-    let earliestMinute = 60;
-    let latestMinute = 0;
-    const minuteData = {};
-    Object.keys(attendanceData).forEach((section) => {
-      const sectionData = attendanceData[section];
-      Object.keys(sectionData).forEach((student) => {
-        const studentData = sectionData[student];
-        const lastScan = studentData["lastScan"];
-        if (lastScan) {
-          const minute = new Date(lastScan.seconds * 1000).getMinutes();
-          const hour = new Date(lastScan.seconds * 1000).getHours();
-          const formattedMinute = `${hour.toString().padStart(2, '0')}:${minute.toString().padStart(2, '0')}`;
-          if (minute < earliestMinute) {
-            earliestMinute = minute;
-          }
-          if (minute > latestMinute) {
-            latestMinute = minute;
-          }
-          if (!minuteData[formattedMinute]) {
-            minuteData[formattedMinute] = 1;
-          } else {
-            minuteData[formattedMinute]++;
-          }
+  let earliestScanTime = null;
+  let latestScanTime = null;
+  const minuteData = {};
+  Object.keys(attendanceData).forEach((section) => {
+    const sectionData = attendanceData[section];
+    Object.keys(sectionData).forEach((student) => {
+      const studentData = sectionData[student];
+      const lastScan = studentData["lastScan"];
+      if (lastScan) {
+        const scanTime = lastScan.seconds * 1000;
+        if (earliestScanTime === null || scanTime < earliestScanTime) {
+          earliestScanTime = scanTime;
         }
-      });
+        if (latestScanTime === null || scanTime > latestScanTime) {
+          latestScanTime = scanTime;
+        }
+        const minute = new Date(scanTime).getMinutes();
+        const hour = new Date(scanTime).getHours();
+        const formattedMinute = `${hour.toString().padStart(2, '0')}:${minute.toString().padStart(2, '0')}`;
+        if (!minuteData[formattedMinute]) {
+          minuteData[formattedMinute] = 1;
+        } else {
+          minuteData[formattedMinute]++;
+        }
+      }
     });
+  });
 
-    // Create empty data points for all minutes between earliestMinute and latestMinute
-    for (let i = earliestMinute; i <= latestMinute; i++) {
-      const formattedMinute = `00:${i.toString().padStart(2, '0')}`;
+  const earliestTime = new Date(earliestScanTime);
+  const latestTime = new Date(latestScanTime);
+  const hourDiff = latestTime.getHours() - earliestTime.getHours();
+  for (let i = 0; i <= hourDiff; i++) {
+    for (let j = 0; j < 60; j++) {
+      const formattedMinute = `${(earliestTime.getHours() + i).toString().padStart(2, '0')}:${j.toString().padStart(2, '0')}`;
       if (!minuteData[formattedMinute]) {
         minuteData[formattedMinute] = 0;
       }
     }
+  }
 
-    Object.keys(minuteData).sort().forEach((minute) => {
-      chartData.labels.push(minute);
-      chartData.datasets[0].data.push(minuteData[minute]);
-    });
+  Object.keys(minuteData).forEach((minute) => {
+    chartData.labels.push(minute);
+    chartData.datasets[0].data.push(minuteData[minute]);
+  });
 
-    console.log(chartData);
+  console.log("1")
+  console.log(chartData)
+  console.log("nice")
 
-    return chartData;
-  };
+  return chartData;
+};
 
-  return {
-    attendanceData,
-    formatChartData,
-  };
-
-
+return {
+  attendanceData,
+  formatChartData,
+};
 }
-
-
-
 
 
 const LineGraph = () => {
