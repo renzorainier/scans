@@ -51,62 +51,54 @@ function useAttendanceData() {
       ],
     };
 
+    let earliestMinute = 60;
     const minuteData = {};
-    const studentsByMinute = {};
-    Object.values(attendanceData).forEach((section) => {
-      Object.values(section).forEach((student) => {
-        const lastScan = student.lastScan;
+    Object.keys(attendanceData).forEach((section) => {
+      const sectionData = attendanceData[section];
+      Object.keys(sectionData).forEach((student) => {
+        const studentData = sectionData[student];
+        const lastScan = studentData["lastScan"];
         if (lastScan) {
-          const hour = new Date(lastScan.seconds * 1000).getHours();
           const minute = new Date(lastScan.seconds * 1000).getMinutes();
-          const key = `${hour}:${minute}`;
-          if (!minuteData[key]) {
-            minuteData[key] = 1;
-            studentsByMinute[key] = [student];
+          const hour = new Date(lastScan.seconds * 1000).getHours();
+          const formattedMinute = `${hour.toString().padStart(2, '0')}:${minute.toString().padStart(2, '0')}`;
+          if (minute < earliestMinute) {
+            earliestMinute = minute;
+          }
+          if (!minuteData[formattedMinute]) {
+            minuteData[formattedMinute] = 1;
           } else {
-            minuteData[key]++;
-            studentsByMinute[key].push(student);
+            minuteData[formattedMinute]++;
           }
         }
       });
     });
 
-    // Create an array of timestamps for each minute between the first and last scan
-    const timestamps = Object.keys(minuteData).sort((a, b) => {
-      const dateA = new Date(`1970-01-01T${a}:00`);
-      const dateB = new Date(`1970-01-01T${b}:00`);
-      return dateA - dateB;
-    });
-    const firstTimestamp = timestamps[0];
-    const lastTimestamp = timestamps[timestamps.length - 1];
-    if (firstTimestamp && lastTimestamp) {
-      const [firstHour, firstMinute] = firstTimestamp.split(":").map((num) => parseInt(num, 10));
-      const [lastHour, lastMinute] = lastTimestamp.split(":").map((num) => parseInt(num, 10));
-
-      const minutesInBetween = (lastHour - firstHour) * 60 + (lastMinute - firstMinute) + 1;
-      let currentHour = firstHour;
-      let currentMinute = firstMinute;
-
-      // Push each minute's data into the chart data, even if there isn't any data for that minute
-      for (let i = 0; i < minutesInBetween; i++) {
-        const currentTimestamp = `${currentHour.toString().padStart(2, "0")}:${currentMinute.toString().padStart(2, "0")}`;
-        chartData.labels.push(currentTimestamp);
-        chartData.datasets[0].data.push(minuteData[currentTimestamp] || 0);
-
-        currentMinute++;
-        if (currentMinute === 60) {
-          currentMinute = 0;
-          currentHour++;
-        }
+    // Create empty data points for all minutes between earliestMinute and 59
+    for (let i = earliestMinute; i < 60; i++) {
+      const formattedMinute = `00:${i.toString().padStart(2, '0')}`;
+      if (!minuteData[formattedMinute]) {
+        minuteData[formattedMinute] = 0;
+      }
+    }
+    for (let i = 0; i < earliestMinute; i++) {
+      const formattedMinute = `01:${i.toString().padStart(2, '0')}`;
+      if (!minuteData[formattedMinute]) {
+        minuteData[formattedMinute] = 0;
       }
     }
 
-    console.log(chartData);
+    Object.keys(minuteData).forEach((minute) => {
+      chartData.labels.push(minute);
+      chartData.datasets[0].data.push(minuteData[minute]);
+    });
+
+    console.log("1")
+    console.log(chartData)
+    console.log("nice")
 
     return chartData;
   };
-
-  formatChartData();
 
   return {
     attendanceData,
