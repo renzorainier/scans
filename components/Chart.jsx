@@ -79,26 +79,25 @@ function useAttendanceData() {
     });
     const firstTimestamp = timestamps[0];
     const lastTimestamp = timestamps[timestamps.length - 1];
-    const [firstHour, firstMinute] = firstTimestamp.split(":").map((num) => parseInt(num, 10));
-    const [lastHour, lastMinute] = lastTimestamp.split(":").map((num) => parseInt(num, 10));
-    const minutesInBetween = (lastHour - firstHour) * 60 + (lastMinute - firstMinute) + 1;
-    let currentHour = firstHour;
-    let currentMinute = firstMinute;
+    if (firstTimestamp && lastTimestamp) {
+      const [firstHour, firstMinute] = firstTimestamp.split(":").map((num) => parseInt(num, 10));
+      const [lastHour, lastMinute] = lastTimestamp.split(":").map((num) => parseInt(num, 10));
 
-    // Push each minute's data into the chart data, even if there isn't any data for that minute
-    for (let i = 0; i < minutesInBetween; i++) {
-      const currentTimestamp = `${currentHour.toString().padStart(2, "0")}:${currentMinute
-        .toString()
-        .padStart(2, "0")}`;
-      chartData.labels.push(currentTimestamp);
+      const minutesInBetween = (lastHour - firstHour) * 60 + (lastMinute - firstMinute) + 1;
+      let currentHour = firstHour;
+      let currentMinute = firstMinute;
 
-      const studentsScannedThisMinute = studentsByMinute[currentTimestamp] || [];
-      chartData.datasets[0].data.push(studentsScannedThisMinute.length);
+      // Push each minute's data into the chart data, even if there isn't any data for that minute
+      for (let i = 0; i < minutesInBetween; i++) {
+        const currentTimestamp = `${currentHour.toString().padStart(2, "0")}:${currentMinute.toString().padStart(2, "0")}`;
+        chartData.labels.push(currentTimestamp);
+        chartData.datasets[0].data.push(minuteData[currentTimestamp] || 0);
 
-      currentMinute++;
-      if (currentMinute === 60) {
-        currentMinute = 0;
-        currentHour++;
+        currentMinute++;
+        if (currentMinute === 60) {
+          currentMinute = 0;
+          currentHour++;
+        }
       }
     }
 
