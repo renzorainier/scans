@@ -70,34 +70,25 @@ function useAttendanceData() {
       });
     });
 
-    // Create an array of timestamps for each minute between the first and last scan
-    const timestamps = Object.keys(minuteData).sort((a, b) => {
-      const dateA = new Date(`1970-01-01T${a}:00`);
-      const dateB = new Date(`1970-01-01T${b}:00`);
-      return dateA - dateB;
-    });
-    const firstTimestamp = timestamps[0];
-    const lastTimestamp = timestamps[timestamps.length - 1];
-    const [firstHour, firstMinute] = firstTimestamp.split(":").map((num) => parseInt(num, 10));
-    const [lastHour, lastMinute] = lastTimestamp.split(":").map((num) => parseInt(num, 10));
-    const minutesInBetween = (lastHour - firstHour) * 60 + (lastMinute - firstMinute) + 1;
-    let currentHour = firstHour;
-    let currentMinute = firstMinute;
+    // Get the earliest and latest timestamps from the data
+    const timestamps = Object.keys(minuteData);
+    const earliestTimestamp = timestamps[0];
+    const latestTimestamp = timestamps[timestamps.length - 1];
+
+    // Create an array of timestamps for each minute between the earliest and latest timestamps
+    const minuteTimestamps = [];
+    let currentTimestamp = new Date(earliestTimestamp);
+    while (currentTimestamp <= new Date(latestTimestamp)) {
+      minuteTimestamps.push(currentTimestamp);
+      currentTimestamp = new Date(currentTimestamp.getTime() + 60000); // add 1 minute
+    }
 
     // Push each minute's data into the chart data, even if there isn't any data for that minute
-    for (let i = 0; i < minutesInBetween; i++) {
-      const currentTimestamp = `${currentHour.toString().padStart(2, "0")}:${currentMinute
-        .toString()
-        .padStart(2, "0")}`;
-      chartData.labels.push(currentTimestamp);
-      chartData.datasets[0].data.push(minuteData[currentTimestamp] || 0);
-
-      currentMinute++;
-      if (currentMinute === 60) {
-        currentMinute = 0;
-        currentHour++;
-      }
-    }
+    minuteTimestamps.forEach((timestamp) => {
+      const key = `${timestamp.getHours().toString().padStart(2, '0')}:${timestamp.getMinutes().toString().padStart(2, '0')}`;
+      chartData.labels.push(key);
+      chartData.datasets[0].data.push(minuteData[key] || 0);
+    });
 
     console.log(chartData);
 
@@ -110,6 +101,7 @@ function useAttendanceData() {
     attendanceData,
     formatChartData,
   };
+
 
 
 }
