@@ -35,78 +35,81 @@ function useAttendanceData() {
   }, []);
 
 
-const formatChartData = () => {
-  const chartData = {
-    labels: [],
-    datasets: [
-      {
-        label: "Scanning Data",
-        data: [],
-        fill: false,
-        borderColor: "#4FD1C5",
-        backgroundColor: "#4FD1C5",
-        pointBorderColor: "transparent",
-        pointBackgroundColor: "transparent",
-        lineTension: 0.3,
-      },
-    ],
-  };
+  const formatChartData = () => {
+    const chartData = {
+      labels: [],
+      datasets: [
+        {
+          label: "Scanning Data",
+          data: [],
+          fill: false,
+          borderColor: "#4FD1C5",
+          backgroundColor: "#4FD1C5",
+          pointBorderColor: "transparent",
+          pointBackgroundColor: "transparent",
+          lineTension: 0.3,
+        },
+      ],
+    };
 
-  let earliestScanTime = null;
-  let latestScanTime = null;
-  const minuteData = {};
-  Object.keys(attendanceData).forEach((section) => {
-    const sectionData = attendanceData[section];
-    Object.keys(sectionData).forEach((student) => {
-      const studentData = sectionData[student];
-      const lastScan = studentData["lastScan"];
-      if (lastScan) {
-        const scanTime = lastScan.seconds * 1000;
-        if (earliestScanTime === null || scanTime < earliestScanTime) {
-          earliestScanTime = scanTime;
+    let earliestScanTime = null;
+    let latestScanTime = null;
+    const minuteData = {};
+
+    // Find the earliest and latest scan times
+    Object.keys(attendanceData).forEach((section) => {
+      const sectionData = attendanceData[section];
+      Object.keys(sectionData).forEach((student) => {
+        const studentData = sectionData[student];
+        const lastScan = studentData["lastScan"];
+        if (lastScan) {
+          const scanTime = lastScan.seconds * 1000;
+          if (earliestScanTime === null || scanTime < earliestScanTime) {
+            earliestScanTime = scanTime;
+          }
+          if (latestScanTime === null || scanTime > latestScanTime) {
+            latestScanTime = scanTime;
+          }
+          const minute = new Date(scanTime).getMinutes();
+          const hour = new Date(scanTime).getHours();
+          const formattedMinute = `${hour.toString().padStart(2, '0')}:${minute.toString().padStart(2, '0')}`;
+          if (!minuteData[formattedMinute]) {
+            minuteData[formattedMinute] = 1;
+          } else {
+            minuteData[formattedMinute]++;
+          }
         }
-        if (latestScanTime === null || scanTime > latestScanTime) {
-          latestScanTime = scanTime;
-        }
-        const minute = new Date(scanTime).getMinutes();
-        const hour = new Date(scanTime).getHours();
-        const formattedMinute = `${hour.toString().padStart(2, '0')}:${minute.toString().padStart(2, '0')}`;
+      });
+    });
+
+    // Create empty data points for all minutes between earliest and latest scan time
+    const earliestTime = new Date(earliestScanTime);
+    const latestTime = new Date(latestScanTime);
+    for (let h = earliestTime.getHours(); h <= latestTime.getHours(); h++) {
+      for (let m = 0; m < 60; m++) {
+        const formattedMinute = `${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}`;
         if (!minuteData[formattedMinute]) {
-          minuteData[formattedMinute] = 1;
-        } else {
-          minuteData[formattedMinute]++;
+          minuteData[formattedMinute] = 0;
         }
       }
-    });
-  });
-
-  const earliestTime = new Date(earliestScanTime);
-  const latestTime = new Date(latestScanTime);
-  const hourDiff = latestTime.getHours() - earliestTime.getHours();
-
-  // Create empty data points for all minutes between earliest and latest scan time
-  for (let i = earliestTime.getMinutes(); i <= latestTime.getMinutes(); i++) {
-    const formattedMinute = `${earliestTime.getHours().toString().padStart(2, '0')}:${i.toString().padStart(2, '0')}`;
-    if (!minuteData[formattedMinute]) {
-      minuteData[formattedMinute] = 0;
     }
-  }
 
-  Object.keys(minuteData).forEach((minute) => {
-    chartData.labels.push(minute);
-    chartData.datasets[0].data.push(minuteData[minute]);
-  });
+    // Add data points to chart data
+    Object.keys(minuteData).forEach((minute) => {
+      chartData.labels.push(minute);
+      chartData.datasets[0].data.push(minuteData[minute]);
+    });
 
+    console.log(chartData);
 
-  console.log(chartData)
+    return chartData;
+  };
 
-  return chartData;
-};
+  return {
+    attendanceData,
+    formatChartData,
+  };
 
-return {
-  attendanceData,
-  formatChartData,
-};
 
 }
 
