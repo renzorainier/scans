@@ -52,6 +52,7 @@ function useAttendanceData() {
     };
 
     let earliestMinute = 60;
+    let latestMinute = 0;
     const minuteData = {};
     Object.keys(attendanceData).forEach((section) => {
       const sectionData = attendanceData[section];
@@ -65,6 +66,9 @@ function useAttendanceData() {
           if (minute < earliestMinute) {
             earliestMinute = minute;
           }
+          if (minute > latestMinute) {
+            latestMinute = minute;
+          }
           if (!minuteData[formattedMinute]) {
             minuteData[formattedMinute] = 1;
           } else {
@@ -74,28 +78,20 @@ function useAttendanceData() {
       });
     });
 
-    // Create empty data points for all minutes between earliestMinute and 59
-    for (let i = earliestMinute; i < 60; i++) {
+    // Create empty data points for all minutes between earliestMinute and latestMinute
+    for (let i = earliestMinute; i <= latestMinute; i++) {
       const formattedMinute = `00:${i.toString().padStart(2, '0')}`;
       if (!minuteData[formattedMinute]) {
         minuteData[formattedMinute] = 0;
       }
     }
-    for (let i = 0; i < earliestMinute; i++) {
-      const formattedMinute = `01:${i.toString().padStart(2, '0')}`;
-      if (!minuteData[formattedMinute]) {
-        minuteData[formattedMinute] = 0;
-      }
-    }
 
-    Object.keys(minuteData).forEach((minute) => {
+    Object.keys(minuteData).sort().forEach((minute) => {
       chartData.labels.push(minute);
       chartData.datasets[0].data.push(minuteData[minute]);
     });
 
-    console.log("1")
-    console.log(chartData)
-    console.log("nice")
+    console.log(chartData);
 
     return chartData;
   };
