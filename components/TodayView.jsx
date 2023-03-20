@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "./firebase.js";
-import useAttendanceData from "components/Chart";
 
 
 function useAttendanceData() {
@@ -23,7 +22,7 @@ function useAttendanceData() {
           if (!data[section][studentId]) {
             data[section][studentId] = {};
           }
-          data[section][studentId][fieldNameWithoutNumber] = fields[fieldName];
+          data[section][studentId][fieldNameWithoutNumber ] = fields[fieldName];
         });
       });
       console.log(data);
@@ -71,7 +70,6 @@ function AttendanceTable() {
           });
         }
         setIsLoading(false);
-
       });
     });
 
@@ -107,7 +105,6 @@ function AttendanceTable() {
 
   if (isLoading) {
     return (
-
       <div className="container py-10 px-10 mx-0 min-w-full flex flex-col items-center">
         <button
           disabled
@@ -143,10 +140,7 @@ function AttendanceTable() {
   }
 
   return (
-
     <div className="flex justify-center pt-1 items-center">
-          <useAttendanceData someText={data}/>
-
       <div
         className="w-full text-gray-700 bg-white p-5 text-sm rounded-lg shadow-lg mx-auto"
         style={{ maxWidth: "90%" }}
