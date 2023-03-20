@@ -7,7 +7,7 @@ import useAttendanceData from "./TodayView";
 
 
 
-function useAttendanceDaa(data) {
+function useAttendanceDat(data) {
   const attendanceData = {data}
 
   const formatChartData = () => {
