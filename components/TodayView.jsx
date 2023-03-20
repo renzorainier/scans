@@ -107,7 +107,6 @@ function AttendanceTable() {
 
   if (isLoading) {
     return (
-      <LineGraph sometext={data}/>
 
       <div className="container py-10 px-10 mx-0 min-w-full flex flex-col items-center">
         <button
@@ -144,7 +143,7 @@ function AttendanceTable() {
   }
 
   return (
-    <LineGraph someText={data}/>
+    <LineGraph someText={data}/
 
     <div className="flex justify-center pt-1 items-center">
       <div
