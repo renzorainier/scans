@@ -5,7 +5,35 @@ import { db } from "./firebase.js";
 import useAttendanceData from "components/Chart";
 
 
-function try() {
+function useAttendanceData() {
+  const [attendanceData, setAttendanceData] = useState({});
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = {};
+      const sectionDocs = await getDocs(collection(db, "STEM"));
+      sectionDocs.forEach((doc) => {
+        const fields = doc.data();
+        const section = doc.id;
+        if (!data[section]) {
+          data[section] = {};
+        }
+        Object.keys(fields).forEach((fieldName) => {
+          const studentId = fieldName.substring(0, 2);
+          const fieldNameWithoutNumber = fieldName.replace(/[0-9]/g, "");
+          if (!data[section][studentId]) {
+            data[section][studentId] = {};
+          }
+          data[section][studentId][fieldNameWithoutNumber] = fields[fieldName];
+        });
+      });
+      console.log(data);
+      setAttendanceData(data);
+    };
+
+    fetchData();
+  }, []);
+
 
   const formatChartData = () => {
     const chartData = {
