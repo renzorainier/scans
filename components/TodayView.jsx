@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "./firebase.js";
-import LineGraph from "components/Chart";
+import useAttendanceData from "components/Chart";
 
 
 function useAttendanceData() {
@@ -145,7 +145,7 @@ function AttendanceTable() {
   return (
 
     <div className="flex justify-center pt-1 items-center">
-          <LineGraph someText={data}/>
+          <useAttendanceData someText={data}/>
 
       <div
         className="w-full text-gray-700 bg-white p-5 text-sm rounded-lg shadow-lg mx-auto"
