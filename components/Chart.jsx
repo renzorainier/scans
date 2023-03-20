@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from 'react';
 import Chart from 'chart.js/auto';
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "./firebase.js";
-import useAttendanceData from "components/Chart";
 
 
 function useAttendanceData() {
