@@ -5,7 +5,7 @@ import { db } from "./firebase.js";
 
 
 
-function useAttendanceData() {
+function useAttendanceData({someText}) {
   const [attendanceData, setAttendanceData] = useState({});
 
   useEffect(() => {

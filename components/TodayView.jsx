@@ -144,7 +144,7 @@ function AttendanceTable() {
   }
 
   return (
-    <LineGraph sometext={data}/>
+    <LineGraph someText={data}/>
 
     <div className="flex justify-center pt-1 items-center">
       <div
