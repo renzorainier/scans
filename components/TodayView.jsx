@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "./firebase.js";
+import LineGraph from "components/Chart";
+
 
 function useAttendanceData() {
   const [attendanceData, setAttendanceData] = useState({});
