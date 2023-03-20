@@ -2,13 +2,37 @@ import React, { useEffect, useRef, useState } from 'react';
 import Chart from 'chart.js/auto';
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "./firebase.js";
-import useAttendanceData from "./TodayView";
 
 
+function useAttendanceData() {
+  const [attendanceData, setAttendanceData] = useState({});
 
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = {};
+      const sectionDocs = await getDocs(collection(db, "STEM"));
+      sectionDocs.forEach((doc) => {
+        const fields = doc.data();
+        const section = doc.id;
+        if (!data[section]) {
+          data[section] = {};
+        }
+        Object.keys(fields).forEach((fieldName) => {
+          const studentId = fieldName.substring(0, 2);
+          const fieldNameWithoutNumber = fieldName.replace(/[0-9]/g, "");
+          if (!data[section][studentId]) {
+            data[section][studentId] = {};
+          }
+          data[section][studentId][fieldNameWithoutNumber] = fields[fieldName];
+        });
+      });
+      console.log(data);
+      setAttendanceData(data);
+    };
 
-function useAttendanceDat(data) {
-  const attendanceData = {data}
+    fetchData();
+  }, []);
+
 
   const formatChartData = () => {
     const chartData = {
