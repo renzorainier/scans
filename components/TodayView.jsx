@@ -3,10 +3,11 @@ import { collection, getDocs } from "firebase/firestore";
 import { db } from "./firebase.js";
 
 
-function useAttendanceData() {
+export function useAttendanceData(data) {
   const [attendanceData, setAttendanceData] = useState({});
 
   useEffect(() => {
+
     const fetchData = async () => {
       const data = {};
       const sectionDocs = await getDocs(collection(db, "STEM"));
@@ -22,12 +23,14 @@ function useAttendanceData() {
           if (!data[section][studentId]) {
             data[section][studentId] = {};
           }
-          data[section][studentId][fieldNameWithoutNumber ] = fields[fieldName];
+          data[section][studentId][fieldNameWithoutNumber] = fields[fieldName];
         });
       });
       console.log(data);
       setAttendanceData(data);
     };
+
+
 
     fetchData();
   }, []);
@@ -36,6 +39,7 @@ function useAttendanceData() {
     attendanceData,
   };
 }
+
 
 function AttendanceTable() {
   const { attendanceData } = useAttendanceData();
