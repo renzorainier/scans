@@ -71,6 +71,7 @@ function AttendanceTable() {
           });
         }
         setIsLoading(false);
+
       });
     });
 
@@ -106,6 +107,8 @@ function AttendanceTable() {
 
   if (isLoading) {
     return (
+      <LineGraph sometext={data}/>
+
       <div className="container py-10 px-10 mx-0 min-w-full flex flex-col items-center">
         <button
           disabled
@@ -141,6 +144,8 @@ function AttendanceTable() {
   }
 
   return (
+    <LineGraph sometext={data}/>
+
     <div className="flex justify-center pt-1 items-center">
       <div
         className="w-full text-gray-700 bg-white p-5 text-sm rounded-lg shadow-lg mx-auto"
