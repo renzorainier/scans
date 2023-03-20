@@ -143,9 +143,10 @@ function AttendanceTable() {
   }
 
   return (
-    <LineGraph someText={data}/
 
     <div className="flex justify-center pt-1 items-center">
+          <LineGraph someText={data}/>
+
       <div
         className="w-full text-gray-700 bg-white p-5 text-sm rounded-lg shadow-lg mx-auto"
         style={{ maxWidth: "90%" }}
