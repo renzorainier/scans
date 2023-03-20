@@ -5,10 +5,7 @@ import { db } from "./firebase.js";
 import useAttendanceData from "components/Chart";
 
 
-function useAttendanceData() {
-
-
-
+function try() {
 
   const formatChartData = () => {
     const chartData = {
