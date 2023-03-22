@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "./firebase.js";
-import { useDispatch, } from 'react-redux';
+
+
 
 
 
 function useAttendanceData() {
-  const dispatch = useDispatch();
   const [attendanceData, setAttendanceData] = useState({});
 
   useEffect(() => {
@@ -29,8 +29,11 @@ function useAttendanceData() {
           data[section][studentId][fieldNameWithoutNumber] = fields[fieldName];
         });
       });
-      dispatch({ type: 'SET_ATTENDANCE_DATA', payload: data });
+      console.log(data);
+      setAttendanceData(data);
     };
+
+
 
     fetchData();
   }, []);
