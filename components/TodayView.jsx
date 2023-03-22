@@ -12,7 +12,7 @@ function useAttendanceData() {
       const data = {};
       const sectionDocs = await getDocs(collection(db, "STEM"));
       sectionDocs.forEach((doc) => {
-        const fields = doc.data();
+        constnpm install redux fields = doc.data();
         const section = doc.id;
         if (!data[section]) {
           data[section] = {};
