@@ -25,7 +25,7 @@ const store = createStore(reducer);
 
 
 
-function useAttendanceData(data) {
+function useAttendanceData() {
   const [attendanceData, setAttendanceData] = useState({});
 
   useEffect(() => {

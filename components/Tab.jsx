@@ -57,9 +57,9 @@ function TabSelector() {
       <div className={`${selectedTab === "a" ? "block" : "hidden-component"}`}>
         <PastAttendance className="tab-content" />
       </div>
-      <div className={`${selectedTab === "b" ? "block" : "hidden-component"}`}>
+      {/* <div className={`${selectedTab === "b" ? "block" : "hidden-component"}`}>
         <LineGraph className="tab-content" />
-      </div>
+      </div> */}
       <div className={`${selectedTab === "c" ? "block" : "hidden-component"}`}>
         <TodayAttendance className="tab-content" />
       </div>
