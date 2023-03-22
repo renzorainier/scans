@@ -3,22 +3,49 @@ import Chart from 'chart.js/auto';
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "./firebase.js";
 
-const LineGraph = ({ attendanceData }) => {
-  const chartRef = useRef();
-  const chartInstanceRef = useRef(null);
+
+function useAttendanceData() {
+  const [attendanceData, setAttendanceData] = useState({});
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = {};
+      const sectionDocs = await getDocs(collection(db, "STEM"));
+      sectionDocs.forEach((doc) => {
+        const fields = doc.data();
+        const section = doc.id;
+        if (!data[section]) {
+          data[section] = {};
+        }
+        Object.keys(fields).forEach((fieldName) => {
+          const studentId = fieldName.substring(0, 2);
+          const fieldNameWithoutNumber = fieldName.replace(/[0-9]/g, "");
+          if (!data[section][studentId]) {
+            data[section][studentId] = {};
+          }
+          data[section][studentId][fieldNameWithoutNumber] = fields[fieldName];
+        });
+      });
+      console.log(data);
+      setAttendanceData(data);
+    };
+
+    fetchData();
+  }, []);
+
 
   const formatChartData = () => {
     const chartData = {
       labels: [],
       datasets: [
         {
-          label: 'Students per minute',
+          label: "Students per minute",
           data: [],
           fill: false,
-          borderColor: '#A9AFE3',
-          backgroundColor: '#A9AFE3',
-          pointBorderColor: '#A9AFE3',
-          pointBackgroundColor: '#A9AFE3',
+          borderColor: "#A9AFE3",
+          backgroundColor: "#A9AFE3",
+          pointBorderColor: "#A9AFE3",
+          pointBackgroundColor: "#A9AFE3",
           lineTension: 0.4,
         },
       ],
@@ -31,7 +58,7 @@ const LineGraph = ({ attendanceData }) => {
       const sectionData = attendanceData[section];
       Object.keys(sectionData).forEach((student) => {
         const studentData = sectionData[student];
-        const lastScan = studentData['lastScan'];
+        const lastScan = studentData["lastScan"];
         if (lastScan) {
           const scanTime = lastScan.seconds * 1000;
           if (earliestScanTime === null || scanTime < earliestScanTime) {
@@ -42,9 +69,7 @@ const LineGraph = ({ attendanceData }) => {
           }
           const minute = new Date(scanTime).getMinutes();
           const hour = new Date(scanTime).getHours();
-          const formattedMinute = `${hour.toString().padStart(2, '0')}:${minute
-            .toString()
-            .padStart(2, '0')}`;
+          const formattedMinute = `${hour.toString().padStart(2, '0')}:${minute.toString().padStart(2, '0')}`;
           if (!minuteData[formattedMinute]) {
             minuteData[formattedMinute] = 1;
           } else {
@@ -56,12 +81,11 @@ const LineGraph = ({ attendanceData }) => {
 
     const earliestTime = new Date(earliestScanTime);
     const latestTime = new Date(latestScanTime);
+    const hourDiff = latestTime.getHours() - earliestTime.getHours();
 
     // Create empty data points for all minutes between earliest and latest scan time
     for (let i = earliestTime.getMinutes(); i <= latestTime.getMinutes(); i++) {
-      const formattedMinute = `${earliestTime.getHours().toString().padStart(2, '0')}:${i
-        .toString()
-        .padStart(2, '0')}`;
+      const formattedMinute = `${earliestTime.getHours().toString().padStart(2, '0')}:${i.toString().padStart(2, '0')}`;
       if (!minuteData[formattedMinute]) {
         minuteData[formattedMinute] = 0;
       }
@@ -80,8 +104,23 @@ const LineGraph = ({ attendanceData }) => {
       chartData.datasets[0].data.push(data);
     });
 
+    console.log(chartData)
+
     return chartData;
   };
+
+  return {
+    formatChartData,
+  };
+
+
+}
+
+
+const LineGraph = () => {
+  const chartRef = useRef();
+  const chartInstanceRef = useRef(null);
+  const { formatChartData } = useAttendanceData();
 
   useEffect(() => {
     const chartCtx = chartRef.current.getContext('2d');
@@ -98,10 +137,9 @@ const LineGraph = ({ attendanceData }) => {
       data: chartData,
       options: {
         scales: {
-          yAxes: [
-            {
-              gridLines: {
-                color: '#F5F5F5',
+          yAxes: [{
+            gridLines: {
+              color: '#F5F5F5',
               zeroLineColor: '#F5F5F5',
             },
             ticks: {
