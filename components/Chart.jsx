@@ -4,7 +4,7 @@ import { collection, getDocs } from "firebase/firestore";
 import { db } from "./firebase.js";
 
 
-const LineGraph = () => {
+const LineGraph = ({ data }) => {
   const chartRef = useRef();
   const chartInstanceRef = useRef(null);
 
