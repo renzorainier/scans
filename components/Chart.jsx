@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import Chart from 'chart.js/auto';
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "./firebase.js";
-import useAttendanceData from "./TodayView";
+// import useAttendanceData from "./TodayView";
 
 
 
@@ -11,10 +11,7 @@ const LineGraph = ({ data }) => {
   const chartRef = useRef();
   const chartInstanceRef = useRef(null);
 
-
   const formatChartData = () => {
-    const {data} = useAttendanceData(data);
-
     const chartData = {
       labels: [],
       datasets: [
