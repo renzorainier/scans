@@ -11,6 +11,7 @@ const LineGraph = ({ data }) => {
   const chartRef = useRef();
   const chartInstanceRef = useRef(null);
 
+
   const formatChartData = () => {
     const chartData = {
       labels: [],
