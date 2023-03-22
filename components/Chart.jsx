@@ -157,6 +157,7 @@ const LineGraph = () => {
     </div>
   );
 };
+}
 
 export default LineGraph;
 
