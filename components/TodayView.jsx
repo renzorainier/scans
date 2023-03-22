@@ -6,6 +6,7 @@ import Charts from "components/Chart";
 function useAttendanceData() {
   const [attendanceData, setAttendanceData] = useState({});
 
+
   useEffect(() => {
     const fetchData = async () => {
       const data = {};
@@ -141,7 +142,6 @@ function AttendanceTable() {
 
   return (
     <div className="flex justify-center pt-1 items-center">
-      <Charts data={data} />
 
       <div
         className="w-full text-gray-700 bg-white p-5 text-sm rounded-lg shadow-lg mx-auto"
@@ -162,6 +162,12 @@ function AttendanceTable() {
             </h1>
           </div>
         </div>
+
+        <div>
+          <Charts />
+
+      </div>
+
 
         <div className="flex justify-between items-center mb-4">
           <div className="flex items-center w-full">
