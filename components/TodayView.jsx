@@ -5,8 +5,6 @@ import { useDispatch, } from 'react-redux';
 
 
 
-
-
 function useAttendanceData() {
   const [attendanceData, setAttendanceData] = useState({});
 
