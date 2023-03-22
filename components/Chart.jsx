@@ -6,7 +6,7 @@ import { db } from "./firebase.js";
 
 
 
-function Charts({ attendanceData }) {
+function Charts({ data }) {
 const LineGraph = () => {
   const chartRef = useRef();
   const chartInstanceRef = useRef(null);
