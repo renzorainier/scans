@@ -164,7 +164,7 @@ function AttendanceTable() {
         </div>
 
         <div>
-          <Charts />
+          <Charts attendanceData={attendanceData} />
 
       </div>
 
