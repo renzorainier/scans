@@ -1,18 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "./firebase.js";
-import LineGraph from "components/Chart";
-
-
-
-
-
+import Chart from "components/Chart";
 
 function useAttendanceData() {
   const [attendanceData, setAttendanceData] = useState({});
 
   useEffect(() => {
-
     const fetchData = async () => {
       const data = {};
       const sectionDocs = await getDocs(collection(db, "STEM"));
@@ -35,8 +29,6 @@ function useAttendanceData() {
       setAttendanceData(data);
     };
 
-
-
     fetchData();
   }, []);
 
@@ -44,7 +36,6 @@ function useAttendanceData() {
     attendanceData,
   };
 }
-
 
 function AttendanceTable() {
   const { attendanceData } = useAttendanceData();
@@ -150,6 +141,7 @@ function AttendanceTable() {
 
   return (
     <div className="flex justify-center pt-1 items-center">
+      <Chart attendanceData={attendanceData} />{" "}
       <div
         className="w-full text-gray-700 bg-white p-5 text-sm rounded-lg shadow-lg mx-auto"
         style={{ maxWidth: "90%" }}
