@@ -1,8 +1,7 @@
 import { useState } from "react";
 import PastAttendance from "/components/PastView";
 import TodayAttendance from "/components/TodayView";
-import LineGraph from "components/Chart";
-import { Transition } from "@headlessui/react";
+i dont want to refetch from firebase again, i want to reuse the already fetched dataimport { Transition } from "@headlessui/react";
 import { SlGraph } from "react-icons/sl";
 import { MdOutlineToday } from "react-icons/md";
 import { AiOutlineUnorderedList } from "react-icons/ai";
