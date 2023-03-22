@@ -7,7 +7,7 @@ import { db } from "./firebase.js";
 
 
 
-const LineGraph = ({ data }) => {
+const LineGraph = () => {
   const chartRef = useRef();
   const chartInstanceRef = useRef(null);
 
