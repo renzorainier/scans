@@ -3,7 +3,29 @@ import { collection, getDocs } from "firebase/firestore";
 import { db } from "./firebase.js";
 
 
-function useAttendanceData() {
+import { createStore } from 'redux';
+
+const initialState = {
+  attendanceData: {}
+};
+
+function reducer(state = initialState, action) {
+  switch (action.type) {
+    case 'SET_ATTENDANCE_DATA':
+      return {
+        ...state,
+        attendanceData: action.payload
+      };
+    default:
+      return state;
+  }
+}
+
+const store = createStore(reducer);
+
+
+
+function useAttendanceData(data) {
   const [attendanceData, setAttendanceData] = useState({});
 
   useEffect(() => {
@@ -12,7 +34,7 @@ function useAttendanceData() {
       const data = {};
       const sectionDocs = await getDocs(collection(db, "STEM"));
       sectionDocs.forEach((doc) => {
-        constnpm install redux fields = doc.data();
+        const fields = doc.data();
         const section = doc.id;
         if (!data[section]) {
           data[section] = {};
