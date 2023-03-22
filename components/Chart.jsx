@@ -159,7 +159,7 @@ const LineGraph = () => {
 };
 }
 
-export default LineGraph;
+export default Charts;
 
 
 
