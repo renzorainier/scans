@@ -13,6 +13,8 @@ const LineGraph = ({ data }) => {
 
 
   const formatChartData = () => {
+    const {data} = useAttendanceData(data);
+
     const chartData = {
       labels: [],
       datasets: [
