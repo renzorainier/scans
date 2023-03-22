@@ -4,6 +4,9 @@ import { collection, getDocs } from "firebase/firestore";
 import { db } from "./firebase.js";
 
 
+const LineGraph = () => {
+  const chartRef = useRef();
+  const chartInstanceRef = useRef(null);
 
   const formatChartData = () => {
     const chartData = {
@@ -25,8 +28,9 @@ import { db } from "./firebase.js";
     let earliestScanTime = null;
     let latestScanTime = null;
     const minuteData = {};
-    Object.keys(attendanceData).forEach((section) => {
-      const sectionData = attendanceData[section];
+
+    Object.keys(data).forEach((section) => {
+      const sectionData = data[section];
       Object.keys(sectionData).forEach((student) => {
         const studentData = sectionData[student];
         const lastScan = studentData["lastScan"];
@@ -40,7 +44,7 @@ import { db } from "./firebase.js";
           }
           const minute = new Date(scanTime).getMinutes();
           const hour = new Date(scanTime).getHours();
-          const formattedMinute = `${hour.toString().padStart(2, '0')}:${minute.toString().padStart(2, '0')}`;
+          const formattedMinute = `${hour.toString().padStart(2, "0")}:${minute.toString().padStart(2, "0")}`;
           if (!minuteData[formattedMinute]) {
             minuteData[formattedMinute] = 1;
           } else {
@@ -56,7 +60,7 @@ import { db } from "./firebase.js";
 
     // Create empty data points for all minutes between earliest and latest scan time
     for (let i = earliestTime.getMinutes(); i <= latestTime.getMinutes(); i++) {
-      const formattedMinute = `${earliestTime.getHours().toString().padStart(2, '0')}:${i.toString().padStart(2, '0')}`;
+      const formattedMinute = `${earliestTime.getHours().toString().padStart(2, "0")}:${i.toString().padStart(2, "0")}`;
       if (!minuteData[formattedMinute]) {
         minuteData[formattedMinute] = 0;
       }
@@ -75,22 +79,11 @@ import { db } from "./firebase.js";
       chartData.datasets[0].data.push(data);
     });
 
-    console.log(chartData)
+    console.log(chartData);
 
     return chartData;
   };
 
-  return {
-    formatChartData,
-  };
-
-
-}
-
-
-const LineGraph = () => {
-  const chartRef = useRef();
-  const chartInstanceRef = useRef(null);
 
   useEffect(() => {
     const chartCtx = chartRef.current.getContext('2d');
