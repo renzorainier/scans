@@ -30,11 +30,8 @@ function useAttendanceData() {
           data[section][studentId][fieldNameWithoutNumber] = fields[fieldName];
         });
       });
-      console.log(data);
-      setAttendanceData(data);
+      dispatch({ type: 'SET_ATTENDANCE_DATA', payload: data });
     };
-
-
 
     fetchData();
   }, []);
