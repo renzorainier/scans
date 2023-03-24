@@ -13,7 +13,7 @@ const NumberLineGraph = ({ data }) => {
       labels: [],
       datasets: [
         {
-          label: "Number of Students",
+          label: "Number of Student",
           data: [],
           fill: false,
           borderColor: "#A9AFE3",
@@ -151,7 +151,7 @@ const NumberLineGraph = ({ data }) => {
   }, []);
 
   return (
-    <div className="bg-white rounded-lg shadow-md overflow-hidden">
+    <div className="bg-white rounded-lg shadow-md mt-4 mb-4 overflow-hidden">
       <canvas ref={chartRef} className="w-full h-full"></canvas>
     </div>
   );
