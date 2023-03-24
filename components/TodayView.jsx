@@ -162,7 +162,7 @@ function AttendanceTable() {
         </div>
 
         <div>
-          <LineGraph attendanceData={attendanceData} />
+          <LineGraph data={attendanceData} />
         </div>
         <div className="flex justify-between items-center mb-4">
           <div className="flex items-center w-full">
