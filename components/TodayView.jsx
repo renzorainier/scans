@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "./firebase.js";
-import Charts from "components/Chart";
+import LineGraph from "components/Chart";
 
 function useAttendanceData() {
   const [attendanceData, setAttendanceData] = useState({});
@@ -162,9 +162,8 @@ function AttendanceTable() {
         </div>
 
         <div>
-          <Charts attendanceData={attendanceData} />
+          <LineGraph attendanceData={attendanceData} />
         </div>
-
         <div className="flex justify-between items-center mb-4">
           <div className="flex items-center w-full">
             <input
@@ -320,6 +319,8 @@ function AttendanceTable() {
             </div>
           )}
         </div>
+
+
       </div>
     </div>
   );

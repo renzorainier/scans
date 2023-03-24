@@ -6,8 +6,8 @@ import { db } from "./firebase.js";
 
 
 
-function Charts({ attendanceData }) {
-const LineGraph = () => {
+// function Charts({ attendanceData }) {
+const LineGraph = ({ attendanceData }) => {
   const chartRef = useRef();
   const chartInstanceRef = useRef(null);
 
@@ -160,9 +160,9 @@ const LineGraph = () => {
     </div>
   );
 };
-}
 
-export default Charts;
+
+export default LineGraph;
 
 
 
