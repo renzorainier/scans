@@ -13,7 +13,7 @@ const NumberLineGraph = ({ data }) => {
       labels: [],
       datasets: [
         {
-          label: "Students present",
+          label: "Students per minute",
           data: [],
           fill: false,
           borderColor: "#A9AFE3",
@@ -46,15 +46,17 @@ const NumberLineGraph = ({ data }) => {
           const hour = new Date(scanTime).getHours();
           const formattedMinute = `${hour.toString().padStart(2, "0")}:${minute.toString().padStart(2, "0")}`;
           if (!minuteData[formattedMinute]) {
-            minuteData[formattedMinute] = 0;
+            minuteData[formattedMinute] = 1;
+          } else {
+            minuteData[formattedMinute]++;
           }
-          minuteData[formattedMinute]++;
         }
       });
     });
 
     const earliestTime = new Date(earliestScanTime);
     const latestTime = new Date(latestScanTime);
+    const hourDiff = latestTime.getHours() - earliestTime.getHours();
 
     // Create empty data points for all minutes between earliest and latest scan time
     for (let i = earliestTime.getMinutes(); i <= latestTime.getMinutes(); i++) {
@@ -72,20 +74,17 @@ const NumberLineGraph = ({ data }) => {
     });
 
     // Update chartData labels and data
+    let cumulativeSum = 0;
     sortedMinuteData.forEach(([minute, data]) => {
+      cumulativeSum += data;
       chartData.labels.push(minute);
-      chartData.datasets[0].data.push(data);
+      chartData.datasets[0].data.push(cumulativeSum);
     });
 
     console.log(chartData);
 
-    // Set the first and last scan as the coverage of the graph
-    chartData.labels = [chartData.labels[0], chartData.labels[chartData.labels.length - 1]];
-    chartData.datasets[0].data = [chartData.datasets[0].data[0], chartData.datasets[0].data[chartData.datasets[0].data.length - 1]];
-
     return chartData;
   };
-
 
 
   useEffect(() => {
