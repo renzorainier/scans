@@ -161,9 +161,6 @@ function AttendanceTable() {
           </div>
         </div>
 
-        <div>
-          <LineGraph data={attendanceData} />
-        </div>
         <div className="flex justify-between items-center mb-4">
           <div className="flex items-center w-full">
             <input
@@ -319,8 +316,6 @@ function AttendanceTable() {
             </div>
           )}
         </div>
-
-
       </div>
     </div>
   );
