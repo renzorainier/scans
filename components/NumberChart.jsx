@@ -13,7 +13,7 @@ const NumberLineGraph = ({ data }) => {
       labels: [],
       datasets: [
         {
-          label: "Number of Student",
+          label: "Number of Students",
           data: [],
           fill: false,
           borderColor: "#A9AFE3",
