@@ -153,6 +153,9 @@ const LineGraph = () => {
 
   return (
     <div className="bg-white rounded-lg shadow-md m-4 overflow-hidden">
+      <div>
+        hello
+      </div>
       <canvas ref={chartRef} className="w-full h-full"></canvas>
     </div>
   );
