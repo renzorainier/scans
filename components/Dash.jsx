@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import night from "./../public/pictures/night.jpg"
 
 
@@ -49,7 +50,10 @@ const Greeting = () => {
     } else if (timeOfDay === "afternoon") {
       return "picures/afternoon-image.jpg";
     } else {
-      return "./night.jpg";
+      return  <Image
+      src={night}
+    
+    />;
     }
   };
 
@@ -73,6 +77,7 @@ const Greeting = () => {
             If you haven't already, get your qr-code scanned now :&gt;
           </h3>
         )}
+
         <h3 className=" mb-2">
           If you haven't already, get your qr-code scanned now :&gt;
         </h3>
