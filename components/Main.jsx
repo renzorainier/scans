@@ -25,7 +25,7 @@ const MainComponent = () => {
           <div className="mt-4">
             <div>
               <Greeting />
-              < TodayAttendance/>
+              {/* < TodayAttendance/> */}
             </div>
             <div className="mt-4 ml-4 mr-4">
               <button onClick={() => handleButtonClick("today")}>
