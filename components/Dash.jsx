@@ -15,9 +15,45 @@ const Greeting = () => {
   useEffect(() => {
     const hour = date.getHours();
 
-    const morningGreetings = ['Good morning', 'Top of the morning', 'Rise and shine'];
-    const afternoonGreetings = ['Good afternoon', 'Hello there', 'Howdy'];
-    const eveningGreetings = ['Good evening', 'Greetings', 'Salutations'];
+    const morningGreetings = [
+      'Good morning',
+      'Top of the morning',
+      'Rise and shine',
+      'Good day to you',
+      'Hello sunshine',
+      'Wakey wakey, eggs and bakey',
+      'Hope you slept well',
+      'Let\'s get this day started',
+      'Time to be awesome',
+      'It\'s a great day to learn'
+    ];
+
+    const afternoonGreetings = [
+      'Good afternoon',
+      'Hello there',
+      'Howdy',
+      'Hey hey',
+      'How\'s your day going?',
+      'Keep up the good work',
+      'Stay strong, finish strong',
+      'We got this',
+      'Just a few more hours to go',
+      'Let\'s finish the day strong'
+    ];
+
+    const eveningGreetings = [
+      'Good evening',
+      'Greetings',
+      'Salutations',
+      'Well hello there',
+      'Time to unwind',
+      'Hope you had a great day',
+      'Rest up for tomorrow',
+      'Great job today',
+      'Let\'s aim to do even better tomorrow',
+      'Keep up the good work'
+    ];
+
 
     let greetingOptions = [];
 
