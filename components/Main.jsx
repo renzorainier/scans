@@ -34,9 +34,16 @@ const MainComponent = () => {
               <button className="bg-white font-bold text-xl py-10 rounded-lg " onClick={() => handleButtonClick("today")}>
                 Attendance
               </button>
-              <button className="bg-white font-bold text-xl py-6 rounded-lg " onClick={() => handleButtonClick("past")}>
+              <button className="bg-white font-bold text-xl py-10 rounded-lg " onClick={() => handleButtonClick("past")}>
                 Badges
               </button>
+              <button className="bg-white font-bold text-xl py-10 rounded-lg " onClick={() => handleButtonClick("past")}>
+                Badges
+              </button>
+              <button className="bg-white font-bold text-xl py-10 rounded-lg " onClick={() => handleButtonClick("past")}>
+                Badges
+              </button>
+
             </div>
           </div>
         );
