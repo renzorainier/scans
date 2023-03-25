@@ -51,6 +51,13 @@ const Greeting = () => {
     }
   };
 
+  const getTextColor = () => {
+    if (timeOfDay === "evening") {
+      return "text-white";
+    }
+    return "text-gray-700";
+  };
+
   return (
     <div className="flex justify-center pt-1 items-center">
       <div
