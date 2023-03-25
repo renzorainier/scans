@@ -61,7 +61,7 @@ const Greeting = () => {
   return (
     <div className="flex justify-center pt-1 items-center">
       <div
-        className={`w-full p-5 mr-5 ml-5 rounded-lg shadow-lg mx-auto ${getTextColor()}`}
+        className={`w-full p-5 mr-5 ml-5  rounded-lg shadow-lg mx-auto ${getTextColor()}`}
         style={{
           backgroundImage: `url(${getImageUrl()})`,
           backgroundSize: "cover",
@@ -78,7 +78,7 @@ const Greeting = () => {
           </h3>
         )}
 
-        
+
       </div>
     </div>
   );
