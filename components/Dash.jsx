@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import github from "./../public/skills/github1.png"
+
 
 const Greeting = () => {
   const [date] = useState(new Date());
