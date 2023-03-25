@@ -50,7 +50,7 @@ const Greeting = () => {
     } else if (timeOfDay === "afternoon") {
       return "picures/afternoon-image.jpg";
     } else {
-      return  "";
+      return  "./night.jpg";
     }
   };
 
