@@ -50,9 +50,7 @@ const Greeting = () => {
     } else if (timeOfDay === "afternoon") {
       return "picures/afternoon-image.jpg";
     } else {
-      return  <Image
-      src={night}
-    />;
+      return  "./../public/pictures/night.jpg";
     }
   };
 
@@ -77,7 +75,7 @@ const Greeting = () => {
             If you haven't already, get your qr-code scanned now :&gt;
           </h3>
         )}
-        
+
 
         <h3 className=" mb-2">
           If you haven't already, get your qr-code scanned now :&gt;
