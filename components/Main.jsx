@@ -26,7 +26,7 @@ const MainComponent = () => {
       default:
         return (
           <div className="mt-4 max-w-screen-lg mx-auto"
-            style={{ backgroundImage: "url('/background-image.jpg')", backgroundSize: "cover", backgroundPosition: "center" }}>
+            style={{ backgroundImage: "/pictures/night.jpg", backgroundSize: "cover", backgroundPosition: "center" }}>
             <div>
               <Greeting />
             </div>
