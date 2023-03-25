@@ -3,16 +3,15 @@ import { useState, useEffect } from "react";
 const Greeting = () => {
   const [date] = useState(new Date());
   const [greeting, setGreeting] = useState("");
+  const [showReminder, setShowReminder] = useState(false);
 
   useEffect(() => {
     const morningGreetings = [
       "Good morning",
-
     ];
 
     const afternoonGreetings = [
       "Good afternoon",
-
     ];
 
     const eveningGreetings = [
@@ -21,7 +20,6 @@ const Greeting = () => {
 
     const hour = date.getHours();
     let greetingOptions = [];
-    let reminder = "If you haven't already, get your qr-code scanned now :>"
 
     if (hour >= 5 && hour < 12) {
       greetingOptions = morningGreetings;
@@ -33,6 +31,11 @@ const Greeting = () => {
 
     const randomIndex = Math.floor(Math.random() * greetingOptions.length);
     setGreeting(greetingOptions[randomIndex]);
+
+    // Check if it's a weekday and if it's morning or afternoon
+    if (date.getDay() >= 1 && date.getDay() <= 5 && hour >= 5 && hour < 18) {
+      setShowReminder(true);
+    }
   }, [date]);
 
   const dateString = date.toLocaleDateString("en-US", {
@@ -48,19 +51,23 @@ const Greeting = () => {
         className="w-full text-gray-700 bg-white p-5  rounded-lg shadow-lg mx-auto "
         style={{ maxWidth: "90%" }}
       >
-      <h2 className="text-2xl font-bold mb-2">{greeting} Scasians! </h2>
-      <h3 className="text-2xl  mb-2">{reminder} </h3>
-      <p className="text-gray-600 mb-2">
-        Today is {dateString}
-      </p>
+        <h2 className="text-2xl font-bold mb-2">{greeting} Scasians! </h2>
+        {showReminder && (
+          <h3 className="text-2xl mb-2">
+            If you haven't already, get your qr-code scanned now :&gt;
+          </h3>
+        )}
+        <h3 className=" mb-2">
+            If you haven't already, get your qr-code scanned now :&gt;
+          </h3>
+        <p className="text-gray-600 mb-2">Today is {dateString}</p>
+      </div>
     </div>
-  </div>
-
-
   );
 };
 
 export default Greeting;
+
 
 
 // "Top of the morning",
