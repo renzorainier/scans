@@ -47,7 +47,7 @@ const Greeting = () => {
     } else if (timeOfDay === "afternoon") {
       return "picures/afternoon-image.jpg";
     } else {
-      return "/components/pictures/night.jpg";
+      return "./components/pictures/night.jpg";
     }
   };
 
