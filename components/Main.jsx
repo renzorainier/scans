@@ -29,7 +29,7 @@ const MainComponent = () => {
             <div>
               <Greeting />
             </div>
-            <div className="mt-8 grid grid-cols-2 gap-4">
+            <div className="ml-4 mr-4 mt-8 grid grid-cols-2 gap-4">
               <button className="bg-white font-bold text-xl py-6 rounded-lg " onClick={() => handleButtonClick("today")}>
                 Attendance Today
               </button>
