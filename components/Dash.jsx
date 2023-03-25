@@ -1,6 +1,4 @@
 import { useState, useEffect } from "react";
-import Image from "next/image";
-import night from "./../public/pictures/night.jpg"
 
 
 const Greeting = () => {
@@ -46,11 +44,11 @@ const Greeting = () => {
 
   const getImageUrl = () => {
     if (timeOfDay === "morning") {
-      return "pictures/morning-image.jpg";
+      return "/pictures/morning.jpg";
     } else if (timeOfDay === "afternoon") {
-      return "picures/afternoon-image.jpg";
+      return "/pictures/afternoon.jpg";
     } else {
-      return  "https://www.pinterest.ph/pin/1900024836408354=format&fit=crop&w=764&q=80";
+      return "/pictures/morning.jpg";
     }
   };
 
@@ -80,7 +78,6 @@ const Greeting = () => {
         <h3 className=" mb-2">
           If you haven't already, get your qr-code scanned now :&gt;
         </h3>
-        <img src="/pictures/night.jpg" alt="hehehe" />
       </div>
     </div>
   );
