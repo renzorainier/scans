@@ -29,7 +29,7 @@ const MainComponent = () => {
             <div>
               <Greeting />
             </div>
-            <div className="flex justify-center mt-8 space-x-4">
+            <div className="flex justify-center mt-8 ml-4 space-x-4">
               <button
                 className="w-64 h-48 bg-cover bg-center rounded-xl shadow-lg"
                 style={{ backgroundImage: "url('/attendance-today.jpg')" }}
