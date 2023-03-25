@@ -52,7 +52,6 @@ const Greeting = () => {
     } else {
       return  <Image
       src={night}
-    
     />;
     }
   };
@@ -62,6 +61,7 @@ const Greeting = () => {
       className="flex justify-center pt-1 items-center"
 
     >
+
       <div
         className="w-full text-gray-700 bg-white p-5 mr-5 ml-5 rounded-lg shadow-lg mx-auto "
         style={{
@@ -77,6 +77,7 @@ const Greeting = () => {
             If you haven't already, get your qr-code scanned now :&gt;
           </h3>
         )}
+        
 
         <h3 className=" mb-2">
           If you haven't already, get your qr-code scanned now :&gt;
