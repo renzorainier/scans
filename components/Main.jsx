@@ -25,22 +25,21 @@ const MainComponent = () => {
       // render other components as needed
       default:
         return (
-          <div className="flex flex-col h-screen">
-            <div className="flex-grow">
+          <div className="mt-4 max-w-screen-lg mx-auto">
+            <div>
               <Greeting />
             </div>
-            <div className="flex flex-grow justify-center items-center">
-              <div className="grid grid-cols-2 gap-8 ">
-                <button className="bg-blue-500 text-white font-bold py-8 rounded-lg shadow-lg hover:bg-blue-700">
-                  Attendance Today
-                </button>
-                <button className="bg-blue-500 text-white font-bold py-8 rounded-lg shadow-lg hover:bg-blue-700">
-                  Past Attendance
-                </button>
-              </div>
+            <div className="mt-8 grid grid-cols-2 gap-4">
+              <button className="bg-purple-600 text-white font-bold text-xl py-6 rounded-lg hover:bg-purple-700 transition duration-300 ease-in-out" onClick={() => handleButtonClick("today")}>
+                Attendance Today
+              </button>
+              <button className="bg-purple-600 text-white font-bold text-xl py-6 rounded-lg hover:bg-purple-700 transition duration-300 ease-in-out" onClick={() => handleButtonClick("past")}>
+                Past Attendance
+              </button>
             </div>
           </div>
         );
+
 
 
     }
