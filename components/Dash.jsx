@@ -78,7 +78,7 @@ const Greeting = () => {
   return (
     <div className="flex justify-center pt-1 items-center">
       <div
-        className="w-full text-gray-700 bg-white p-5 text-sm rounded-lg shadow-lg mx-auto "
+        className="w-full text-gray-700 bg-white p-5  rounded-lg shadow-lg mx-auto "
         style={{ maxWidth: "90%" }}
       >
       <h2 className="text-2xl font-bold mb-2">{greeting} Scasians! </h2>
