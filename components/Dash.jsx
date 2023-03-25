@@ -47,22 +47,22 @@ const Greeting = () => {
     } else if (timeOfDay === "afternoon") {
       return "picures/afternoon-image.jpg";
     } else {
-      return "https://images.unsplash.com/photo-1579403124614-197f69d8187b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80";
+      return "./night.jpg";
     }
   };
 
   return (
     <div
       className="flex justify-center pt-1 items-center"
-      style={{
-        backgroundImage: `url(${getImageUrl()})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
+
     >
       <div
         className="w-full text-gray-700 bg-white p-5 mr-5 ml-5 rounded-lg shadow-lg mx-auto "
-
+        style={{
+          backgroundImage: `url(${getImageUrl()})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
       >
         <h2 className="text-2xl font-bold mb-2">{greeting} Scasians! </h2>
         <p className="text-gray-600 mb-2 text-sm font-bold">Today is {dateString}</p>
