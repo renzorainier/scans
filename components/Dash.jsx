@@ -68,7 +68,7 @@ const Greeting = () => {
           backgroundPosition: "center",
         }}
       >
-        <div style={{ minHeight: "200px" }}v>
+        <div style={{ minHeight: "200px" }}>
           <h2 className="text-3xl font-bold mb-2">{greeting} Scasians! </h2>
           <p className="mb-2">Today is {dateString}</p>
           {showReminder && (
