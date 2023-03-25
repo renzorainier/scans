@@ -25,8 +25,7 @@ const MainComponent = () => {
       // render other components as needed
       default:
         return (
-          <div className="mt-4 max-w-screen-lg mx-auto"
-            style={{ backgroundImage: "/pictures/night.jpg", backgroundSize: "cover", backgroundPosition: "center" }}>
+          <div className="mt-4 max-w-screen-lg mx-auto">
             <div>
               <Greeting />
             </div>
