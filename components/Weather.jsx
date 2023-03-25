@@ -8,7 +8,7 @@ const Weather = () => {
     const fetchWeather = async () => {
       try {
         const response = await axios.get(
-          'https://api.openweathermap.org/data/2.5/weather?q=Manila, Philippines&appid=408828164c8db8d08c691ee66b202320&units=metric'
+          'https://api.open-meteo.com/v1/forecast?latitude=14.5885&longitude=121.1757&daily=weatherdescription,temperature_2m_max,temperature_2m_min'
         );
         setWeather(response.data);
       } catch (error) {
@@ -24,21 +24,20 @@ const Weather = () => {
       {weather ? (
         <>
           <h2 className="text-2xl font-bold mb-2">
-            {weather.name}, {weather.sys.country}
+            Antipolo, Philippines
           </h2>
           <div className="flex items-center mb-4">
             <img
-              src={`https://openweathermap.org/img/w/${weather.weather[0].icon}.png`}
+              src={`https://www.open-meteo.com/static/img/weather/png/${weather.daily.data[0].weathericon}.png`}
               alt="weather icon"
               className="w-12 h-12 mr-2"
             />
-            <span className="text-xl font-bold">{weather.main.temp}°C</span>
+            <span className="text-xl font-bold">
+              {Math.round(weather.daily.data[0].temperature_2m_min)}°C - {Math.round(weather.daily.data[0].temperature_2m_max)}°C
+            </span>
           </div>
           <div className="text-gray-600">
-            <p>{weather.weather[0].description}</p>
-            <p>Feels like: {weather.main.feels_like}°C</p>
-            <p>Humidity: {weather.main.humidity}%</p>
-            <p>Wind: {weather.wind.speed} km/h</p>
+            <p>{weather.daily.data[0].weatherdescription}</p>
           </div>
         </>
       ) : (
