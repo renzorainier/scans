@@ -21,6 +21,7 @@ const Greeting = () => {
   const hour = date.getHours();
   let greeting;
 
+
   if (hour >= 5 && hour < 12) {
     greeting = 'Good Morning';
   } else if (hour >= 12 && hour < 18) {
@@ -33,7 +34,7 @@ const Greeting = () => {
 
   return (
     <div className="items-center w-full text-gray-700 bg-white p-5 text-sm rounded-lg shadow-lg mx-auto">
-      <h2 className="text-2xl font-bold mb-2">{greeting} Scasians!</h2>
+      <h2 className="text-2xl font-bold mb-2">{greeting} Scasians! </h2>
       <p className="text-gray-600 mb-2">
         Today is {dateString}
       </p>
