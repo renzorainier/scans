@@ -13,9 +13,19 @@ const Greeting = () => {
       'Hello sunshine',
       'Wakey wakey, eggs and bakey',
       'Hope you slept well',
-      'Let\'s get this day started',
+      'Let's get this day started',
       'Time to be awesome',
-      'It\'s a great day to learn'
+      'It's a great day to learn',
+      'Good day, beautiful',
+      'Wishing you a lovely day ahead',
+      'May your day be filled with joy and positivity',
+      'Sending positive vibes your way',
+      'Hope you have a productive day',
+      'Let's make today count',
+      'Here's to a great day ahead',
+      'Seize the day and make it yours',
+      'Good morning, superstar!',
+      'Make today your best day yet'
     ];
 
     const afternoonGreetings = [
