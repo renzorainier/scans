@@ -21,6 +21,7 @@ const Greeting = () => {
 
     const hour = date.getHours();
     let greetingOptions = [];
+    let reminder = "If you haven't already, get your qr-code scanned now :>"
 
     if (hour >= 5 && hour < 12) {
       greetingOptions = morningGreetings;
