@@ -25,32 +25,23 @@ const MainComponent = () => {
       // render other components as needed
       default:
         return (
-          <div className="h-screen flex flex-col justify-center items-center bg-gray-200">
-            <div>
+          <div className="flex flex-col h-screen">
+            <div className="flex-grow">
               <Greeting />
             </div>
-            <div className="flex justify-center mt-8 ml-4 space-x-4">
-              <button
-                className="w-64 h-48 bg-cover bg-center rounded-xl shadow-lg"
-                style={{ backgroundImage: "url('/attendance-today.jpg')" }}
-                onClick={() => handleButtonClick("today")}
-              >
-                <span className="text-white text-3xl font-bold">
+            <div className="flex flex-grow justify-center items-center">
+              <div className="grid grid-cols-2 gap-8 ">
+                <button className="bg-blue-500 text-white font-bold py-8 rounded-lg shadow-lg hover:bg-blue-700">
                   Attendance Today
-                </span>
-              </button>
-              <button
-                className="w-64 h-48 bg-cover bg-center rounded-xl shadow-lg"
-                style={{ backgroundImage: "url('/past-attendance.jpg')" }}
-                onClick={() => handleButtonClick("past")}
-              >
-                <span className="text-white text-3xl font-bold">
+                </button>
+                <button className="bg-blue-500 text-white font-bold py-8 rounded-lg shadow-lg hover:bg-blue-700">
                   Past Attendance
-                </span>
-              </button>
+                </button>
+              </div>
             </div>
           </div>
         );
+
 
     }
   };
