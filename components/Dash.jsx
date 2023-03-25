@@ -6,11 +6,11 @@ const Greeting = () => {
   const [showReminder, setShowReminder] = useState(false);
 
   useEffect(() => {
-    const morningGreetings = ["Good morning"];
+    const morningGreetings = ["Good Morning"];
 
-    const afternoonGreetings = ["Good afternoon"];
+    const afternoonGreetings = ["Good Afternoon"];
 
-    const eveningGreetings = ["Good evening"];
+    const eveningGreetings = ["Good Evening"];
 
     const hour = date.getHours();
     let greetingOptions = [];
