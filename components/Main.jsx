@@ -30,10 +30,10 @@ const MainComponent = () => {
               <Greeting />
             </div>
             <div className="mt-8 grid grid-cols-2 gap-4">
-              <button className="bg-purple-600 text-white font-bold text-xl py-6 rounded-lg hover:bg-purple-700 transition duration-300 ease-in-out" onClick={() => handleButtonClick("today")}>
+              <button className="bg-white font-bold text-xl py-6 rounded-lg " onClick={() => handleButtonClick("today")}>
                 Attendance Today
               </button>
-              <button className="bg-purple-600 text-white font-bold text-xl py-6 rounded-lg hover:bg-purple-700 transition duration-300 ease-in-out" onClick={() => handleButtonClick("past")}>
+              <button className="bg-white font-bold text-xl py-6 rounded-lg " onClick={() => handleButtonClick("past")}>
                 Past Attendance
               </button>
             </div>
