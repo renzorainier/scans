@@ -37,7 +37,7 @@ const MainComponent = () => {
   };
 
   return (
-    <div>
+    <div >
       <div>{renderCurrentComponent()}</div>
     </div>
   );
