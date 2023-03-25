@@ -6,17 +6,11 @@ const Greeting = () => {
   const [showReminder, setShowReminder] = useState(false);
 
   useEffect(() => {
-    const morningGreetings = [
-      "Good morning",
-    ];
+    const morningGreetings = ["Good morning"];
 
-    const afternoonGreetings = [
-      "Good afternoon",
-    ];
+    const afternoonGreetings = ["Good afternoon"];
 
-    const eveningGreetings = [
-      "Good evening",
-    ];
+    const eveningGreetings = ["Good evening"];
 
     const hour = date.getHours();
     let greetingOptions = [];
@@ -58,17 +52,15 @@ const Greeting = () => {
           </h3>
         )}
         <h3 className=" mb-2">
-            If you haven't already, get your qr-code scanned now :&gt;
-          </h3>
-        <p className="text-gray-600 mb-2">Today is {dateString}</p>
+          If you haven't already, get your qr-code scanned now :&gt;
+        </h3>
+        <p className="text-gray-600 mb-2 text-sm">Today is {dateString}</p>
       </div>
     </div>
   );
 };
 
 export default Greeting;
-
-
 
 // "Top of the morning",
 //       "Rise and shine",
@@ -89,7 +81,6 @@ export default Greeting;
 //       "Seize the day and make it yours",
 //       "Good morning, superstar!",
 //       "Make today your best day yet"
-
 
 // "Hello there",
 // "Howdy",
