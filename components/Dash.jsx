@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import github from "./../public/skills/github1.png"
+import night from "./../public/pictures/night.jpg"
 
 
 const Greeting = () => {
