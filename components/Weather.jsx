@@ -8,7 +8,7 @@ const Weather = () => {
     const fetchWeather = async () => {
       try {
         const response = await axios.get(
-          'https://api.openweathermap.org/data/2.5/weather?q=Antipolo Rizal, Philippines&appid=YOUR_API_KEY&units=metric'
+          'https://api.openweathermap.org/data/2.5/weather?q=Antipolo Rizal, Philippines&appid=408828164c8db8d08c691ee66b202320&units=metric'
         );
         setWeather(response.data);
       } catch (error) {
