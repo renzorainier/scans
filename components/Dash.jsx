@@ -7,7 +7,7 @@ const Greeting = () => {
   useEffect(() => {
     const timerID = setInterval(() => {
       setDate(new Date());
-    }, 10000000000);
+    }, 100000000000);
 
     return () => clearInterval(timerID);
   }, []);
