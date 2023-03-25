@@ -4,12 +4,11 @@ const Greeting = () => {
   const [date] = useState(new Date());
   const [greeting, setGreeting] = useState("");
   const [showReminder, setShowReminder] = useState(false);
+  const [timeOfDay, setTimeOfDay] = useState("");
 
   useEffect(() => {
     const morningGreetings = ["Good Morning"];
-
     const afternoonGreetings = ["Good Afternoon"];
-
     const eveningGreetings = ["Good Evening"];
 
     const hour = date.getHours();
@@ -17,10 +16,13 @@ const Greeting = () => {
 
     if (hour >= 5 && hour < 12) {
       greetingOptions = morningGreetings;
+      setTimeOfDay("morning");
     } else if (hour >= 12 && hour < 18) {
       greetingOptions = afternoonGreetings;
+      setTimeOfDay("afternoon");
     } else {
       greetingOptions = eveningGreetings;
+      setTimeOfDay("evening");
     }
 
     const randomIndex = Math.floor(Math.random() * greetingOptions.length);
@@ -39,10 +41,28 @@ const Greeting = () => {
     day: "numeric",
   });
 
+  const getImageUrl = () => {
+    if (timeOfDay === "morning") {
+      return "/morning-image.jpg";
+    } else if (timeOfDay === "afternoon") {
+      return "/afternoon-image.jpg";
+    } else {
+      return "/evening-image.jpg";
+    }
+  };
+
   return (
-    <div className="flex justify-center pt-1 items-center">
+    <div
+      className="flex justify-center pt-1 items-center"
+      style={{
+        backgroundImage: `url(${getImageUrl()})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
       <div
-        className="w-full text-gray-700 bg-white p-5  ml-5 mr-5 rounded-lg shadow-lg mx-auto "
+        className="w-full text-gray-700 bg-white p-5 mr-5 ml-5 rounded-lg shadow-lg mx-auto "
+
       >
         <h2 className="text-2xl font-bold mb-2">{greeting} Scasians! </h2>
         <p className="text-gray-600 mb-2 text-sm font-bold">Today is {dateString}</p>
@@ -60,6 +80,7 @@ const Greeting = () => {
 };
 
 export default Greeting;
+
 
 // "Top of the morning",
 //       "Rise and shine",
