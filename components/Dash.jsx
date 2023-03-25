@@ -43,11 +43,11 @@ const Greeting = () => {
 
   const getImageUrl = () => {
     if (timeOfDay === "morning") {
-      return "/morning-image.jpg";
+      return "pictures/morning-image.jpg";
     } else if (timeOfDay === "afternoon") {
-      return "/afternoon-image.jpg";
+      return "picures/afternoon-image.jpg";
     } else {
-      return "/evening-image.jpg";
+      return "/components/pictures/night.jpg";
     }
   };
 
