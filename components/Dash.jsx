@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 
-
 const Greeting = () => {
   const [date] = useState(new Date());
   const [greeting, setGreeting] = useState("");
@@ -53,11 +52,7 @@ const Greeting = () => {
   };
 
   return (
-    <div
-      className="flex justify-center pt-1 items-center"
-
-    >
-
+    <div className="flex justify-center pt-1 items-center">
       <div
         className="w-full text-gray-700 bg-white p-5 mr-5 ml-5 rounded-lg shadow-lg mx-auto "
         style={{
@@ -67,13 +62,14 @@ const Greeting = () => {
         }}
       >
         <h2 className="text-2xl font-bold mb-2">{greeting} Scasians! </h2>
-        <p className="text-gray-600 mb-2 text-sm font-bold">Today is {dateString}</p>
+        <p className="text-gray-600 mb-2 text-sm font-bold">
+          Today is {dateString}
+        </p>
         {showReminder && (
           <h3 className="text-2xl mb-2">
             If you haven't already, get your qr-code scanned now :&gt;
           </h3>
         )}
-
 
         <h3 className=" mb-2">
           If you haven't already, get your qr-code scanned now :&gt;
@@ -84,7 +80,6 @@ const Greeting = () => {
 };
 
 export default Greeting;
-
 
 // "Top of the morning",
 //       "Rise and shine",
