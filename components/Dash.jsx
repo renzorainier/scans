@@ -50,7 +50,7 @@ const Greeting = () => {
     } else if (timeOfDay === "afternoon") {
       return "picures/afternoon-image.jpg";
     } else {
-      return  "./../public/pictures/night.jpg";
+      return  "https://www.pinterest.ph/pin/1900024836408354/";
     }
   };
 
