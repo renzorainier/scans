@@ -45,9 +45,7 @@ const MainComponent = () => {
 
   return (
     <div>
-      <button onClick={handleBackButtonClick}>
-                hehe
-              </button>
+
       <div>{renderCurrentComponent()}</div>
     </div>
   );
