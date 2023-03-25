@@ -52,6 +52,7 @@ const MainComponent = () => {
           </div>
         );
 
+    }
   };
 
   return (
