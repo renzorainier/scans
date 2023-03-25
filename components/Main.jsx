@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
 import TodayAttendance from "./TodayView";
+import Weather from "./Weather";
 
 
 const MainComponent = () => {
@@ -22,6 +23,7 @@ const MainComponent = () => {
       default:
         return (
           <div>
+            <Weather/>
             <h1>Welcome to My Attendance App</h1>
             <p>Please select an option below to get started:</p>
             <button onClick={() => handleButtonClick('today')}>Attendance Today</button>
