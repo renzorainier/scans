@@ -61,7 +61,7 @@ const Greeting = () => {
   return (
     <div className="flex justify-center pt-1 items-center">
       <div
-        className="w-full text-gray-700 bg-white p-5 mr-5 ml-5 rounded-lg shadow-lg mx-auto "
+        className={`w-full p-5 mr-5 ml-5 rounded-lg shadow-lg mx-auto ${getTextColor()}`}
         style={{
           backgroundImage: `url(${getImageUrl()})`,
           backgroundSize: "cover",
@@ -69,7 +69,7 @@ const Greeting = () => {
         }}
       >
         <h2 className="text-2xl font-bold mb-2">{greeting} Scasians! </h2>
-        <p className="text-gray-600 mb-2 text-sm font-bold">
+        <p className="mb-2 text-sm font-bold">
           Today is {dateString}
         </p>
         {showReminder && (
@@ -78,9 +78,7 @@ const Greeting = () => {
           </h3>
         )}
 
-        <h3 className=" mb-2">
-          If you haven't already, get your qr-code scanned now :&gt;
-        </h3>
+        
       </div>
     </div>
   );
