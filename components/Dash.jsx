@@ -69,16 +69,12 @@ const Greeting = () => {
         }}
       >
         <h2 className="text-2xl font-bold mb-2">{greeting} Scasians! </h2>
-        <p className="mb-2 text-sm font-bold">
-          Today is {dateString}
-        </p>
+        <p className="mb-2 text-sm font-bold">Today is {dateString}</p>
         {showReminder && (
           <h3 className="text-2xl mb-2">
             If you haven't already, get your qr-code scanned now :&gt;
           </h3>
         )}
-
-
       </div>
     </div>
   );
