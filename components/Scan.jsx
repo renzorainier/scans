@@ -172,15 +172,37 @@ function Scan() {
           attendanceStatus = "ontime";
         }
 
-      const dayOfWeek = currentDay.toLowerCase().substring(0, 3);
-      const lastScanField = `${id}${dayOfWeek.toUpperCase()}`;
-      const attendanceStatusField = `${id}${dayOfWeek.toUpperCase()}s`;
+        const dayOfWeek = currentDay.substring(0, 3);
+        let dayCode;
+        switch (dayOfWeek) {
+          case "Mon":
+            dayCode = "A";
+            break;
+          case "Tue":
+            dayCode = "B";
+            break;
+          case "Wed":
+            dayCode = "C";
+            break;
+          case "Thu":
+            dayCode = "D";
+            break;
+          case "Fri":
+            dayCode = "E";
+            break;
+          default:
+            dayCode = "X"; // Use "X" as the default code if the day is not recognized
+        }
 
-      studentData[lastScanField] = new Date();
-      studentData[attendanceStatusField] = attendanceStatus;
-      studentData[`${id}present`] = true;
-      studentData[`${id}status`] = attendanceStatus;
-      studentData[`${id}dif`] = timeDifference;
+        const lastScanField = `${id}${dayCode}`;
+        const attendanceStatusField = `${id}${dayCode}s`;
+
+        studentData[lastScanField] = new Date();
+        studentData[attendanceStatusField] = attendanceStatus;
+        studentData[`${id}present`] = true;
+        studentData[`${id}status`] = attendanceStatus;
+        studentData[`${id}dif`] = timeDifference;
+
 
         // add this line to set the "attendance" field
         await updateDoc(sectionRef, studentData);
