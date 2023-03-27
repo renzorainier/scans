@@ -294,12 +294,12 @@ function AttendanceTable() {
                       </div>
                     )}
                     {student.status === "ontime" && (
-                      <div className="bg-[#F7DC6F] h-3 w-9 rounded-sm inline-block mr-1">
+                      <div className="bg-[#F7DC6F]  h-6 w-16 rounded-sm inline-block mr-1">
                         {student.lastScanTime}
                       </div>
                     )}
                     {student.status === "early" && (
-                      <div className="bg-[#2ECC71] h-3 w-9 rounded-sm inline-block mr-1">
+                      <div className="bg-[#2ECC71]  h-6 w-16 rounded-sm inline-block mr-1">
                         {student.lastScanTime}
                       </div>
                     )}
