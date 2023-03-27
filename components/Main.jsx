@@ -4,8 +4,9 @@ import TodayAttendance from "./TodayView";
 import PastAttendance from "./PastView";
 import Greeting from "./Dash";
 import Calculator from "./Sample";
-import Scan from "/Scan";
-import Calculator from "./Sample";
+import Scan from "./Scan";
+import Generate from "./Generate";
+
 // import Weather from "./Weather";
 
 const MainComponent = () => {
@@ -27,6 +28,10 @@ const MainComponent = () => {
           return <PastAttendance onBackButtonClick={handleBackButtonClick} />;
         case "sample":
           return <Calculator onBackButtonClick={handleBackButtonClick} />;
+          case "create":
+            return <Generate onBackButtonClick={handleBackButtonClick} />;
+            case "scan":
+              return <Scan onBackButtonClick={handleBackButtonClick} />;
       // render other components as needed
       default:
         return (
