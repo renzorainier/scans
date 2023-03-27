@@ -175,6 +175,7 @@ function Scan() {
         studentData[`${id}present`] = true;
         studentData[`${id}status`] = attendanceStatus;
         studentData[`${id}dif`] = timeDifference; // add this line to set the "attendance" field
+        
         // add this line to set the "attendance" field
         await updateDoc(sectionRef, studentData);
         console.log(
