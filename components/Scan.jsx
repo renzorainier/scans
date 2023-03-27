@@ -172,9 +172,15 @@ function Scan() {
           attendanceStatus = "ontime";
         }
 
-        studentData[`${id}present`] = true;
-        studentData[`${id}status`] = attendanceStatus;
-        studentData[`${id}dif`] = timeDifference;
+      const dayOfWeek = currentDay.toLowerCase().substring(0, 3);
+      const lastScanField = `${id}${dayOfWeek.toUpperCase()}`;
+      const attendanceStatusField = `${id}${dayOfWeek.toUpperCase()}s`;
+
+      studentData[lastScanField] = new Date();
+      studentData[attendanceStatusField] = attendanceStatus;
+      studentData[`${id}present`] = true;
+      studentData[`${id}status`] = attendanceStatus;
+      studentData[`${id}dif`] = timeDifference;
 
         // add this line to set the "attendance" field
         await updateDoc(sectionRef, studentData);
