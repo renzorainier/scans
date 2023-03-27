@@ -452,11 +452,11 @@ function StudentCollection() {
       sectionData[`${id}B`] = "";
       sectionData[`${id}Bs`] = "";
       sectionData[`${id}C`] = "";
-      sectionData[`${id}Cc`] = "";
-      sectionData[`${id}TH`] = "";
-      sectionData[`${id}THstatus`] = "";
-      sectionData[`${id}F`] = "";
-      sectionData[`${id}Fstatus`] = "";
+      sectionData[`${id}Cs`] = "";
+      sectionData[`${id}D`] = "";
+      sectionData[`${id}Ds`] = "";
+      sectionData[`${id}E`] = "";
+      sectionData[`${id}Es`] = "";
     });
 
     try {
