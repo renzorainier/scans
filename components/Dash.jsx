@@ -55,7 +55,7 @@ const Greeting = () => {
     if (timeOfDay === "evening") {
       return "text-white";
     }
-    return "text-black";
+    return "text-gray-900";
   };
 
   return (

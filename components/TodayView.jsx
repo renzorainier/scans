@@ -24,7 +24,7 @@ function useAttendanceData() {
             data[section][studentId] = {};
           }
           data[section][studentId][fieldNameWithoutNumber] = fields[fieldName];
-        });
+        });SignupForm
       });
       console.log(data);
       setAttendanceData(data);
