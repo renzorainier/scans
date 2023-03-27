@@ -174,7 +174,7 @@ function AttendanceTable() {
             <input
               type="text"
               className="border rounded-md py-1 px-2 text-gray-700 w-4/5 mr-2"
-              placeholder="Search name..."
+              placeholder="Search name...(pick a section first)"
               value={searchQuery}
               onChange={handleSearchQueryChange}
               disabled={selectedSection === ""}
@@ -184,7 +184,6 @@ function AttendanceTable() {
               className="border rounded-md py-1 px-2 text-gray-700 w-1/5"
               value={selectedSection}
               onChange={handleSectionChange}
-              placeholder="Search name...(pick a section first)"
             >
               <option value="">All</option>
               <option value="1A">1A</option>
