@@ -6,13 +6,27 @@ const TodoList = () => {
 
   const handleAddTodo = () => {
     if (inputValue.trim()) {
-      setTodos([...todos, inputValue]);
+      setTodos([...todos, { text: inputValue, completed: false }]);
       setInputValue('');
     }
   };
 
   const handleDeleteTodo = (index) => {
     setTodos(todos.filter((_, i) => i !== index));
+  };
+
+  const handleToggleCompleted = (index) => {
+    setTodos(
+      todos.map((todo, i) =>
+        i === index ? { ...todo, completed: !todo.completed } : todo
+      )
+    );
+  };
+
+  const handleEditTodo = (index, text) => {
+    setTodos(
+      todos.map((todo, i) => (i === index ? { ...todo, text } : todo))
+    );
   };
 
   return (
@@ -37,13 +51,43 @@ const TodoList = () => {
               key={index}
               className="bg-white rounded-lg p-4 shadow-md flex justify-between items-center mb-2"
             >
-              <span>{todo}</span>
-              <button
-                className="bg-red-500 text-white rounded-lg py-1 px-2"
-                onClick={() => handleDeleteTodo(index)}
-              >
-                Delete
-              </button>
+              {todo.editing ? (
+                <input
+                  className="border rounded-lg py-1 px-2"
+                  value={todo.text}
+                  onChange={(e) =>
+                    handleEditTodo(index, e.target.value)
+                  }
+                />
+              ) : (
+                <span
+                  className={`${
+                    todo.completed ? 'line-through text-gray-500' : ''
+                  }`}
+                  onClick={() => handleToggleCompleted(index)}
+                >
+                  {todo.text}
+                </span>
+              )}
+              <div>
+                <button
+                  className="bg-yellow-500 text-white rounded-lg py-1 px-2 mr-2"
+                  onClick={() =>
+                    handleEditTodo(index, {
+                      ...todo,
+                      editing: !todo.editing,
+                    })
+                  }
+                >
+                  Edit
+                </button>
+                <button
+                  className="bg-red-500 text-white rounded-lg py-1 px-2"
+                  onClick={() => handleDeleteTodo(index)}
+                >
+                  Delete
+                </button>
+              </div>
             </li>
           ))}
         </ul>
