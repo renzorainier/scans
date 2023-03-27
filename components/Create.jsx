@@ -178,6 +178,10 @@ function StudentCollection() {
       sectionData[`${id}section`] = section;
       sectionData[`${id}M`] = "";
       sectionData[`${id}T`] = "";
+      sectionData[`${id}W`] = "";
+      sectionData[`${id}TH`] = "";
+      sectionData[`${id}F`] = "";
+
     });
 
     try {
