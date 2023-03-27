@@ -176,6 +176,8 @@ function StudentCollection() {
       sectionData[`${id}dif`] = "";
       sectionData[`${id}strand`] = strand;
       sectionData[`${id}section`] = section;
+      sectionData[`${id}M`] = "";
+      sectionData[`${id}M`] = "";
     });
 
     try {
