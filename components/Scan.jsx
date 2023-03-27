@@ -10,143 +10,101 @@ function Scan() {
   const [scannedCodes, setScannedCodes] = useState(new Set());
 
   const schedules = {
-    'STEM': {
-      '1A': {
-        'Monday': {
-          'startTime': "17:00:00",
+    STEM: {
+      "1A": {
+        Monday: {
+          startTime: "17:00:00",
         },
-        'Tuesday': {
-          'startTime': '19:10:00',
+        Tuesday: {
+          startTime: "19:10:00",
         },
-        'Wednesday': {
-          'startTime': '08:00:00',
+        Wednesday: {
+          startTime: "08:00:00",
         },
-        'Thursday': {
-          'startTime': '08:00:00',
+        Thursday: {
+          startTime: "08:00:00",
         },
-        'Friday': {
-          'startTime': '08:00:00',
+        Friday: {
+          startTime: "08:00:00",
         },
-        'Saturday': {
-          'startTime': '08:00:00',
+        Saturday: {
+          startTime: "08:00:00",
         },
-        'Sunday': {
-          'startTime': '08:00:00',
-        },
-      },
-      '1B': {
-        'Monday': {
-          'startTime': "17:00:00",
-        },
-        'Tuesday': {
-          'startTime': '19:10:00',
-        },
-        'Wednesday': {
-          'startTime': '08:00:00',
-        },
-        'Thursday': {
-          'startTime': '08:00:00',
-        },
-        'Friday': {
-          'startTime': '08:00:00',
-        },
-        'Saturday': {
-          'startTime': '08:00:00',
-        },
-        'Sunday': {
-          'startTime': '08:00:00',
+        Sunday: {
+          startTime: "08:00:00",
         },
       },
-      '1C': {
-        'Monday': {
-          'startTime': "17:00:00",
+      "1B": {
+        Monday: {
+          startTime: "17:00:00",
         },
-        'Tuesday': {
-          'startTime': '19:10:00',
+        Tuesday: {
+          startTime: "19:10:00",
         },
-        'Wednesday': {
-          'startTime': '08:00:00',
+        Wednesday: {
+          startTime: "08:00:00",
         },
-        'Thursday': {
-          'startTime': '08:00:00',
+        Thursday: {
+          startTime: "08:00:00",
         },
-        'Friday': {
-          'startTime': '08:00:00',
+        Friday: {
+          startTime: "08:00:00",
         },
-        'Saturday': {
-          'startTime': '08:00:00',
+        Saturday: {
+          startTime: "08:00:00",
         },
-        'Sunday': {
-          'startTime': '08:00:00',
-        },
-      },
-      '1D': {
-        'Monday': {
-          'startTime': "17:00:00",
-        },
-        'Tuesday': {
-          'startTime': '19:10:00',
-        },
-        'Wednesday': {
-          'startTime': '08:00:00',
-        },
-        'Thursday': {
-          'startTime': '08:00:00',
-        },
-        'Friday': {
-          'startTime': '08:00:00',
-        },
-        'Saturday': {
-          'startTime': '08:00:00',
-        },
-        'Sunday': {
-          'startTime': '08:00:00',
+        Sunday: {
+          startTime: "08:00:00",
         },
       },
-
-
-
+      "1C": {
+        Monday: {
+          startTime: "17:00:00",
+        },
+        Tuesday: {
+          startTime: "19:10:00",
+        },
+        Wednesday: {
+          startTime: "08:00:00",
+        },
+        Thursday: {
+          startTime: "08:00:00",
+        },
+        Friday: {
+          startTime: "08:00:00",
+        },
+        Saturday: {
+          startTime: "08:00:00",
+        },
+        Sunday: {
+          startTime: "08:00:00",
+        },
+      },
+      "1D": {
+        Monday: {
+          startTime: "17:00:00",
+        },
+        Tuesday: {
+          startTime: "19:10:00",
+        },
+        Wednesday: {
+          startTime: "08:00:00",
+        },
+        Thursday: {
+          startTime: "08:00:00",
+        },
+        Friday: {
+          startTime: "08:00:00",
+        },
+        Saturday: {
+          startTime: "08:00:00",
+        },
+        Sunday: {
+          startTime: "08:00:00",
+        },
+      },
     },
   };
-
-
-
-    // 'STEM': {
-    //   '1A': {
-    //     '01': {
-    //       'name': "sample",
-    //       'lastScan': "sample",
-    //       'status': "sample",
-    //     },
-    //     '02': {
-    //       'name': "sample",
-    //       'lastScan': "sample",
-    //       'status': "sample",
-    //     },
-    //     '03': {
-    //       'name': "sample",
-    //       'lastScan': "sample",
-    //       'status': "sample",
-    //     },
-    //   },
-    //   '1B': {
-    //     '01': {
-    //       'name': "sample",
-    //       'lastScan': "sample",
-    //       'status': "sample",
-    //     },
-    //     '02': {
-    //       'name': "sample",
-    //       'lastScan': "sample",
-    //       'status': "sample",
-    //     },
-    //     '03': {
-    //       'name': "sample",
-    //       'lastScan': "sample",
-    //       'status': "sample",
-    //     },
-    //   },
-    // },
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
@@ -186,7 +144,9 @@ function Scan() {
         studentKeys.forEach((key) => {
           studentData[key] = new Date();
         });
-        const currentDay = new Date().toLocaleDateString("en-US", { weekday: "long" });
+        const currentDay = new Date().toLocaleDateString("en-US", {
+          weekday: "long",
+        });
 
         // Check student's attendance status and update it
         let attendanceStatus = "";
@@ -204,7 +164,7 @@ function Scan() {
         if (timeDifference < -300000) {
           // Student is early (5 minutes before class start time)
           attendanceStatus = "early";
-        }  else if (timeDifference > 600000) {
+        } else if (timeDifference > 600000) {
           // Student is late (more than 10 minutes after class start time)
           attendanceStatus = "late";
         } else {
@@ -217,7 +177,9 @@ function Scan() {
         studentData[`${id}dif`] = timeDifference; // add this line to set the "attendance" field
         // add this line to set the "attendance" field
         await updateDoc(sectionRef, studentData);
-        console.log(`Student ${id} marked as present with ${attendanceStatus} status`);
+        console.log(
+          `Student ${id} marked as present with ${attendanceStatus} status`
+        );
         const timeString = new Date().toLocaleTimeString("en-US", {
           hour: "numeric",
           minute: "numeric",
@@ -238,7 +200,6 @@ function Scan() {
       return undefined;
     }
   };
-
 
   useEffect(() => {
     if (data) {
@@ -293,6 +254,7 @@ function Scan() {
 }
 
 export default Scan;
+
 // const handleMarkPresent = async (strand, section, id) => {
 //   // Get student data from Firestore
 //   const studentRef = doc(db, "strands", strand, section, id);
