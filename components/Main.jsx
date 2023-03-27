@@ -3,6 +3,7 @@ import { useState } from "react";
 import TodayAttendance from "./TodayView";
 import PastAttendance from "./PastView";
 import Greeting from "./Dash";
+import SignupForm from "./Sample";
 // import Weather from "./Weather";
 
 const MainComponent = () => {
@@ -20,8 +21,10 @@ const MainComponent = () => {
     switch (currentComponent) {
       case "today":
         return <TodayAttendance onBackButtonClick={handleBackButtonClick} />;
-      case "past":
-        return <PastAttendance onBackButtonClick={handleBackButtonClick} />;
+        case "past":
+          return <PastAttendance onBackButtonClick={handleBackButtonClick} />;
+        case "sample":
+          return <SignupForm onBackButtonClick={handleBackButtonClick} />;
       // render other components as needed
       default:
         return (
@@ -36,8 +39,8 @@ const MainComponent = () => {
               <button className="bg-white font-bold text-xl py-10 rounded-lg " onClick={() => handleButtonClick("past")}>
                 Badges
               </button>
-              <button className="bg-white font-bold text-xl py-10 rounded-lg " onClick={() => handleButtonClick("past")}>
-                Badges
+              <button className="bg-white font-bold text-xl py-10 rounded-lg " onClick={() => handleButtonClick("sample")}>
+                Sample
               </button>
               <button className="bg-white font-bold text-xl py-10 rounded-lg " onClick={() => handleButtonClick("past")}>
                 Badges
