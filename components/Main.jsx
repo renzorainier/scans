@@ -37,13 +37,13 @@ const MainComponent = () => {
                 Attendance
               </button>
               <button className="bg-white font-bold text-xl py-10 rounded-lg " onClick={() => handleButtonClick("past")}>
-                Badges
+                Qr Code
               </button>
               <button className="bg-white font-bold text-xl py-10 rounded-lg " onClick={() => handleButtonClick("sample")}>
-                Sample
+                Badges
               </button>
               <button className="bg-white font-bold text-xl py-10 rounded-lg " onClick={() => handleButtonClick("past")}>
-                Badges
+                About
               </button>
 
             </div>
