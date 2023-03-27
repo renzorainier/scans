@@ -177,7 +177,7 @@ function StudentCollection() {
       sectionData[`${id}strand`] = strand;
       sectionData[`${id}section`] = section;
       sectionData[`${id}M`] = "";
-      sectionData[`${id}M`] = "";
+      sectionData[`${id}T`] = "";
     });
 
     try {
