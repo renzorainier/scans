@@ -25,7 +25,7 @@ const MainComponent = () => {
       // render other components as needed
       default:
         return (
-          <div className="mt-4 max-w-screen-lg mx-auto">
+          <div className="mt-4 ax-w-screen-lg mx-auto">
             <div>
               <Greeting />
             </div>

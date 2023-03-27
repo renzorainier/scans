@@ -55,31 +55,31 @@ const Greeting = () => {
     if (timeOfDay === "evening") {
       return "text-white";
     }
-    return "text-gray-700";
+    return "text-black";
   };
 
   return (
     <div className="flex justify-center pt-1 items-center">
-      <div
-        className={`w-full p-5 mr-5 ml-5  rounded-lg shadow-lg mx-auto ${getTextColor()} `}
-        style={{
-          backgroundImage: `url(${getImageUrl()})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      >
-        <div style={{ minHeight: "200px" }}>
-          <h2 className="text-3xl font-bold mb-2">{greeting} Scasians! </h2>
-          <p className="mb-2">Today is {dateString}</p>
-          {showReminder && (
-            <h3 className="text-xl mb-2">
-              If you haven't already, get your qr-code scanned now :&gt;
-            </h3>
-          )}
-
-        </div>
-      </div>
+  <div
+    className={`w-full p-5 mr-5 ml-5 rounded-lg shadow-lg mx-auto ${getTextColor()}`}
+    style={{
+      backgroundImage: `url(${getImageUrl()})`,
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+    }}
+  >
+    <div style={{ minHeight: "200px" }}>
+      <h2 className="text-3xl font-bold mb-2">{greeting} Scasians! </h2>
+      <p className="mb-2 font-bold">Today is {dateString}</p>
+      {showReminder && (
+        <h3 className="text-xl mb-2 ">
+          If you haven't already, get your qr-code scanned now :&gt;
+        </h3>
+      )}
     </div>
+  </div>
+</div>
+
   );
 };
 
