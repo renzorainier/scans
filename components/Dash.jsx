@@ -72,7 +72,7 @@ const Greeting = () => {
       <h2 className="text-3xl font-bold mb-2">{greeting} Scasians! </h2>
       <p className="mb-2 font-bold">Today is {dateString}</p>
       {showReminder && (
-        <h3 className="text-xl mb-2 ">
+        <h3 className="text-sm font-bold mb-2 ">
           If you haven't already, get your qr-code scanned now :&gt;
         </h3>
       )}
