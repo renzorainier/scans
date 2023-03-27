@@ -3,7 +3,7 @@ import { useState } from "react";
 import TodayAttendance from "./TodayView";
 import PastAttendance from "./PastView";
 import Greeting from "./Dash";
-import SignupForm from "./Sample";
+import Calculator from "./Sample";
 // import Weather from "./Weather";
 
 const MainComponent = () => {
@@ -24,7 +24,7 @@ const MainComponent = () => {
         case "past":
           return <PastAttendance onBackButtonClick={handleBackButtonClick} />;
         case "sample":
-          return <SignupForm onBackButtonClick={handleBackButtonClick} />;
+          return <Calculator onBackButtonClick={handleBackButtonClick} />;
       // render other components as needed
       default:
         return (
