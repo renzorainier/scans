@@ -1,99 +1,86 @@
-import React, { useState } from 'react';
+import { useState } from "react";
 
-const TodoList = () => {
-  const [todos, setTodos] = useState([]);
-  const [inputValue, setInputValue] = useState('');
+const SignupForm = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
 
-  const handleAddTodo = () => {
-    if (inputValue.trim()) {
-      setTodos([...todos, { text: inputValue, completed: false }]);
-      setInputValue('');
-    }
-  };
-
-  const handleDeleteTodo = (index) => {
-    setTodos(todos.filter((_, i) => i !== index));
-  };
-
-  const handleToggleCompleted = (index) => {
-    setTodos(
-      todos.map((todo, i) =>
-        i === index ? { ...todo, completed: !todo.completed } : todo
-      )
-    );
-  };
-
-  const handleEditTodo = (index, text) => {
-    setTodos(
-      todos.map((todo, i) => (i === index ? { ...todo, text } : todo))
-    );
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(`Email: ${email}\nPassword: ${password}`);
   };
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen bg-gray-100">
-      <div className="w-80">
-        <div className="bg-white rounded-lg p-4 shadow-md">
-          <input
-            className="w-full border rounded-lg py-2 px-4"
-            value={inputValue}
-            onChange={(e) => setInputValue(e.target.value)}
-          />
-          <button
-            className="bg-blue-500 text-white rounded-lg py-2 px-4 mt-2 w-full"
-            onClick={handleAddTodo}
+    <div className="bg-white rounded-lg shadow-md px-8 pt-6 pb-8 mb-4">
+      <form onSubmit={handleSubmit}>
+        <div className="mb-4">
+          <label
+            className="block text-gray-700 font-bold mb-2"
+            htmlFor="email"
           >
-            Add Todo
-          </button>
+            Email
+          </label>
+          <input
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            id="email"
+            type="email"
+            placeholder="Enter your email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
         </div>
-        <ul className="mt-4">
-          {todos.map((todo, index) => (
-            <li
-              key={index}
-              className="bg-white rounded-lg p-4 shadow-md flex justify-between items-center mb-2"
-            >
-              {todo.editing ? (
-                <input
-                  className="border rounded-lg py-1 px-2"
-                  value={todo.text}
-                  onChange={(e) =>
-                    handleEditTodo(index, e.target.value)
-                  }
-                />
-              ) : (
-                <span
-                  className={`${
-                    todo.completed ? 'line-through text-gray-500' : ''
-                  }`}
-                  onClick={() => handleToggleCompleted(index)}
-                >
-                  {todo.text}
-                </span>
-              )}
-              <div>
-                <button
-                  className="bg-yellow-500 text-white rounded-lg py-1 px-2 mr-2"
-                  onClick={() =>
-                    handleEditTodo(index, {
-                      ...todo,
-                      editing: !todo.editing,
-                    })
-                  }
-                >
-                  Edit
-                </button>
-                <button
-                  className="bg-red-500 text-white rounded-lg py-1 px-2"
-                  onClick={() => handleDeleteTodo(index)}
-                >
-                  Delete
-                </button>
-              </div>
-            </li>
-          ))}
-        </ul>
-      </div>
+        <div className="mb-4">
+          <label
+            className="block text-gray-700 font-bold mb-2"
+            htmlFor="password"
+          >
+            Password
+          </label>
+          <input
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            id="password"
+            type="password"
+            placeholder="Enter your password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+        </div>
+        <div className="mb-6">
+          <label
+            className="block text-gray-700 font-bold mb-2"
+            htmlFor="confirmPassword"
+          >
+            Confirm Password
+          </label>
+          <input
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            id="confirmPassword"
+            type="password"
+            placeholder="Confirm your password"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            required
+          />
+        </div>
+        <div className="flex items-center justify-between">
+          <button
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            type="submit"
+          >
+            Sign up
+          </button>
+          <a
+            className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
+            href="#"
+          >
+            Forgot Password?
+          </a>
+        </div>
+      </form>
     </div>
   );
 };
 
-export default TodoList;
+export default SignupForm;
