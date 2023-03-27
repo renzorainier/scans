@@ -5,7 +5,7 @@ import { useState,useEffect } from "react";
 // import TodayAttendance from "/components/TodayView";
 // import SavePresentStudents from "components/Save";
 // import Generate from "components/Generate";
-// import StudentCollection from "components/Create";
+import StudentCollection from "components/Create";
 // import TabSelector from "components/Tab";
 import Main from "components/Main";
 
@@ -121,6 +121,7 @@ export default function Home() {
       </Head>
       {/* <main className="container mx-auto ">{renderComponent()}</main> */}
     <Main />
+    <StudentCollection />
     </>
   );
 }
