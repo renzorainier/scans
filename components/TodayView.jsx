@@ -170,11 +170,11 @@ function AttendanceTable() {
         </div>
 
         <div className="flex justify-between items-center mb-4">
-          <div className="flex items-center w-full">
+          <div id="search" className="flex items-center w-full">
             <input
               type="text"
               className="border rounded-md py-1 px-2 text-gray-700 w-4/5 mr-2"
-              placeholder="Search name...(pick a section first)"
+              placeholder="Search name (pick a section first)"
               value={searchQuery}
               onChange={handleSearchQueryChange}
               disabled={selectedSection === ""}
