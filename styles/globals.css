@@ -26,6 +26,11 @@ body {
   font-size: 13px;
 }
 
+#table {
+  font-size: 15px;
+
+}
+
 .grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
