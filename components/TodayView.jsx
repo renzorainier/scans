@@ -290,7 +290,7 @@ function AttendanceTable() {
                   <td className="p-2 ">{student.section}</td>
                   <td className="p-2 whitespace-nowrap">
                     {student.status === "late" && (
-                      <div className="bg-[#EC7063] h-3 w-9 rounded-sm inline-block mr-1">
+                      <div className="bg-[#EC7063] h-6 w-16 rounded-sm inline-block mr-1">
                         {student.lastScanTime}
                       </div>
                     )}
