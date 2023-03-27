@@ -184,7 +184,7 @@ function AttendanceTable() {
               className="border rounded-md py-1 px-2 text-gray-700 w-1/5"
               value={selectedSection}
               onChange={handleSectionChange}
-              placeholder="Search name..."
+              placeholder="Search name...(pick a section first)"
             >
               <option value="">All</option>
               <option value="1A">1A</option>
