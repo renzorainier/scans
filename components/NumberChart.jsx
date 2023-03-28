@@ -5,6 +5,7 @@ import { collection, getDocs } from "firebase/firestore";
 
 
 const NumberLineGraph = ({ data }) => {
+  console.log(data);
   const chartRef = useRef();
   const chartInstanceRef = useRef(null);
 
