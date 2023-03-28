@@ -39,7 +39,7 @@ function useAttendanceData() {
   };
 }
 
-function AttendanceTable({ filteredStudents }) {
+function AttendanceTable() {
   const { attendanceData } = useAttendanceData();
   const [selectedSection, setSelectedSection] = useState("");
   const [presentStudents, setPresentStudents] = useState([]);
