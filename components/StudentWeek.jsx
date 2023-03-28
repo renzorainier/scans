@@ -87,6 +87,18 @@ function StudentChart({ student, onClose }) {
               hour: "numeric",
               minute: "2-digit",
             }),
+            new Date(student.C.seconds * 1000).toLocaleTimeString([], {
+              hour: "numeric",
+              minute: "2-digit",
+            }),
+            new Date(student.D.seconds * 1000).toLocaleTimeString([], {
+              hour: "numeric",
+              minute: "2-digit",
+            }),
+            new Date(student.E.seconds * 1000).toLocaleTimeString([], {
+              hour: "numeric",
+              minute: "2-digit",
+            }),
           ],
           backgroundColor: "rgba(79, 209, 197, 0.2)",
           borderColor: "rgba(79, 209, 197, 1)",
@@ -95,7 +107,6 @@ function StudentChart({ student, onClose }) {
       ],
     };
 
-    data.datasets[0].data.forEach((time) => console.log(time.toLocaleString()));
 
     return data;
   }
