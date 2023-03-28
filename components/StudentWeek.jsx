@@ -103,6 +103,7 @@ function StudentChart({ student, onClose }) {
       ],
     };
     return data;
+    console.log(data)
   }
 
 
