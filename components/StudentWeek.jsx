@@ -73,7 +73,7 @@ function StudentChart({ student, onClose }) {
       labels: ['A', 'B', 'C', 'D', 'E'],
       datasets: [
         {
-          label: 'Grades',
+          label: 'time at school',
           data: [
             student.A,
             student.B,
