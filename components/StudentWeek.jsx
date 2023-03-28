@@ -1,16 +1,18 @@
-import React from 'react';
-import Chart from 'chart.js/auto';
+import React, { useRef, useEffect } from 'react';
+import Chart from 'chart.js';
 
-function StudentDetails({ student, onClose }) {
-  const chartRef = React.useRef(null);
+function StudentChart({ student }) {
+  const chartRef = useRef(null);
 
-  React.useEffect(() => {
-    if (chartRef.current) {
-      const myCharst = new Chart(chartRef.current, {
-        type: 'bar',
-        data: {
-          labels: ['A', 'B', 'C', 'D', 'E'],
-          datasets: [{
+  useEffect(() => {
+    const myChartRef = chartRef.current.getContext('2d');
+
+    new Chart(myChartRef, {
+      type: 'bar',
+      data: {
+        labels: ['A', 'B', 'C', 'D', 'E'],
+        datasets: [
+          {
             label: 'Grades',
             data: [student.A, student.B, student.C, student.D, student.E],
             backgroundColor: [
@@ -28,28 +30,24 @@ function StudentDetails({ student, onClose }) {
               'rgba(153, 102, 255, 1)',
             ],
             borderWidth: 1,
-          }],
-        },
-        options: {
-          scales: {
-            y: {
-              beginAtZero: true,
-            },
           },
+        ],
+      },
+      options: {
+        scales: {
+          yAxes: [
+            {
+              ticks: {
+                beginAtZero: true,
+              },
+            },
+          ],
         },
-      });
-    }
+      },
+    });
   }, [student]);
 
-  return (
-    <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-md shadow-md p-4">
-      <button className=" text-lg font-bold absolute top-0 right-0 m-2 text-gray-500 hover:text-gray-700" onClick={() => onClose()}>
-        X
-      </button>
-      <p className="pt-4 text-lg font-bold mb-4">{student.name}</p>
-      <canvas ref={chartRef} />
-    </div>
-  );
+  return <canvas id={`chart-${student.studentId}`} ref={chartRef} />;
 }
 
-export default StudentDetails;
+export default StudentChart;
