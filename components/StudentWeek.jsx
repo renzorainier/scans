@@ -79,26 +79,46 @@ function StudentChart({ student, onClose }) {
         {
           label: "time at school",
           data: [
-            new Date(student.A.seconds * 1000).toLocaleTimeString([], {
-              hour: "numeric",
-              minute: "2-digit",
-            }).split(":").slice(0, 2).join(":"),
-            new Date(student.B.seconds * 1000).toLocaleTimeString([], {
-              hour: "numeric",
-              minute: "2-digit",
-            }).split(":").slice(0, 2).join(":"),
-            new Date(student.C.seconds * 1000).toLocaleTimeString([], {
-              hour: "numeric",
-              minute: "2-digit",
-            }).split(":").slice(0, 2).join(":"),
-            new Date(student.D.seconds * 1000).toLocaleTimeString([], {
-              hour: "numeric",
-              minute: "2-digit",
-            }).split(":").slice(0, 2).join(":"),
-            new Date(student.E.seconds * 1000).toLocaleTimeString([], {
-              hour: "numeric",
-              minute: "2-digit",
-            }).split(":").slice(0, 2).join(":"),
+            new Date(student.A.seconds * 1000)
+              .toLocaleTimeString([], {
+                hour: "numeric",
+                minute: "2-digit",
+              })
+              .split(":")
+              .slice(0, 2)
+              .join(":"),
+            new Date(student.B.seconds * 1000)
+              .toLocaleTimeString([], {
+                hour: "numeric",
+                minute: "2-digit",
+              })
+              .split(":")
+              .slice(0, 2)
+              .join(":"),
+            new Date(student.C.seconds * 1000)
+              .toLocaleTimeString([], {
+                hour: "numeric",
+                minute: "2-digit",
+              })
+              .split(":")
+              .slice(0, 2)
+              .join(":"),
+            new Date(student.D.seconds * 1000)
+              .toLocaleTimeString([], {
+                hour: "numeric",
+                minute: "2-digit",
+              })
+              .split(":")
+              .slice(0, 2)
+              .join(":"),
+            new Date(student.E.seconds * 1000)
+              .toLocaleTimeString([], {
+                hour: "numeric",
+                minute: "2-digit",
+              })
+              .split(":")
+              .slice(0, 2)
+              .join(":"),
           ],
           backgroundColor: "rgba(79, 209, 197, 0.2)",
           borderColor: "rgba(79, 209, 197, 1)",
@@ -125,7 +145,18 @@ function StudentChart({ student, onClose }) {
           className="w-full h-full"
         ></canvas>
         <div>
-          {student.As}
+          {student.As === "late" && (
+            <div className="bg-[#EC7063] h-6 w-16 rounded-sm inline-block mr-1">
+            </div>
+          )}
+          {student.As === "ontime" && (
+            <div className="bg-[#F7DC6F]  h-6 w-16 rounded-sm inline-block mr-1">
+            </div>
+          )}
+          {student.As === "early" && (
+            <div className="bg-[#2ECC71]  h-6 w-16 rounded-sm inline-block mr-1">
+            </div>
+          )}{" "}
         </div>
       </div>
     </div>
