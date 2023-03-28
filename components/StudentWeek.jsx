@@ -75,7 +75,7 @@ function StudentChart({ student, onClose }) {
         {
           label: 'time at school',
           data: [
-            new Date(student.As),
+            new Date(student.A),
             new Date(student.B),
             new Date(student.C),
             new Date(student.D),
