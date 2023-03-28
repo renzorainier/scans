@@ -124,6 +124,9 @@ function StudentChart({ student, onClose }) {
           ref={chartRef}
           className="w-full h-full"
         ></canvas>
+        <div>
+          {student.As}
+        </div>
       </div>
     </div>
   );
