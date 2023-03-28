@@ -69,17 +69,23 @@ function StudentChart({ student, onClose }) {
   }, [student]);
 
   function formatChartData() {
+    const formatter = new Intl.DateTimeFormat('en-US', {
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+    });
+
     const data = {
       labels: ['A', 'B', 'C', 'D', 'E'],
       datasets: [
         {
           label: 'time at school',
           data: [
-            new Date(student.A * 1000),
-            new Date(student.B * 1000),
-            new Date(student.C * 1000),
-            new Date(student.D * 1000),
-            new Date(student.E * 1000),
+            formatter.format(new Date(student.A)),
+            formatter.format(new Date(student.B)),
+            formatter.format(new Date(student.C)),
+            formatter.format(new Date(student.D)),
+            formatter.format(new Date(student.E)),
           ],
           backgroundColor: 'rgba(79, 209, 197, 0.2)',
           borderColor: 'rgba(79, 209, 197, 1)',
@@ -89,6 +95,7 @@ function StudentChart({ student, onClose }) {
     };
     return data;
   }
+
 
 
 
