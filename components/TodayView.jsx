@@ -281,7 +281,6 @@ function AttendanceTable() {
                 >
                   SCANNED:
                 </th>
-                <th>lrn</th>
               </tr>
             </thead>
             <tbody>
@@ -316,7 +315,6 @@ function AttendanceTable() {
                       </div>
                     )}
                   </td>
-                 
                 </tr>
               ))}
               {selectedStudent && (
