@@ -75,11 +75,11 @@ function StudentChart({ student, onClose }) {
         {
           label: 'time at school',
           data: [
-            student.A,
-            student.B,
-            student.C,
-            student.D,
-            student.E,
+            new Date(student.As),
+            new Date(student.B),
+            new Date(student.C),
+            new Date(student.D),
+            new Date(student.E),
           ],
           backgroundColor: 'rgba(79, 209, 197, 0.2)',
           borderColor: 'rgba(79, 209, 197, 1)',
@@ -89,6 +89,7 @@ function StudentChart({ student, onClose }) {
     };
     return data;
   }
+
 
   return (
     <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-md shadow-md p-4">
