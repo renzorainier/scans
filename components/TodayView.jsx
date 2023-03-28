@@ -291,6 +291,7 @@ function AttendanceTable() {
                     index % 2 === 0 ? "bg-gray-100" : "bg-gray-200"
                   } rounded-lg mb-2 py-2`}
                   key={student.studentId}
+                  onClick={() => handleMoreClick(student)}
                 >
                   <td className="p-2">{filteredStudents.length - index}</td>
                   <td className="p-2 font-bold whitespace-nowrap">
@@ -315,13 +316,7 @@ function AttendanceTable() {
                       </div>
                     )}
                   </td>
-                  <td className="p-2">
-                    <div>
-                      <button onClick={() => handleMoreClick(student)}>
-                        ⚫⚫⚫
-                      </button>
-                    </div>
-                  </td>
+                 
                 </tr>
               ))}
               {selectedStudent && (
