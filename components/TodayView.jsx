@@ -39,7 +39,7 @@ function useAttendanceData() {
   };
 }
 
-function AttendanceTable() {
+function AttendanceTable({ filteredStudents }) {
   const { attendanceData } = useAttendanceData();
   const [selectedSection, setSelectedSection] = useState("");
   const [presentStudents, setPresentStudents] = useState([]);
@@ -47,6 +47,11 @@ function AttendanceTable() {
   const [showInfo, setShowInfo] = useState(false);
   const [infoText, setInfoText] = useState("");
   const [isLoading, setIsLoading] = useState(true);
+  const [currentLRN, setCurrentLRN] = useState(null);
+
+  const handleMoreClick = (lrn) => {
+    setCurrentLRN(lrn);
+  };
 
   useEffect(() => {
     const presentStudents = [];
