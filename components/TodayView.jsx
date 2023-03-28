@@ -49,6 +49,10 @@ function AttendanceTable() {
   const [isLoading, setIsLoading] = useState(true);
   const [selectedStudent, setSelectedStudent] = useState(null);
 
+  const onClose = () => {
+    setSelectedStudent(null);
+  };
+
   const handleMoreClick = (student) => {
     setSelectedStudent(student);
   };
@@ -320,7 +324,9 @@ function AttendanceTable() {
                   </td>
                 </tr>
               ))}
-              {selectedStudent && <StudentDetails student={selectedStudent} />}
+              {selectedStudent && (
+                <StudentDetails student={selectedStudent} onClose={onClose} />
+              )}
             </tbody>
           </table>
           {showInfo && (
