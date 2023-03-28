@@ -309,7 +309,7 @@ function AttendanceTable() {
                   <td className="p-2">
                     <div>
                       <button>
-                        ...
+                        "this is the (more) button part that should render the child component"
                       </button>
                     </div>
                   </td>
