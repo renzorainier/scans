@@ -128,7 +128,6 @@ function StudentChart({ student, onClose }) {
     };
     return data;
   }
-  
 
   return (
     <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-md shadow-md p-4">
@@ -146,6 +145,66 @@ function StudentChart({ student, onClose }) {
           className="w-full h-full"
         ></canvas>
         <div>
+          {student.As === "late" && (
+            <div className="bg-[#EC7063] h-6 w-16 rounded-sm inline-block mr-1">
+            </div>
+          )}
+          {student.As === "ontime" && (
+            <div className="bg-[#F7DC6F]  h-6 w-16 rounded-sm inline-block mr-1">
+            </div>
+          )}
+          {student.As === "early" && (
+            <div className="bg-[#2ECC71]  h-6 w-16 rounded-sm inline-block mr-1">
+            </div>
+          )}
+          {student.Bs === "late" && (
+            <div className="bg-[#EC7063] h-6 w-16 rounded-sm inline-block mr-1">
+            </div>
+          )}
+          {student.Bs === "ontime" && (
+            <div className="bg-[#F7DC6F]  h-6 w-16 rounded-sm inline-block mr-1">
+            </div>
+          )}
+          {student.Bs === "early" && (
+            <div className="bg-[#2ECC71]  h-6 w-16 rounded-sm inline-block mr-1">
+            </div>
+          )}
+          {student.Cs === "late" && (
+            <div className="bg-[#EC7063] h-6 w-16 rounded-sm inline-block mr-1">
+            </div>
+          )}
+          {student.Cs === "ontime" && (
+            <div className="bg-[#F7DC6F]  h-6 w-16 rounded-sm inline-block mr-1">
+            </div>
+          )}
+          {student.Cs === "early" && (
+            <div className="bg-[#2ECC71]  h-6 w-16 rounded-sm inline-block mr-1">
+            </div>
+          )}
+          {student.Ds === "late" && (
+            <div className="bg-[#EC7063] h-6 w-16 rounded-sm inline-block mr-1">
+            </div>
+          )}
+          {student.Ds === "ontime" && (
+            <div className="bg-[#F7DC6F]  h-6 w-16 rounded-sm inline-block mr-1">
+            </div>
+          )}
+          {student.Ds === "early" && (
+            <div className="bg-[#2ECC71]  h-6 w-16 rounded-sm inline-block mr-1">
+            </div>
+          )}
+          {student.Es === "late" && (
+            <div className="bg-[#EC7063] h-6 w-16 rounded-sm inline-block mr-1">
+            </div>
+          )}
+          {student.Es === "ontime" && (
+            <div className="bg-[#F7DC6F]  h-6 w-16 rounded-sm inline-block mr-1">
+            </div>
+          )}
+          {student.Es === "early" && (
+            <div className="bg-[#2ECC71]  h-6 w-16 rounded-sm inline-block mr-1">
+            </div>
+          )}
 
         </div>
       </div>
