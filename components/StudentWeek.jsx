@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import Chart from 'chart.js/auto';
 
-function StudentChart({ student }) {
+function StudentChart({ student, onClose }) {
   const chartRef = useRef(null);
   const chartInstanceRef = useRef(null);
 
