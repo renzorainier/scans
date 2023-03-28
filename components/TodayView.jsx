@@ -226,6 +226,7 @@ function AttendanceTable() {
                 >
                   NAME
                 </th>
+                <th>lrn</th>
                 <th
                   className="p-2"
                   onClick={() =>
