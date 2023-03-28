@@ -1,12 +1,12 @@
-import React, { useRef, useEffect } from 'react';
-import Chart from 'chart.js/auto';
+import React, { useRef, useEffect } from "react";
+import Chart from "chart.js/auto";
 
 function StudentChart({ student, onClose }) {
   const chartRef = useRef(null);
   const chartInstanceRef = useRef(null);
 
   useEffect(() => {
-    const chartCtx = chartRef.current.getContext('2d');
+    const chartCtx = chartRef.current.getContext("2d");
 
     const chartData = formatChartData();
 
@@ -16,45 +16,49 @@ function StudentChart({ student, onClose }) {
     }
 
     chartInstanceRef.current = new Chart(chartCtx, {
-      type: 'line',
+      type: "line",
       data: chartData,
       options: {
         scales: {
-          yAxes: [{
-            gridLines: {
-              color: '#F5F5F5',
-              zeroLineColor: '#F5F5F5',
+          yAxes: [
+            {
+              gridLines: {
+                color: "#F5F5F5",
+                zeroLineColor: "#F5F5F5",
+              },
+              ticks: {
+                fontColor: "#888",
+                beginAtZero: true,
+                maxTicksLimit: 5,
+                padding: 10,
+              },
             },
-            ticks: {
-              fontColor: '#888',
-              beginAtZero: true,
-              maxTicksLimit: 5,
-              padding: 10,
+          ],
+          xAxes: [
+            {
+              gridLines: {
+                color: "#F5F5F5",
+                zeroLineColor: "#F5F5F5",
+              },
+              ticks: {
+                fontColor: "#888",
+                padding: 5,
+              },
             },
-          }],
-          xAxes: [{
-            gridLines: {
-              color: '#F5F5F5',
-              zeroLineColor: '#F5F5F5',
-            },
-            ticks: {
-              fontColor: '#888',
-              padding: 5,
-            },
-          }],
+          ],
         },
         legend: {
           display: false,
         },
         tooltips: {
-          backgroundColor: '#4FD1C5',
-          bodyFontColor: '#FFF',
-          titleFontColor: '#FFF',
+          backgroundColor: "#4FD1C5",
+          bodyFontColor: "#FFF",
+          titleFontColor: "#FFF",
           titleMarginBottom: 10,
           bodySpacing: 5,
           xPadding: 10,
           yPadding: 10,
-          mode: 'nearest',
+          mode: "nearest",
           intersect: 0,
         },
       },
@@ -70,37 +74,49 @@ function StudentChart({ student, onClose }) {
 
   function formatChartData() {
     const data = {
-      labels: ['A', 'B', 'C', 'D', 'E'],
+      labels: ["A", "B", "C", "D", "E"],
       datasets: [
         {
-          label: 'time at school',
+          label: "time at school",
           data: [
-            new Date(student.A * 1000).toLocaleTimeString([], {hour: 'numeric', minute: '2-digit'}),
-            new Date(student.B * 1000).toLocaleTimeString([], {hour: 'numeric', minute: '2-digit'}),
-            new Date(student.C * 1000).toLocaleTimeString([], {hour: 'numeric', minute: '2-digit'}),
-            new Date(student.D * 1000).toLocaleTimeString([], {hour: 'numeric', minute: '2-digit'}),
-            new Date(student.E * 1000).toLocaleTimeString([], {hour: 'numeric', minute: '2-digit'}),
+            new Date(student.A.seconds * 1000).toLocaleTimeString([], {
+              hour: "numeric",
+              minute: "2-digit",
+            }),
+            new Date(student.B),
+            new Date(student.C),
+            new Date(student.D),
+            new Date(student.E),
           ],
-          backgroundColor: 'rgba(79, 209, 197, 0.2)',
-          borderColor: 'rgba(79, 209, 197, 1)',
+          backgroundColor: "rgba(79, 209, 197, 0.2)",
+          borderColor: "rgba(79, 209, 197, 1)",
           borderWidth: 2,
         },
       ],
     };
+
+    data.datasets[0].data.forEach((time) => console.log(time.toLocaleString()));
+
     return data;
   }
 
   return (
     <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-md shadow-md p-4">
-      <button className=" text-lg font-bold absolute top-0 right-0 m-2 text-gray-500 hover:text-gray-700" onClick={() => onClose()}>
+      <button
+        className=" text-lg font-bold absolute top-0 right-0 m-2 text-gray-500 hover:text-gray-700"
+        onClick={() => onClose()}
+      >
         X
       </button>
       <p className="pt-4 text-lg font-bold mb-4">{student.name}</p>
       <div className="bg-white rounded-lg shadow-md mb-4 overflow-hidden">
-      <canvas id={`chart-${student.id}`} ref={chartRef} className="w-full h-full"></canvas>
+        <canvas
+          id={`chart-${student.id}`}
+          ref={chartRef}
+          className="w-full h-full"
+        ></canvas>
+      </div>
     </div>
-    </div>
-
   );
 }
 
