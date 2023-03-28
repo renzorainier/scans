@@ -47,10 +47,10 @@ function AttendanceTable() {
   const [showInfo, setShowInfo] = useState(false);
   const [infoText, setInfoText] = useState("");
   const [isLoading, setIsLoading] = useState(true);
-  const [currentLRN, setCurrentLRN] = useState(null);
+  const [selectedStudent, setSelectedStudent] = useState(null);
 
-  const handleMoreClick = (lrn) => {
-    setCurrentLRN(lrn);
+  const handleMoreClick = (student) => {
+    setSelectedStudent(student);
   };
 
   useEffect(() => {
@@ -282,48 +282,45 @@ function AttendanceTable() {
             </thead>
             <tbody>
               {filteredStudents.map((student, index) => (
-                <React.Fragment key={student.studentId}>
-                  <tr
-                    className={`${
-                      index % 2 === 0 ? "bg-gray-100" : "bg-gray-200"
-                    } rounded-lg mb-2 py-2`}
-                  >
-                    <td className="p-2">{filteredStudents.length - index}</td>
-                    <td className="p-2 font-bold whitespace-nowrap">
-                      {student.name}
-                    </td>
-                    <td className="p-2">{student.strand}</td>
-                    <td className="p-2 ">{student.section}</td>
-                    <td className="p-2 whitespace-nowrap">
-                      {student.status === "late" && (
-                        <div className="bg-[#EC7063] h-6 w-16 rounded-sm inline-block mr-1">
-                          {student.lastScanTime}
-                        </div>
-                      )}
-                      {student.status === "ontime" && (
-                        <div className="bg-[#F7DC6F]  h-6 w-16 rounded-sm inline-block mr-1">
-                          {student.lastScanTime}
-                        </div>
-                      )}
-                      {student.status === "early" && (
-                        <div className="bg-[#2ECC71]  h-6 w-16 rounded-sm inline-block mr-1">
-                          {student.lastScanTime}
-                        </div>
-                      )}
-                    </td>
-                    <td className="p-2">
-                      <div>
-                        <button onClick={() => handleMoreClick(student.lrn)}>
-                          More
-                        </button>
+                <tr
+                  className={`${
+                    index % 2 === 0 ? "bg-gray-100" : "bg-gray-200"
+                  } rounded-lg mb-2 py-2`}
+                  key={student.studentId}
+                >
+                  <td className="p-2">{filteredStudents.length - index}</td>
+                  <td className="p-2 font-bold whitespace-nowrap">
+                    {student.name}
+                  </td>
+                  <td className="p-2">{student.strand}</td>
+                  <td className="p-2 ">{student.section}</td>
+                  <td className="p-2 whitespace-nowrap">
+                    {student.status === "late" && (
+                      <div className="bg-[#EC7063] h-6 w-16 rounded-sm inline-block mr-1">
+                        {student.lastScanTime}
                       </div>
-                    </td>
-                  </tr>
-                  {currentLRN === student.lrn && (
-                    <StudentDetails data={student} currentLRN={currentLRN} />
-                  )}
-                </React.Fragment>
+                    )}
+                    {student.status === "ontime" && (
+                      <div className="bg-[#F7DC6F]  h-6 w-16 rounded-sm inline-block mr-1">
+                        {student.lastScanTime}
+                      </div>
+                    )}
+                    {student.status === "early" && (
+                      <div className="bg-[#2ECC71]  h-6 w-16 rounded-sm inline-block mr-1">
+                        {student.lastScanTime}
+                      </div>
+                    )}
+                  </td>
+                  <td className="p-2">
+                    <div>
+                      <button onClick={() => handleMoreClick(student)}>
+                        More
+                      </button>
+                    </div>
+                  </td>
+                </tr>
               ))}
+              {selectedStudent && <StudentDetails student={selectedStudent} />}
             </tbody>
           </table>
           {showInfo && (
