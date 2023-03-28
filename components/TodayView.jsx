@@ -282,44 +282,47 @@ function AttendanceTable({ filteredStudents }) {
             </thead>
             <tbody>
               {filteredStudents.map((student, index) => (
-                <tr
-                  className={`${
-                    index % 2 === 0 ? "bg-gray-100" : "bg-gray-200"
-                  } rounded-lg mb-2 py-2`}
-                  key={student.studentId}
-                >
-                  <td className="p-2">{filteredStudents.length - index}</td>
-                  <td className="p-2 font-bold whitespace-nowrap">
-                    {student.name}
-                  </td>
-
-                  <td className="p-2">{student.strand}</td>
-                  <td className="p-2 ">{student.section}</td>
-                  <td className="p-2 whitespace-nowrap">
-                    {student.status === "late" && (
-                      <div className="bg-[#EC7063] h-6 w-16 rounded-sm inline-block mr-1">
-                        {student.lastScanTime}
+                <React.Fragment key={student.studentId}>
+                  <tr
+                    className={`${
+                      index % 2 === 0 ? "bg-gray-100" : "bg-gray-200"
+                    } rounded-lg mb-2 py-2`}
+                  >
+                    <td className="p-2">{filteredStudents.length - index}</td>
+                    <td className="p-2 font-bold whitespace-nowrap">
+                      {student.name}
+                    </td>
+                    <td className="p-2">{student.strand}</td>
+                    <td className="p-2 ">{student.section}</td>
+                    <td className="p-2 whitespace-nowrap">
+                      {student.status === "late" && (
+                        <div className="bg-[#EC7063] h-6 w-16 rounded-sm inline-block mr-1">
+                          {student.lastScanTime}
+                        </div>
+                      )}
+                      {student.status === "ontime" && (
+                        <div className="bg-[#F7DC6F]  h-6 w-16 rounded-sm inline-block mr-1">
+                          {student.lastScanTime}
+                        </div>
+                      )}
+                      {student.status === "early" && (
+                        <div className="bg-[#2ECC71]  h-6 w-16 rounded-sm inline-block mr-1">
+                          {student.lastScanTime}
+                        </div>
+                      )}
+                    </td>
+                    <td className="p-2">
+                      <div>
+                        <button onClick={() => handleMoreClick(student.lrn)}>
+                          More
+                        </button>
                       </div>
-                    )}
-                    {student.status === "ontime" && (
-                      <div className="bg-[#F7DC6F]  h-6 w-16 rounded-sm inline-block mr-1">
-                        {student.lastScanTime}
-                      </div>
-                    )}
-                    {student.status === "early" && (
-                      <div className="bg-[#2ECC71]  h-6 w-16 rounded-sm inline-block mr-1">
-                        {student.lastScanTime}
-                      </div>
-                    )}
-                  </td>
-                  <td className="p-2">
-                    <div>
-                      <button>
-                        "this is the (more) button part that should render the child component"
-                      </button>
-                    </div>
-                  </td>
-                </tr>
+                    </td>
+                  </tr>
+                  {currentLRN === student.lrn && (
+                    <StudentDetails data={student} currentLRN={currentLRN} />
+                  )}
+                </React.Fragment>
               ))}
             </tbody>
           </table>
