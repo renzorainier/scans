@@ -75,11 +75,11 @@ function StudentChart({ student, onClose }) {
         {
           label: 'time at school',
           data: [
-            new Date(student.A),
-            new Date(student.B),
-            new Date(student.C),
-            new Date(student.D),
-            new Date(student.E),
+            new Date(student.A * 1000),
+            new Date(student.B * 1000),
+            new Date(student.C * 1000),
+            new Date(student.D * 1000),
+            new Date(student.E * 1000),
           ],
           backgroundColor: 'rgba(79, 209, 197, 0.2)',
           borderColor: 'rgba(79, 209, 197, 1)',
@@ -89,6 +89,7 @@ function StudentChart({ student, onClose }) {
     };
     return data;
   }
+
 
 
   return (
