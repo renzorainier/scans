@@ -306,7 +306,13 @@ function AttendanceTable() {
                       </div>
                     )}
                   </td>
-                  <td className="p-2">{student.lrn}</td>
+                  <td className="p-2">
+                    <div>
+                      <button>
+                        ...
+                      </button>
+                    </div>
+                  </td>
                 </tr>
               ))}
             </tbody>
