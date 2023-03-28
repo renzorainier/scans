@@ -6,7 +6,7 @@ function StudentDetails({ student, onClose }) {
 
   React.useEffect(() => {
     if (chartRef.current) {
-      const myChart = new Chart(chartRef.current, {
+      const myCharst = new Chart(chartRef.current, {
         type: 'bar',
         data: {
           labels: ['A', 'B', 'C', 'D', 'E'],
