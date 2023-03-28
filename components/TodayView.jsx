@@ -30,7 +30,7 @@ function useAttendanceData() {
       setAttendanceData(data);
     };
 
-    // fetchData();
+    fetchData();
   }, []);
 
   return {
