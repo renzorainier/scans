@@ -1,14 +1,10 @@
-import React from "react";
+import React from 'react';
 
-function StudentDetails({ data, lrn }) {
-  const student = data.find((student) => student.lrn === lrn);
-
+function StudentDetails({ student }) {
   return (
     <div>
-      <h2>{student.name}</h2>
+      <p>Name: {student.name}</p>
       <p>LRN: {student.lrn}</p>
-      <p>Strand: {student.strand}</p>
-      <p>Section: {student.section}</p>
     </div>
   );
 }
