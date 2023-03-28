@@ -285,6 +285,8 @@ function AttendanceTable() {
                   <td className="p-2 font-bold whitespace-nowrap">
                     {student.name}
                   </td>
+                  <td className="p-2">{student.lrn}</td>
+
                   <td className="p-2">{student.strand}</td>
                   <td className="p-2 ">{student.section}</td>
                   <td className="p-2 whitespace-nowrap">
