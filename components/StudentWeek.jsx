@@ -75,11 +75,11 @@ function StudentChart({ student, onClose }) {
         {
           label: 'time at school',
           data: [
-            new Date(student.A.seconds * 1000 + student.A.nanoseconds / 1000000),
-            new Date(student.B.seconds * 1000 + student.B.nanoseconds / 1000000),
-            new Date(student.C.seconds * 1000 + student.C.nanoseconds / 1000000),
-            new Date(student.D.seconds * 1000 + student.D.nanoseconds / 1000000),
-            new Date(student.E.seconds * 1000 + student.E.nanoseconds / 1000000),
+            new Date(student.A.seconds * 1000),
+            new Date(student.B.seconds * 1000),
+            new Date(student.C.seconds * 1000),
+            new Date(student.D.seconds * 1000),
+            new Date(student.E.seconds * 1000),
           ],
           backgroundColor: 'rgba(79, 209, 197, 0.2)',
           borderColor: 'rgba(79, 209, 197, 1)',
