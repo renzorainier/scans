@@ -226,7 +226,6 @@ function AttendanceTable() {
                 >
                   NAME
                 </th>
-                <th>lrn</th>
                 <th
                   className="p-2"
                   onClick={() =>
@@ -272,6 +271,7 @@ function AttendanceTable() {
                 >
                   SCANNED:
                 </th>
+                <th>lrn</th>
               </tr>
             </thead>
             <tbody>
@@ -286,7 +286,6 @@ function AttendanceTable() {
                   <td className="p-2 font-bold whitespace-nowrap">
                     {student.name}
                   </td>
-                  <td className="p-2">{student.lrn}</td>
 
                   <td className="p-2">{student.strand}</td>
                   <td className="p-2 ">{student.section}</td>
@@ -307,6 +306,7 @@ function AttendanceTable() {
                       </div>
                     )}
                   </td>
+                  <td className="p-2">{student.lrn}</td>
                 </tr>
               ))}
             </tbody>
