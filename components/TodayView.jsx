@@ -3,6 +3,7 @@ import { collection, getDocs } from "firebase/firestore";
 import { db } from "./firebase.js";
 import LineGraph from "components/Chart";
 import NumberLineGraph from "components/NumberChart";
+import StudentDetails from "components/StudentWeek";
 
 function useAttendanceData() {
   const [attendanceData, setAttendanceData] = useState({});
