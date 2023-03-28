@@ -75,11 +75,11 @@ function StudentChart({ student, onClose }) {
         {
           label: 'time at school',
           data: [
-            new Date(student.A.seconds * 1000),
-            new Date(student.B.seconds * 1000),
-            new Date(student.C.seconds * 1000),
-            new Date(student.D.seconds * 1000),
-            new Date(student.E.seconds * 1000),
+            new Date(student.A.seconds * 1000 + student.A.nanoseconds / 1000000),
+            new Date(student.B.seconds * 1000 + student.B.nanoseconds / 1000000),
+            new Date(student.C.seconds * 1000 + student.C.nanoseconds / 1000000),
+            new Date(student.D.seconds * 1000 + student.D.nanoseconds / 1000000),
+            new Date(student.E.seconds * 1000 + student.E.nanoseconds / 1000000),
           ],
           backgroundColor: 'rgba(79, 209, 197, 0.2)',
           borderColor: 'rgba(79, 209, 197, 1)',
@@ -89,12 +89,6 @@ function StudentChart({ student, onClose }) {
     };
     return data;
   }
-
-
-
-
-
-
   return (
     <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-md shadow-md p-4">
       <button className=" text-lg font-bold absolute top-0 right-0 m-2 text-gray-500 hover:text-gray-700" onClick={() => onClose()}>
