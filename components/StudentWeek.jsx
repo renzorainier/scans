@@ -168,13 +168,7 @@ function StudentChart({ student, onClose }) {
         className="w-full h-full"
       ></canvas>
     </div>
-    <div>
-  <StatusDot status={student.As} />
-  <StatusDot status={student.Bs} />
-  <StatusDot status={student.Cs} />
-  <StatusDot status={student.Ds} />
-  <StatusDot status={student.Es} />
-</div>
+   
 
   </div>
 
