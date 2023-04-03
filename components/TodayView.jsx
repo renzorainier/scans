@@ -324,7 +324,6 @@ function AttendanceTable() {
               )}
             </tbody>
           </table>
-          
           {showInfo && (
             <div
               id="show"
