@@ -158,6 +158,9 @@ function StudentChart({ student, onClose }) {
         {student.As === "early" && (
           <div className="bg-[#2ECC71]  h-6 w-6 rounded-sm inline-block m-3"></div>
         )}
+        {student.As === "" && (
+          <div className="bg-[#2ECC71]  h-6 w-6 rounded-sm inline-block m-3"></div>
+        )}
         {student.Bs === "late" && (
           <div className="bg-[#EC7063] h-6 w-6 rounded-sm inline-block m-3"></div>
         )}
