@@ -129,7 +129,7 @@ function StudentChart({ student, onClose }) {
     return data;
 
 
-    
+
   }
 
   return (
@@ -148,7 +148,7 @@ function StudentChart({ student, onClose }) {
         className="w-full h-full"
       ></canvas>
     </div>
-    <div>
+    <div style={{ display: "flex", alignItems: "center"}}>
         {student.As === "late" && (
           <div className="bg-[#EC7063] h-6 w-6 rounded-sm inline-block mr-1"></div>
         )}
