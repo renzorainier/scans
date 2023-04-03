@@ -151,8 +151,7 @@ function StudentChart({ student, onClose }) {
               className={`bg-${
                 {
                   late: "#EC7063",
-                  ontime: "#F7DC6F",
-                  early: "#2ECC71",
+
                 }[student[prop]]
               } h-6 w-16 rounded-sm inline-block mr-1`}
             ></div>
