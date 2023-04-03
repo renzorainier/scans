@@ -135,7 +135,7 @@ function StudentChart({ student, onClose }) {
         className=" text-lg font-bold absolute top-0 right-0 m-2 text-gray-500 hover:text-gray-700"
         onClick={() => onClose()}
       >
-      
+        X
       </button>
       <p className="pt-4 text-lg font-bold mb-4">{student.name}</p>
       <div className="bg-white rounded-lg shadow-md mb-4 overflow-hidden">
@@ -145,67 +145,18 @@ function StudentChart({ student, onClose }) {
           className="w-full h-full"
         ></canvas>
         <div>
-          {student.As === "late" && (
-            <div className="bg-[#EC7063] h-6 w-16 rounded-sm inline-block mr-1">
-            </div>
-          )}
-          {student.As === "ontime" && (
-            <div className="bg-[#F7DC6F]  h-6 w-16 rounded-sm inline-block mr-1">
-            </div>
-          )}
-          {student.As === "early" && (
-            <div className="bg-[#2ECC71]  h-6 w-16 rounded-sm inline-block mr-1">
-            </div>
-          )}
-          {student.Bs === "late" && (
-            <div className="bg-[#EC7063] h-6 w-16 rounded-sm inline-block mr-1">
-            </div>
-          )}
-          {student.Bs === "ontime" && (
-            <div className="bg-[#F7DC6F]  h-6 w-16 rounded-sm inline-block mr-1">
-            </div>
-          )}
-          {student.Bs === "early" && (
-            <div className="bg-[#2ECC71]  h-6 w-16 rounded-sm inline-block mr-1">
-            </div>
-          )}
-          {student.Cs === "late" && (
-            <div className="bg-[#EC7063] h-6 w-16 rounded-sm inline-block mr-1">
-            </div>
-          )}
-          {student.Cs === "ontime" && (
-            <div className="bg-[#F7DC6F]  h-6 w-16 rounded-sm inline-block mr-1">
-            </div>
-          )}
-          {student.Cs === "early" && (
-            <div className="bg-[#2ECC71]  h-6 w-16 rounded-sm inline-block mr-1">
-            </div>
-          )}
-          {student.Ds === "late" && (
-            <div className="bg-[#EC7063] h-6 w-16 rounded-sm inline-block mr-1">
-            </div>
-          )}
-          {student.Ds === "ontime" && (
-            <div className="bg-[#F7DC6F]  h-6 w-16 rounded-sm inline-block mr-1">
-            </div>
-          )}
-          {student.Ds === "early" && (
-            <div className="bg-[#2ECC71]  h-6 w-16 rounded-sm inline-block mr-1">
-            </div>
-          )}
-          {student.Es === "late" && (
-            <div className="bg-[#EC7063] h-6 w-16 rounded-sm inline-block mr-1">
-            </div>
-          )}
-          {student.Es === "ontime" && (
-            <div className="bg-[#F7DC6F]  h-6 w-16 rounded-sm inline-block mr-1">
-            </div>
-          )}
-          {student.Es === "early" && (
-            <div className="bg-[#2ECC71]  h-6 w-16 rounded-sm inline-block mr-1">
-            </div>
-          )}
-
+          {["A", "B", "C", "D", "E"].map((grade) => (
+            <div
+              key={grade}
+              className={`bg-${
+                student[grade + "s"] === "late"
+                  ? "#EC7063"
+                  : student[grade + "s"] === "ontime"
+                  ? "#F7DC6F"
+                  : "#2ECC71"
+              } h-6 w-16 rounded-sm inline-block mr-1`}
+            ></div>
+          ))}
         </div>
       </div>
     </div>
