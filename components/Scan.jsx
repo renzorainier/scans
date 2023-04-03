@@ -197,14 +197,7 @@ function Scan() {
         const lastScanField = `${id}${dayCode}`;
         const attendanceStatusField = `${id}${dayCode}s`;
 
-        // studentData[`${id}A`] = new Date();
-        // studentData[`${id}As`] = attendanceStatus
-        // studentData[`${id}C`] = new Date();
-        // studentData[`${id}Cs`] = attendanceStatus
-        // studentData[`${id}D`] = new Date();
-        // studentData[`${id}Ds`] = attendanceStatus
-        // studentData[`${id}E`] = new Date();
-        // studentData[`${id}Es`] = attendanceStatus
+
 
         studentData[lastScanField] = new Date();
         studentData[attendanceStatusField] = attendanceStatus;
