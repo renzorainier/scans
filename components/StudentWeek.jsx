@@ -103,14 +103,7 @@ function StudentChart({ student, onClose }) {
               .split(":")
               .slice(0, 2)
               .join(":"),
-            new Date(student.D.seconds * 1000)
-              .toLocaleTimeString([], {
-                hour: "numeric",
-                minute: "2-digit",
-              })
-              .split(":")
-              .slice(0, 2)
-              .join(":"),
+          
             new Date(student.E.seconds * 1000)
               .toLocaleTimeString([], {
                 hour: "numeric",
