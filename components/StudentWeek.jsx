@@ -149,9 +149,9 @@ function StudentChart({ student, onClose }) {
   {["As", "Bs", "Cs", "Ds", "Es"].map((grade) => (
     <div
       className={`bg-${
-        student[grade.toLowerCase()] === "late"
+        student[grade] === "late"
           ? "#EC7063"
-          : student[grade.toLowerCase()] === "ontime"
+          : student[grade] === "ontime"
           ? "#F7DC6F"
           : "#2ECC71"
       } h-6 w-6 rounded-sm inline-block mr-1`}
@@ -159,6 +159,7 @@ function StudentChart({ student, onClose }) {
     ></div>
   ))}
 </div>
+
 
     </div>
   );
