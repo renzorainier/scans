@@ -145,14 +145,17 @@ function StudentChart({ student, onClose }) {
           className="w-full h-full"
         ></canvas>
         <div>
-          {["As", "Bs", "Cs", "Ds", "Es"].map((grade) => (
+          {Object.keys(student).map((key) => (
             <div
+              key={key}
               className={`bg-${
-                student[grade] === "late"
+                student[key] === "late"
                   ? "#EC7063"
-                  : student[grade] === "ontime"
+                  : student[key] === "ontime"
                   ? "#F7DC6F"
-                  : "#2ECC71"
+                  : student[key] === "early"
+                  ? "#2ECC71"
+                  : ""
               } h-6 w-16 rounded-sm inline-block mr-1`}
             ></div>
           ))}
