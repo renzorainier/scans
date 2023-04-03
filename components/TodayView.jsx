@@ -150,13 +150,6 @@ function AttendanceTable() {
     setInfoText(text);
   }
 
-  const statusColors = {
-    late: "#EC7063",
-    ontime: "#F7DC6F",
-    early: "#2ECC71",
-  };
-
-
   return (
     <div className="flex justify-center pt-5 items-center">
       <div
@@ -185,6 +178,8 @@ function AttendanceTable() {
         <div>
           <LineGraph data={attendanceData} />
         </div>
+
+
 
         <div className="flex justify-between items-center mb-4">
           <div id="search" className="flex items-center w-full">
@@ -305,17 +300,23 @@ function AttendanceTable() {
                   </td>
                   <td className="p-2">{student.strand}</td>
                   <td className="p-2 ">{student.section}</td>
-
                   <td className="p-2 whitespace-nowrap">
-                    <div
-                      className={`bg-${
-                        statusColors[student.status]
-                      } h-6 w-16 rounded-sm inline-block mr-1`}
-                    >
-                      {student.lastScanTime}
-                    </div>
+                    {student.status === "late" && (
+                      <div className="bg-[#EC7063] h-6 w-16 rounded-sm inline-block mr-1">
+                        {student.lastScanTime}
+                      </div>
+                    )}
+                    {student.status === "ontime" && (
+                      <div className="bg-[#F7DC6F]  h-6 w-16 rounded-sm inline-block mr-1">
+                        {student.lastScanTime}
+                      </div>
+                    )}
+                    {student.status === "early" && (
+                      <div className="bg-[#2ECC71]  h-6 w-16 rounded-sm inline-block mr-1">
+                        {student.lastScanTime}
+                      </div>
+                    )}
                   </td>
-
                 </tr>
               ))}
               {selectedStudent && (
