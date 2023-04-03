@@ -130,7 +130,7 @@ function StudentChart({ student, onClose }) {
   }
 
   return (
-    <div id="view" className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white  rounded-md shadow-md p-4">
+<div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-md shadow-md p-4 w-3/5 h-3/4">
       <button
         className=" text-lg font-bold absolute top-0 right-0 m-2 text-gray-500 hover:text-gray-700"
         onClick={() => onClose()}

@@ -30,9 +30,7 @@ body {
   font-size: 15px;
 }
 
-#view {
-  width: 300px;
-}
+
 
 .grid {
   display: grid;
