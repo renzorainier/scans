@@ -145,7 +145,7 @@ function StudentChart({ student, onClose }) {
           className="w-full h-full"
         ></canvas>
         <div>
-          {["As", "Bs", "Cs", "Ds", "Es"].map((prop) => (
+          {["As", "Bs", "Cs", "Ds", "Es",].map((prop) => (
             <div
               key={prop}
               className={`bg-${
