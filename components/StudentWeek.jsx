@@ -148,51 +148,51 @@ function StudentChart({ student, onClose }) {
         className="w-full h-full"
       ></canvas>
     </div>
-    <div style={{ display: "flex", alignItems: "center"}}>
+    <div>
         {student.As === "late" && (
-          <div className="bg-[#EC7063] h-6 w-6 rounded-sm inline-block mr-1"></div>
+          <div className="bg-[#EC7063] h-6 w-6 rounded-sm inline-block m-3"></div>
         )}
         {student.As === "ontime" && (
-          <div className="bg-[#F7DC6F]  h-6 w-6 rounded-sm inline-block mr-1"></div>
+          <div className="bg-[#F7DC6F]  h-6 w-6 rounded-sm inline-block m-3"></div>
         )}
         {student.As === "early" && (
-          <div className="bg-[#2ECC71]  h-6 w-6 rounded-sm inline-block mr-1"></div>
+          <div className="bg-[#2ECC71]  h-6 w-6 rounded-sm inline-block m-3"></div>
         )}
         {student.Bs === "late" && (
-          <div className="bg-[#EC7063] h-6 w-6 rounded-sm inline-block mr-1"></div>
+          <div className="bg-[#EC7063] h-6 w-6 rounded-sm inline-block m-3"></div>
         )}
         {student.Bs === "ontime" && (
-          <div className="bg-[#F7DC6F]  h-6 w-6 rounded-sm inline-block mr-1"></div>
+          <div className="bg-[#F7DC6F]  h-6 w-6 rounded-sm inline-block m-3"></div>
         )}
         {student.Bs === "early" && (
-          <div className="bg-[#2ECC71]  h-6 w-6 rounded-sm inline-block mr-1"></div>
+          <div className="bg-[#2ECC71]  h-6 w-6 rounded-sm inline-block m-3"></div>
         )}
         {student.Cs === "late" && (
-          <div className="bg-[#EC7063] h-6 w-6 rounded-sm inline-block mr-1"></div>
+          <div className="bg-[#EC7063] h-6 w-6 rounded-sm inline-block m-3"></div>
         )}
         {student.Cs === "ontime" && (
-          <div className="bg-[#F7DC6F]  h-6 w-6 rounded-sm inline-block mr-1"></div>
+          <div className="bg-[#F7DC6F]  h-6 w-6 rounded-sm inline-block m-3"></div>
         )}
         {student.Cs === "early" && (
-          <div className="bg-[#2ECC71]  h-6 w-6 rounded-sm inline-block mr-1"></div>
+          <div className="bg-[#2ECC71]  h-6 w-6 rounded-sm inline-block m-3"></div>
         )}
         {student.Ds === "late" && (
-          <div className="bg-[#EC7063] h-6 w-6 rounded-sm inline-block mr-1"></div>
+          <div className="bg-[#EC7063] h-6 w-6 rounded-sm inline-block m-3"></div>
         )}
         {student.Ds === "ontime" && (
-          <div className="bg-[#F7DC6F]  h-6 w-6 rounded-sm inline-block mr-1"></div>
+          <div className="bg-[#F7DC6F]  h-6 w-6 rounded-sm inline-block m-3"></div>
         )}
         {student.Ds === "early" && (
-          <div className="bg-[#2ECC71]  h-6 w-6 rounded-sm inline-block mr-1"></div>
+          <div className="bg-[#2ECC71]  h-6 w-6 rounded-sm inline-block m-3"></div>
         )}
         {student.Es === "late" && (
-          <div className="bg-[#EC7063] h-6 w-6 rounded-sm inline-block mr-1"></div>
+          <div className="bg-[#EC7063] h-6 w-6 rounded-sm inline-block m-3"></div>
         )}
         {student.Es === "ontime" && (
-          <div className="bg-[#F7DC6F]  h-6 w-6 rounded-sm inline-block mr-1"></div>
+          <div className="bg-[#F7DC6F]  h-6 w-6 rounded-sm inline-block m-3"></div>
         )}
         {student.Es === "early" && (
-          <div className="bg-[#2ECC71]  h-6 w-6 rounded-sm inline-block mr-1"></div>
+          <div className="bg-[#2ECC71]  h-6 w-6 rounded-sm inline-block m-3"></div>
         )}
       </div>
   </div>
@@ -205,48 +205,48 @@ export default StudentChart;
 
 // {/* <div>
 //         {student.As === "late" && (
-//           <div className="bg-[#EC7063] h-6 w-6 rounded-sm inline-block mr-1"></div>
+//           <div className="bg-[#EC7063] h-6 w-6 rounded-sm inline-block m-3"></div>
 //         )}
 //         {student.As === "ontime" && (
-//           <div className="bg-[#F7DC6F]  h-6 w-6 rounded-sm inline-block mr-1"></div>
+//           <div className="bg-[#F7DC6F]  h-6 w-6 rounded-sm inline-block m-3"></div>
 //         )}
 //         {student.As === "early" && (
-//           <div className="bg-[#2ECC71]  h-6 w-6 rounded-sm inline-block mr-1"></div>
+//           <div className="bg-[#2ECC71]  h-6 w-6 rounded-sm inline-block m-3"></div>
 //         )}
 //         {student.Bs === "late" && (
-//           <div className="bg-[#EC7063] h-6 w-6 rounded-sm inline-block mr-1"></div>
+//           <div className="bg-[#EC7063] h-6 w-6 rounded-sm inline-block m-3"></div>
 //         )}
 //         {student.Bs === "ontime" && (
-//           <div className="bg-[#F7DC6F]  h-6 w-6 rounded-sm inline-block mr-1"></div>
+//           <div className="bg-[#F7DC6F]  h-6 w-6 rounded-sm inline-block m-3"></div>
 //         )}
 //         {student.Bs === "early" && (
-//           <div className="bg-[#2ECC71]  h-6 w-6 rounded-sm inline-block mr-1"></div>
+//           <div className="bg-[#2ECC71]  h-6 w-6 rounded-sm inline-block m-3"></div>
 //         )}
 //         {student.Cs === "late" && (
-//           <div className="bg-[#EC7063] h-6 w-6 rounded-sm inline-block mr-1"></div>
+//           <div className="bg-[#EC7063] h-6 w-6 rounded-sm inline-block m-3"></div>
 //         )}
 //         {student.Cs === "ontime" && (
-//           <div className="bg-[#F7DC6F]  h-6 w-6 rounded-sm inline-block mr-1"></div>
+//           <div className="bg-[#F7DC6F]  h-6 w-6 rounded-sm inline-block m-3"></div>
 //         )}
 //         {student.Cs === "early" && (
-//           <div className="bg-[#2ECC71]  h-6 w-6 rounded-sm inline-block mr-1"></div>
+//           <div className="bg-[#2ECC71]  h-6 w-6 rounded-sm inline-block m-3"></div>
 //         )}
 //         {student.Ds === "late" && (
-//           <div className="bg-[#EC7063] h-6 w-6 rounded-sm inline-block mr-1"></div>
+//           <div className="bg-[#EC7063] h-6 w-6 rounded-sm inline-block m-3"></div>
 //         )}
 //         {student.Ds === "ontime" && (
-//           <div className="bg-[#F7DC6F]  h-6 w-6 rounded-sm inline-block mr-1"></div>
+//           <div className="bg-[#F7DC6F]  h-6 w-6 rounded-sm inline-block m-3"></div>
 //         )}
 //         {student.Ds === "early" && (
-//           <div className="bg-[#2ECC71]  h-6 w-6 rounded-sm inline-block mr-1"></div>
+//           <div className="bg-[#2ECC71]  h-6 w-6 rounded-sm inline-block m-3"></div>
 //         )}
 //         {student.Es === "late" && (
-//           <div className="bg-[#EC7063] h-6 w-6 rounded-sm inline-block mr-1"></div>
+//           <div className="bg-[#EC7063] h-6 w-6 rounded-sm inline-block m-3"></div>
 //         )}
 //         {student.Es === "ontime" && (
-//           <div className="bg-[#F7DC6F]  h-6 w-6 rounded-sm inline-block mr-1"></div>
+//           <div className="bg-[#F7DC6F]  h-6 w-6 rounded-sm inline-block m-3"></div>
 //         )}
 //         {student.Es === "early" && (
-//           <div className="bg-[#2ECC71]  h-6 w-6 rounded-sm inline-block mr-1"></div>
+//           <div className="bg-[#2ECC71]  h-6 w-6 rounded-sm inline-block m-3"></div>
 //         )}
 //       </div> */}
