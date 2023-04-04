@@ -1,6 +1,6 @@
 function StudentChart({ student, onClose }) {
   const grades = ["Mon", "Tue", "Wed", "Thu", "Fri"];
-  const time = ["A", "B", "C", "D", "E"];
+  const times = ["A", "B", "C", "D", "E"];
 
   return (
     <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-md shadow-md p-4 w-4/5 ">
@@ -51,24 +51,23 @@ function StudentChart({ student, onClose }) {
               color = "bg-gray-400";
               break;
           }
-
-          const lastScanDate = new Date(student.lastScan.seconds * 1000);
-          const lastScanHours = Math.floor(student.lastScan.seconds / 3600);
-          const lastScanMinutes = Math.floor((student.lastScan.seconds % 3600) / 60);
-          const lastScanTime = `${lastScanHours}:${lastScanMinutes}`;
-
           return (
             <div key={index} className="flex flex-col items-center">
               <p className="text-xs font-semibold text-gray-600">{grade}</p>
               <div className={`${color} h-6 w-6 rounded-full mb-1`}></div>
-              <p>Last scan: {lastScanTime}</p>
-
+              <p className="text-xs font-semibold text-gray-600">
+                {new Date(student[`${gradeValue}.seconds`] * 1000).toLocaleTimeString([], {
+                  hour: "numeric",
+                  minute: "2-digit",
+                })}
+              </p>
             </div>
           );
         })}
       </div>
     </div>
   );
+
 }
 
 export default StudentChart;
