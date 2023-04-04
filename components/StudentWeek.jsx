@@ -1,5 +1,5 @@
 function StudentChart({ student, onClose }) {
-  const grades = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
+  const grades = ["Mon", "Tue", "Wed", "Thu", "Fri"];
 
   return (
     <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-md shadow-md p-4 w-3/4 h-1/2">
@@ -17,19 +17,19 @@ function StudentChart({ student, onClose }) {
         {grades.map((grade, index) => {
           let gradeValue;
           switch (grade) {
-            case "Monday":
+            case "Mon":
               gradeValue = "As";
               break;
-            case "Tuesday":
+            case "Tue":
               gradeValue = "Bs";
               break;
-            case "Wednesday":
+            case "Wed":
               gradeValue = "Cs";
               break;
-            case "Thursday":
+            case "Thu":
               gradeValue = "Ds";
               break;
-            case "Friday":
+            case "Fri":
               gradeValue = "Es";
               break;
             default:
@@ -53,7 +53,6 @@ function StudentChart({ student, onClose }) {
           return (
             <div key={index} className="flex flex-col items-center">
               <div className={`${color} h-6 w-6 rounded-full mb-1`}></div>
-              <p className="text-xs font-semibold text-gray-600">{grade === "Monday" ? "E" : "A"}</p>
               <p className="text-xs font-semibold text-gray-600">{grade}</p>
             </div>
           );
