@@ -1,5 +1,5 @@
 function StudentChart({ student, onClose }) {
-  const grades = ["As", "Bs", "Cs", "Ds", "Es"];
+  const grades = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
 
   return (
     <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-md shadow-md p-4 w-3/4 h-1/2">
@@ -15,8 +15,28 @@ function StudentChart({ student, onClose }) {
       </p>
       <div>
         {grades.map((grade, index) => {
+          let gradeValue;
+          switch (grade) {
+            case "Monday":
+              gradeValue = "As";
+              break;
+            case "Tuesday":
+              gradeValue = "Bs";
+              break;
+            case "Wednesday":
+              gradeValue = "Cs";
+              break;
+            case "Thursday":
+              gradeValue = "Ds";
+              break;
+            case "Friday":
+              gradeValue = "Es";
+              break;
+            default:
+              break;
+          }
           let color = "";
-          switch (student[grade]) {
+          switch (student[gradeValue]) {
             case "late":
               color = "bg-[#EC7063]";
               break;
@@ -31,13 +51,8 @@ function StudentChart({ student, onClose }) {
               break;
           }
           return (
-            <div
-              key={index}
-              className="inline-block m-3"
-            >
-              <div
-                className={`${color} h-6 w-6 rounded-sm`}
-              ></div>
+            <div key={index} className="inline-block m-3">
+              <div className={`${color} h-6 w-6 rounded-sm`}></div>
               <p className="text-sm font-semibold text-gray-600 mt-1">{grade}</p>
             </div>
           );
