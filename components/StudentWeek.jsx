@@ -58,6 +58,7 @@ function StudentChart({ student, onClose }) {
               <p className="text-xs font-semibold text-gray-600">
               {new Date(student.A.seconds * 1000).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}
               </p>
+
             </div>
           );
         })}
