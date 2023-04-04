@@ -2,7 +2,6 @@ import React from "react";
 
 function StudentChart({ student, onClose }) {
   const grades = ["As", "Bs", "Cs", "Ds", "Es"];
-  const daysOfWeek = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
 
   return (
     <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-md shadow-md p-4 w-3/4 h-1/2">
@@ -18,21 +17,26 @@ function StudentChart({ student, onClose }) {
       </p>
       <div>
         {grades.map((grade, index) => {
+          let color = "";
+          switch (student[grade]) {
+            case "late":
+              color = "bg-[#EC7063]";
+              break;
+            case "ontime":
+              color = "bg-[#F7DC6F]";
+              break;
+            case "early":
+              color = "bg-[#2ECC71]";
+              break;
+            default:
+              color = "bg-[#BDCDD6]";
+              break;
+          }
           return (
-            <div key={index} className="flex items-center mb-3">
-              <p className="w-20 mr-3">{daysOfWeek[index]}</p>
-              <div
-                className={`${
-                  student[grade] === "late"
-                    ? "bg-[#EC7063]"
-                    : student[grade] === "ontime"
-                    ? "bg-[#F7DC6F]"
-                    : student[grade] === "early"
-                    ? "bg-[#2ECC71]"
-                    : "bg-[#BDCDD6]"
-                } h-6 w-6 rounded-sm inline-block`}
-              ></div>
-            </div>
+            <div
+              key={index}
+              className={`${color} h-6 w-6 rounded-sm inline-block m-3`}
+            ></div>
           );
         })}
       </div>
