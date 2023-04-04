@@ -52,12 +52,16 @@ function StudentChart({ student, onClose }) {
               break;
           }
 
-    
+          const lastScanDate = new Date(student.lastScan.seconds * 1000);
+          const lastScanHours = Math.floor(student.lastScan.seconds / 3600);
+          const lastScanMinutes = Math.floor((student.lastScan.seconds % 3600) / 60);
+          const lastScanTime = `${lastScanHours}:${lastScanMinutes}`;
 
           return (
             <div key={index} className="flex flex-col items-center">
               <p className="text-xs font-semibold text-gray-600">{grade}</p>
               <div className={`${color} h-6 w-6 rounded-full mb-1`}></div>
+              <p>Last scan: {lastScanTime}</p>
 
             </div>
           );
