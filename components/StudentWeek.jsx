@@ -13,7 +13,7 @@ function StudentChart({ student, onClose }) {
       <p className="text-base">
         {student.strand}-{student.section}
       </p>
-      <div>
+      <div className="flex justify-between">
         {grades.map((grade, index) => {
           let gradeValue;
           switch (grade) {
@@ -38,22 +38,23 @@ function StudentChart({ student, onClose }) {
           let color = "";
           switch (student[gradeValue]) {
             case "late":
-              color = "bg-[#EC7063]";
+              color = "bg-red-500";
               break;
             case "ontime":
-              color = "bg-[#F7DC6F]";
+              color = "bg-yellow-400";
               break;
             case "early":
-              color = "bg-[#2ECC71]";
+              color = "bg-green-500";
               break;
             default:
-              color = "bg-[#BDCDD6]";
+              color = "bg-gray-400";
               break;
           }
           return (
-            <div key={index} className="inline-block m-3">
-              <div className={`${color} h-6 w-6 rounded-sm`}></div>
-              <p className="text-sm font-semibold text-gray-600 mt-1">{grade}</p>
+            <div key={index} className="flex flex-col items-center">
+              <div className={`${color} h-6 w-6 rounded-full mb-1`}></div>
+              <p className="text-xs font-semibold text-gray-600">{grade === "Monday" ? "E" : "A"}</p>
+              <p className="text-xs font-semibold text-gray-600">{grade}</p>
             </div>
           );
         })}
