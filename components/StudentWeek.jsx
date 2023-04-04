@@ -1,7 +1,7 @@
 import React from "react";
 
 function StudentChart({ student, onClose }) {
-  const grades = ["Mon", "Tue", "Wed", "Thu", "Fri"];
+  const grades = ["As", "Bs", "Cs", "Ds", "Es"];
 
   return (
     <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-md shadow-md p-4 w-3/4 h-1/2">
@@ -35,13 +35,8 @@ function StudentChart({ student, onClose }) {
           return (
             <div
               key={index}
-              className="inline-block m-3"
-            >
-              <div
-                className={`${color} h-6 w-6 rounded-sm`}
-              ></div>
-              <p className="text-sm font-semibold text-gray-600 mt-1">{grade}</p>
-            </div>
+              className={`${color} h-6 w-6 rounded-sm inline-block m-3`}
+            ></div>
           );
         })}
       </div>
