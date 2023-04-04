@@ -205,6 +205,16 @@ function Scan() {
         studentData[`${id}status`] = attendanceStatus;
         studentData[`${id}dif`] = timeDifference;
 
+        // studentData[`${id}A`] = scanTime;
+        // studentData[`${id}As`] = attendanceStatus;
+        // studentData[`${id}B`] = scanTime;
+        // studentData[`${id}Bs`] = attendanceStatus;
+        // studentData[`${id}C`] = scanTime;
+        // studentData[`${id}Cs`] = attendanceStatus;
+        // studentData[`${id}D`] = scanTime;
+        // studentData[`${id}Ds`] = attendanceStatus;
+        // studentData[`${id}E`] = scanTime;
+        // studentData[`${id}Es`] = attendanceStatus;
 
         // add this line to set the "attendance" field
         await updateDoc(sectionRef, studentData);
