@@ -56,12 +56,16 @@ function StudentChart({ student, onClose }) {
             <div key={index} className="flex flex-col items-center">
               <p className="text-xs font-semibold text-gray-600">{grade}</p>
               <div className={`${color} h-6 w-6 rounded-full mb-1`}></div>
-              <p className="text-xs font-semibold text-gray-600">
-                {new Date(timeValue.seconds * 1000).toLocaleTimeString([], {
-                  hour: "2-digit",
-                  minute: "2-digit",
-                })}
-              </p>
+              {timeValue && times.includes(times[index]) ? (
+                <p className="text-xs font-semibold text-gray-600">
+                  {new Date(timeValue.seconds * 1000).toLocaleTimeString([], {
+                    hour: "2-digit",
+                    minute: "2-digit",
+                  })}
+                </p>
+              ) : (
+                <p className="text-xs font-semibold text-gray-600">no data</p>
+              )}
             </div>
           );
         })}
