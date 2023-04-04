@@ -56,10 +56,7 @@ function StudentChart({ student, onClose }) {
               <p className="text-xs font-semibold text-gray-600">{grade}</p>
               <div className={`${color} h-6 w-6 rounded-full mb-1`}></div>
               <p className="text-xs font-semibold text-gray-600">
-                {new Date(student.As.seconds * 1000).toLocaleTimeString([], {
-                  hour: "numeric",
-                  minute: "2-digit",
-                })}
+              {new Date(student.A.seconds * 1000).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}
               </p>
             </div>
           );
