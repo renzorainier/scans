@@ -51,21 +51,23 @@ function StudentChart({ student, onClose }) {
               color = "bg-gray-400";
               break;
           }
+          const timeValue = student[times[index]];
           return (
             <div key={index} className="flex flex-col items-center">
               <p className="text-xs font-semibold text-gray-600">{grade}</p>
               <div className={`${color} h-6 w-6 rounded-full mb-1`}></div>
               <p className="text-xs font-semibold text-gray-600">
-              {new Date(student.A.seconds * 1000).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}
+                {new Date(timeValue.seconds * 1000).toLocaleTimeString([], {
+                  hour: "2-digit",
+                  minute: "2-digit",
+                })}
               </p>
-
             </div>
           );
         })}
       </div>
     </div>
   );
-
 }
 
 export default StudentChart;
