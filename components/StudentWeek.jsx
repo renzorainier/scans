@@ -1,5 +1,6 @@
 function StudentChart({ student, onClose }) {
   const grades = ["Mon", "Tue", "Wed", "Thu", "Fri"];
+  const time = ["As", "Bs", "Cs", "Ds", "Es"];
 
   return (
     <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-md shadow-md p-4 w-4/5 ">
