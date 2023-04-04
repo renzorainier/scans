@@ -1,5 +1,3 @@
-import React from "react";
-
 function StudentChart({ student, onClose }) {
   const grades = ["As", "Bs", "Cs", "Ds", "Es"];
 
@@ -35,8 +33,13 @@ function StudentChart({ student, onClose }) {
           return (
             <div
               key={index}
-              className={`${color} h-6 w-6 rounded-sm inline-block m-3`}
-            ></div>
+              className="inline-block m-3"
+            >
+              <div
+                className={`${color} h-6 w-6 rounded-sm`}
+              ></div>
+              <p className="text-sm font-semibold text-gray-600 mt-1">{grade}</p>
+            </div>
           );
         })}
       </div>
