@@ -1,6 +1,6 @@
 function StudentChart({ student, onClose }) {
   const grades = ["Mon", "Tue", "Wed", "Thu", "Fri"];
-  const time = ["As", "Bs", "Cs", "Ds", "Es"];
+  const time = ["A", "B", "C", "D", "E"];
 
   return (
     <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-md shadow-md p-4 w-4/5 ">
@@ -55,6 +55,9 @@ function StudentChart({ student, onClose }) {
             <div key={index} className="flex flex-col items-center">
               <p className="text-xs font-semibold text-gray-600">{grade}</p>
               <div className={`${color} h-6 w-6 rounded-full mb-1`}></div>
+              <p className="text-xs font-semibold text-gray-600">
+                {new Date(student[`${gradeValue}Time`]).toLocaleTimeString()}
+              </p>
             </div>
           );
         })}
