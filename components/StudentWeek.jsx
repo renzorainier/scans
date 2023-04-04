@@ -1,108 +1,6 @@
 import React, { useRef, useEffect } from "react";
-import Chart from "chart.js/auto";
 
 function StudentChart({ student, onClose }) {
-  const chartRef = useRef(null);
-  const chartInstanceRef = useRef(null);
-
-  useEffect(() => {
-    const chartCtx = chartRef.current.getContext("2d");
-
-    const chartData = formatChartData();
-
-    if (chartInstanceRef.current) {
-      // Destroy previous chart if it exists
-      chartInstanceRef.current.destroy();
-    }
-
-    chartInstanceRef.current = new Chart(chartCtx, {
-      type: "bar", // Change the chart type to bar
-      data: chartData,
-      options: {
-        scales: {
-          y: {
-            grid: {
-              color: "#F5F5F5",
-              zeroLineColor: "#F5F5F5",
-            },
-            ticks: {
-              color: "#888",
-              beginAtZero: true,
-              maxTicksLimit: 5,
-              padding: 10,
-            },
-          },
-          x: {
-            grid: {
-              color: "#F5F5F5",
-              zeroLineColor: "#F5F5F5",
-            },
-            ticks: {
-              color: "#888",
-              padding: 5,
-            },
-          },
-        },
-        plugins: {
-          legend: {
-            display: false,
-          },
-          tooltip: {
-            backgroundColor: "#4FD1C5",
-            bodyFontColor: "#FFF",
-            titleFontColor: "#FFF",
-            titleMarginBottom: 10,
-            bodySpacing: 5,
-            xPadding: 10,
-            yPadding: 10,
-            mode: "nearest",
-            intersect: 0,
-            callbacks: {
-              label: function(context) {
-                var label = context.dataset.label || '';
-                if (label) {
-                  label += ': ';
-                }
-                label += new Date(context.parsed.y * 1000).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
-                return label;
-              }
-            }
-          },
-        },
-      },
-    });
-
-    // Clean up function to destroy chart when component unmounts
-    return () => {
-      if (chartInstanceRef.current) {
-        chartInstanceRef.current.destroy();
-      }
-    };
-  }, [student]);
-
-  function formatChartData() {
-    const data = {
-      labels: ["MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY"],
-      datasets: [
-        {
-          label: "Time at School",
-          data: [
-            student.A.seconds,
-            student.B.seconds,
-            student.C.seconds,
-            student.D.seconds,
-            student.E.seconds,
-          ],
-          backgroundColor: "rgba(79, 209, 197, 0.2)",
-          borderColor: "rgba(79, 209, 197, 1)",
-          borderWidth: 2,
-        },
-      ],
-    };
-    console.log(data);
-    return data;
-  }
-
   return (
     <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-md shadow-md p-4 w-3/4 h-1/2">
       <button
@@ -115,78 +13,72 @@ function StudentChart({ student, onClose }) {
       <p className="text-base">
         {student.strand}-{student.section}
       </p>
-      <div className="bg-white rounded-lg shadow-md mb-4 overflow-hidden">
-        <canvas
-          id={`chart-${student.id}`}
-          ref={chartRef}
-          className="w-full h-full"
-        ></canvas>
+      <div>
+        <div>
+          {student.As === "late" && (
+            <div className="bg-[#EC7063] h-6 w-6 rounded-sm inline-block m-3"></div>
+          )}
+          {student.As === "ontime" && (
+            <div className="bg-[#F7DC6F]  h-6 w-6 rounded-sm inline-block m-3"></div>
+          )}
+          {student.As === "early" && (
+            <div className="bg-[#2ECC71]  h-6 w-6 rounded-sm inline-block m-3"></div>
+          )}
+          {student.As === "" && (
+            <div className="bg-[#BDCDD6]  h-6 w-6 rounded-sm inline-block m-3"></div>
+          )}
+          {student.Bs === "late" && (
+            <div className="bg-[#EC7063] h-6 w-6 rounded-sm inline-block m-3"></div>
+          )}
+          {student.Bs === "ontime" && (
+            <div className="bg-[#F7DC6F]  h-6 w-6 rounded-sm inline-block m-3"></div>
+          )}
+          {student.Bs === "early" && (
+            <div className="bg-[#2ECC71]  h-6 w-6 rounded-sm inline-block m-3"></div>
+          )}
+          {student.Bs === "" && (
+            <div className="bg-[#BDCDD6]  h-6 w-6 rounded-sm inline-block m-3"></div>
+          )}
+          {student.Cs === "late" && (
+            <div className="bg-[#EC7063] h-6 w-6 rounded-sm inline-block m-3"></div>
+          )}
+          {student.Cs === "ontime" && (
+            <div className="bg-[#F7DC6F]  h-6 w-6 rounded-sm inline-block m-3"></div>
+          )}
+          {student.Cs === "early" && (
+            <div className="bg-[#2ECC71]  h-6 w-6 rounded-sm inline-block m-3"></div>
+          )}
+          {student.Cs === "" && (
+            <div className="bg-[#BDCDD6]  h-6 w-6 rounded-sm inline-block m-3"></div>
+          )}
+          {student.Ds === "late" && (
+            <div className="bg-[#EC7063] h-6 w-6 rounded-sm inline-block m-3"></div>
+          )}
+          {student.Ds === "ontime" && (
+            <div className="bg-[#F7DC6F]  h-6 w-6 rounded-sm inline-block m-3"></div>
+          )}
+          {student.Ds === "early" && (
+            <div className="bg-[#2ECC71]  h-6 w-6 rounded-sm inline-block m-3"></div>
+          )}
+          {student.Ds === "" && (
+            <div className="bg-[#BDCDD6]  h-6 w-6 rounded-sm inline-block m-3"></div>
+          )}
+          {student.Es === "late" && (
+            <div className="bg-[#EC7063] h-6 w-6 rounded-sm inline-block m-3"></div>
+          )}
+          {student.Es === "ontime" && (
+            <div className="bg-[#F7DC6F]  h-6 w-6 rounded-sm inline-block m-3"></div>
+          )}
+          {student.Es === "early" && (
+            <div className="bg-[#2ECC71]  h-6 w-6 rounded-sm inline-block m-3"></div>
+          )}
+          {student.Es === "" && (
+            <div className="bg-[#BDCDD6]  h-6 w-6 rounded-sm inline-block m-3"></div>
+          )}
+        </div>
       </div>
     </div>
   );
 }
 
 export default StudentChart;
-
-// <div>
-// {student.As === "late" && (
-//   <div className="bg-[#EC7063] h-6 w-6 rounded-sm inline-block m-3"></div>
-// )}
-// {student.As === "ontime" && (
-//   <div className="bg-[#F7DC6F]  h-6 w-6 rounded-sm inline-block m-3"></div>
-// )}
-// {student.As === "early" && (
-//   <div className="bg-[#2ECC71]  h-6 w-6 rounded-sm inline-block m-3"></div>
-// )}
-// {student.As === "" && (
-//   <div className="bg-[#BDCDD6]  h-6 w-6 rounded-sm inline-block m-3"></div>
-// )}
-// {student.Bs === "late" && (
-//   <div className="bg-[#EC7063] h-6 w-6 rounded-sm inline-block m-3"></div>
-// )}
-// {student.Bs === "ontime" && (
-//   <div className="bg-[#F7DC6F]  h-6 w-6 rounded-sm inline-block m-3"></div>
-// )}
-// {student.Bs === "early" && (
-//   <div className="bg-[#2ECC71]  h-6 w-6 rounded-sm inline-block m-3"></div>
-// )}
-// {student.Bs === "" && (
-//   <div className="bg-[#BDCDD6]  h-6 w-6 rounded-sm inline-block m-3"></div>
-// )}
-// {student.Cs === "late" && (
-//   <div className="bg-[#EC7063] h-6 w-6 rounded-sm inline-block m-3"></div>
-// )}
-// {student.Cs === "ontime" && (
-//   <div className="bg-[#F7DC6F]  h-6 w-6 rounded-sm inline-block m-3"></div>
-// )}
-// {student.Cs === "early" && (
-//   <div className="bg-[#2ECC71]  h-6 w-6 rounded-sm inline-block m-3"></div>
-// )}
-// {student.Cs === "" && (
-//   <div className="bg-[#BDCDD6]  h-6 w-6 rounded-sm inline-block m-3"></div>
-// )}
-// {student.Ds === "late" && (
-//   <div className="bg-[#EC7063] h-6 w-6 rounded-sm inline-block m-3"></div>
-// )}
-// {student.Ds === "ontime" && (
-//   <div className="bg-[#F7DC6F]  h-6 w-6 rounded-sm inline-block m-3"></div>
-// )}
-// {student.Ds === "early" && (
-//   <div className="bg-[#2ECC71]  h-6 w-6 rounded-sm inline-block m-3"></div>
-// )}
-// {student.Ds === "" && (
-//   <div className="bg-[#BDCDD6]  h-6 w-6 rounded-sm inline-block m-3"></div>
-// )}
-// {student.Es === "late" && (
-//   <div className="bg-[#EC7063] h-6 w-6 rounded-sm inline-block m-3"></div>
-// )}
-// {student.Es === "ontime" && (
-//   <div className="bg-[#F7DC6F]  h-6 w-6 rounded-sm inline-block m-3"></div>
-// )}
-// {student.Es === "early" && (
-//   <div className="bg-[#2ECC71]  h-6 w-6 rounded-sm inline-block m-3"></div>
-// )}
-// {student.Es === "" && (
-//   <div className="bg-[#BDCDD6]  h-6 w-6 rounded-sm inline-block m-3"></div>
-// )}
-// </div>
