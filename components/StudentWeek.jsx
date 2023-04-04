@@ -52,18 +52,13 @@ function StudentChart({ student, onClose }) {
               break;
           }
 
-          const seconds = student[`${gradeValue}Time`];
-          const hours = Math.floor(seconds / 3600);
-          const minutes = Math.floor((seconds % 3600) / 60);
-          const timeString = `${hours.toString().padStart(2, "0")}:${minutes.toString().padStart(2, "0")}`;
+    
 
           return (
             <div key={index} className="flex flex-col items-center">
               <p className="text-xs font-semibold text-gray-600">{grade}</p>
               <div className={`${color} h-6 w-6 rounded-full mb-1`}></div>
-              <p className="text-xs font-semibold text-gray-600">
-              {student.timeString}
-              </p>
+
             </div>
           );
         })}
