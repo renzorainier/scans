@@ -59,7 +59,7 @@ function StudentChart({ student, onClose }) {
           }
           const timeValue = student[times[index]];
           return (
-            <div key={index} className="flex flex-col items-center">
+            <div key={index} className={`flex flex-col items-center`}>
               <p className="text-xs font-semibold text-gray-500">{grade}</p>
               <div className={`${color} h-6 w-6 rounded-full my-4`}></div>
               {timeValue && times.includes(times[index]) ? (
