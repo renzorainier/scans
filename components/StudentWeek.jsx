@@ -3,7 +3,7 @@ function StudentChart({ student, onClose }) {
   const times = ["A", "B", "C", "D", "E"];
 
   return (
-    <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-md shadow-md p-4 w-4/5 ">
+    <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-md shadow-md p-4 w-4/5">
       <button
         className="text-lg font-bold absolute top-2 right-2 text-gray-500 hover:text-gray-700"
         onClick={() => onClose()}
@@ -18,7 +18,7 @@ function StudentChart({ student, onClose }) {
         </p>
       </div>
 
-      <div className="flex justify-between">
+      <div className="grid grid-cols-5 gap-4">
         {grades.map((grade, index) => {
           let gradeValue;
           switch (grade) {
@@ -57,9 +57,12 @@ function StudentChart({ student, onClose }) {
           }
           const timeValue = student[times[index]];
           return (
-            <div key={index} className="flex flex-col  items-center">
+            <div
+              key={index}
+              className={`flex flex-col items-center ${color} h-28 rounded-md shadow-md p-2`}
+            >
               <p className="text-xs font-semibold text-gray-600">{grade}</p>
-              <div className={`${color} h-6 w-6 rounded-full mb-1`}></div>
+              <div className="w-6 h-6 rounded-full mb-1"></div>
               {timeValue && times.includes(times[index]) ? (
                 <p className="text-xs font-semibold text-gray-600">
                   {new Date(timeValue.seconds * 1000).toLocaleTimeString([], {
