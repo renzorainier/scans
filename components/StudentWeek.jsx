@@ -3,7 +3,7 @@ function StudentChart({ student, onClose }) {
   const times = ["A", "B", "C", "D", "E"];
 
   return (
-    <div className="fixed z-50 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-md shadow-xl p-8 w-4/5 max-w-md">
+    <div className="fixed z-50 top-1/2 left-1/2  transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-md shadow-xl p-8 w-4/5 max-w-md">
       <button
         className="absolute top-3 right-3 text-gray-500 hover:text-gray-700"
         onClick={onClose}
