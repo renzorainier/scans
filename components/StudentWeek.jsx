@@ -32,7 +32,7 @@ function StudentChart({ student, onClose }) {
             {student.strand}-{student.section}
           </p>
         </div>
-        <div className="h-1 w-full mt-7 bg-gray-500"></div>
+        <div className="h-[2px] w-full mt-7 bg-gray-500"></div>
 
         <div className=" flex justify-between mt-8">
           {grades.map((grade, index) => {
