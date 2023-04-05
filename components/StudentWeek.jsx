@@ -3,22 +3,24 @@ function StudentChart({ student, onClose }) {
   const times = ["A", "B", "C", "D", "E"];
 
   return (
-    <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-md shadow-md p-4 w-4/5 ">
+    <div className="fixed z-50 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-md shadow-xl p-8 w-4/5 max-w-md">
       <button
-        className="text-lg font-bold absolute top-2 right-2 text-gray-500 hover:text-gray-700"
-        onClick={() => onClose()}
+        className="absolute top-3 right-3 text-gray-500 hover:text-gray-700"
+        onClick={onClose}
       >
-        X
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
       </button>
 
       <div className="p-4">
-        <p className="text-lg font-bold">{student.name}</p>
-        <p className="text-base">
+        <p className="text-xl font-bold">{student.name}</p>
+        <p className="text-gray-500 text-base">
           {student.strand}-{student.section}
         </p>
       </div>
 
-      <div className="flex justify-between">
+      <div className="flex justify-between mt-8">
         {grades.map((grade, index) => {
           let gradeValue;
           switch (grade) {
@@ -57,11 +59,11 @@ function StudentChart({ student, onClose }) {
           }
           const timeValue = student[times[index]];
           return (
-            <div key={index} className="flex flex-col  items-center">
-              <p className="text-xs font-semibold text-gray-600">{grade}</p>
-              <div className={`${color} h-6 w-6 rounded-full mb-1`}></div>
+            <div key={index} className="flex flex-col items-center">
+              <p className="text-xs font-semibold text-gray-500">{grade}</p>
+              <div className={`${color} h-6 w-6 rounded-full my-4`}></div>
               {timeValue && times.includes(times[index]) ? (
-                <p className="text-xs font-semibold text-gray-600">
+                <p className="text-xs font-semibold text-gray-500">
                   {new Date(timeValue.seconds * 1000).toLocaleTimeString([], {
                     hour: "numeric",
                     minute: "2-digit",
@@ -69,7 +71,7 @@ function StudentChart({ student, onClose }) {
                   })}
                 </p>
               ) : (
-                <p className="text-xs font-semibold text-gray-600">no record</p>
+                <p className="text-xs font-semibold text-gray-500">no record</p>
               )}
             </div>
           );
