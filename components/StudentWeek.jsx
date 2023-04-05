@@ -20,7 +20,7 @@ function StudentChart({ student, onClose }) {
         </p>
       </div>
 
-      <div className="flex justify-between mt-8">
+      <div className=" flex justify-between mt-8">
         {grades.map((grade, index) => {
           let gradeValue;
           switch (grade) {
