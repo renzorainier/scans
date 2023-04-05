@@ -59,12 +59,12 @@ function StudentChart({ student, onClose }) {
               {timeValue && times.includes(times[index]) ? (
                 <p className="text-xs font-semibold text-gray-600">
                   {new Date(timeValue.seconds * 1000).toLocaleTimeString([], {
-                    hour: "2-digit",
+                    hour: ("2-digit"),
                     minute: "2-digit",
                   })}
                 </p>
               ) : (
-                <p className="text-xs font-semibold text-gray-600">no data</p>
+                <p className="text-xs font-semibold text-gray-600">no record</p>
               )}
             </div>
           );
