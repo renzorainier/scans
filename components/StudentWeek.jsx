@@ -10,10 +10,14 @@ function StudentChart({ student, onClose }) {
       >
         X
       </button>
-      <p className="pt-4 text-lg font-bold">{student.name}</p>
-      <p className="text-base">
-        {student.strand}-{student.section}
-      </p>
+
+      <div className="p-4">
+        <p className="text-lg font-bold">{student.name}</p>
+        <p className="text-base">
+          {student.strand}-{student.section}
+        </p>
+      </div>
+
       <div className="flex justify-between">
         {grades.map((grade, index) => {
           let gradeValue;
