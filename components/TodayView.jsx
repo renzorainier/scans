@@ -323,7 +323,7 @@ function AttendanceTable() {
             </tbody>
           </table>
           {showInfo && (
-            <div      <div className="fixed z-50 top-0 left-0 w-screen h-screen backdrop-blur-xl bg-gray/90"></div>
+            <div   className="fixed z-50 top-0 left-0 w-screen h-screen backdrop-blur-xl bg-gray/90"
             >
               <div
                 id="show"
