@@ -24,6 +24,7 @@ function Generate() {
       }
     }
     return transformedValue;
+    console.log(transformedValue)
   };
 
   return (
