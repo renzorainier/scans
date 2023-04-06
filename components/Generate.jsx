@@ -22,9 +22,10 @@ function Generate() {
       if (mappingTable.hasOwnProperty(char)) {
         transformedValue += mappingTable[char];
       }
+      console.log(transformedValue)
     }
     return transformedValue;
-    console.log(transformedValue)
+    // console.log(qrCodeValue)
   };
 
   return (
