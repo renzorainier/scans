@@ -3,14 +3,45 @@ import React, { useState } from "react";
 import QRCode from "react-qr-code";
 
 const mappingTable = {
-  "A": "0Z", "B": "1X", "C": "2C", "D": "3V", "E": "4B", "F": "5N",
-  "G": "6M", "H": "7Q", "I": "8K", "J": "9L", "K": "AP", "L": "JH",
-  "M": "FD", "N": "SE", "O": "GR", "P": "TY", "Q": "UI", "R": "OP",
-  "S": "ZX", "T": "CV", "U": "NM", "V": "LK", "W": "JU", "X": "YH",
-  "Y": "TB", "Z": "EQ", "0": "2W", "1": "4R", "2": "6T", "3": "8Y",
-  "4": "0U", "5": "1I", "6": "3O", "7": "5P", "8": "7A", "9": "9S",
-  "-": "DX"
+  "0": "T3R",
+  "1": "F5E",
+  "2": "A9G",
+  "3": "C6W",
+  "4": "D2Q",
+  "5": "V7Y",
+  "6": "Z8H",
+  "7": "N1U",
+  "8": "K4X",
+  "9": "M0J",
+  "-": "BnP",
+  "A": "QwE",
+  "B": "PoI",
+  "C": "LkM",
+  "D": "YtR",
+  "E": "DfG",
+  "F": "HjK",
+  "G": "ZxV",
+  "H": "SaW",
+  "I": "NcB",
+  "J": "UyT",
+  "K": "MlO",
+  "L": "PbN",
+  "M": "EaS",
+  "N": "XqZ",
+  "O": "GhF",
+  "P": "JkD",
+  "Q": "WnY",
+  "R": "VpC",
+  "S": "TmU",
+  "T": "iHg",
+  "U": "rLj",
+  "V": "sNk",
+  "W": "aBc",
+  "X": "oQe",
+  "Y": "tZu",
+  "Z": "wDy"
 };
+
 
 function Generate() {
   const [qrCodeValue, setQrCodeValue] = useState("");
