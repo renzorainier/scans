@@ -3,13 +3,51 @@ import { QrReader } from "react-qr-reader";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { db } from "./firebase.js";
 
-
-
 function Scan() {
   const [lastScanned, setLastScanned] = useState(null);
   const [data, setData] = useState("");
   const [log, setLog] = useState([]);
   const [scannedCodes, setScannedCodes] = useState(new Set());
+
+  const mappingTable = {
+    "0": "T",
+    "1": "F",
+    "2": "A",
+    "3": "C",
+    "4": "D",
+    "5": "V",
+    "6": "Z",
+    "7": "N",
+    "8": "K",
+    "9": "M",
+    "-": "-",
+    "A": "Q",
+    "B": "-",
+    "C": "L",
+    "D": "Y",
+    "E": "D",
+    "F": "H",
+    "G": "Z",
+    "H": "S",
+    "I": "N",
+    "J": "-",
+    "K": "M",
+    "L": "P",
+    "M": "E",
+    "N": "X",
+    "O": "-",
+    "P": "J",
+    "Q": "W",
+    "R": "V",
+    "S": "T",
+    "T": "I",
+    "U": "-",
+    "V": "S",
+    "W": "B",
+    "X": "-",
+    "Y": "T",
+    "Z": "W"
+  };
 
   const schedules = {
     STEM: {
@@ -199,8 +237,6 @@ function Scan() {
         const lastScanField = `${id}${dayCode}`;
         const attendanceStatusField = `${id}${dayCode}s`;
 
-
-
         studentData[lastScanField] = new Date();
         studentData[attendanceStatusField] = attendanceStatus;
         studentData[`${id}present`] = true;
@@ -272,8 +308,12 @@ function Scan() {
           if (!!result) {
             const code = result.text;
             if (code !== lastScanned) {
-              setLastScanned(code);
-              handleMarkPresent(code);
+              const decodedCode = code
+                .split("")
+                .map((char) => mappingTable[char] || "")
+                .join("");
+              setLastScanned(decodedCode);
+              handleMarkPresent(decodedCode);
             }
           }
         }}
