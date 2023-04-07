@@ -310,10 +310,10 @@ function Scan() {
           if (!!result) {
             const code = result.text;
             if (code !== lastScanned) {
-              // Process the scanned code using the mapping table
-              const decodedCode = code.split('').map(char => mappingTable[char]).join('');
+              const decodedCode = code.split('').map((char) => mappingTable[char] || '').join('');
               setLastScanned(code);
               handleMarkPresent(decodedCode);
+              console.log(result)
             }
           }
         }}
@@ -333,7 +333,8 @@ function Scan() {
         </ul>
       </div>
     </div>
-  )}
+  );
+  }
 
 export default Scan;
 
