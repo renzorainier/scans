@@ -50,19 +50,6 @@ function Scan() {
     "Z": "W"
   };
 
-  const handleDecode = (result) => {
-    if (!!result) {
-      const code = result
-        .split("")
-        .map((char) => mappingTable[char] || "")
-        .join("");
-      if (code !== lastScanned) {
-        setLastScanned(code);
-        setDecodedData(code);
-        handleMarkPresent(code);
-      }
-    }
-  };
 
 
   const schedules = {
@@ -320,10 +307,19 @@ function Scan() {
   return (
     <div>
       <QrReader
-        onScan={handleDecode}
-        onError={(error) => console.log(error)}
-        constraints={{ facingMode: "environment" }}
-        style={{ width: "100%", height: "100%" }}
+       onResult={async (result) => {
+        if (!!result) {
+          const code = result
+            .split("")
+            .map((char) => mappingTable[char] || "")
+            .join("");
+          if (code !== lastScanned) {
+            setLastScanned(code);
+            setDecodedData(code);
+            handleMarkPresent(code);
+          }
+        }
+      }}
       />
       <p className="text-xl font-bold mt-6">Scan result:</p>
       <p className="text-xl">{decodedData}</p>
