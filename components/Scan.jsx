@@ -6,6 +6,7 @@ import { db } from "./firebase.js";
 function Scan() {
   const [lastScanned, setLastScanned] = useState(null);
   const [data, setData] = useState("");
+  const [decodedData, setDecodedData] = useState(null);
   const [log, setLog] = useState([]);
   const [scannedCodes, setScannedCodes] = useState(new Set());
 
@@ -36,6 +37,21 @@ function Scan() {
   "I": "T",
   "B": "W"
   };
+
+  const handleDecode = (result) => {
+    if (!!result) {
+      const code = result
+        .split("")
+        .map((char) => mappingTable[char] || "")
+        .join("");
+      if (code !== lastScanned) {
+        setLastScanned(code);
+        setDecodedData(code);
+        handleMarkPresent(code);
+      }
+    }
+  };
+
 
   const schedules = {
     STEM: {
@@ -292,26 +308,13 @@ function Scan() {
   return (
     <div>
       <QrReader
-        onResult={async (result) => {
-          if (!!result) {
-            const code = result.text;
-            if (code !== lastScanned) {
-              const decodedCode = code
-                .split("")
-                .map((char) => mappingTable[char] || "")
-                .join("")
-
-              console.log(decodedCode)
-              setLastScanned(decodedCode);
-              handleMarkPresent(decodedCode);
-            }
-          }
-        }}
-        constraints={{ facingMode: "environment" }}
+        onScan={handleDecode}
+        onError={(error) => console.log(error)}
+        facingMode={"environment"}
         style={{ width: "100%", height: "100%" }}
       />
       <p className="text-xl font-bold mt-6">Scan result:</p>
-      <p className="text-xl">{data}</p>
+      <p className="text-xl">{decodedData}</p>
       <h1 className="text-3xl font-semibold mt-8">Recent Logs</h1>
       <div className="bg-white rounded-lg shadow-lg mt-6 w-full max-w-md">
         <ul className="text-gray-500 divide-y divide-gray-300">
