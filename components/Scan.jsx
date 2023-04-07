@@ -312,7 +312,8 @@ function Scan() {
                 .split("")
                 .map((char) => mappingTable[char] || "")
                 .join("")
-                console.log(decodedCode)
+
+              console.log(decodedCode)
               setLastScanned(decodedCode);
               handleMarkPresent(decodedCode);
             }
