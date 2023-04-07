@@ -3,55 +3,6 @@ import { QrReader } from "react-qr-reader";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { db } from "./firebase.js";
 
-const mappingTable = {
-  "0": "T3R",
-  "1": "F5E",
-  "2": "A9G",
-  "3": "C6W",
-  "4": "D2Q",
-  "5": "V7Y",
-  "6": "Z8H",
-  "7": "N1U",
-  "8": "K4X",
-  "9": "M0J",
-  "-": "BnP",
-  "A": "QwE",
-  "B": "PoI",
-  "C": "LkM",
-  "D": "YtR",
-  "E": "DfG",
-  "F": "HjK",
-  "G": "ZxV",
-  "H": "SaW",
-  "I": "NcB",
-  "J": "UyT",
-  "K": "MlO",
-  "L": "PbN",
-  "M": "EaS",
-  "N": "XqZ",
-  "O": "GhF",
-  "P": "JkD",
-  "Q": "WnY",
-  "R": "VpC",
-  "S": "TmU",
-  "T": "iHg",
-  "U": "rLj",
-  "V": "sNk",
-  "W": "aBc",
-  "X": "oQe",
-  "Y": "tZu",
-  "Z": "wDy"
-};
-
-const decodeCode = (code) => {
-  let decodedCode = "";
-  for (let i = 0; i < code.length; i++) {
-    if (mappingTable.hasOwnProperty(code[i])) {
-      decodedCode += mappingTable[code[i]];
-    }
-  }
-  return decodedCode;
-};
 
 
 function Scan() {
@@ -59,6 +10,57 @@ function Scan() {
   const [data, setData] = useState("");
   const [log, setLog] = useState([]);
   const [scannedCodes, setScannedCodes] = useState(new Set());
+
+  const mappingTable = {
+    "0": "T3R",
+    "1": "F5E",
+    "2": "A9G",
+    "3": "C6W",
+    "4": "D2Q",
+    "5": "V7Y",
+    "6": "Z8H",
+    "7": "N1U",
+    "8": "K4X",
+    "9": "M0J",
+    "-": "BnP",
+    "A": "QwE",
+    "B": "PoI",
+    "C": "LkM",
+    "D": "YtR",
+    "E": "DfG",
+    "F": "HjK",
+    "G": "ZxV",
+    "H": "SaW",
+    "I": "NcB",
+    "J": "UyT",
+    "K": "MlO",
+    "L": "PbN",
+    "M": "EaS",
+    "N": "XqZ",
+    "O": "GhF",
+    "P": "JkD",
+    "Q": "WnY",
+    "R": "VpC",
+    "S": "TmU",
+    "T": "iHg",
+    "U": "rLj",
+    "V": "sNk",
+    "W": "aBc",
+    "X": "oQe",
+    "Y": "tZu",
+    "Z": "wDy"
+  };
+
+  const decodeCode = (code) => {
+    let decodedCode = "";
+    for (let i = 0; i < code.length; i++) {
+      if (mappingTable.hasOwnProperty(code[i])) {
+        decodedCode += mappingTable[code[i]];
+      }
+    }
+    return decodedCode;
+  };
+
 
   const schedules = {
     STEM: {
