@@ -320,6 +320,8 @@ function Scan() {
           }
         }
       }}
+      constraints={{ facingMode: "environment" }}
+      style={{ width: "100%", height: "100%" }}
       />
       <p className="text-xl font-bold mt-6">Scan result:</p>
       <p className="text-xl">{decodedData}</p>
