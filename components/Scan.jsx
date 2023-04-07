@@ -6,7 +6,6 @@ import { db } from "./firebase.js";
 function Scan() {
   const [lastScanned, setLastScanned] = useState(null);
   const [data, setData] = useState("");
-  const [decodedData, setDecodedData] = useState(null);
   const [log, setLog] = useState([]);
   const [scannedCodes, setScannedCodes] = useState(new Set());
 
@@ -315,7 +314,6 @@ function Scan() {
               const decodedCode = code.split('').map(char => mappingTable[char]).join('');
               setLastScanned(code);
               handleMarkPresent(decodedCode);
-              console.log(decodedCode)
             }
           }
         }}
