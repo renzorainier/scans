@@ -311,7 +311,8 @@ function Scan() {
               const decodedCode = code
                 .split("")
                 .map((char) => mappingTable[char] || "")
-                .join("");
+                .join("")
+                console.log(decodedCode)
               setLastScanned(decodedCode);
               handleMarkPresent(decodedCode);
             }
