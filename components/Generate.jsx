@@ -13,7 +13,7 @@ const mappingTable = {
   "7": "N1U",
   "8": "K4X",
   "9": "M0J",
-  "-": "BnP",
+  "-": "-",
   "A": "QwE",
   "B": "PoI",
   "C": "LkM",
