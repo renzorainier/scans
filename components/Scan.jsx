@@ -309,14 +309,11 @@ function Scan() {
       <QrReader
        onResult={async (result) => {
         if (!!result) {
-          const code = result
-            .split("")
-            .map((char) => mappingTable[char] || "")
-            .join("");
+          const code = result.text;
           if (code !== lastScanned) {
-            setLastScanned(code);
-            setDecodedData(code);
-            handleMarkPresent(code);
+            const decodedCode = code.split("").map(char => mappingTable[char] || "").join("");
+            setLastScanned(decodedCode);
+            handleMarkPresent(decodedCode);
           }
         }
       }}
