@@ -157,7 +157,7 @@ function Scan() {
 
   const handleMarkPresent = async (code) => {
     if (scannedCodes.has(code)) {
-      console.log(`Code ${code} has already been scanned`);
+      console.log(`Student ${code} has already been scanned`);
       return;
     }
     try {
