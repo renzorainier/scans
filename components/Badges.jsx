@@ -11,8 +11,8 @@ function BadgeWriter() {
     try {
       // write data to Firebase
       await setDoc(doc(db, "badges/top"), {
-        sectionWide: null,
-        strandWide: null
+
+        STEM1A: null
       });
       console.log("Data successfully written to Firebase!");
     } catch (error) {
