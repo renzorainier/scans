@@ -12,7 +12,7 @@ function BadgeWriter() {
       // write data to Firebase
       await setDoc(doc(db, "badges/top"), {
 
-        STEM1A: null
+        STEM1A: "", 
       });
       console.log("Data successfully written to Firebase!");
     } catch (error) {
