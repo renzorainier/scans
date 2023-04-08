@@ -1,5 +1,5 @@
-function Rank({ student, onClose }) {
-
+function Rank({ data, onClose }) {
+console.log(data)
 
   return (
     <div>
