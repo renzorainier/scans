@@ -179,10 +179,9 @@ function AttendanceTable() {
         <div>
           <LineGraph data={attendanceData} />
         </div>
+
         <div>
-          <button onClick={() => handleMoreClick(student)}>
-            Renz
-            {/* <Rank/> */}
+          <button onClick={() =>  }>
           </button>
         </div>
 
