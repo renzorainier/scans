@@ -313,7 +313,7 @@ function Scan() {
               const decodedCode = code.split('').map((char) => mappingTable[char] || '').join('');
               setLastScanned(code);
               handleMarkPresent(decodedCode);
-              console.log(code)
+              console.log(decodedCode)
               console.log(result)
             }
           }
