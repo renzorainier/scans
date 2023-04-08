@@ -10,7 +10,7 @@ function BadgeWriter() {
 
     try {
       // write data to Firebase
-      await db.collection("badges").doc("top").set({
+      await setDoc(doc(db, "badges/top"), {
         sectionWide: null,
         strandWide: null
       });
