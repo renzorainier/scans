@@ -49,6 +49,16 @@ function AttendanceTable() {
   const [infoText, setInfoText] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const [selectedStudent, setSelectedStudent] = useState(null);
+  const [showRank, setShowRank] = useState(false);
+
+  const handleClick = () => {
+    setShowRank(true);
+  };
+
+  const handleClose = () => {
+    setShowRank(false);
+  };
+
 
   const onClose = () => {
     setSelectedStudent(null);
@@ -181,9 +191,14 @@ function AttendanceTable() {
         </div>
 
         <div>
-          <button onClick={() =>  }>
-          </button>
-        </div>
+      <div>
+        <button onClick={handleClick}>Show Rank</button>
+      </div>
+      {showRank && <Rank onClose={handleClose} />}
+    </div>
+
+
+
 
         <div className="flex justify-between items-center mb-4">
           <div id="search" className="flex items-center w-full">
