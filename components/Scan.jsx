@@ -245,17 +245,6 @@ function Scan() {
         studentData[`${id}status`] = attendanceStatus;
         studentData[`${id}dif`] = timeDifference;
 
-        // studentData[`${id}A`] = scanTime;
-        // studentData[`${id}As`] = attendanceStatus;
-        // studentData[`${id}B`] = scanTime;
-        // studentData[`${id}Bs`] = attendanceStatus;
-        // studentData[`${id}C`] = scanTime;
-        // studentData[`${id}Cs`] = attendanceStatus;
-        // studentData[`${id}D`] = scanTime;
-        // studentData[`${id}Ds`] = attendanceStatus;
-        // studentData[`${id}E`] = scanTime;
-        // studentData[`${id}Es`] = attendanceStatus;
-
         await updateDoc(sectionRef, studentData);
         console.log(
           `Student ${id} marked as present with ${attendanceStatus} status`
@@ -337,6 +326,24 @@ function Scan() {
   }
 
 export default Scan;
+
+
+
+
+
+        // studentData[`${id}A`] = scanTime;
+        // studentData[`${id}As`] = attendanceStatus;
+        // studentData[`${id}B`] = scanTime;
+        // studentData[`${id}Bs`] = attendanceStatus;
+        // studentData[`${id}C`] = scanTime;
+        // studentData[`${id}Cs`] = attendanceStatus;
+        // studentData[`${id}D`] = scanTime;
+        // studentData[`${id}Ds`] = attendanceStatus;
+        // studentData[`${id}E`] = scanTime;
+        // studentData[`${id}Es`] = attendanceStatus;
+
+
+
 
 // const handleMarkPresent = async (strand, section, id) => {
 //   // Get student data from Firestore
