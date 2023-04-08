@@ -439,6 +439,7 @@ function StudentCollection() {
 
     students.forEach((student) => {
       const { id, name, section, strand, present, lrn } = student;
+      sectionData[`${id}badge`] = [];
       sectionData[`${id}name`] = name;
       sectionData[`${id}lastScan`] = "";
       sectionData[`${id}present`] = present;
