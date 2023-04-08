@@ -1,5 +1,6 @@
 function Rank({ student, onClose }) {
-  
+
+
   return (
     <div>
       <div className="fixed z-50 top-0 left-0 w-screen h-screen backdrop-blur-xl bg-gray/90"></div>
@@ -23,6 +24,7 @@ function Rank({ student, onClose }) {
             />
           </svg>
         </button>
+
         </div>
       </div>
   );
