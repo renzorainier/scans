@@ -4,6 +4,7 @@ import { db } from "./firebase.js";
 import LineGraph from "components/Chart";
 import NumberLineGraph from "components/NumberChart";
 import StudentDetails from "components/StudentWeek";
+import Rank from "components/Rank";
 
 function useAttendanceData() {
   const [attendanceData, setAttendanceData] = useState({});
@@ -179,8 +180,9 @@ function AttendanceTable() {
           <LineGraph data={attendanceData} />
         </div>
         <div>
-          <button>
-            hello
+          <button onClick={() => handleMoreClick(student)}>
+            Renz
+            {/* <Rank/> */}
           </button>
         </div>
 
@@ -328,8 +330,7 @@ function AttendanceTable() {
             </tbody>
           </table>
           {showInfo && (
-            <div   className="fixed z-50 top-0 left-0 w-screen h-screen backdrop-blur-xl bg-gray/90"
-            >
+            <div className="fixed z-50 top-0 left-0 w-screen h-screen backdrop-blur-xl bg-gray/90">
               <div
                 id="show"
                 className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2  max-w-90% bg-white p-5 rounded-lg shadow-lg inline-block"
