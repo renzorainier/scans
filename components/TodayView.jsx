@@ -49,7 +49,7 @@ function AttendanceTable() {
   const [infoText, setInfoText] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const [selectedStudent, setSelectedStudent] = useState(null);
-  const [showRank, setShowRank] = useState(false);
+  const [showRank, setShowRank] = useState(null);
 
   const handleClick = () => {
     setShowRank(true);
