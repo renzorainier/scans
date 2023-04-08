@@ -1,7 +1,6 @@
 import { useState } from "react";
-import firebase from "firebase/app";
-import "firebase/firestore";
-
+import { doc, setDoc } from "firebase/firestore";
+import { db } from "./firebase";
 
 function BadgeWriter() {
   const [isLoading, setIsLoading] = useState(false);
