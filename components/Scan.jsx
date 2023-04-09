@@ -52,7 +52,7 @@ function Scan() {
 
 
   const schedules = {
-    STEM: {
+    ICT: {
       "1A": {
         Monday: {
           startTime: "17:00:00",
