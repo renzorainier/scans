@@ -221,7 +221,8 @@ function Scan() {
               i++;
             }
             // Set the field to true in the Firebase document
-     
+            console.log(topNumber);
+
           }
         } else if (timeDifference > 600000) {
           // Student is late (more than 10 minutes after class start time)
