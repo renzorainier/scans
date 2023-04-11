@@ -222,7 +222,8 @@ function Scan() {
                 break;
               }
               i++;
-            } const updatedData = {};
+            }
+            const updatedData = {};
             updatedData[fieldName] = true;
             await updateDoc(badgeRef, updatedData);
           }
