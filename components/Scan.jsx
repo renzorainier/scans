@@ -233,6 +233,12 @@ function Scan() {
           attendanceStatus = "ontime";
         }
 
+        async function updateFirebaseDocument(ref, fieldName) {
+          const updatedData = {};
+          updatedData[fieldName] = true;
+          await updateDoc(ref, updatedData);
+        }
+
         const dayOfWeek = currentDay.substring(0, 3);
         let dayCode;
         switch (dayOfWeek) {
