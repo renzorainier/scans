@@ -210,10 +210,10 @@ function Scan() {
           const badgeDoc = await getDoc(badgeRef);
           if (badgeDoc.exists()) {
             const badgeData = badgeDoc.data();
+            const fieldName = `${strand}_${section}_Top${i}`;
             console.log(badgeData);
             let i = 1;
             while (i <= 10) {
-              const fieldName = `${strand}_${section}_Top${i}`;
               if (badgeData[fieldName] === null) {
                 topNumber = `Top${i}`;
                 break;
