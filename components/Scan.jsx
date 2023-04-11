@@ -53,7 +53,7 @@ function Scan() {
 
   const schedules = {
     STEM: {
-      "STEM1A": {
+      "1A": {
         Monday: {
           startTime: "17:00:00",
         },
@@ -76,7 +76,7 @@ function Scan() {
           startTime: "08:00:00",
         },
       },
-      "STEM1B": {
+      "1B": {
         Monday: {
           startTime: "17:00:00",
         },
@@ -99,7 +99,7 @@ function Scan() {
           startTime: "08:00:00",
         },
       },
-      "STEM1C": {
+      "1C": {
         Monday: {
           startTime: "17:00:00",
         },
@@ -122,7 +122,7 @@ function Scan() {
           startTime: "08:00:00",
         },
       },
-      "STEM1D": {
+      "1D": {
         Monday: {
           startTime: "17:00:00",
         },
