@@ -216,27 +216,21 @@ function Scan() {
               const fieldName = `${strand}_${section}_Top${i}`;
               if (badgeData[fieldName] === null) {
                 topNumber = `Top${i}`;
+                // Set the field to true in the Firebase document
                 console.log(topNumber);
-                return updateFirebaseDocument(badgeRef, fieldName); // call function to update document
+
+                break;
               }
               i++;
             }
+        
           }
-        }
-
-
-        else if (timeDifference > 600000) {
+        } else if (timeDifference > 600000) {
           // Student is late (more than 10 minutes after class start time)
           attendanceStatus = "late";
         } else {
           // Student is on time (within 10 minutes of class start time)
           attendanceStatus = "ontime";
-        }
-
-        async function updateFirebaseDocument(ref, fieldName) {
-          const updatedData = {};
-          updatedData[fieldName] = true;
-          await updateDoc(ref, updatedData);
         }
 
         const dayOfWeek = currentDay.substring(0, 3);
