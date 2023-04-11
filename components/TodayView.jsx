@@ -6,36 +6,29 @@ import NumberLineGraph from "components/NumberChart";
 import StudentDetails from "components/StudentWeek";
 import Rank from "components/Rank";
 
+
 function useAttendanceData() {
   const [attendanceData, setAttendanceData] = useState({});
 
   useEffect(() => {
     const fetchData = async () => {
-      const strands = ["STEM", "ICT", "ABM", "HUMSS", "GAS"]; // add other strands here
       const data = {};
-
-      for (const strand of strands) {
-        const sectionDocs = await getDocs(collection(db, strand));
-        sectionDocs.forEach((doc) => {
-          const fields = doc.data();
-          const section = doc.id;
-          if (!data[strand]) {
-            data[strand] = {};
+      const sectionDocs = await getDocs(collection(db, "STEM"));
+      sectionDocs.forEach((doc) => {
+        const fields = doc.data();
+        const section = doc.id;
+        if (!data[section]) {
+          data[section] = {};
+        }
+        Object.keys(fields).forEach((fieldName) => {
+          const studentId = fieldName.substring(0, 2);
+          const fieldNameWithoutNumber = fieldName.replace(/[0-9]/g, "");
+          if (!data[section][studentId]) {
+            data[section][studentId] = {};
           }
-          if (!data[strand][section]) {
-            data[strand][section] = {};
-          }
-          Object.keys(fields).forEach((fieldName) => {
-            const studentId = fieldName.substring(0, 2);
-            const fieldNameWithoutNumber = fieldName.replace(/[0-9]/g, "");
-            if (!data[strand][section][studentId]) {
-              data[strand][section][studentId] = {};
-            }
-            data[strand][section][studentId][fieldNameWithoutNumber] = fields[fieldName];
-          });
+          data[section][studentId][fieldNameWithoutNumber] = fields[fieldName];
         });
-      }
-
+      });
       console.log(data);
       setAttendanceData(data);
     };
@@ -47,7 +40,6 @@ function useAttendanceData() {
     attendanceData,
   };
 }
-
 
 function AttendanceTable() {
   const { attendanceData } = useAttendanceData();
