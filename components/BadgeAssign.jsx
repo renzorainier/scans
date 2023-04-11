@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, doc, setDoc } from "firebase/firestore";
 import { db } from "./firebase";
 
 function BadgeReader() {
@@ -10,6 +10,7 @@ function BadgeReader() {
       const querySnapshot = await getDocs(collection(db, "badges"));
       const documents = querySnapshot.docs.map((doc) => doc.data());
       setData(documents);
+      console.log(data)
     };
 
     fetchData();
