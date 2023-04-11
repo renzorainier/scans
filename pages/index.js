@@ -7,6 +7,7 @@ import { useState,useEffect } from "react";
 // import Generate from "components/Generate";
 import StudentCollection from "components/Create";
 import BadgeWriter from "components/Badge";
+import BadgeReader from "components/BadgeAssign";
 // import TabSelector from "components/Tab";
 import Main from "components/Main";
 
@@ -124,6 +125,7 @@ export default function Home() {
     <Main />
     <StudentCollection />
     <BadgeWriter />
+    <BadgeReader />
     </>
   );
 }
