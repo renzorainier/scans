@@ -192,6 +192,8 @@ function Scan() {
 
         // Check student's attendance status and update it
         let attendanceStatus = "";
+        let topNumber = "";
+
         const scheduleData = schedules[strand][section][currentDay];
 
         const startTimeParts = scheduleData.startTime.split(":");
@@ -206,6 +208,20 @@ function Scan() {
         if (timeDifference < -300000) {
           // Student is early (5 minutes before class start time)
           attendanceStatus = "early";
+          const badgeRef = doc(db, "badge", "tops");
+          const badgeDoc = await getDoc(badgeRef);
+          if (badgeDoc.exists()) {
+            const badgeData = badgeDoc.data();
+            let i = 1;
+            while (i <= 10) {
+              const fieldName = `${strand}_${section}_Top${i}`;
+              if (badgeData[fieldName] === true) {
+                topNumber = `Top${i}`;
+                break;
+              }
+              i++;
+            }
+          }
         } else if (timeDifference > 600000) {
           // Student is late (more than 10 minutes after class start time)
           attendanceStatus = "late";
@@ -245,6 +261,9 @@ function Scan() {
         studentData[`${id}status`] = attendanceStatus;
         studentData[`${id}dif`] = timeDifference;
 
+        if (topNumber !== "") {
+          studentData[`${id}badge`] = topNumber;
+        }
         await updateDoc(sectionRef, studentData);
         console.log(
           `Student ${id} marked as present with ${attendanceStatus} status`
@@ -326,6 +345,99 @@ function Scan() {
   }
 
 export default Scan;
+
+// const markStudentPresent = async (code) => {
+//   const [strand, section, id, lrn] = code.split("-");
+//   const sectionRef = doc(db, strand, section);
+//   const sectionDoc = await getDoc(sectionRef);
+//   if (sectionDoc.exists()) {
+//     const sectionData = sectionDoc.data();
+//     const studentKeys = Object.keys(sectionData).filter(
+//       (key) => key.startsWith(id) && key.endsWith("lastScan")
+//     );
+//     if (studentKeys.length > 0) {
+//       const studentData = {};
+//       studentKeys.forEach((key) => {
+//         studentData[key] = new Date();
+//       });
+//       const currentDay = new Date().toLocaleDateString("en-US", {
+//         weekday: "long",
+//       });
+
+//       // Check student's attendance status and update it
+//       let attendanceStatus = "";
+//       let topNumber = "";
+
+//       const scheduleData = schedules[strand][section][currentDay];
+
+//       const startTimeParts = scheduleData.startTime.split(":");
+//       const classStartTime = new Date();
+//       classStartTime.setHours(parseInt(startTimeParts[0]));
+//       classStartTime.setMinutes(parseInt(startTimeParts[1]));
+//       classStartTime.setSeconds(parseInt(startTimeParts[2]));
+
+//       const scanTime = new Date();
+//       const timeDifference = scanTime.getTime() - classStartTime.getTime();
+
+//       if (timeDifference < -300000) {
+//         // Student is early (5 minutes before class start time)
+//         attendanceStatus = "early";
+//         const badgeRef = doc(db, "badge", "tops");
+//         const badgeDoc = await getDoc(badgeRef);
+//         if (badgeDoc.exists()) {
+//           const badgeData = badgeDoc.data();
+//           let i = 1;
+//           while (i <= 10) {
+//             const fieldName = `${strand}_${section}_Top${i}`;
+//             if (badgeData[fieldName] === true) {
+//               topNumber = `Top${i}`;
+//               break;
+//             }
+//             i++;
+//           }
+//         }
+//       } else if (timeDifference > 600000) {
+//         // Student is late (more than 10 minutes after class start time)
+//         attendanceStatus = "late";
+//       } else {
+//         // Student is on time (within 10 minutes of class start time)
+//         attendanceStatus = "ontime";
+//       }
+
+//       const dayOfWeek = currentDay.substring(0, 3);
+//       let dayCode;
+//       switch (dayOfWeek) {
+//         case "Mon":
+//           dayCode = "A";
+//           break;
+//         case "Tue":
+//           dayCode = "B";
+//           break;
+//         case "Wed":
+//           dayCode = "C";
+//           break;
+//         case "Thu":
+//           dayCode = "D";
+//           break;
+//         case "Fri":
+//           dayCode = "E";
+//           break;
+//         default:
+//           dayCode = "X"; // Use "X" as the default code if the day is not recognized
+//       }
+
+//       const lastScanField = `${id}${dayCode}`;
+//       const attendanceStatusField = `${id}${dayCode}s`;
+
+//       studentData[lastScanField] = new Date();
+//       studentData[attendanceStatusField] = attendanceStatus;
+//       studentData[`${id}present`] = true;
+//       studentData[`${id}status`] = attendanceStatus;
+//       studentData[`${id}dif`] = timeDifference;
+
+//       if (topNumber !== "") {
+//         studentData[`${id}badge`] = topNumber;
+//       }
 
 
 
