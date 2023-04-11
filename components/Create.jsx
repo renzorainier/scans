@@ -434,7 +434,7 @@ function StudentCollection() {
   // { id: "03", lrn: "114235070063", na  me: "BUCOG, JESSIELYN", section: "1B", strand: "STEM", present: false },
 
   const createCollection = async () => {
-    const sectionDocRef = doc(db, "STEM", "1B");
+    const sectionDocRef = doc(db, "STEM", "STEM1B");
     const sectionData = {};
 
     students.forEach((student) => {
