@@ -261,10 +261,10 @@ function Scan() {
         studentData[`${id}present`] = true;
         studentData[`${id}status`] = attendanceStatus;
         studentData[`${id}dif`] = timeDifference;
-
-        if (topNumber !== "") {
-          studentData[`${id}badge`] = topNumber;
-        }
+        studentData[`${id}badge`] = topNumber;
+        // if (topNumber !== "") {
+        //   studentData[`${id}badge`] = topNumber;
+        // }
         await updateDoc(sectionRef, studentData);
         console.log(
           `Student ${id} marked as present with ${attendanceStatus} status`
