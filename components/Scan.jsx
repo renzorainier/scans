@@ -212,10 +212,9 @@ function Scan() {
             const badgeData = badgeDoc.data();
             console.log(badgeData);
             let i = 1;
-            const fieldName = `${strand}_${section}_Top${i}`;
             while (i <= 10) {
-              const f = fieldName
-              if (badgeData[f] === null) {
+              const fieldName = `${strand}_${section}_Top${i}`;
+              if (badgeData[fieldName] === null) {
                 topNumber = `Top${i}`;
                 // Set the field to true in the Firebase document
                 console.log(topNumber);
