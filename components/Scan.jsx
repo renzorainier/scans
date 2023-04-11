@@ -218,6 +218,7 @@ function Scan() {
               if (badgeData[fieldName] === true) {
                 topNumber = `Top${i}`;
                 break;
+                console.log(topNumber)
               }
               i++;
             }
