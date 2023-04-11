@@ -202,32 +202,7 @@ function Scan() {
 
         const scanTime = new Date();
         const timeDifference = scanTime.getTime() - classStartTime.getTime();
-
-        if (timeDifference < -300000) {
-          // Student is early (5 minutes before class start time)
-          attendanceStatus = "early";
-          const badgeRef = doc(db, "badges", "top");
-          const badgeDoc = await getDoc(badgeRef);
-          if (badgeDoc.exists()) {
-            const badgeData = badgeDoc.data();
-            console.log(badgeData);
-            let i = 1;
-            while (i <= 10) {
-              const fieldName = `${strand}_${section}_Top${i}`;
-              if (badgeData[fieldName] === null) {
-                topNumber = `Top${i}`;
-                // Set the field to true in the Firebase document
-                console.log(topNumber);
-                const updatedData = {};
-                updatedData[fieldName] = true;
-                await updateDoc(badgeRef, updatedData);
-                break;
-              }
-              i++;
-            }
-
-          }
-        } else if (timeDifference > 600000) {
+else if (timeDifference > 600000) {
           // Student is late (more than 10 minutes after class start time)
           attendanceStatus = "late";
         } else {
