@@ -223,7 +223,7 @@ function Scan() {
               if (badgeData[fieldName] === null) {
                 topNumber = `Top${i}`;
                 console.log(topNumber);
-                return updateFirebaseDocument(badgeRef, fieldName); // call function to update document
+                // return updateFirebaseDocument(badgeRef, fieldName); // call function to update document
               }
               i++;
             }
