@@ -84,6 +84,16 @@ function BadgeWriter() {
         STEM_1C_Top8: "",
         STEM_1C_Top9: "",
         STEM_1C_Top10: "",
+        STEM_1C_Top1t: "",
+        STEM_1C_Top2t: "",
+        STEM_1C_Top3t: "",
+        STEM_1C_Top4t: "",
+        STEM_1C_Top5t: "",
+        STEM_1C_Top6t: "",
+        STEM_1C_Top7t: "",
+        STEM_1C_Top8t: "",
+        STEM_1C_Top9t: "",
+        STEM_1C_Top10t: "",
 
         STEM_1D_Top1: "",
         STEM_1D_Top2: "",
@@ -95,6 +105,16 @@ function BadgeWriter() {
         STEM_1D_Top8: "",
         STEM_1D_Top9: "",
         STEM_1D_Top10: "",
+        STEM_1D_Top1t: "",
+        STEM_1D_Top2t: "",
+        STEM_1D_Top3t: "",
+        STEM_1D_Top4t: "",
+        STEM_1D_Top5t: "",
+        STEM_1D_Top6t: "",
+        STEM_1D_Top7t: "",
+        STEM_1D_Top8t: "",
+        STEM_1D_Top9t: "",
+        STEM_1D_Top10t: "",
       });
       console.log("Data successfully written to Firebase!");
     } catch (error) {
