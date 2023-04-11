@@ -212,19 +212,19 @@ function Scan() {
             const badgeData = badgeDoc.data();
             console.log(badgeData);
             let i = 1;
-            const fieldName = `${strand}_${section}_Top${i}`;
             while (i <= 10) {
+              const fieldName = `${strand}_${section}_Top${i}`;
               if (badgeData[fieldName] === null) {
                 topNumber = `Top${i}`;
+                // Set the field to true in the Firebase document
+                console.log(topNumber);
+                const updatedData = {};
+                updatedData[fieldName] = true;
+                await updateDoc(badgeRef, updatedData);
                 break;
               }
               i++;
             }
-            // Set the field to true in the Firebase document
-            console.log(topNumber);
-            const updatedData = {};
-            updatedData[fieldName] = true;
-            await updateDoc(badgeRef, updatedData);
           }
         } else if (timeDifference > 600000) {
           // Student is late (more than 10 minutes after class start time)
