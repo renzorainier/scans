@@ -22,7 +22,7 @@ function BadgeReader() {
       {data.map((doc) => (
         <div key={doc.id}>
           <h3>{doc.title}</h3>
-          <p>{doc.content}</p>
+          <p>{doc.top2}</p>
         </div>
       ))}
     </div>
