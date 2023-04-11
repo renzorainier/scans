@@ -10,46 +10,44 @@ function Scan() {
   const [scannedCodes, setScannedCodes] = useState(new Set());
 
   const mappingTable = {
-    "Z": "0",
-    "X": "1",
-    "C": "2",
-    "V": "3",
-    "B": "4",
-    "N": "5",
-    "M": "6",
+    Z: "0",
+    X: "1",
+    C: "2",
+    V: "3",
+    B: "4",
+    N: "5",
+    M: "6",
     "-": "-",
-    "L": "8",
-    "K": "9",
-    "D": "7",
-    "Q": "A",
-    "R": "B",
-    "E": "C",
-    "F": "D",
-    "G": "E",
-    "H": "F",
-    "I": "G",
-    "J": "H",
-    "P": "I",
-    "S": "J",
-    "U": "K",
-    "Y": "L",
-    "A": "M",
-    "O": "N",
-    "W": "O",
-    "T": "P",
-    "1": "Q",
-    "2": "R",
-    "3": "S",
-    "4": "T",
-    "5": "U",
-    "6": "V",
-    "7": "W",
-    "8": "X",
-    "9": "Y",
-    "0": "Z"
+    L: "8",
+    K: "9",
+    D: "7",
+    Q: "A",
+    R: "B",
+    E: "C",
+    F: "D",
+    G: "E",
+    H: "F",
+    I: "G",
+    J: "H",
+    P: "I",
+    S: "J",
+    U: "K",
+    Y: "L",
+    A: "M",
+    O: "N",
+    W: "O",
+    T: "P",
+    1: "Q",
+    2: "R",
+    3: "S",
+    4: "T",
+    5: "U",
+    6: "V",
+    7: "W",
+    8: "X",
+    9: "Y",
+    0: "Z",
   };
-
-
 
   const schedules = {
     STEM: {
@@ -212,13 +210,14 @@ function Scan() {
           const badgeDoc = await getDoc(badgeRef);
           if (badgeDoc.exists()) {
             const badgeData = badgeDoc.data();
+            console.log(badgeData);
             let i = 1;
             while (i <= 10) {
               const fieldName = `${strand}_${section}_Top${i}`;
               if (badgeData[fieldName] === true) {
                 topNumber = `Top${i}`;
                 break;
-                console.log(topNumber)
+                console.log(topNumber);
               }
               i++;
             }
@@ -318,11 +317,14 @@ function Scan() {
           if (!!result) {
             const code = result.text;
             if (code !== lastScanned) {
-              const decodedCode = code.split('').map((char) => mappingTable[char] || '').join('');
+              const decodedCode = code
+                .split("")
+                .map((char) => mappingTable[char] || "")
+                .join("");
               setLastScanned(code);
               handleMarkPresent(decodedCode);
-              console.log(decodedCode)
-              console.log(result)
+              console.log(decodedCode);
+              console.log(result);
             }
           }
         }}
@@ -343,7 +345,7 @@ function Scan() {
       </div>
     </div>
   );
-  }
+}
 
 export default Scan;
 
@@ -440,23 +442,16 @@ export default Scan;
 //         studentData[`${id}badge`] = topNumber;
 //       }
 
-
-
-
-
-        // studentData[`${id}A`] = scanTime;
-        // studentData[`${id}As`] = attendanceStatus;
-        // studentData[`${id}B`] = scanTime;
-        // studentData[`${id}Bs`] = attendanceStatus;
-        // studentData[`${id}C`] = scanTime;
-        // studentData[`${id}Cs`] = attendanceStatus;
-        // studentData[`${id}D`] = scanTime;
-        // studentData[`${id}Ds`] = attendanceStatus;
-        // studentData[`${id}E`] = scanTime;
-        // studentData[`${id}Es`] = attendanceStatus;
-
-
-
+// studentData[`${id}A`] = scanTime;
+// studentData[`${id}As`] = attendanceStatus;
+// studentData[`${id}B`] = scanTime;
+// studentData[`${id}Bs`] = attendanceStatus;
+// studentData[`${id}C`] = scanTime;
+// studentData[`${id}Cs`] = attendanceStatus;
+// studentData[`${id}D`] = scanTime;
+// studentData[`${id}Ds`] = attendanceStatus;
+// studentData[`${id}E`] = scanTime;
+// studentData[`${id}Es`] = attendanceStatus;
 
 // const handleMarkPresent = async (strand, section, id) => {
 //   // Get student data from Firestore
