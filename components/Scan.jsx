@@ -220,7 +220,7 @@ function Scan() {
                 console.log(topNumber);
                 const updatedData = {};
                 updatedData[fieldName] = true;
-                await updateDoc(badgeRef, updatedData);
+                updateDoc(badgeRef, updatedData);
                 break;
               }
               i++;
