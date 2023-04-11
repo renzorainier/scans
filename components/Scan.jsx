@@ -203,6 +203,12 @@ function Scan() {
         const scanTime = new Date();
         const timeDifference = scanTime.getTime() - classStartTime.getTime();
 
+        async function updateFirebaseDocument(ref, fieldName) {
+          const updatedData = {};
+          updatedData[fieldName] = true;
+          await updateDoc(ref, updatedData);
+        }
+
         if (timeDifference < -300000) {
           // Student is early (5 minutes before class start time)
           attendanceStatus = "early";
@@ -233,11 +239,7 @@ function Scan() {
           attendanceStatus = "ontime";
         }
 
-        async function updateFirebaseDocument(ref, fieldName) {
-          const updatedData = {};
-          updatedData[fieldName] = true;
-          await updateDoc(ref, updatedData);
-        }
+
 
         const dayOfWeek = currentDay.substring(0, 3);
         let dayCode;
