@@ -410,6 +410,53 @@ export default AttendanceTable;
 
 
 
+// function useAttendanceData() {
+//   const [attendanceData, setAttendanceData] = useState({});
+
+//   useEffect(() => {
+//     const fetchData = async () => {
+//       const strands = ["STEM", "ICT", "ABM", "HUMSS", "GAS"]; // add other strands here
+//       const data = {};
+
+//       for (const strand of strands) {
+//         const sectionDocs = await getDocs(collection(db, strand));
+//         sectionDocs.forEach((doc) => {
+//           const fields = doc.data();
+//           const section = doc.id;
+//           if (!data[strand]) {
+//             data[strand] = {};
+//           }
+//           if (!data[strand][section]) {
+//             data[strand][section] = {};
+//           }
+//           Object.keys(fields).forEach((fieldName) => {
+//             const studentId = fieldName.substring(0, 2);
+//             const fieldNameWithoutNumber = fieldName.replace(/[0-9]/g, "");
+//             if (!data[strand][section][studentId]) {
+//               data[strand][section][studentId] = {};
+//             }
+//             data[strand][section][studentId][fieldNameWithoutNumber] = fields[fieldName];
+//           });
+//         });
+//       }
+
+//       console.log(data);
+//       setAttendanceData(data);
+//     };
+
+//     fetchData();
+//   }, []);
+
+//   return {
+//     attendanceData,
+//   };
+// }
+
+
+
+
+
+
 
 // can you add this search section and name fucntionality to the present setudents like this" useEffect(() => {
 //   const filteredStudents = todayAttendance.filter(
