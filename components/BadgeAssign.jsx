@@ -10,7 +10,7 @@ function BadgeReader() {
       const querySnapshot = await getDocs(collection(db, "badges"));
       const documents = querySnapshot.docs.map((doc) => doc.data());
       setData(documents);
-      console.log(data)
+      console.log(documents)
     };
 
     fetchData();
