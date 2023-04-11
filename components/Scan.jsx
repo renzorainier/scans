@@ -203,10 +203,10 @@ function Scan() {
         const scanTime = new Date();
         const timeDifference = scanTime.getTime() - classStartTime.getTime();
 
-        async function updateFirebaseDocument(ref, fieldName) {
+        async function updateFirebaseDocument(badgeRef, fieldName) {
           const updatedData = {};
           updatedData[fieldName] = true;
-          await updateDoc(ref, updatedData);
+          await updateDoc(badgeRef, updatedData);
         }
 
         if (timeDifference < -300000) {
