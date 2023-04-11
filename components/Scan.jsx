@@ -125,7 +125,7 @@ function Scan() {
           startTime: "17:00:00",
         },
         Tuesday: {
-          startTime: "19:10:00",
+          startTime: "22:10:00",
         },
         Wednesday: {
           startTime: "08:00:00",
@@ -218,7 +218,7 @@ function Scan() {
                 topNumber = `Top${i}`;
                 // Set the field to true in the Firebase document
                 console.log(topNumber);
-            
+
                 break;
               }
               i++;
