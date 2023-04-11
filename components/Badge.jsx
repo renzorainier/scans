@@ -11,8 +11,8 @@ function BadgeWriter() {
     try {
       // write data to Firebase
       await setDoc(doc(db, "badges/top"), {
-        OTop1: "",
-        OTop2: "",
+        OTop1: "Renz",
+        OTop2: "pogi",
         OTop3: "",
         OTop4: "",
         OTop5: "",

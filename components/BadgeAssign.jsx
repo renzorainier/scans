@@ -7,7 +7,7 @@ function BadgeReader() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const querySnapshot = await getDocs(collection(db, "badges/top"));
+      const querySnapshot = await getDocs(collection(db, "badges"));
       const documents = querySnapshot.docs.map((doc) => doc.data());
       setData(documents);
     };
