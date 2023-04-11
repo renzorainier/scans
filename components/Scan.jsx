@@ -218,7 +218,9 @@ function Scan() {
                 topNumber = `Top${i}`;
                 // Set the field to true in the Firebase document
                 console.log(topNumber);
-
+                const updatedData = {};
+                updatedData[fieldName] = true;
+                await updateDoc(badgeRef, updatedData);
                 break;
               }
               i++;
