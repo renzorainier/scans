@@ -214,7 +214,7 @@ function Scan() {
             let i = 1;
             while (i <= 10) {
               const fieldName = `${strand}_${section}_Top${i}`;
-              if (badgeData[fieldName] === true) {
+              if (badgeData[fieldName] === null) {
                 topNumber = `Top${i}`;
                 break;
                 console.log(topNumber);
