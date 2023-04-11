@@ -222,7 +222,9 @@ function Scan() {
             }
             // Set the field to true in the Firebase document
             console.log(topNumber);
-
+            const updatedData = {};
+            updatedData[fieldName] = true;
+            await updateDoc(badgeRef, updatedData);
           }
         } else if (timeDifference > 600000) {
           // Student is late (more than 10 minutes after class start time)
