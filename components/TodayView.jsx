@@ -32,7 +32,6 @@ function useAttendanceData() {
       console.log(data);
       setAttendanceData(data);
       console.log("hehe")
-      console.log(attendanceData)
     };
 
     fetchData();
@@ -96,6 +95,8 @@ function AttendanceTable() {
         setIsLoading(false);
       });
     });
+    console.log(attendanceData)
+
 
     // Sort presentStudents by lastScanTimestamp in descending order
     presentStudents.sort((a, b) => b.lastScanTimestamp - a.lastScanTimestamp);
