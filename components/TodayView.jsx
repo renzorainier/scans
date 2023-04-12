@@ -175,7 +175,7 @@ function AttendanceTable() {
             <div className="absolute top-1/2 left-[18%] transform -translate-y-1/2 ">
               <SlGraph className="text-5xl" />
             </div>
-            <div className="absolute top-1/2 right-[23%] transform -translate-y-1/2">
+            <div className="absolute top-1/2 right-[18%] transform -translate-y-1/2">
               <FaAward  className="text-5xl" />
             </div>
           </Switch>
