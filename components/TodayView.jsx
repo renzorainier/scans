@@ -51,7 +51,7 @@ function AttendanceTable() {
   const [infoText, setInfoText] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const [selectedStudent, setSelectedStudent] = useState(null);
-  const [state, setState] = useState(true);
+  const [state, setState] = useState(false);
   const [enabled, setEnabled] = useState(false);
 
   const onClose = () => {
@@ -163,7 +163,7 @@ function AttendanceTable() {
             checked={state}
             onChange={setState}
             className={`${state ? "bg-gray-300" : "bg-gray-300"}
-          relative inline-flex h-[30%] w-full shrink-0 cursor-pointer rounded-lg border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-2  focus-visible:ring-white focus-visible:ring-opacity-75`}
+          relative inline-flex h-[38px] w-full shrink-0 cursor-pointer rounded-lg border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-2  focus-visible:ring-white focus-visible:ring-opacity-75`}
           >
             <span
               aria-hidden="true"
