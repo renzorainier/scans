@@ -164,7 +164,7 @@ function AttendanceTable() {
 
 
   return (
-    <div>
+    <div classname="flex justify-center pt-5 pb-5 items-center">
  <div className="py-5">
       <Switch
         checked={enabled}
