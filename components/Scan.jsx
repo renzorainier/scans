@@ -9,10 +9,6 @@ function Scan() {
   const [log, setLog] = useState([]);
   const [scannedCodes, setScannedCodes] = useState(new Set());
 
-  let fieldName;
-  let badgeRef;
-  let updatedData;
-
   const mappingTable = {
     Z: "0",
     X: "1",
@@ -211,32 +207,7 @@ function Scan() {
         if (timeDifference < -300000) {
           // Student is early (5 minutes before class start time)
           attendanceStatus = "early";
-          badgeRef = doc(db, "badges", "top");
-          const badgeDoc = await getDoc(badgeRef);
-          if (badgeDoc.exists()) {
-            const badgeData = badgeDoc.data();
-            console.log(badgeData);
-            let i = 1;
-            let fieldFound = false;
-            while (i <= 10 && !fieldFound) {
-              const fieldName = `${strand}_${section}_Top${i}`;
-              if (badgeData[fieldName] !== true) {
-                badgeFieldName = fieldName;
-                fieldFound = true;
-              }
-              i++;
-            }
-            if (fieldFound) {
-              // Set the field to true in the Firebase document
-              studentData[`${id}badge`] = badgeFieldName.substring(badgeFieldName.length - 3);
-              updatedData = {};
-              updatedData[badgeFieldName] = true;
-              await updateDoc(badgeRef, updatedData);
-            }
-          }
-        }
-
-         else if (timeDifference > 600000) {
+        } else if (timeDifference > 600000) {
           // Student is late (more than 10 minutes after class start time)
           attendanceStatus = "late";
         } else {
@@ -274,12 +245,8 @@ function Scan() {
         studentData[`${id}present`] = true;
         studentData[`${id}status`] = attendanceStatus;
         studentData[`${id}dif`] = timeDifference;
-        // studentData[`${id}badge`] = badgeFieldName;
-        // if (topNumber !== "") {
-        //   studentData[`${id}badge`] = topNumber;
-        // }
+
         await updateDoc(sectionRef, studentData);
-        // await updateDoc(badgeRef, updatedData);
         console.log(
           `Student ${id} marked as present with ${attendanceStatus} status`
         );
