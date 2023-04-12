@@ -54,7 +54,6 @@ function AttendanceTable() {
   const [state, setState] = useState(true);
   const [enabled, setEnabled] = useState(false);
 
-
   const onClose = () => {
     setSelectedStudent(null);
   };
@@ -158,7 +157,7 @@ function AttendanceTable() {
 
   return (
     <div>
-      <div className="flex justify-center pt-5 pb-5 items-center">
+      <div className="flex justify-center pt-5 items-center">
         <div className="w-full rounded-lg mx-auto" style={{ maxWidth: "90%" }}>
           <Switch
             checked={state}
@@ -181,6 +180,10 @@ function AttendanceTable() {
           style={{ maxWidth: "90%" }}
         >
           {state ? (
+            <div>
+              <Rank data={attendanceData} />
+            </div>
+          ) : (
             <div>
               <div>
                 <div className="bg-gray-200 relative rounded-lg">
@@ -377,10 +380,6 @@ function AttendanceTable() {
                   )}
                 </div>
               </div>
-            </div>
-          ) : (
-            <div>
-              <Rank data={attendanceData} />
             </div>
           )}
         </div>
