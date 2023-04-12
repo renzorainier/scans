@@ -8,6 +8,7 @@ function Scan() {
   const [data, setData] = useState("");
   const [log, setLog] = useState([]);
   const [scannedCodes, setScannedCodes] = useState(new Set());
+  let badgeRef, updatedData;
 
   const mappingTable = {
     Z: "0",
