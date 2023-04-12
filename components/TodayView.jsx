@@ -54,9 +54,6 @@ function AttendanceTable() {
   const [state, setState] = useState(true);
   const [enabled, setEnabled] = useState(false);
 
-  const handleToggle = (value) => {
-    setState(value);
-  };
 
   const onClose = () => {
     setSelectedStudent(null);
@@ -178,8 +175,6 @@ function AttendanceTable() {
         </div>
       </div>
 
-      <button onClick={() => handleToggle(true)}>Show A</button>
-      <button onClick={() => handleToggle(false)}>Show B</button>
       <div className="flex justify-center pt-5 pb-5 items-center">
         <div
           className="w-full text-gray-700 bg-white p-5  rounded-lg shadow-lg mx-auto"
