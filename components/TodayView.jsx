@@ -157,22 +157,29 @@ function AttendanceTable() {
 
   return (
     <div>
-      <div className="flex justify-center pt-5 items-center">
-        <div className="w-full rounded-lg mx-auto" style={{ maxWidth: "90%" }}>
-          <Switch
-            checked={state}
-            onChange={setState}
-            className={`${state ? "bg-gray-300" : "bg-gray-300"}
-          relative inline-flex h-[75px] w-full shrink-0 cursor-pointer rounded-lg border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-2  focus-visible:ring-white focus-visible:ring-opacity-75`}
-          >
-            <span
-              aria-hidden="true"
-              className={`${state ? "translate-x-[100%]" : "translate-x-0"}
-            pointer-events-none inline-block h-[71px] w-[50%] transform rounded-lg bg-white shadow-lg ring-0 transition duration-200 ease-in-out`}
-            />
-          </Switch>
-        </div>
-      </div>
+      <div className="flex justify-center pt-5 items-center relative">
+  <div className="w-full rounded-lg mx-auto" style={{ maxWidth: "90%" }}>
+    <span className="absolute top-0 left-0 transform -translate-y-full">
+      Left Word
+    </span>
+    <span className="absolute top-0 right-0 transform -translate-y-full">
+      Right Word
+    </span>
+    <Switch
+      checked={state}
+      onChange={setState}
+      className={`${state ? "bg-gray-300" : "bg-gray-300"}
+      relative inline-flex h-[75px] w-full shrink-0 cursor-pointer rounded-lg border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-2  focus-visible:ring-white focus-visible:ring-opacity-75`}
+    >
+      <span
+        aria-hidden="true"
+        className={`${state ? "translate-x-[100%]" : "translate-x-0"}
+        pointer-events-none inline-block h-[71px] w-[50%] transform rounded-lg bg-white shadow-lg ring-0 transition duration-200 ease-in-out`}
+      />
+    </Switch>
+  </div>
+</div>
+
 
       <div className="flex justify-center pt-5 pb-5 items-center">
         <div
