@@ -52,9 +52,6 @@ function AttendanceTable() {
   const [selectedStudent, setSelectedStudent] = useState(null);
   const [state, setState] = useState(true);
 
-  const [toggle, setToggle] = useState(true);
-
-  const toggleClass = ' transform translate-x-5';
 
   const handleToggle = (value) => {
     setState(value);
@@ -166,19 +163,7 @@ function AttendanceTable() {
 
   return (
     <div>
-      <div
-      className="md:w-14 md:h-7 w-12 h-6 flex items-center bg-gray-300 rounded-full p-1 cursor-pointer"
-      onClick={() => {
-        setToggle(!toggle);
-      }}
-    >
 
-      <div
-        className =  {"bg-white md:w-6 md:h-6 h-5 w-5 rounded-full shadow-md transform" +  (toggle ? null : toggleClass)}
-      >
-</div>
-
-</div>
 
       <button onClick={() => handleToggle(true)}>Show A</button>
       <button onClick={() => handleToggle(false)}>Show B</button>
