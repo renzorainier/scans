@@ -172,10 +172,10 @@ function AttendanceTable() {
               className={`${state ? "translate-x-[100%]" : "translate-x-0"}
           pointer-events-none inline-block h-[71px] w-[50%] transform rounded-lg bg-white shadow-lg ring-0 transition duration-200 ease-in-out`}
             />
-            <div className="absolute top-1/2 left-[23%] transform -translate-y-1/2">
+            <div className="absolute top-1/2 left-[23%] transform -translate-y-1/2  scale-150">
               <SlGraph />
             </div>
-            <div className="absolute top-1/2 right-1/4 transform -translate-y-1/2">
+            <div className="absolute top-1/2 right-[23%] transform -translate-y-1/2">
             <FaAward />
 
             </div>
