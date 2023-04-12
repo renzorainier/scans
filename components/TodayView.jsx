@@ -95,7 +95,6 @@ function AttendanceTable() {
         setIsLoading(false);
       });
     });
-    console.log(attendanceData)
 
 
     // Sort presentStudents by lastScanTimestamp in descending order
