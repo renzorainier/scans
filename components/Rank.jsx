@@ -68,16 +68,16 @@ function Rank({ data, onClose }) {
           </button>
           <h2>Overall Top 10 Earliest Students</h2>
       <ol>
-        {overallEarliest.map(({ name, student, formattedTime }) => (
-          <li key={student}>{name}- {formattedTime}</li>
+        {overallEarliest.map(({ name, student, sec,   formattedTime }) => (
+          <li key={student}>{name}- {formattedTime} - {sec}</li>
         ))}
       </ol>
       {Object.keys(earliestStudents).map((section) => (
         <div key={section}>
           <h2>{section}</h2>
           <ol>
-            {earliestStudents[section].map(({ name, student, section,  formattedTime }) => (
-              <li key={student}>{name} - {formattedTime} - {section}</li>
+            {earliestStudents[section].map(({ name, student, formattedTime }) => (
+              <li key={student}>{name} - {formattedTime} </li>
             ))}
           </ol>
         </div>
