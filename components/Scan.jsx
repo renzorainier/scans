@@ -218,21 +218,27 @@ function Scan() {
             let i = 1;
             let nullFieldFound = false;
             while (i <= 10 && !nullFieldFound) {
-              fieldName = `${strand}_${section}_Top${i}`;
+              const fieldName = `${strand}_${section}_Top${i}`;
               if (badgeData[fieldName] === null) {
                 topNumber = `Top${i}`;
                 // Set the field to true in the Firebase document
                 console.log(topNumber);
                 if (topNumber !== "") {
                   studentData[`${id}badge`] = topNumber;
-                  nullFieldFound = true;
+                  updatedData = {};
+                  updatedData[fieldName] = true;
                 }
+                nullFieldFound = true;
               }
               i++;
             }
+            if (nullFieldFound) {
+              await updateDoc(badgeRef, updatedData);
+              // await updateDoc(sectionRef, studentData);
+            }
           }
-          // await updateDoc(badgeRef, { [fieldName]: true });
-        } else if (timeDifference > 600000) {
+        }
+         else if (timeDifference > 600000) {
           // Student is late (more than 10 minutes after class start time)
           attendanceStatus = "late";
         } else {
