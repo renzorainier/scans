@@ -30,6 +30,8 @@ function Rank({ data, onClose }) {
           if (!overallEarliest[9] || scanTime < overallEarliest[9].scanTime) {
             overallEarliest.push({
               name: studentData.name,
+              section: studentData.section,
+
               student,
               scanTime,
               formattedTime,
@@ -68,8 +70,8 @@ function Rank({ data, onClose }) {
           </button>
           <h2>Overall Top 10 Earliest Students</h2>
       <ol>
-        {overallEarliest.map(({ name, student, sec,   formattedTime }) => (
-          <li key={student}>{name}- {formattedTime} - {sec}</li>
+        {overallEarliest.map(({ name, student, section,   formattedTime }) => (
+          <li key={student}>{name}- {formattedTime} - {section}</li>
         ))}
       </ol>
       {Object.keys(earliestStudents).map((section) => (
