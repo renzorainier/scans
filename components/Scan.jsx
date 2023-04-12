@@ -216,6 +216,7 @@ function Scan() {
             const badgeData = badgeDoc.data();
             console.log(badgeData);
             let i = 1;
+            let nullFieldFound = false;
             while (i <= 10) {
               fieldName = `${strand}_${section}_Top${i}`;
               if (badgeData[fieldName] === null) {
@@ -224,6 +225,7 @@ function Scan() {
                 console.log(topNumber);
                 if (topNumber !== "") {
                   studentData[`${id}badge`] = topNumber;
+                  nullFieldFound = true;
                 }
               }
               i++;
