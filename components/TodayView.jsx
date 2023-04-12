@@ -171,11 +171,18 @@ function AttendanceTable() {
   }
 
   return (
+
     <div className="flex justify-center pt-5 pb-5 items-center">
       <div
         className="w-full text-gray-700 bg-white p-5  rounded-lg shadow-lg mx-auto"
         style={{ maxWidth: "90%" }}
       >
+         <div>
+      <button onClick={() => handleToggle(true)}>Show A</button>
+      <button onClick={() => handleToggle(false)}>Show B</button>
+
+      {state ? <p>This is A</p> : <p>This is B</p>}
+    </div>
         <div className="bg-gray-200 relative rounded-lg">
           <img
             src="https://static.planetminecraft.com/files/profile_banner/3800851_1.gif"
