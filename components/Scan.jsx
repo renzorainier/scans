@@ -323,25 +323,31 @@ function Scan() {
 
   return (
     <div>
-      <QrReader
-        onResult={async (result) => {
-          if (!!result) {
-            const code = result.text;
-            if (code !== lastScanned) {
-              const decodedCode = code
-                .split("")
-                .map((char) => mappingTable[char] || "")
-                .join("");
-              setLastScanned(code);
-              handleMarkPresent(decodedCode);
-              console.log(decodedCode);
-              console.log(result);
-            }
-          }
-        }}
-        constraints={{ facingMode: "environment" }}
-        style={{ width: "100%", height: "100%" }}
-      />
+     <QrReader
+  onResult={async (result) => {
+    if (!!result) {
+      const code = result.text;
+      if (code !== lastScanned) {
+        const decodedCode = code
+          .split("")
+          .map((char) => mappingTable[char] || "")
+          .join("");
+        // Add delay before scanning next QR code
+        if (!isScanning) {
+          setIsScanning(true);
+          setLastScanned(code);
+          handleMarkPresent(decodedCode);
+          setTimeout(() => {
+            setIsScanning(false);
+          }, 2000);
+        }
+      }
+    }
+  }}
+  constraints={{ facingMode: "environment" }}
+  style={{ width: "100%", height: "100%" }}
+/>
+
       <p className="text-xl font-bold mt-6">Scan result:</p>
       <p className="text-xl">{data}</p>
       <h1 className="text-3xl font-semibold mt-8">Recent Logs</h1>
