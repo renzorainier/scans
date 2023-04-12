@@ -175,7 +175,7 @@ function AttendanceTable() {
         <span className="sr-only">Use setting</span>
         <span
           aria-hidden="true"
-          className={`${enabled ? 'translate-x-9' : 'translate-x-0'}
+          className={`${enabled ? 'translate-x-20' : 'translate-x-0'}
             pointer-events-none inline-block h-[34px] w-[34px] transform rounded-lg bg-white shadow-lg ring-0 transition duration-200 ease-in-out`}
         />
       </Switch>
