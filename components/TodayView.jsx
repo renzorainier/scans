@@ -165,7 +165,7 @@ function AttendanceTable() {
 
   return (
     <div>
- <div className="py-16">
+ <div className="py-5">
       <Switch
         checked={enabled}
         onChange={setEnabled}
