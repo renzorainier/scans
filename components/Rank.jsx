@@ -1,53 +1,14 @@
-import React, { useState, useEffect } from "react";
+function Rank({ data, onClose }) {
+console.log(data)
 
-
-function Rank({ data }) {
-  // Create an array of sections from the keys of the data object
-  const sections = Object.keys(data);
-
-  // Create an object to hold the top 10 students for each section
-  const top10Students = {};
-
-  // Loop through each section and find the top 10 students based on their lastScan field
-  sections.forEach(section => {
-    // Create an array of students for the current section from the keys of the section object
-    const students = Object.keys(data[section]);
-
-    // Sort the students by their lastScan field in ascending order (earliest scans first)
-    const sortedStudents = students.sort((a, b) => {
-      const aLastScan = data[section][a].lastScan;
-      const bLastScan = data[section][b].lastScan;
-      return aLastScan - bLastScan;
-    });
-
-    // Slice the first 10 students from the sorted array and add them to the top10Students object
-    top10Students[section] = sortedStudents.slice(0, 10);
-  });
-
-  // Render the component with the top 10 students for each section
   return (
-    <div>
-      {sections.map(section => (
-        <div key={section}>
-          <h2>{section}</h2>
-          <ul>
-            {top10Students[section].map(studentId => {
-              const studentData = data[section][studentId];
-              return (
-                <li key={studentId}>
-                  {`${studentData.firstName} ${studentData.lastName} (${studentData.lastScan})`}
-                </li>
-              );
-            })}
-          </ul>
-        </div>
-      ))}
-    </div>
+<div>
+  hehe
+</div>
   );
 }
 
 export default Rank;
-
 
 
 
