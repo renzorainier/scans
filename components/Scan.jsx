@@ -234,7 +234,7 @@ function Scan() {
             dayCode = "E";
             break;
           default:
-            dayCode = "X"; // Use "X" as the default code if the day is not recognized
+            dayCode = "X"; 
         }
 
         const lastScanField = `${id}${dayCode}`;
