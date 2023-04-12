@@ -2,39 +2,11 @@ import React, { useEffect, useRef, useState } from 'react';
 
 
 function Rank({ data, onClose }) {
-  const earliestStudents = {};
-
-  Object.keys(data).forEach((section) => {
-    const sectionData = data[section];
-    earliestStudents[section] = [];
-    Object.keys(sectionData).forEach((student) => {
-      const studentData = sectionData[student];
-      const lastScan = studentData["lastScan"];
-      if (lastScan) {
-        const scanTime = lastScan.seconds * 1000;
-        const formattedTime = new Date(scanTime).toLocaleTimeString();
-        if (!earliestStudents[section][9] || scanTime < earliestStudents[section][9].scanTime) {
-          // If the student is one of the top 10 earliest, add them to the list
-          earliestStudents[section].push({ student, scanTime, formattedTime });
-          earliestStudents[section].sort((a, b) => a.scanTime - b.scanTime);
-          earliestStudents[section].splice(10);
-        }
-      }
-    });
-  });
-
+  console.log("huhu")
+  console.log(data)
   return (
     <div>
-      {Object.keys(earliestStudents).map((section) => (
-        <div key={section}>
-          <h2>{section}</h2>
-          <ol>
-            {earliestStudents[section].map(({ student, formattedTime }) => (
-              <li key={student}>{student} - {formattedTime}</li>
-            ))}
-          </ol>
-        </div>
-      ))}
+    hehe
     </div>
   );
 }
