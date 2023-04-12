@@ -8,8 +8,8 @@ body {
 }
 
 
-
-button:focus {
+button:focus,
+a:focus {
   outline: none;
 }
 
