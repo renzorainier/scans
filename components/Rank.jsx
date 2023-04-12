@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+
+
 function Rank({ data }) {
   // Create an array of sections from the keys of the data object
   const sections = Object.keys(data);
