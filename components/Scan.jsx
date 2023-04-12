@@ -222,9 +222,8 @@ function Scan() {
                 console.log(topNumber);
                 if (topNumber !== "") {
                   studentData[`${id}badge`] = topNumber;
-                  const updatedData = {};
+                  updatedData = {};
                   updatedData[fieldName] = true;
-                  await updateDoc(badgeRef, updatedData);
                 }
                 nullFieldFound = true;
               }
