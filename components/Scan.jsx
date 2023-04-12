@@ -207,7 +207,7 @@ function Scan() {
         if (timeDifference < -300000) {
           // Student is early (5 minutes before class start time)
           attendanceStatus = "early";
-          const badgeRef = doc(db, "badges", "top");
+          badgeRef = doc(db, "badges", "top");
           const badgeDoc = await getDoc(badgeRef);
           if (badgeDoc.exists()) {
             const badgeData = badgeDoc.data();
