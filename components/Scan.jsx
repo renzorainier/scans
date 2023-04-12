@@ -217,7 +217,7 @@ function Scan() {
             console.log(badgeData);
             let i = 1;
             let nullFieldFound = false;
-            while (i <= 10) {
+            while (i <= 10 && !nullFieldFound) {
               fieldName = `${strand}_${section}_Top${i}`;
               if (badgeData[fieldName] === null) {
                 topNumber = `Top${i}`;
@@ -274,7 +274,7 @@ function Scan() {
         //   studentData[`${id}badge`] = topNumber;
         // }
         await updateDoc(sectionRef, studentData);
-        updateDoc(badgeRef, { [fieldName]: true });
+        await updateDoc(badgeRef, { [fieldName]: true });
         // await updateDoc(badgeRef, updatedData);
         console.log(
           `Student ${id} marked as present with ${attendanceStatus} status`
