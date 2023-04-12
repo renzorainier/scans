@@ -170,10 +170,10 @@ function AttendanceTable() {
         className={`${state ? "translate-x-[100%]" : "translate-x-0"}
           pointer-events-none inline-block h-[71px] w-[50%] transform rounded-lg bg-white shadow-lg ring-0 transition duration-200 ease-in-out`}
       />
-      <div className="absolute top-1/2 left-2 transform -translate-y-1/2">
+      <div className="absolute top-1/2 left-1/4 transform -translate-y-1/2">
         <p className="text-gray-800 text-lg font-bold">A</p>
       </div>
-      <div className="absolute top-1/2 right-2 transform -translate-y-1/2">
+      <div className="absolute top-1/2 right-1/4 transform -translate-y-1/2">
         <p className="text-gray-800 text-lg font-bold">B</p>
       </div>
     </Switch>
