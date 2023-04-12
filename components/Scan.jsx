@@ -212,7 +212,8 @@ function Scan() {
             const badgeData = badgeDoc.data();
             console.log(badgeData);
             let i = 1;
-            while (i <= 10) {
+            let nullFieldFound = false;
+            while (i <= 10 && !nullFieldFound) {
               const fieldName = `${strand}_${section}_Top${i}`;
               if (badgeData[fieldName] === null) {
                 topNumber = `Top${i}`;
@@ -224,7 +225,7 @@ function Scan() {
                   updatedData[fieldName] = true;
                   await updateDoc(badgeRef, updatedData);
                 }
-                break;
+                nullFieldFound = true;
               }
               i++;
             }
