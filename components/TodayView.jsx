@@ -173,7 +173,6 @@ function AttendanceTable() {
       }}
     >
 
-   {/* Switch */}
       <div
         className =  {"bg-white md:w-6 md:h-6 h-5 w-5 rounded-full shadow-md transform" +  (toggle ? null : toggleClass)}
       >
