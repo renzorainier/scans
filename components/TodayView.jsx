@@ -6,6 +6,7 @@ import NumberLineGraph from "components/NumberChart";
 import StudentDetails from "components/StudentWeek";
 import Rank from "components/Rank";
 import { Switch } from "@headlessui/react";
+import { SlGraph } from "react-icons/sl";
 
 function useAttendanceData() {
   const [attendanceData, setAttendanceData] = useState({});
@@ -157,29 +158,28 @@ function AttendanceTable() {
 
   return (
     <div>
-     <div className="flex justify-center pt-5 items-center">
-  <div className="w-full rounded-lg mx-auto" style={{ maxWidth: "90%" }}>
-    <Switch
-      checked={state}
-      onChange={setState}
-      className={`${state ? "bg-gray-300" : "bg-gray-300"}
+      <div className="flex justify-center pt-5 items-center">
+        <div className="w-full rounded-lg mx-auto" style={{ maxWidth: "90%" }}>
+          <Switch
+            checked={state}
+            onChange={setState}
+            className={`${state ? "bg-gray-300" : "bg-gray-300"}
         relative inline-flex h-[75px] w-full shrink-0 cursor-pointer rounded-lg border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-2  focus-visible:ring-white focus-visible:ring-opacity-75`}
-    >
-      <span
-        aria-hidden="true"
-        className={`${state ? "translate-x-[100%]" : "translate-x-0"}
+          >
+            <span
+              aria-hidden="true"
+              className={`${state ? "translate-x-[100%]" : "translate-x-0"}
           pointer-events-none inline-block h-[71px] w-[50%] transform rounded-lg bg-white shadow-lg ring-0 transition duration-200 ease-in-out`}
-      />
-      <div className="absolute top-1/2 left-1/4 transform -translate-y-1/2">
-        <p className="text-gray-800 text-lg font-bold">A</p>
+            />
+            <div className="absolute top-1/2 left-1/4 transform -translate-y-1/2">
+              <SlGraph />
+            </div>
+            <div className="absolute top-1/2 right-1/4 transform -translate-y-1/2">
+              <p className="text-gray-800 text-lg font-bold">B</p>
+            </div>
+          </Switch>
+        </div>
       </div>
-      <div className="absolute top-1/2 right-1/4 transform -translate-y-1/2">
-        <p className="text-gray-800 text-lg font-bold">B</p>
-      </div>
-    </Switch>
-  </div>
-</div>
-
 
       <div className="flex justify-center pt-5 pb-5 items-center">
         <div
