@@ -52,6 +52,13 @@ function AttendanceTable() {
   const [isLoading, setIsLoading] = useState(true);
   const [selectedStudent, setSelectedStudent] = useState(null);
   const [showRank, setShowRank] = useState(null);
+  const [state, setState] = useState(false);
+
+
+  const handleToggle = (value) => {
+    setState(value === state ? !value : value);
+  };
+
 
   const handleClick = () => {
     setShowRank(true);
