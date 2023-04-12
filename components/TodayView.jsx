@@ -162,23 +162,22 @@ function AttendanceTable() {
   return (
     <div>
       <div className="flex justify-center pt-5 pb-5 items-center">
-  <div className="w-full rounded-lg mx-auto" style={{ maxWidth: "90%" }}>
-    <Switch
-      checked={enabled}
-      onChange={setEnabled}
-      className={`${enabled ? "bg-gray-300" : "bg-gray-300"}
+        <div className="w-full rounded-lg mx-auto" style={{ maxWidth: "90%" }}>
+          <Switch
+            checked={state}
+            onChange={setEnabled}
+            className={`${enabled ? "bg-gray-300" : "bg-gray-300"}
           relative inline-flex h-[38px] w-full shrink-0 cursor-pointer rounded-lg border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-2  focus-visible:ring-white focus-visible:ring-opacity-75`}
-    >
-      <span className="sr-only">Use setting</span>
-      <span
-        aria-hidden="true"
-        className={`${enabled ? "translate-x-[100%]" : "translate-x-0"}
+          >
+            <span className="sr-only">Use setting</span>
+            <span
+              aria-hidden="true"
+              className={`${enabled ? "translate-x-[100%]" : "translate-x-0"}
             pointer-events-none inline-block h-[34px] w-[50%] transform rounded-lg bg-white shadow-lg ring-0 transition duration-200 ease-in-out`}
-      />
-    </Switch>
-  </div>
-</div>
-
+            />
+          </Switch>
+        </div>
+      </div>
 
       <button onClick={() => handleToggle(true)}>Show A</button>
       <button onClick={() => handleToggle(false)}>Show B</button>
