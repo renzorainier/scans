@@ -161,7 +161,7 @@ function AttendanceTable() {
 
   return (
     <div>
-      <div className="flex justify-center pt-5 pb-5 items-center">
+      <div id="button" className="flex justify-center pt-5 pb-5 items-center">
   <div className="w-full rounded-lg mx-auto" style={{ maxWidth: "90%" }}>
     <Switch
       checked={enabled}
