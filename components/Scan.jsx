@@ -8,7 +8,10 @@ function Scan() {
   const [data, setData] = useState("");
   const [log, setLog] = useState([]);
   const [scannedCodes, setScannedCodes] = useState(new Set());
-  let badgeRef, updatedData;
+
+  let fieldName;
+  let badgeRef;
+  let updatedData;
 
   const mappingTable = {
     Z: "0",
@@ -215,17 +218,15 @@ function Scan() {
             let i = 1;
             let nullFieldFound = false;
             while (i <= 10 && !nullFieldFound) {
-              const fieldName = `${strand}_${section}_Top${i}`;
+              fieldName = `${strand}_${section}_Top${i}`;
               if (badgeData[fieldName] === null) {
                 topNumber = `Top${i}`;
                 // Set the field to true in the Firebase document
                 console.log(topNumber);
                 if (topNumber !== "") {
                   studentData[`${id}badge`] = topNumber;
-                  updatedData = {};
-                  updatedData[fieldName] = true;
+                  nullFieldFound = true;
                 }
-                nullFieldFound = true;
               }
               i++;
             }
