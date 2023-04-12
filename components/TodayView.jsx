@@ -164,8 +164,8 @@ function AttendanceTable() {
 
 
   return (
-    <div classname="flex justify-center pt-5 pb-5 items-center">
- <div className="py-5">
+    <div>
+ <div className="py-5 flex justify-center pt-5 pb-5 items-center">
       <Switch
         checked={enabled}
         onChange={setEnabled}
@@ -175,8 +175,8 @@ function AttendanceTable() {
         <span className="sr-only">Use setting</span>
         <span
           aria-hidden="true"
-          className={`${enabled ? 'translate-x-20' : 'translate-x-0'}
-            pointer-events-none inline-block h-[34px] w-[34px] transform rounded-lg bg-white shadow-lg ring-0 transition duration-200 ease-in-out`}
+          className={`${enabled ? 'translate-x-[200px]' : 'translate-x-0'}
+            pointer-events-none inline-block h-[34px] w-[100px] transform rounded-lg bg-white shadow-lg ring-0 transition duration-200 ease-in-out`}
         />
       </Switch>
     </div>
