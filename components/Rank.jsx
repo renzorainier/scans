@@ -2,11 +2,14 @@ import React, { useState, useEffect } from "react";
 
 
 function Rank({ data }) {
+  // Create an array of sections from the keys of the data object
+  const sections = Object.keys(data);
+
   // Create an object to hold the top 10 students for each section
   const top10Students = {};
 
   // Loop through each section and find the top 10 students based on their lastScan field
-  Object.keys(data).forEach((section) => {
+  sections.forEach(section => {
     // Create an array of students for the current section from the keys of the section object
     const students = Object.keys(data[section]);
 
@@ -24,13 +27,18 @@ function Rank({ data }) {
   // Render the component with the top 10 students for each section
   return (
     <div>
-      {Object.keys(top10Students).map(section => (
+      {sections.map(section => (
         <div key={section}>
           <h2>{section}</h2>
           <ul>
-            {top10Students[section].map(studentId => (
-              <li key={studentId}>{studentId}</li>
-            ))}
+            {top10Students[section].map(studentId => {
+              const studentData = data[section][studentId];
+              return (
+                <li key={studentId}>
+                  {`${studentData.firstName} ${studentData.lastName} (${studentData.lastScan})`}
+                </li>
+              );
+            })}
           </ul>
         </div>
       ))}

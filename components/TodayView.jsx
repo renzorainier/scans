@@ -31,6 +31,7 @@ function useAttendanceData() {
       });
       console.log(data);
       setAttendanceData(data);
+      console.log(attendanceData)
     };
 
     fetchData();
@@ -192,7 +193,7 @@ function AttendanceTable() {
 
         <div>
           <div>
-            <button onClick={handleClick}>View Rank</button>
+            {/* <button onClick={handleClick}>View Rank</button> */}
           </div>
           {showRank && <Rank onClose={handleClose} />}
         </div>
