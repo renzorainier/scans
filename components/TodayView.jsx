@@ -5,7 +5,7 @@ import LineGraph from "components/Chart";
 import NumberLineGraph from "components/NumberChart";
 import StudentDetails from "components/StudentWeek";
 import Rank from "components/Rank";
-import { Switch } from '@headlessui/react'
+import { Switch } from "@headlessui/react";
 
 function useAttendanceData() {
   const [attendanceData, setAttendanceData] = useState({});
@@ -52,13 +52,11 @@ function AttendanceTable() {
   const [isLoading, setIsLoading] = useState(true);
   const [selectedStudent, setSelectedStudent] = useState(null);
   const [state, setState] = useState(true);
-  const [enabled, setEnabled] = useState(false)
-
+  const [enabled, setEnabled] = useState(false);
 
   const handleToggle = (value) => {
     setState(value);
   };
-
 
   const onClose = () => {
     setSelectedStudent(null);
@@ -161,25 +159,23 @@ function AttendanceTable() {
     setInfoText(text);
   }
 
-
-
   return (
     <div>
- <div className="py-5 flex justify-center pt-5 pb-5 items-center">
-      <Switch
-        checked={enabled}
-        onChange={setEnabled}
-        className={`${enabled ? 'bg-gray-300' : 'bg-gray-400'}
-          relative inline-flex h-[38px] w-4/5 shrink-0 cursor-pointer rounded-lg border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-2  focus-visible:ring-white focus-visible:ring-opacity-75`}
-      >
-        <span className="sr-only">Use setting</span>
-        <span
-          aria-hidden="true"
-          className={`${enabled ? 'translate-x-[200px]' : 'translate-x-0'}
+      <div className="py-5 flex justify-center pt-5 pb-5 items-center"    style={{ maxWidth: "90%" }}>
+        <Switch
+          checked={enabled}
+          onChange={setEnabled}
+          className={`${enabled ? "bg-gray-300" : "bg-gray-400"}
+          relative inline-flex h-[38px] w-full shrink-0 cursor-pointer rounded-lg border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-2  focus-visible:ring-white focus-visible:ring-opacity-75`}
+        >
+          <span className="sr-only">Use setting</span>
+          <span
+            aria-hidden="true"
+            className={`${enabled ? "translate-x-[200px]" : "translate-x-0"}
             pointer-events-none inline-block h-[34px] w-[100px] transform rounded-lg bg-white shadow-lg ring-0 transition duration-200 ease-in-out`}
-        />
-      </Switch>
-    </div>
+          />
+        </Switch>
+      </div>
 
       <button onClick={() => handleToggle(true)}>Show A</button>
       <button onClick={() => handleToggle(false)}>Show B</button>
