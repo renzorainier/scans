@@ -233,7 +233,7 @@ function Scan() {
               i++;
             }
           }
-          // await updateDoc(badgeRef, { [fieldName]: true });
+          await updateDoc(badgeRef, { [fieldName]: true });
         } else if (timeDifference > 600000) {
           // Student is late (more than 10 minutes after class start time)
           attendanceStatus = "late";
