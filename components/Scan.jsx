@@ -232,10 +232,7 @@ function Scan() {
               }
               i++;
             }
-            if (nullFieldFound) {
-              await updateDoc(badgeRef, updatedData);
-              // await updateDoc(sectionRef, studentData);
-            }
+         
           }
         }
          else if (timeDifference > 600000) {
