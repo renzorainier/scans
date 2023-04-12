@@ -8,8 +8,6 @@ function Scan() {
   const [data, setData] = useState("");
   const [log, setLog] = useState([]);
   const [scannedCodes, setScannedCodes] = useState(new Set());
-  const [lastScanTime, setLastScanTime] = useState(0);
-
 
   let fieldName;
   let badgeRef;
@@ -233,7 +231,7 @@ function Scan() {
               i++;
             }
           }
-          await updateDoc(badgeRef, { [fieldName]: true });
+          // await updateDoc(badgeRef, { [fieldName]: true });
         } else if (timeDifference > 600000) {
           // Student is late (more than 10 minutes after class start time)
           attendanceStatus = "late";
@@ -329,16 +327,12 @@ function Scan() {
         onResult={async (result) => {
           if (!!result) {
             const code = result.text;
-            // Check if 2 seconds have passed since the last scan
-            const currentTime = new Date().getTime();
-            if (code !== lastScanned && currentTime - lastScanTime >= 2000) {
+            if (code !== lastScanned) {
               const decodedCode = code
                 .split("")
                 .map((char) => mappingTable[char] || "")
                 .join("");
               setLastScanned(code);
-              // Update the time of the last scan
-              setLastScanTime(currentTime);
               handleMarkPresent(decodedCode);
               console.log(decodedCode);
               console.log(result);
@@ -348,7 +342,6 @@ function Scan() {
         constraints={{ facingMode: "environment" }}
         style={{ width: "100%", height: "100%" }}
       />
-
       <p className="text-xl font-bold mt-6">Scan result:</p>
       <p className="text-xl">{data}</p>
       <h1 className="text-3xl font-semibold mt-8">Recent Logs</h1>
