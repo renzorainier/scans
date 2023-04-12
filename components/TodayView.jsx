@@ -7,6 +7,7 @@ import StudentDetails from "components/StudentWeek";
 import Rank from "components/Rank";
 import { Switch } from "@headlessui/react";
 import { SlGraph } from "react-icons/sl";
+import { FaAward } from "react-icons/fa";
 
 function useAttendanceData() {
   const [attendanceData, setAttendanceData] = useState({});
@@ -175,6 +176,8 @@ function AttendanceTable() {
               <SlGraph />
             </div>
             <div className="absolute top-1/2 right-1/4 transform -translate-y-1/2">
+            <FaAward />
+
             </div>
           </Switch>
         </div>
