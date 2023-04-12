@@ -50,7 +50,6 @@ function AttendanceTable() {
   const [infoText, setInfoText] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const [selectedStudent, setSelectedStudent] = useState(null);
-  const [showRank, setShowRank] = useState(null);
 
   const [state, setState] = useState(true);
 
@@ -58,13 +57,6 @@ function AttendanceTable() {
     setState(value);
   };
 
-  const handleClick = () => {
-    setShowRank(true);
-  };
-
-  const handleClose = () => {
-    setShowRank(false);
-  };
 
   const onClose = () => {
     setSelectedStudent(null);
@@ -376,10 +368,7 @@ function AttendanceTable() {
             </div>
           ) : (
             <div>
-              <div>
-                <button onClick={handleClick}>View Rank</button>
-              </div>
-              {showRank && <Rank onClose={handleClose} data={attendanceData} />}
+              <Rank data={attendanceData} />
             </div>
           )}
         </div>
