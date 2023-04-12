@@ -274,7 +274,7 @@ function Scan() {
         studentData[`${id}present`] = true;
         studentData[`${id}status`] = attendanceStatus;
         studentData[`${id}dif`] = timeDifference;
-        // studentData[`${id}badge`] = topNumber;
+        studentData[`${id}badge`] = badgeFieldName;
         // if (topNumber !== "") {
         //   studentData[`${id}badge`] = topNumber;
         // }
