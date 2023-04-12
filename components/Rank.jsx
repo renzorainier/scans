@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-function Rank({ data, onClose }) {
+function Rank({ data }) {
   // Create an array of sections from the keys of the data object
   const sections = Object.keys(data);
 
@@ -19,17 +19,7 @@ function Rank({ data, onClose }) {
     });
 
     // Slice the first 10 students from the sorted array and add them to the top10Students object
-    top10Students[section] = sortedStudents.slice(0, 10).map(studentId => {
-      // Get the student object for the current studentId
-      const student = data[section][studentId];
-
-      // Return an object that contains the studentId, name, and lastScan fields
-      return {
-        studentId,
-        name: student.name,
-        lastScan: student.lastScan,
-      };
-    });
+    top10Students[section] = sortedStudents.slice(0, 10);
   });
 
   // Render the component with the top 10 students for each section
@@ -39,10 +29,8 @@ function Rank({ data, onClose }) {
         <div key={section}>
           <h2>{section}</h2>
           <ul>
-            {top10Students[section].map(student => (
-              <li key={student.studentId}>
-                {student.name} - {student.lastScan}
-              </li>
+            {top10Students[section].map(studentId => (
+              <li key={studentId}>{studentId}</li>
             ))}
           </ul>
         </div>
