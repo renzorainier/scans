@@ -14,7 +14,7 @@ function Rank({ data, onClose }) {
         const formattedTime = new Date(scanTime).toLocaleTimeString();
         if (!earliestStudents[section][9] || scanTime < earliestStudents[section][9].scanTime) {
           // If the student is one of the top 10 earliest, add them to the list
-          earliestStudents[section].push({ student, scanTime, formattedTime });
+          earliestStudents[section].push({ name: studentData.name, student, scanTime, formattedTime });
           earliestStudents[section].sort((a, b) => a.scanTime - b.scanTime);
           earliestStudents[section].splice(10);
         }
@@ -28,8 +28,8 @@ function Rank({ data, onClose }) {
         <div key={section}>
           <h2>{section}</h2>
           <ol>
-            {earliestStudents[section].map(({ student, formattedTime }) => (
-              <li key={student}>{student} - {formattedTime}</li>
+            {earliestStudents[section].map(({ name, student, formattedTime }) => (
+              <li key={student}>{name} - {formattedTime}</li>
             ))}
           </ol>
         </div>
@@ -39,6 +39,7 @@ function Rank({ data, onClose }) {
 }
 
 export default Rank;
+
 
 
 
