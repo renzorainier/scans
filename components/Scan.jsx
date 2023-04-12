@@ -82,7 +82,7 @@ function Scan() {
           startTime: "23:59:00",
         },
         Wednesday: {
-          startTime: "08:00:00",
+          startTime: "23:59:00",
         },
         Thursday: {
           startTime: "08:00:00",
