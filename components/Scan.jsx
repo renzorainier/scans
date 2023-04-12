@@ -273,7 +273,7 @@ function Scan() {
         //   studentData[`${id}badge`] = topNumber;
         // }
         await updateDoc(sectionRef, studentData);
-        await updateDoc(badgeRef, updatedData);
+        // await updateDoc(badgeRef, updatedData);
         console.log(
           `Student ${id} marked as present with ${attendanceStatus} status`
         );
