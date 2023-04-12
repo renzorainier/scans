@@ -8,11 +8,6 @@ body {
 }
 
 
-button:focus,
-a:focus {
-  outline: none;
-}
-
 
 
 .tab-content {
