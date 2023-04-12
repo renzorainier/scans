@@ -218,14 +218,16 @@ function Scan() {
                 topNumber = `Top${i}`;
                 // Set the field to true in the Firebase document
                 console.log(topNumber);
-                const updatedData = {};
-                updatedData[fieldName] = true;
-                await updateDoc(badgeRef, updatedData);
+                if (topNumber !== "") {
+                  studentData[`${id}badge`] = topNumber;
+                  const updatedData = {};
+                  updatedData[fieldName] = true;
+                  await updateDoc(badgeRef, updatedData);
+                }
                 break;
               }
               i++;
             }
-
           }
         } else if (timeDifference > 600000) {
           // Student is late (more than 10 minutes after class start time)
@@ -266,9 +268,9 @@ function Scan() {
         studentData[`${id}status`] = attendanceStatus;
         studentData[`${id}dif`] = timeDifference;
         // studentData[`${id}badge`] = topNumber;
-        if (topNumber !== "") {
-          studentData[`${id}badge`] = topNumber;
-        }
+        // if (topNumber !== "") {
+        //   studentData[`${id}badge`] = topNumber;
+        // }
         await updateDoc(sectionRef, studentData);
         console.log(
           `Student ${id} marked as present with ${attendanceStatus} status`
