@@ -5,6 +5,7 @@ import LineGraph from "components/Chart";
 import NumberLineGraph from "components/NumberChart";
 import StudentDetails from "components/StudentWeek";
 import Rank from "components/Rank";
+import { Switch } from '@headlessui/react'
 
 function useAttendanceData() {
   const [attendanceData, setAttendanceData] = useState({});
@@ -51,6 +52,7 @@ function AttendanceTable() {
   const [isLoading, setIsLoading] = useState(true);
   const [selectedStudent, setSelectedStudent] = useState(null);
   const [state, setState] = useState(true);
+  const [enabled, setEnabled] = useState(false)
 
 
   const handleToggle = (value) => {
@@ -163,7 +165,21 @@ function AttendanceTable() {
 
   return (
     <div>
-
+ <div className="py-16">
+      <Switch
+        checked={enabled}
+        onChange={setEnabled}
+        className={`${enabled ? 'bg-teal-900' : 'bg-teal-700'}
+          relative inline-flex h-[38px] w-[74px] shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-2  focus-visible:ring-white focus-visible:ring-opacity-75`}
+      >
+        <span className="sr-only">Use setting</span>
+        <span
+          aria-hidden="true"
+          className={`${enabled ? 'translate-x-9' : 'translate-x-0'}
+            pointer-events-none inline-block h-[34px] w-[34px] transform rounded-full bg-white shadow-lg ring-0 transition duration-200 ease-in-out`}
+        />
+      </Switch>
+    </div>
 
       <button onClick={() => handleToggle(true)}>Show A</button>
       <button onClick={() => handleToggle(false)}>Show B</button>
