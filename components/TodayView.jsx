@@ -161,42 +161,8 @@ function AttendanceTable() {
 
   return (
     <div>
-     <div className="flex items-center justify-center space-x-4">
-      <button
-        className={`${
-          state ? 'bg-blue-500 text-white' : 'bg-gray-300 text-gray-700'
-        } rounded-full py-2 px-4 focus:outline-none relative overflow-hidden transition duration-300 ease-in-out`}
-        onClick={() => handleToggle(true)}
-      >
-        <span className="z-0">Show A</span>
-        {state && (
-          <span
-            className="absolute z-10 bg-white h-full w-full top-0 left-0"
-            style={{
-              transform: 'translateX(-100%)',
-              animation: 'slideIn 0.3s forwards',
-            }}
-          ></span>
-        )}
-      </button>
-      <button
-        className={`${
-          !state ? 'bg-blue-500 text-white' : 'bg-gray-300 text-gray-700'
-        } rounded-full py-2 px-4 focus:outline-none relative overflow-hidden transition duration-300 ease-in-out`}
-        onClick={() => handleToggle(false)}
-      >
-        <span className="z-0">Show B</span>
-        {!state && (
-          <span
-            className="absolute z-10 bg-white h-full w-full top-0 right-0"
-            style={{
-              transform: 'translateX(100%)',
-              animation: 'slideIn 0.3s forwards',
-            }}
-          ></span>
-        )}
-      </button>
-    </div>
+      <button onClick={() => handleToggle(true)}>Show A</button>
+      <button onClick={() => handleToggle(false)}>Show B</button>
       <div className="flex justify-center pt-5 pb-5 items-center">
         <div
           className="w-full text-gray-700 bg-white p-5  rounded-lg shadow-lg mx-auto"
