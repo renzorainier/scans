@@ -194,9 +194,9 @@ function AttendanceTable() {
 
         <div>
           <div>
-            <button onClick={handleClick}  data={attendanceData}>View Rank</button>
+            <button onClick={handleClick} >View Rank</button>
           </div>
-          {showRank && <Rank onClose={handleClose} />}
+          {showRank && <Rank onClose={handleClose}  data={attendanceData} />}
         </div>
 
         <div className="flex justify-between items-center mb-4">
