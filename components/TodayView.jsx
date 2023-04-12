@@ -173,7 +173,7 @@ function AttendanceTable() {
           pointer-events-none inline-block h-[71px] w-[50%] transform rounded-lg bg-white shadow-lg ring-0 transition duration-200 ease-in-out`}
             />
             <div className="absolute top-1/2 left-[23%] transform -translate-y-1/2 ">
-              <SlGraph className="text-2xl" />
+              <SlGraph className="text-5xl" />
             </div>
             <div className="absolute top-1/2 right-[23%] transform -translate-y-1/2">
               <FaAward />
