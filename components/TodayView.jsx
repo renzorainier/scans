@@ -169,7 +169,6 @@ function AttendanceTable() {
             className={`${state ? "bg-gray-300" : "bg-gray-300"}
           relative inline-flex h-[38px] w-full shrink-0 cursor-pointer rounded-lg border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-2  focus-visible:ring-white focus-visible:ring-opacity-75`}
           >
-            <span className="sr-only">Use setting</span>
             <span
               aria-hidden="true"
               className={`${state ? "translate-x-[100%]" : "translate-x-0"}
