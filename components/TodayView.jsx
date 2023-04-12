@@ -159,7 +159,7 @@ function AttendanceTable() {
     <div>
       <div className="flex justify-center pt-5 items-center relative">
   <div className="w-full rounded-lg mx-auto" style={{ maxWidth: "90%" }}>
-    <span className="absolute top-0 left-0 transform -translate-y-full">
+    <span className="absolute   transform -translate-y-full">
       Left Word
     </span>
     <span className="absolute top-0 right-0 transform -translate-y-full">
