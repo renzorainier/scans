@@ -31,6 +31,7 @@ function useAttendanceData() {
       });
       console.log(data);
       setAttendanceData(data);
+      console.log("hehe")
       console.log(attendanceData)
     };
 
