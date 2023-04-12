@@ -161,7 +161,12 @@ function AttendanceTable() {
 
   return (
     <div>
-      <div className="py-5 flex justify-center pt-5 pb-5 items-center"    style={{ maxWidth: "90%" }}>
+       <div className="flex justify-center pt-5 pb-5 items-center">
+        <div
+          className="w-full text-gray-700 bg-white p-5  rounded-lg shadow-lg mx-auto"
+          style={{ maxWidth: "90%" }}
+        >
+
         <Switch
           checked={enabled}
           onChange={setEnabled}
@@ -175,6 +180,8 @@ function AttendanceTable() {
             pointer-events-none inline-block h-[34px] w-[100px] transform rounded-lg bg-white shadow-lg ring-0 transition duration-200 ease-in-out`}
           />
         </Switch>
+        </div>
+
       </div>
 
       <button onClick={() => handleToggle(true)}>Show A</button>
