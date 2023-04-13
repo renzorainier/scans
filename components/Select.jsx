@@ -6,7 +6,7 @@ import {
   TabPanel,
 } from "@material-tailwind/react";
 
-export default function TransparentTabs() {
+export default function Example() {
   const data = [
     {
       label: "HTML",
@@ -21,6 +21,7 @@ export default function TransparentTabs() {
       desc: `Because it's about motivating the doers. Because I'm here
       to follow my dreams and inspire other people to follow their dreams, too.`,
     },
+
     {
       label: "Vue",
       value: "vue",
@@ -28,12 +29,14 @@ export default function TransparentTabs() {
       We're constantly growing. We're constantly making mistakes. We're
       constantly trying to express ourselves and actualize our dreams.`,
     },
+
     {
       label: "Angular",
       value: "angular",
       desc: `Because it's about motivating the doers. Because I'm here
       to follow my dreams and inspire other people to follow their dreams, too.`,
     },
+
     {
       label: "Svelte",
       value: "svelte",
@@ -44,20 +47,21 @@ export default function TransparentTabs() {
   ];
 
   return (
-    <Tabs value="html" className="max-w-[40rem]">
-      <TabsHeader
-        className="bg-transparent"
-        indicatorProps={{
-          className: "bg-blue-500/10 shadow-none text-blue-500",
-        }}
-      >
+    <Tabs id="custom-animation" value="html">
+      <TabsHeader>
         {data.map(({ label, value }) => (
           <Tab key={value} value={value}>
             {label}
           </Tab>
         ))}
       </TabsHeader>
-      <TabsBody>
+      <TabsBody
+        animate={{
+          initial: { y: 250 },
+          mount: { y: 0 },
+          unmount: { y: 250 },
+        }}
+      >
         {data.map(({ value, desc }) => (
           <TabPanel key={value} value={value}>
             {desc}
