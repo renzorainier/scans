@@ -91,6 +91,8 @@ function Rank({ data, onClose }) {
   </button>
 </div>
 
+
+
       </div>
       <div>
         <h2>Overall Top 10</h2>
