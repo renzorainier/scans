@@ -4,35 +4,18 @@ function Rank({ data, onClose }) {
   const earliestStudents = {};
   const overallEarliest = [];
 
-  // Get the day code based on the current day of the week
-  const dayOfWeek = new Date().toLocaleString("en-US", { weekday: "short" });
-  let dayCode;
-  switch (dayOfWeek) {
-    case "Mon":
-      dayCode = "A";
-      break;
-    case "Tue":
-      dayCode = "B";
-      break;
-    case "Wed":
-      dayCode = "C";
-      break;
-    case "Thu":
-      dayCode = "D";
-      break;
-    case "Fri":
-      dayCode = "E";
-      break;
-    default:
-      dayCode = "X";
-  }
+  const [activeTab, setActiveTab] = useState("A");
+
+  const handleTabClick = (dayCode) => {
+    setActiveTab(dayCode);
+  };
 
   Object.keys(data).forEach((section) => {
     const sectionData = data[section];
     earliestStudents[section] = [];
     Object.keys(sectionData).forEach((student) => {
       const studentData = sectionData[student];
-      const dayData = studentData[dayCode];
+      const dayData = studentData[activeTab];
       if (dayData) {
         const scanTime = dayData.seconds * 1000;
         const formattedTime = new Date(scanTime).toLocaleTimeString();
@@ -69,6 +52,15 @@ function Rank({ data, onClose }) {
   return (
     <div>
       <div>
+        <div>
+          <button onClick={() => handleTabClick("A")}>Monday</button>
+          <button onClick={() => handleTabClick("B")}>Tuesday</button>
+          <button onClick={() => handleTabClick("C")}>Wednesday</button>
+          <button onClick={() => handleTabClick("D")}>Thursday</button>
+          <button onClick={() => handleTabClick("E")}>Friday</button>
+        </div>
+      </div>
+      <div>
         <h2>Overall Top 10</h2>
         <ol>
           {overallEarliest.map(({ name, section, formattedTime }) => (
@@ -78,15 +70,18 @@ function Rank({ data, onClose }) {
           ))}
         </ol>
       </div>
+
       {Object.keys(earliestStudents).map((section) => (
         <div key={section}>
           <h2>{section}</h2>
           <ol>
-            {earliestStudents[section].map(({ name, student, formattedTime }) => (
-              <li key={student}>
-                {name} - {formattedTime}
-              </li>
-            ))}
+            {earliestStudents[section].map(
+              ({ name, student, formattedTime }) => (
+                <li key={student}>
+                  {name} - {formattedTime}
+                </li>
+              )
+            )}
           </ol>
         </div>
       ))}
@@ -96,11 +91,8 @@ function Rank({ data, onClose }) {
 
 export default Rank;
 
-
-
-
-
-{/* <div>
+{
+  /* <div>
 <div>
   <div className="fixed z-50 top-0 left-0 w-screen h-screen backdrop-blur-xl bg-gray/90"></div>
   <div className="fixed z-50 top-1/2 left-1/2  transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-md shadow-xl p-8 w-4/5 h-full max-w-md">
@@ -141,4 +133,5 @@ export default Rank;
 ))}
   </div>
 </div>
-</div> */}
+</div> */
+}
