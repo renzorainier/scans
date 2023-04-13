@@ -17,4 +17,4 @@ function MyTabs() {
   )
 }
 
-export default Mytabs
+export default MyTabs

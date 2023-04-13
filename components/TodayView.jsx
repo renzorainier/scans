@@ -5,6 +5,7 @@ import LineGraph from "components/Chart";
 import NumberLineGraph from "components/NumberChart";
 import StudentDetails from "components/StudentWeek";
 import Rank from "components/Rank";
+import MyTabs from "components/DayRank";
 import { Switch } from "@headlessui/react";
 import { SlGraph } from "react-icons/sl";
 import { FaAward } from "react-icons/fa";
@@ -191,6 +192,7 @@ function AttendanceTable() {
           {state ? (
             <div>
               <Rank data={attendanceData} />
+              <MyTabs data={attendanceData} />
             </div>
           ) : (
             <div>
