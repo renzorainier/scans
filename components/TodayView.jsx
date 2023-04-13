@@ -183,13 +183,10 @@ function AttendanceTable() {
         </div>
       </div>
 
-      <div>
+      <div >
         <div>
           {state ? (
-            <div
-              className="w-full rounded-lg mx-auto"
-              style={{ maxWidth: "90%" }}
-            >
+            <div>
               <Rank data={attendanceData} />
               <TransparentTabs data={attendanceData} />
             </div>
