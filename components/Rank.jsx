@@ -11,7 +11,7 @@ function Rank({ data, onClose }) {
   };
 
   useEffect(() => {
-    const days = ["A", "B", "C", "C", "E"];
+    const days = ["A", "B", "C", "D", "E"];
     const today = new Date().getDay();
     setActiveTab(days[today - 1]);
   }, []);
