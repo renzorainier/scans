@@ -170,7 +170,7 @@ function AttendanceTable() {
   <span
     aria-hidden="true"
     className={`${state ? "translate-x-[100%]" : "translate-x-0"}
-      pointer-events-none inline-block h-[80%] w-[50%] transform rounded-lg bg-white shadow-lg ring-0 transition duration-200 ease-in-out p-5`}
+      pointer-events-none mt-2  inline-block h-[80%] w-[50%] transform rounded-lg bg-white shadow-lg ring-0 transition duration-200 ease-in-out p-5`}
   />
   <div className="absolute top-1/2 left-[18%] transform -translate-y-1/2 ">
     <SlGraph className="text-5xl" />
