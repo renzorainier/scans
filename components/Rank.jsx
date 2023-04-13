@@ -6,39 +6,15 @@ function Rank({ data, onClose }) {
 
   const [activeTab, setActiveTab] = useState("");
 
-  useEffect(() => {
-    // Get current day and set activeTab state accordingly
-    const dayOfWeek = new Date().getDay();
-    switch (dayOfWeek) {
-      case 0:
-        setActiveTab("A"); // Sunday -> Monday
-        break;
-      case 1:
-        setActiveTab("A"); // Monday
-        break;
-      case 2:
-        setActiveTab("B"); // Tuesday
-        break;
-      case 3:
-        setActiveTab("C"); // Wednesday
-        break;
-      case 4:
-        setActiveTab("D"); // Thursday
-        break;
-      case 5:
-        setActiveTab("E"); // Friday
-        break;
-      case 6:
-        setActiveTab("A"); // Saturday -> Monday
-        break;
-      default:
-        setActiveTab("A"); // Default to Monday
-    }
-  }, []);
-
   const handleTabClick = (dayCode) => {
     setActiveTab(dayCode);
   };
+
+  useEffect(() => {
+    const days = ["A", "B", "C", "D", "E"];
+    const today = new Date().getDay();
+    setActiveTab(days[today - 1]);
+  }, []);
 
   Object.keys(data).forEach((section) => {
     const sectionData = data[section];
@@ -78,7 +54,6 @@ function Rank({ data, onClose }) {
       }
     });
   });
-
 
   return (
     <div>
