@@ -85,7 +85,7 @@ function Scan() {
           startTime: "23:59:00",
         },
         Thursday: {
-          startTime: "08:00:00",
+          startTime: "23:59:00",
         },
         Friday: {
           startTime: "08:00:00",
@@ -234,7 +234,7 @@ function Scan() {
             dayCode = "E";
             break;
           default:
-            dayCode = "X"; 
+            dayCode = "X";
         }
 
         const lastScanField = `${id}${dayCode}`;
