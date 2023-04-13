@@ -146,7 +146,6 @@ function Rank({ data, onClose }) {
                 <div>{section}</div>
               </div>
             </div>
-            <div className="font-bold text-2xl text-gray-500">{index + 1}</div>
           </div>
         )
       )}
