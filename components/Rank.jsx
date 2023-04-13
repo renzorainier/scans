@@ -61,31 +61,31 @@ function Rank({ data, onClose }) {
      <div className="flex space-x-1 ">
   <button
     onClick={() => handleTabClick("A")}
-    className="w-full px-4 py-2  leading-5 text-white transition-colors duration-150 bg-gray-300 border border-transparent rounded-lg active:bg-gray-300 hover:bg-gray-700 focus:outline-none focus:shadow-outline-blue"
+    className="w-full px-4 py-2  leading-5 text-white transition-colors duration-150 bg-gray-300 border border-transparent rounded-lg active:bg-gray-300 hover:bg-gray-400 focus:outline-none "
   >
     Mon
   </button>
   <button
     onClick={() => handleTabClick("B")}
-    className="w-full px-4 py-2  leading-5 text-white transition-colors duration-150 bg-gray-300 border border-transparent rounded-lg active:bg-gray-300 hover:bg-gray-700 focus:outline-none focus:shadow-outline-blue"
+    className="w-full px-4 py-2  leading-5 text-white transition-colors duration-150 bg-gray-300 border border-transparent rounded-lg active:bg-gray-300 hover:bg-gray-400 focus:outline-none "
   >
     Tue
   </button>
   <button
     onClick={() => handleTabClick("C")}
-    className="w-full px-4 py-2  leading-5 text-white transition-colors duration-150 bg-gray-300 border border-transparent rounded-lg active:bg-gray-300 hover:bg-gray-700 focus:outline-none focus:shadow-outline-blue"
+    className="w-full px-4 py-2  leading-5 text-white transition-colors duration-150 bg-gray-300 border border-transparent rounded-lg active:bg-gray-300 hover:bg-gray-400 focus:outline-none "
   >
     Wed
   </button>
   <button
     onClick={() => handleTabClick("D")}
-    className="w-full px-4 py-2  leading-5 text-white transition-colors duration-150 bg-gray-300 border border-transparent rounded-lg active:bg-gray-300 hover:bg-gray-700 focus:outline-none focus:shadow-outline-blue"
+    className="w-full px-4 py-2  leading-5 text-white transition-colors duration-150 bg-gray-300 border border-transparent rounded-lg active:bg-gray-300 hover:bg-gray-400 focus:outline-none "
   >
     Thu
   </button>
   <button
     onClick={() => handleTabClick("E")}
-    className="w-full px-4 py-2  leading-5 text-white transition-colors duration-150 bg-gray-300 border border-transparent rounded-lg active:bg-gray-300 hover:bg-gray-700 focus:outline-none focus:shadow-outline-blue"
+    className="w-full px-4 py-2  leading-5 text-white transition-colors duration-150 bg-gray-300 border border-transparent rounded-lg active:bg-gray-300 hover:bg-gray-400 focus:outline-none "
   >
     Fri
   </button>
@@ -129,8 +129,7 @@ export default Rank;
   <div className="fixed z-50 top-0 left-0 w-screen h-screen backdrop-blur-xl bg-gray/90"></div>
   <div className="fixed z-50 top-1/2anslate/2 -tranite  shadow-xl p-8 w-4/5 h-full max-w-md">
     <button
-      className="absolute top-3 gray-3 gray-gray-500 hover:text-gray-700"
-      onClick={onClose}
+      className="absolute top-3 gray-4 gray-gray-500 onClose}
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -148,8 +147,8 @@ export default Rank;
       </svg>
     </button>
     <h2>Overall Top 10 Earliest Students</h2>
-<gray>
-  {overallEarliest.map(({ name, student, section,   formattedTime }) => (
+<4ray>
+  {overallEarliest.,   formattedTime }) => (
     <li key={student}>{name}- {formattedTime} - {section}</li>
   ))}
 </gray>
