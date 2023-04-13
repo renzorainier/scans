@@ -57,81 +57,79 @@ function Rank({ data, onClose }) {
 
   return (
     <div>
-
-
-<div className="flex justify-center pt-5 pb-5 items-center">
-  <div className="w-full text-gray-700 bg-white p-5 rounded-lg shadow-lg mx-auto" style={{ maxWidth: "90%" }}>
-    <div className="flex space-x-2">
-      <button
-        onClick={() => handleTabClick("A")}
-        className="w-full px-4 py-2 text-white transition-colors duration-150 bg-gray-300 border border-transparent rounded-lg active:bg-gray-300 hover:bg-gray-400 focus:outline-none"
-      >
-        Mon
-      </button>
-      <button
-        onClick={() => handleTabClick("B")}
-        className="w-full px-4 py-2 text-white transition-colors duration-150 bg-gray-300 border border-transparent rounded-lg active:bg-gray-300 hover:bg-gray-400 focus:outline-none"
-      >
-        Tue
-      </button>
-      <button
-        onClick={() => handleTabClick("C")}
-        className="w-full px-4 py-2 text-white transition-colors duration-150 bg-gray-300 border border-transparent rounded-lg active:bg-gray-300 hover:bg-gray-400 focus:outline-none"
-      >
-        Wed
-      </button>
-      <button
-        onClick={() => handleTabClick("D")}
-        className="w-full px-4 py-2 text-white transition-colors duration-150 bg-gray-300 border border-transparent rounded-lg active:bg-gray-300 hover:bg-gray-400 focus:outline-none"
-      >
-        Thu
-      </button>
-      <button
-        onClick={() => handleTabClick("E")}
-        className="w-full px-4 py-2 text-white transition-colors duration-150 bg-gray-300 border border-transparent rounded-lg active:bg-gray-300 hover:bg-gray-400 focus:outline-none"
-      >
-        Fri
-      </button>
-    </div>
-  </div>
-</div>
-
-
       <div className="flex justify-center pt-5 pb-5 items-center">
-              <div
-                className="w-full text-gray-700 bg-white p-5  rounded-lg shadow-lg mx-auto"
-                style={{ maxWidth: "90%" }}
-              >
-      <div>
-        <h2>Overall Top 10</h2>
-        <ol>
-          {overallEarliest.map(({ name, section, formattedTime }) => (
-            <li key={name}>
-              {name} - {section} - {formattedTime}
-            </li>
-          ))}
-        </ol>
+        <div
+          className="w-full text-gray-700 bg-white p-5 rounded-lg shadow-lg mx-auto"
+          style={{ maxWidth: "90%" }}
+        >
+          <div className="flex space-x-2">
+            <button
+              onClick={() => handleTabClick("A")}
+              className="w-full px-4 py-2 text-white transition-colors duration-150 bg-gray-300 border border-transparent rounded-lg active:bg-gray-300 hover:bg-gray-400 focus:outline-none"
+            >
+              Mon
+            </button>
+            <button
+              onClick={() => handleTabClick("B")}
+              className="w-full px-4 py-2 text-white transition-colors duration-150 bg-gray-300 border border-transparent rounded-lg active:bg-gray-300 hover:bg-gray-400 focus:outline-none"
+            >
+              Tue
+            </button>
+            <button
+              onClick={() => handleTabClick("C")}
+              className="w-full px-4 py-2 text-white transition-colors duration-150 bg-gray-300 border border-transparent rounded-lg active:bg-gray-300 hover:bg-gray-400 focus:outline-none"
+            >
+              Wed
+            </button>
+            <button
+              onClick={() => handleTabClick("D")}
+              className="w-full px-4 py-2 text-white transition-colors duration-150 bg-gray-300 border border-transparent rounded-lg active:bg-gray-300 hover:bg-gray-400 focus:outline-none"
+            >
+              Thu
+            </button>
+            <button
+              onClick={() => handleTabClick("E")}
+              className="w-full px-4 py-2 text-white transition-colors duration-150 bg-gray-300 border border-transparent rounded-lg active:bg-gray-300 hover:bg-gray-400 focus:outline-none"
+            >
+              Fri
+            </button>
+          </div>
+        </div>
       </div>
 
-      {Object.keys(earliestStudents).map((section) => (
-        <div key={section}>
-          <h2>{section}</h2>
-          <ol>
-            {earliestStudents[section].map(
-              ({ name, student, formattedTime }) => (
-                <li key={student}>
-                  {name} - {formattedTime}
+      <div className="flex justify-center pt-5 pb-5 items-center">
+        <div
+          className="w-full text-gray-700 bg-white p-5  rounded-lg shadow-lg mx-auto"
+          style={{ maxWidth: "90%" }}
+        >
+          <div>
+            <h2>Overall Top 10</h2>
+            <ol>
+              {overallEarliest.map(({ name, section, formattedTime }) => (
+                <li key={name}>
+                  {name} - {section} - {formattedTime}
                 </li>
-              )
-            )}
-          </ol>
+              ))}
+            </ol>
+          </div>
+
+          {Object.keys(earliestStudents).map((section) => (
+            <div key={section}>
+              <h2>{section}</h2>
+              <ol>
+                {earliestStudents[section].map(
+                  ({ name, student, formattedTime }) => (
+                    <li key={student}>
+                      {name} - {formattedTime}
+                    </li>
+                  )
+                )}
+              </ol>
+            </div>
+          ))}
         </div>
-      ))}
+      </div>
     </div>
-    </div>
-    </div>
-
-
   );
 }
 
