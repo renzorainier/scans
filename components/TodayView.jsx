@@ -171,9 +171,10 @@ function AttendanceTable() {
             <span
               aria-hidden="true"
               className={`${state ? "translate-x-[100%]" : "translate-x-0"}
-      pointer-events-none inline-block h-[60%] w-[50%] transform rounded-lg bg-white shadow-lg ring-0 transition duration-200 ease-in-out p-5`}
+      pointer-events-none inline-block h-[47px] w-[50%] transform rounded-lg bg-white shadow-lg ring-0 transition duration-200 ease-in-out `}
             />
             <div className="absolute top-1/2 left-[18%] transform -translate-y-1/2 ">
+              ATTENDANCE
             </div>
             <div className="absolute top-1/2 right-[18%] transform -translate-y-1/2">
             </div>
