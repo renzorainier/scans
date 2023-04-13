@@ -115,33 +115,30 @@ function Rank({ data, onClose }) {
         </div>
       </div>
 
-
       <div>
         {Object.keys(earliestStudents).map((section) => (
           <div className="flex justify-center pt-5 pb-5 items-center">
-          <div
-            className="w-full text-gray-700 bg-white p-5  rounded-lg shadow-lg mx-auto"
-            style={{ maxWidth: "90%" }}
-          >
-          <div key={section}>
-            <h2>{section}</h2>
-            <ol>
-              {earliestStudents[section].map(
-                ({ name, student, formattedTime }) => (
-                  <li key={student}>
-                    {name} - {formattedTime}
-                  </li>
-                )
-              )}
-            </ol>
+            <div
+              className="w-full text-gray-700 bg-white p-5  rounded-lg shadow-lg mx-auto"
+              style={{ maxWidth: "90%" }}
+            >
+              <div key={section}>
+                <h2>{section}</h2>
+                <ol>
+                  {earliestStudents[section].map(
+                    ({ name, student, formattedTime }) => (
+                      <li key={student}>
+                        {name} - {formattedTime}
+                      </li>
+                    )
+                  )}
+                </ol>
+              </div>
+            </div>
           </div>
-          </div>
-          </div>
-
         ))}
       </div>
-
-
+      
     </div>
   );
 }
