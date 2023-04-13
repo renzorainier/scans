@@ -154,7 +154,7 @@ function Rank({ data, onClose }) {
                   className="w-full flex justify-center items-center"
                 >
                   <img
-                    src={`badge-${getBadgeRank(index + 1)}.png`}
+                    src={`/pictures/${getBadgeRank(index + 1)}.png`}
                     alt={`Badge ${getBadgeRank(index + 1)}`}
                   />
                 </div>
