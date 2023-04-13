@@ -123,36 +123,33 @@ function Rank({ data, onClose }) {
       </div>
 
       <div className="flex justify-center pt-5 pb-5 items-center">
-  <div
-    className="w-full text-gray-700 bg-white p-5 rounded-lg shadow-lg mx-auto"
-    style={{ maxWidth: "90%" }}
-  >
-    <div >
-      {overallEarliest.map(
-        ({ name, section, formattedTime }, index) => (
-          <div
-            key={name}
-            className="flex items-center justify-between border-b py-4"
-          >
-            <div className="flex items-center">
-              <img
-                src={`/pictures/${getBadgeRank(index + 1)}.png`}
-                alt={`Badge ${getBadgeRank(index + 1)}`}
-                className="h-20 mr-4"
-              />
-              <div>
-                <div>{name}</div>
-                <div>{formattedTime}</div>
-                <div>{section}</div>
+        <div
+          className="w-full text-gray-700 bg-white p-5 rounded-lg shadow-lg mx-auto"
+          style={{ maxWidth: "90%" }}
+        >
+          <div>
+            {overallEarliest.map(({ name, section, formattedTime }, index) => (
+              <div
+                key={name}
+                className="flex items-center justify-between border-b py-4"
+              >
+                <div className="flex items-center">
+                  <img
+                    src={`/pictures/${getBadgeRank(index + 1)}.png`}
+                    alt={`Badge ${getBadgeRank(index + 1)}`}
+                    className="h-20 mr-4"
+                  />
+                  <div>
+                    <div>{name}</div>
+                    <div>{formattedTime}</div>
+                    <div>{section}</div>
+                  </div>
+                </div>
               </div>
-            </div>
+            ))}
           </div>
-        )
-      )}
-    </div>
-  </div>
-</div>
-
+        </div>
+      </div>
 
       <div>
         {Object.keys(earliestStudents).map((section) => (
