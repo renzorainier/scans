@@ -183,19 +183,19 @@ function AttendanceTable() {
         </div>
       </div>
 
-      <div className="flex justify-center pt-5 pb-5 items-center">
-        <div
-          className="w-full text-gray-700 bg-white p-5  rounded-lg shadow-lg mx-auto"
-          style={{ maxWidth: "90%" }}
-        >
+      <div >
+        <div>
           {state ? (
             <div>
               <Rank data={attendanceData} />
               <TransparentTabs data={attendanceData} />
             </div>
           ) : (
-            <div>
-              <div>
+            <div className="flex justify-center pt-5 pb-5 items-center">
+              <div
+                className="w-full text-gray-700 bg-white p-5  rounded-lg shadow-lg mx-auto"
+                style={{ maxWidth: "90%" }}
+              >
                 <div className="bg-gray-200 relative rounded-lg">
                   <img
                     src="https://static.planetminecraft.com/files/profile_banner/3800851_1.gif"
