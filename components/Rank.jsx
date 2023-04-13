@@ -128,7 +128,7 @@ function Rank({ data, onClose }) {
           style={{ maxWidth: "90%" }}
         >
           <div>
-            Overall Top 10 Earliest Students 
+            Overall Top 10 Earliest Students
           </div>
           <div>
             {overallEarliest.map(({ name, section, formattedTime }, index) => (
@@ -154,28 +154,40 @@ function Rank({ data, onClose }) {
       </div>
 
       <div>
-        {Object.keys(earliestStudents).map((section) => (
-          <div className="flex justify-center pt-5 pb-5 items-center">
+  {Object.keys(earliestStudents).map((section) => (
+    <div className="flex justify-center pt-5 pb-5 items-center">
+      <div
+        className="w-full text-gray-700 bg-white p-5 rounded-lg shadow-lg mx-auto"
+        style={{ maxWidth: "90%" }}
+      >
+        <div>
+          <h2>{section}</h2>
+        </div>
+        <div>
+          {earliestStudents[section].map(({ name, student, formattedTime }, index) => (
             <div
-              className="w-full text-gray-700 bg-white p-5  rounded-lg shadow-lg mx-auto"
-              style={{ maxWidth: "90%" }}
+              key={student}
+              className="flex items-center justify-between border-b py-4"
             >
-              <div key={section}>
-                <h2>{section}</h2>
-                <ol>
-                  {earliestStudents[section].map(
-                    ({ name, student, formattedTime }) => (
-                      <li key={student}>
-                        {name} - {formattedTime}
-                      </li>
-                    )
-                  )}
-                </ol>
+              <div className="flex items-center">
+                <img
+                  src={`/pictures/${getBadgeRank(index + 1)}.png`}
+                  alt={`Badge ${getBadgeRank(index + 1)}`}
+                  className="h-20 mr-4"
+                />
+                <div>
+                  <div>{name}</div>
+                  <div>{formattedTime}</div>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
+    </div>
+  ))}
+</div>
+
     </div>
   );
 }
