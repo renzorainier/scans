@@ -1,5 +1,18 @@
 import React, { useEffect, useRef, useState } from "react";
 
+function getBadgeRank(rank) {
+  switch (rank) {
+    case 1:
+      return 'gold';
+    case 2:
+      return 'silver';
+    case 3:
+      return 'bronze';
+    default:
+      return 'none';
+  }
+}
+
 function Rank({ data, onClose }) {
   const earliestStudents = {};
   const overallEarliest = [];
@@ -99,18 +112,42 @@ function Rank({ data, onClose }) {
 
       <div className="flex justify-center pt-5 pb-5 items-center">
         <div
-          className="w-full text-gray-700 bg-white p-5  rounded-lg shadow-lg mx-auto"
+          className="w-full text-gray-700 bg-white p-5 rounded-lg shadow-lg mx-auto"
           style={{ maxWidth: "90%" }}
         >
-          <div>
-            <h2>Overall Top 10</h2>
-            <ol>
-              {overallEarliest.map(({ name, section, formattedTime }) => (
-                <li key={name}>
-                  {name} - {section} - {formattedTime}
-                </li>
+          <div className="grid grid-cols-2 gap-4">
+            <div className="flex flex-col justify-center">
+              <h2>Overall Top 10</h2>
+              <ol>
+                {overallEarliest.map(
+                  ({ name, section, formattedTime }, index) => (
+                    <li key={name}>
+                      <div className="flex justify-between items-center">
+                        <div>
+                          {index + 1}. {name}
+                        </div>
+                        <div>
+                          {section} - {formattedTime}
+                        </div>
+                      </div>
+                    </li>
+                  )
+                )}
+              </ol>
+            </div>
+            <div className="flex flex-col justify-center">
+              {overallEarliest.map(({ name }, index) => (
+                <div
+                  key={name}
+                  className="w-full flex justify-center items-center"
+                >
+                  <img
+                    src={`badge-${getBadgeRank(index + 1)}.png`}
+                    alt={`Badge ${getBadgeRank(index + 1)}`}
+                  />
+                </div>
               ))}
-            </ol>
+            </div>
           </div>
         </div>
       </div>
@@ -138,7 +175,6 @@ function Rank({ data, onClose }) {
           </div>
         ))}
       </div>
-      
     </div>
   );
 }
