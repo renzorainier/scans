@@ -127,7 +127,7 @@ function Rank({ data, onClose }) {
     className="w-full text-gray-700 bg-white p-5 rounded-lg shadow-lg mx-auto"
     style={{ maxWidth: "90%" }}
   >
-    <div className="grid grid-cols-2 gap-4">
+    <div >
       {overallEarliest.map(
         ({ name, section, formattedTime }, index) => (
           <div
