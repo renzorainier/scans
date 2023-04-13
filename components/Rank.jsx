@@ -128,7 +128,7 @@ function Rank({ data, onClose }) {
           style={{ maxWidth: "90%" }}
         >
           <div>
-            top 10
+            Overall Top 10 Earliest Students 
           </div>
           <div>
             {overallEarliest.map(({ name, section, formattedTime }, index) => (
