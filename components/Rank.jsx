@@ -123,34 +123,37 @@ function Rank({ data, onClose }) {
       </div>
 
       <div className="flex justify-center pt-5 pb-5 items-center">
-  <div className="w-full text-gray-700 bg-white p-5 rounded-lg shadow-lg mx-auto" style={{ maxWidth: "90%" }}>
+  <div
+    className="w-full text-gray-700 bg-white p-5 rounded-lg shadow-lg mx-auto"
+    style={{ maxWidth: "90%" }}
+  >
     <div className="grid grid-cols-2 gap-4">
-      <div className="flex flex-col justify-center">
-        <h2>Overall Top 10</h2>
-        {overallEarliest.map(({ name, section, formattedTime }, index) => (
-          <div key={name} className="flex items-center my-2">
-            <div className="w-8">{index + 1}.</div>
-            <div className="ml-4">{name}</div>
-            <div className="ml-auto text-right">
-              {section} - {formattedTime}
+      {overallEarliest.map(
+        ({ name, section, formattedTime }, index) => (
+          <div
+            key={name}
+            className="flex items-center justify-between border-b py-4"
+          >
+            <div className="flex items-center">
+              <img
+                src={`/pictures/${getBadgeRank(index + 1)}.png`}
+                alt={`Badge ${getBadgeRank(index + 1)}`}
+                className="h-20 mr-4"
+              />
+              <div>
+                <div>{name}</div>
+                <div>{formattedTime}</div>
+                <div>{section}</div>
+              </div>
             </div>
+            <div className="font-bold text-2xl text-gray-500">{index + 1}</div>
           </div>
-        ))}
-      </div>
-      <div className="flex flex-col justify-center">
-        {overallEarliest.map(({ name }, index) => (
-          <div key={name} className="w-full flex justify-center items-center my-2">
-            <img
-              src={`/pictures/${getBadgeRank(index + 1)}.png`}
-              alt={`Badge ${getBadgeRank(index + 1)}`}
-              className="h-20"
-            />
-          </div>
-        ))}
-      </div>
+        )
+      )}
     </div>
   </div>
 </div>
+
 
       <div>
         {Object.keys(earliestStudents).map((section) => (
