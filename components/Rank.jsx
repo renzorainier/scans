@@ -141,8 +141,7 @@ function Rank({ data, onClose }) {
                   />
                   <div>
                     <div>{name}</div>
-                    <div>{formattedTime}</div>
-                    <div>{section}</div>
+                    <div>{formattedTime}   |    {section}</div>
                   </div>
                 </div>
               </div>
