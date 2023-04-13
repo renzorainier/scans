@@ -58,36 +58,36 @@ function Rank({ data, onClose }) {
   return (
     <div>
       <div>
-      <div className="flex space-x-1">
+     <div className="flex space-x-1">
   <button
     onClick={() => handleTabClick("A")}
     className="w-full px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-blue-600 border border-transparent rounded-lg active:bg-blue-600 hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue"
   >
-    Monday
+    Mon
   </button>
   <button
     onClick={() => handleTabClick("B")}
     className="w-full px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-blue-600 border border-transparent rounded-lg active:bg-blue-600 hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue"
   >
-    Tuesday
+    Tue
   </button>
   <button
     onClick={() => handleTabClick("C")}
     className="w-full px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-blue-600 border border-transparent rounded-lg active:bg-blue-600 hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue"
   >
-    Wednesday
+    Wed
   </button>
   <button
     onClick={() => handleTabClick("D")}
     className="w-full px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-blue-600 border border-transparent rounded-lg active:bg-blue-600 hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue"
   >
-    Thursday
+    Thu
   </button>
   <button
     onClick={() => handleTabClick("E")}
     className="w-full px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-blue-600 border border-transparent rounded-lg active:bg-blue-600 hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue"
   >
-    Friday
+    Fri
   </button>
 </div>
 
