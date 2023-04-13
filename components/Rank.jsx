@@ -18,7 +18,7 @@ function Rank({ data, onClose }) {
       dayCode = "C";
       break;
     case "Thu":
-      dayCode = "D";
+      dayCode = "C";
       break;
     case "Fri":
       dayCode = "E";
