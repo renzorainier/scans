@@ -112,22 +112,23 @@ function Rank({ data, onClose }) {
               ))}
             </ol>
           </div>
-
-          {Object.keys(earliestStudents).map((section) => (
-            <div key={section}>
-              <h2>{section}</h2>
-              <ol>
-                {earliestStudents[section].map(
-                  ({ name, student, formattedTime }) => (
-                    <li key={student}>
-                      {name} - {formattedTime}
-                    </li>
-                  )
-                )}
-              </ol>
-            </div>
-          ))}
         </div>
+      </div>
+      <div>
+        {Object.keys(earliestStudents).map((section) => (
+          <div key={section}>
+            <h2>{section}</h2>
+            <ol>
+              {earliestStudents[section].map(
+                ({ name, student, formattedTime }) => (
+                  <li key={student}>
+                    {name} - {formattedTime}
+                  </li>
+                )
+              )}
+            </ol>
+          </div>
+        ))}
       </div>
     </div>
   );
