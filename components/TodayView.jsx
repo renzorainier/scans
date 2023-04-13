@@ -191,6 +191,7 @@ function AttendanceTable() {
           {state ? (
             <div>
               <Rank data={attendanceData} />
+              <TransparentTabs data={attendanceData} />
             </div>
           ) : (
             <div>
