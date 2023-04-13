@@ -16,3 +16,5 @@ function MyTabs() {
     </Tab.Group>
   )
 }
+
+export default MyTabs

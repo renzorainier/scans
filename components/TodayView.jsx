@@ -192,7 +192,7 @@ function AttendanceTable() {
           {state ? (
             <div>
               <Rank data={attendanceData} />
-              <MyTabs data={attendanceData} />
+              <MyTabs />
             </div>
           ) : (
             <div>
