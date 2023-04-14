@@ -149,7 +149,7 @@ function Rank({ data, onClose }) {
 
       <div className="flex justify-center pt-5 items-center">
         <div
-          className="w-full text-gray-700 bg-white p-5 rounded-lg shadow-lg mx-auto"
+          className="w-full text-gray-700 bg-white p-5 rounded-t-lg shadow-lg mx-auto"
           style={{ maxWidth: "90%" }}
         >
           Overall Top 10 Earliest Students
@@ -157,7 +157,7 @@ function Rank({ data, onClose }) {
       </div>
       <div className="flex justify-center pb-5 items-center">
         <div
-          className="w-full text-gray-700 bg-white p-5 rounded-lg shadow-lg mx-auto"
+          className="w-full text-gray-700 bg-white p-5 rounded-b-lg shadow-lg mx-auto"
           style={{ maxWidth: "90%" }}
         >
           <div>
