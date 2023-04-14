@@ -107,7 +107,7 @@ function Rank({ data, onClose }) {
 
   return (
     <div>
-      <div className="flex justify-center pt-5 pb-5 items-center">
+      <div className="flex justify-center pt-3 pb-5 items-center">
         <div
           className="w-full text-gray-700 bg-white p-5 rounded-lg shadow-lg mx-auto"
           style={{ maxWidth: "90%" }}
@@ -147,7 +147,7 @@ function Rank({ data, onClose }) {
         </div>
       </div>
 
-      <div className="flex justify-center pt-5 items-center">
+      <div className="flex justify-center items-center">
         <div
           className="w-full text-gray-700 bg-gray-200 p-5 rounded-t-lg shadow-lg mx-auto"
           style={{ maxWidth: "90%" }}
@@ -188,7 +188,7 @@ function Rank({ data, onClose }) {
       <div>
         {Object.keys(earliestStudents).map((section) => (
           <div>
-            <div className="flex justify-center pt-5 items-center">
+            <div className="flex justify-center  items-center">
               <div
                 className="w-full text-gray-700 bg-gray-200 p-5 rounded-t-lg shadow-lg mx-auto"
                 style={{ maxWidth: "90%" }}
