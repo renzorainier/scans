@@ -165,6 +165,8 @@ function Rank({ data, onClose }) {
               <div
                 key={name}
                 className="flex items-center justify-between border-b py-4"
+                                          onClick={() => handleMoreClick(student)}
+
               >
                 <div className="flex items-center">
                   <img
