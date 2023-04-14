@@ -147,10 +147,15 @@ function Rank({ data, onClose }) {
         </div>
       </div>
 
-          <div classname="bg-blue-500">
-            Overall Top 10 Earliest Students
-          </div>
-      <div className="flex justify-center pt-5 pb-5 items-center">
+      <div className="flex justify-center pt-5 items-center">
+        <div
+          className="w-full text-gray-700 bg-white p-5 rounded-lg shadow-lg mx-auto"
+          style={{ maxWidth: "90%" }}
+        >
+          Overall Top 10 Earliest Students
+        </div>
+      </div>
+      <div className="flex justify-center pb-5 items-center">
         <div
           className="w-full text-gray-700 bg-white p-5 rounded-lg shadow-lg mx-auto"
           style={{ maxWidth: "90%" }}
@@ -169,7 +174,9 @@ function Rank({ data, onClose }) {
                   />
                   <div>
                     <div>{name}</div>
-                    <div>{formattedTime}&emsp;|&emsp;{section}</div>
+                    <div>
+                      {formattedTime}&emsp;|&emsp;{section}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -179,40 +186,41 @@ function Rank({ data, onClose }) {
       </div>
 
       <div>
-  {Object.keys(earliestStudents).map((section) => (
-    <div className="flex justify-center pt-5 pb-5 items-center">
-      <div
-        className="w-full text-gray-700 bg-white p-5 rounded-lg shadow-lg mx-auto"
-        style={{ maxWidth: "90%" }}
-      >
-        <div>
-          <h2>{section}</h2>
-        </div>
-        <div>
-          {earliestStudents[section].map(({ name, student, formattedTime }, index) => (
+        {Object.keys(earliestStudents).map((section) => (
+          <div className="flex justify-center pt-5 pb-5 items-center">
             <div
-              key={student}
-              className="flex items-center justify-between border-b py-4"
+              className="w-full text-gray-700 bg-white p-5 rounded-lg shadow-lg mx-auto"
+              style={{ maxWidth: "90%" }}
             >
-              <div className="flex items-center">
-                <img
-                  src={`/pictures/${getBadgeRankSec(index + 1)}.png`}
-                  alt={`Badge ${getBadgeRankSec(index + 1)}`}
-                  className="h-20 mr-4"
-                />
-                <div>
-                  <div>{name}</div>
-                  <div>{formattedTime}</div>
-                </div>
+              <div>
+                <h2>{section}</h2>
+              </div>
+              <div>
+                {earliestStudents[section].map(
+                  ({ name, student, formattedTime }, index) => (
+                    <div
+                      key={student}
+                      className="flex items-center justify-between border-b py-4"
+                    >
+                      <div className="flex items-center">
+                        <img
+                          src={`/pictures/${getBadgeRankSec(index + 1)}.png`}
+                          alt={`Badge ${getBadgeRankSec(index + 1)}`}
+                          className="h-20 mr-4"
+                        />
+                        <div>
+                          <div>{name}</div>
+                          <div>{formattedTime}</div>
+                        </div>
+                      </div>
+                    </div>
+                  )
+                )}
               </div>
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
-    </div>
-  ))}
-</div>
-
     </div>
   );
 }
