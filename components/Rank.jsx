@@ -107,7 +107,7 @@ function Rank({ data, onClose }) {
 
   return (
     <div>
-      <div className="flex justify-center pt-3 pb-5 items-center">
+      <div className="flex justify-center pt-4 pb-5 items-center">
         <div
           className="w-full text-gray-700 bg-white p-5 rounded-lg shadow-lg mx-auto"
           style={{ maxWidth: "90%" }}
@@ -152,7 +152,7 @@ function Rank({ data, onClose }) {
           className="w-full text-gray-700 bg-gray-200 p-5 rounded-t-lg shadow-lg mx-auto"
           style={{ maxWidth: "90%" }}
         >
-          Overall Top 10 Earliest Students
+          Overall Top 10 Most Punctual Students
         </div>
       </div>
       <div className="flex justify-center pb-5 items-center">
