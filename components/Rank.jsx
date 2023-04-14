@@ -195,6 +195,10 @@ function Rank({ data, onClose }) {
               <div>
                 <h2>{section}</h2>
               </div>
+                          </div>
+                          </div>
+
+
               <div className="flex justify-center pb-5 items-center">
                 <div
                   className="w-full text-gray-700 bg-white p-5 rounded-b-lg shadow-lg mx-auto"
@@ -227,8 +231,6 @@ function Rank({ data, onClose }) {
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
         ))}
       </div>
     </div>
