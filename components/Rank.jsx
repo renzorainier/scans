@@ -147,14 +147,14 @@ function Rank({ data, onClose }) {
         </div>
       </div>
 
+          <div classname="bg-blue-500">
+            Overall Top 10 Earliest Students
+          </div>
       <div className="flex justify-center pt-5 pb-5 items-center">
         <div
           className="w-full text-gray-700 bg-white p-5 rounded-lg shadow-lg mx-auto"
           style={{ maxWidth: "90%" }}
         >
-          <div>
-            Overall Top 10 Earliest Students
-          </div>
           <div>
             {overallEarliest.map(({ name, section, formattedTime }, index) => (
               <div
