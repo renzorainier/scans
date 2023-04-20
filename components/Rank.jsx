@@ -149,7 +149,7 @@ function Rank({ data, onClose }) {
 
       <div className="flex justify-center items-center">
         <div
-          className="w-full text-gray-70 flex justify-center font-bold items-center bg-gray- p-5 rounded-t-lg shadow-lg mx-auto"
+          className="w-full text-gray-70 flex justify-center font-bold items-center bg-white p-5 rounded-t-lg shadow-lg mx-auto"
           style={{ maxWidth: "90%" }}
         >
           Overall Top 10 Most Punctual Students
