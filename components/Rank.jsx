@@ -168,7 +168,7 @@ function Rank({ data, onClose }) {
           <div key={name} className="relative border border-gray-800 rounded-lg overflow-hidden">
             <div className="absolute top-0 left-0 right-0 p-2 bg-gradient-to-b from-black to-transparent">
               <div className="text-white text-lg">{name}</div>
-              <div className="text-gray-400 text-xs">{formattedTime}&emsp;|&emsp;{section}</div>
+              <div className="text-white text-xs">{formattedTime}&emsp;|&emsp;{section}</div>
             </div>
             <div className="w-full h-52 overflow-hidden">
               <img
