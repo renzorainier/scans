@@ -173,7 +173,7 @@ function Rank({ data, onClose }) {
             />
             <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-gray-900 via-gray-900 to-transparent rounded-b-lg">
             <div className="text-white text-sm">{name}</div>
-            <div className="text-white text-sm">{name}</div>
+            <div className="text-white text-sm">{index}</div>
               <div className="text-gray-400 text-xs">{formattedTime}&emsp;|&emsp;{section}</div>
             </div>
           </div>
