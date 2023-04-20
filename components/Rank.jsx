@@ -214,7 +214,7 @@ function Rank({ data, onClose }) {
                 style={{ maxWidth: "90%" }}
               >
                 <div className="w-full bg-gray-900 rounded-b-lg shadow-xl mx-auto">
-                  <div className="py-4">
+                <div className="py-4 px-4">
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                       {earliestStudents[section].map(
                         ({ name, student, formattedTime }, index) => (
