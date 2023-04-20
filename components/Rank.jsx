@@ -171,10 +171,10 @@ function Rank({ data, onClose }) {
               alt={`Badge ${getBadgeRank(index + 1)}`}
               className="w-full h-full pb-12 object-cover rounded-lg"
             />
-            <div className="absolute bottom-0 left-0 right-0 p-4  rounded-b-lg">
-            <div className="text-white text-sm">{index + 1}</div>
-            <div className="text-white text-base">{name}</div>
-              <div className="text-gray-400 text-xs">{formattedTime}&emsp;|&emsp;{section}</div>
+            <div className="absolute bottom-0 left-0 right-0 p-4 bg-gray-800 rounded-b-lg flex flex-col items-center justify-center">
+              <div className="text-white text-lg font-bold mb-2">{index + 1}</div>
+              <div className="text-white text-base font-bold">{name}</div>
+              <div className="text-gray-400 text-sm">{formattedTime}&emsp;|&emsp;{section}</div>
             </div>
           </div>
         ))}
