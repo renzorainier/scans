@@ -160,27 +160,23 @@ function Rank({ data, onClose }) {
           className="w-full text-gray-700 bg-white p-5 rounded-b-lg shadow-lg mx-auto"
           style={{ maxWidth: "90%" }}
         >
-         <div className="flex justify-center pb-5 items-center">
-  <div className="w-full bg-gray-900 rounded-lg shadow-xl mx-auto">
-    <div className="py-4">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {overallEarliest.map(({ name, section, formattedTime }, index) => (
-          <div key={name} className="relative">
-            <img
-              src={`/pictures/S${getBadgeRank(index + 1)}.png`}
-              alt={`Badge ${getBadgeRank(index + 1)}`}
-              className="w-full h-full pb-5 object-cover rounded-lg"
-            />
-            <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-gray-900 via-gray-900 to-transparent rounded-b-lg">
-              <div className="text-white text-sm">{name}</div>
-              <div className="text-gray-400 text-xs">{formattedTime}&emsp;|&emsp;{section}</div>
-            </div>
-          </div>
-        ))}
+         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+  {overallEarliest.map(({ name, section, formattedTime }, index) => (
+    <div key={name} className="relative">
+      <div className="text-white font-bold text-lg absolute top-2 right-2">{index + 1}</div>
+      <img
+        src={`/pictures/S${getBadgeRank(index + 1)}.png`}
+        alt={`Badge ${getBadgeRank(index + 1)}`}
+        className="w-full h-full pb-5 object-cover rounded-lg"
+      />
+      <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-gray-900 via-gray-900 to-transparent rounded-b-lg">
+        <div className="text-white text-sm">{name}</div>
+        <div className="text-gray-400 text-xs">{formattedTime}&emsp;|&emsp;{section}</div>
       </div>
     </div>
-  </div>
+  ))}
 </div>
+
 
         </div>
       </div>
