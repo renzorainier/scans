@@ -199,34 +199,35 @@ function Rank({ data, onClose }) {
             </div>
 
             <div className="flex justify-center pb-5 items-center">
-  <div
-    className="w-full text-gray-700 bg-white p-5 rounded-b-lg shadow-lg mx-auto"
-    style={{ maxWidth: "90%" }}
-  >
-    <div>
-      {" "}
-      {earliestStudents[section].map(
-        ({ name, student, formattedTime }, index) => (
-          <div key={student} className="relative flex items-center justify-between border-b py-4">
-            <div className="absolute w-5 h-5 rounded-full bg-gray-300 animate-sparkle top-0 left-0 -ml-3 -mt-2"></div>
-            <div className="flex items-center">
-              <img
-                src={`/pictures/${getBadgeRankSec(index + 1)}.png`}
-                alt={`Badge ${getBadgeRankSec(index + 1)}`}
-                className="h-20 mr-4 relative z-10"
-              />
-              <div>
-                <div>{name}</div>
-                <div>{formattedTime}</div>
+              <div
+                className="w-full text-gray-700 bg-white p-5 rounded-b-lg shadow-lg mx-auto"
+                style={{ maxWidth: "90%" }}
+              >
+                <div>
+                  {" "}
+                  {earliestStudents[section].map(
+                    ({ name, student, formattedTime }, index) => (
+                      <div
+                        key={student}
+                        className="flex items-center justify-between border-b py-4"
+                      >
+                        <div className="flex items-center">
+                          <img
+                            src={`/pictures/${getBadgeRankSec(index + 1)}.png`}
+                            alt={`Badge ${getBadgeRankSec(index + 1)}`}
+                            className="h-20 mr-4"
+                          />
+                          <div>
+                            <div>{name}</div>
+                            <div>{formattedTime}</div>
+                          </div>
+                        </div>
+                      </div>
+                    )
+                  )}
+                </div>
               </div>
             </div>
-          </div>
-        )
-      )}
-    </div>
-  </div>
-</div>
-
           </div>
         ))}
       </div>

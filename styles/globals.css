@@ -69,3 +69,27 @@ th:hover {
 
 /* @apply h-screen w-screen bg-gradient-to-br from-[#A9AFE3] to-[#A9CCE3]
   tracking-wide; */
+  @keyframes sparkle {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(0.5);
+      opacity: 0.5;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  .animate-sparkle {
+    width: 10px;
+    height: 10px;
+    background-color: #fff;
+    border-radius: 50%;
+    animation-name: sparkle;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+  }
