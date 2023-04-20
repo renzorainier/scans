@@ -169,7 +169,7 @@ function Rank({ data, onClose }) {
               >
                 <div className="flex items-center">
                   <img
-                    src={`/pictures/${getBadgeRank(index + 1)}.png`}
+                    src={`/pictures/S${getBadgeRank(index + 1)}.png`}
                     alt={`Badge ${getBadgeRank(index + 1)}`}
                     className="h-20 mr-4"
                   />
