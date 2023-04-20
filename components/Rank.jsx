@@ -171,7 +171,7 @@ function Rank({ data, onClose }) {
                   <img
                     src={`/pictures/${getBadgeRank(index + 1)}.png`}
                     alt={`Badge ${getBadgeRank(index + 1)}`}
-                    className="h-20 bg-gray-200 mr-4"
+                    className="h-20 mr-4"
                   />
                   <div>
                     <div>{name}</div>
