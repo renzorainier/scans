@@ -161,7 +161,7 @@ function Rank({ data, onClose }) {
           style={{ maxWidth: "90%" }}
         >
           <div className="w-full bg-gray-900 rounded-b-lg shadow-xl mx-auto">
-            <div className="py-4">
+            <div className="py-4 px-4">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {overallEarliest.map(
                   ({ name, section, formattedTime }, index) => (
@@ -209,49 +209,48 @@ function Rank({ data, onClose }) {
             </div>
 
             <div className="flex justify-center pb-5 items-center">
-
-                <div
-                  className="w-full flex justify-center pb-5 items-center"
-                  style={{ maxWidth: "90%" }}
-                >
-                  <div className="w-full bg-gray-900 rounded-lg shadow-xl mx-auto">
-                    <div className="py-4">
-                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                        {earliestStudents[section].map(
-                          ({ name, student, formattedTime }, index) => (
-                            <div
-                              key={student}
-                              className="relative border border-gray-800 rounded-lg overflow-hidden"
-                            >
-                              <div className="absolute top-0 left-0 right-0 p-2 bg-gradient-to-b from-black to-transparent">
-                                <div className="text-white text-lg">{name}</div>
-                                <div className="text-white text-sm">
-                                  {formattedTime}&emsp;|&emsp;{section}
-                                </div>
-                              </div>
-                              <div className="w-full h-52 overflow-hidden">
-                                <img
-                                  src={`/pictures/${getBadgeRankSec(
-                                    index + 1
-                                  )}.png`}
-                                  alt={`Badge ${getBadgeRankSec(index + 1)}`}
-                                  className="w-full h-full object-cover"
-                                />
-                              </div>
-                              <div className="absolute top-0 right-0 p-2">
-                                <div className="text-white text-3xl font-bold">
-                                  {index + 1}
-                                </div>
+              <div
+                className="w-full flex justify-center pb-5 items-center"
+                style={{ maxWidth: "90%" }}
+              >
+                <div className="w-full bg-gray-900 rounded-b-lg shadow-xl mx-auto">
+                  <div className="py-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                      {earliestStudents[section].map(
+                        ({ name, student, formattedTime }, index) => (
+                          <div
+                            key={student}
+                            className="relative border border-gray-800 rounded-lg overflow-hidden"
+                          >
+                            <div className="absolute top-0 left-0 right-0 p-2 bg-gradient-to-b from-black to-transparent">
+                              <div className="text-white text-lg">{name}</div>
+                              <div className="text-white text-sm">
+                                {formattedTime}&emsp;|&emsp;{section}
                               </div>
                             </div>
-                          )
-                        )}
-                      </div>
+                            <div className="w-full h-52 overflow-hidden">
+                              <img
+                                src={`/pictures/${getBadgeRankSec(
+                                  index + 1
+                                )}.png`}
+                                alt={`Badge ${getBadgeRankSec(index + 1)}`}
+                                className="w-full h-full object-cover"
+                              />
+                            </div>
+                            <div className="absolute top-0 right-0 p-2">
+                              <div className="text-white text-3xl font-bold">
+                                {index + 1}
+                              </div>
+                            </div>
+                          </div>
+                        )
+                      )}
                     </div>
                   </div>
                 </div>
               </div>
             </div>
+          </div>
         ))}
       </div>
     </div>
