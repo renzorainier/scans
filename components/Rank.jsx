@@ -164,7 +164,6 @@ function Rank({ data, onClose }) {
   <div className="w-full bg-gray-900 rounded-lg shadow-xl mx-auto">
     <div className="py-4">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        <div className="text-center text-white text-2xl font-bold py-4 border-b border-gray-800">Leaderboard</div>
         {overallEarliest.map(({ name, section, formattedTime }, index) => (
           <div key={name} className="relative border border-gray-800 rounded-lg overflow-hidden">
             <div className="absolute top-0 left-0 right-0 p-2 bg-gradient-to-b from-black to-transparent">
