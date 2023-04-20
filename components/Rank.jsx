@@ -210,12 +210,13 @@ function Rank({ data, onClose }) {
           <div
             key={student}
             className="flex items-center justify-between border-b py-4"
+            style={{ animationDelay: `${index * 0.1}s` }}
           >
-            <div className="flex items-center">
+            <div className="flex items-center animate-bob">
               <img
                 src={`/pictures/${getBadgeRankSec(index + 1)}.png`}
                 alt={`Badge ${getBadgeRankSec(index + 1)}`}
-                className="h-20 mr-4 hover:shadow-glow"
+                className="h-20 mr-4"
               />
               <div>
                 <div>{name}</div>
@@ -228,6 +229,8 @@ function Rank({ data, onClose }) {
     </div>
   </div>
 </div>
+
+
 
           </div>
         ))}
