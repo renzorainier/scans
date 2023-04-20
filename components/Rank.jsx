@@ -160,7 +160,7 @@ function Rank({ data, onClose }) {
           className="w-full text-gray-700 bg-white p-5 rounded-b-lg shadow-lg mx-auto"
           style={{ maxWidth: "90%" }}
         >
-         <div className="flex justify-center pb-5 items-center">
+        <div className="flex justify-center pb-5 items-center">
   <div className="w-full bg-gray-900 rounded-lg shadow-xl mx-auto">
     <div className="py-4">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -169,12 +169,12 @@ function Rank({ data, onClose }) {
             <img
               src={`/pictures/S${getBadgeRank(index + 1)}.png`}
               alt={`Badge ${getBadgeRank(index + 1)}`}
-              className="w-full h-full pb-12 object-cover rounded-lg"
+              className="w-full h-full object-cover rounded-lg"
             />
-            <div className="absolute bottom-0 left-0 right-0 p-4 bg-gray-800 rounded-b-lg flex flex-col items-center justify-center">
-              <div className="text-white text-lg font-bold mb-2">{index + 1}</div>
-              <div className="text-white text-base font-bold">{name}</div>
-              <div className="text-gray-400 text-sm">{formattedTime}&emsp;|&emsp;{section}</div>
+            <div className="absolute bottom-0 left-0 right-0 rounded-b-lg px-4 pt-4 pb-2" style={{ background: 'linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0))'}}>
+              <div className="text-white font-bold text-lg mb-1">{index + 1}</div>
+              <div className="text-white text-lg mb-2">{name}</div>
+              <div className="text-gray-400 text-xs">{formattedTime}&emsp;|&emsp;{section}</div>
             </div>
           </div>
         ))}
