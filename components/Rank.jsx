@@ -165,6 +165,7 @@ function Rank({ data, onClose }) {
               <div
                 key={name}
                 className="flex items-center justify-between border-b py-4"
+
               >
                 <div className="flex items-center">
                   <img
@@ -197,17 +198,18 @@ function Rank({ data, onClose }) {
               </div>
             </div>
 
-            <div className="relative flex justify-center pb-5 items-center">
+            <div className="flex justify-center pb-5 items-center">
               <div
                 className="w-full text-gray-700 bg-white p-5 rounded-b-lg shadow-lg mx-auto"
                 style={{ maxWidth: "90%" }}
               >
                 <div>
+                  {" "}
                   {earliestStudents[section].map(
                     ({ name, student, formattedTime }, index) => (
                       <div
                         key={student}
-                        className="flex items-center justify-between border-b py-4 relative"
+                        className="flex items-center justify-between border-b py-4"
                       >
                         <div className="flex items-center">
                           <img
@@ -219,18 +221,6 @@ function Rank({ data, onClose }) {
                             <div>{name}</div>
                             <div>{formattedTime}</div>
                           </div>
-                        </div>
-                        <div className="absolute top-0 left-0 w-full h-full">
-                          {[...Array(20)].map((_, i) => (
-                            <div
-                              key={i}
-                              className="absolute animate-sparkle"
-                              style={{
-                                top: `${Math.random() * 100}%`,
-                                left: `${Math.random() * 100}%`,
-                              }}
-                            />
-                          ))}
                         </div>
                       </div>
                     )
