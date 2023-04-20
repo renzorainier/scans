@@ -212,7 +212,7 @@ function Rank({ data, onClose }) {
             <img
               src={`/pictures/${getBadgeRankSec(index + 1)}.png`}
               alt={`Badge ${getBadgeRankSec(index + 1)}`}
-              className="w-full h-full pb-4 object-cover rounded-lg"
+              className="w-full h-full pb-5 object-cover rounded-lg"
             />
             <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-gray-900 via-gray-900 to-transparent rounded-b-lg">
               <div className="text-white text-sm">{name}</div>
