@@ -149,16 +149,18 @@ function Rank({ data, onClose }) {
 
       <div className="flex justify-center items-center">
         <div
-          className="w-full text-gray-70 flex justify-center font-bold items-center bg-gray-200 p-5 rounded-t-lg shadow-lg mx-auto"
+          className="w-full text-gray-70 flex justify-center font-bold items-center bg-gray- p-5 rounded-t-lg shadow-lg mx-auto"
           style={{ maxWidth: "90%" }}
         >
           Overall Top 10 Most Punctual Students
         </div>
       </div>
       <div className="flex justify-center pb-5 items-center">
-       
-          <div className="flex justify-center pb-5 items-center">
-            <div className="w-full bg-gray-900 rounded-lg shadow-xl mx-auto">
+
+          <div className=" w-full flex justify-center pb-5 items-center"
+                    style={{ maxWidth: "90%" }}
+                    >
+            <div className="w-full bg-gray-900 rounded-b-lg shadow-xl mx-auto">
               <div className="py-4">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                   {overallEarliest.map(
