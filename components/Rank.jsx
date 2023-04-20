@@ -160,21 +160,26 @@ function Rank({ data, onClose }) {
           className="w-full text-gray-700 bg-white p-5 rounded-b-lg shadow-lg mx-auto"
           style={{ maxWidth: "90%" }}
         >
-     <div className="flex justify-center pb-5 items-center">
-  <div className="w-full bg-black rounded-lg shadow-xl mx-auto">
+<div className="flex justify-center pb-5 items-center">
+  <div className="w-full bg-gray-900 rounded-lg shadow-xl mx-auto">
     <div className="py-4">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="text-center text-white text-2xl font-bold py-4 border-b border-gray-800">Leaderboard</div>
         {overallEarliest.map(({ name, section, formattedTime }, index) => (
-          <div key={name} className="relative">
-            <img
-              src={`/pictures/S${getBadgeRank(index + 1)}.png`}
-              alt={`Badge ${getBadgeRank(index + 1)}`}
-              className="w-full h-full pb-12 object-cover rounded-lg shadow-md"
-            />
-            <div className="absolute bottom-0 left-0 right-0 p-4 rounded-b-lg bg-gradient-to-t from-green-400 to-blue-500">
-              <div className="text-white text-lg font-bold mb-2">{index + 1}</div>
-              <div className="text-white text-xl font-bold">{name}</div>
-              <div className="text-gray-300 text-sm">{formattedTime} | {section}</div>
+          <div key={name} className="relative border border-gray-800 rounded-lg overflow-hidden">
+            <div className="absolute top-0 left-0 right-0 p-2 bg-gradient-to-b from-black to-transparent">
+              <div className="text-white text-lg">{name}</div>
+              <div className="text-gray-400 text-xs">{formattedTime}&emsp;|&emsp;{section}</div>
+            </div>
+            <div className="w-full h-52 overflow-hidden">
+              <img
+                src={`/pictures/S${getBadgeRank(index + 1)}.png`}
+                alt={`Badge ${getBadgeRank(index + 1)}`}
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <div className="absolute top-0 right-0 p-2">
+              <div className="text-white text-3xl font-bold">{index + 1}</div>
             </div>
           </div>
         ))}
