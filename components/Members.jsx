@@ -11,7 +11,7 @@ const teamMembers = [
 
 function TeamMembers() {
   return (
-    <div className="grid grid-cols-3 gap-4 grid-auto-rows-minmax(0, 1fr)">
+    <div className="grid grid-cols-3 gap-4 grid-auto-rows-minmax(0, fr)">
       {teamMembers.map((member, index) => (
         <div key={index} className="bg-white shadow-lg rounded-lg overflow-hidden flex flex-col items-center">
           <div className="rounded-full w-36 h-36 overflow-hidden mt-6">
