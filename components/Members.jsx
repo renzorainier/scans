@@ -1,7 +1,6 @@
 import React from "react";
 import Slider from "react-slick";
 
-
 const teamMembers = [
   { name: "John Doe", imageUrl: "/pictures/1.png" },
   { name: "Jane Smith", imageUrl: "/pictures/2.png" },
@@ -14,6 +13,9 @@ function TeamCarousel() {
     speed: 500,
     slidesToShow: 3,
     slidesToScroll: 1,
+    rtl: true, // Move to the right
+    dots: true, // Add navigation dots
+    autoplay: true, // Add autoplay functionality
   };
 
   return (
