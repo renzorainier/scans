@@ -203,8 +203,7 @@ function Scan() {
         const scanTime = new Date();
         const timeDifference = scanTime.getTime() - classStartTime.getTime();
 
-        let badgeFieldName = "";
-        if (timeDifference < -300000) {
+   if (timeDifference < -300000) {
           // Student is early (5 minutes before class start time)
           attendanceStatus = "early";
         } else if (timeDifference > 600000) {
@@ -213,7 +212,8 @@ function Scan() {
         } else {
           // Student is on time (within 10 minutes of class start time)
           attendanceStatus = "ontime";
-        }
+        }        let badgeFieldName = "";
+
 
         const dayOfWeek = currentDay.substring(0, 3);
         let dayCode;
