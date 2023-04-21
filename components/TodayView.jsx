@@ -160,28 +160,29 @@ function AttendanceTable() {
 
   return (
     <div>
-      <div className="flex justify-center pt-5 items-center">
-        <div className="w-full rounded-lg mx-auto" style={{ maxWidth: "90%" }}>
-          <Switch
-            checked={state}
-            onChange={setState}
-            className={`${state ? "bg-gray-300" : "bg-gray-300"}
-    relative inline-flex h-[50px] w-full shrink-0 cursor-pointer rounded-lg border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75`}
-          >
-            <span
-              aria-hidden="true"
-              className={`${state ? "translate-x-[100%]" : "translate-x-0"}
-      pointer-events-none inline-block h-[47px] w-[50%] transform rounded-lg bg-white shadow-lg ring-0 transition duration-200 ease-in-out `}
-            />
-            <div className="absolute top-1/2 left-[12%] transform -translate-y-1/2 ">
-              ATTENDANCE
-            </div>
-            <div className="absolute top-1/2 right-[18%] transform -translate-y-1/2">
-              BADGE
-            </div>
-          </Switch>
-        </div>
+   <div className="flex justify-center pt-5 items-center">
+  <div className="w-full rounded-lg mx-auto" style={{ maxWidth: "90%" }}>
+    <Switch
+      checked={state}
+      onChange={setState}
+      className={`${state ? "bg-gray-500" : "bg-gray-300"}
+        relative inline-flex h-[50px] w-full shrink-0 cursor-pointer rounded-lg border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75`}
+    >
+      <span
+        aria-hidden="true"
+        className={`${state ? "translate-x-full" : "translate-x-0"}
+          pointer-events-none inline-block h-[47px] w-[50%] transform rounded-lg bg-gray-100 shadow-lg ring-0 transition duration-200 ease-in-out `}
+      />
+      <div className="absolute top-1/2 left-[12%] transform -translate-y-1/2 font-bold text-lg">
+        ATTENDANCE
       </div>
+      <div className="absolute top-1/2 right-[18%] transform -translate-y-1/2 font-bold text-lg">
+        BADGE
+      </div>
+    </Switch>
+  </div>
+</div>
+
 
       <div >
         <div>
