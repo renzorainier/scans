@@ -1,13 +1,9 @@
 import { useState, useEffect, useRef } from "react";
 
-import johnDoeImage from "/pictures/1.png";
-import janeSmithImage from  "/pictures/2.png";
-import bobJohnsonImage from  "/pictures/3.png";
-
 const teamMembers = [
-  { name: "John Doe", imageUrl: /pictures/1.png },
-  { name: "Jane Smith", imageUrl: janeSmithImage },
-  { name: "Bob Johnson", imageUrl: bobJohnsonImage },
+  { name: "John Doe", imageUrl: "/pictures/1.png" },
+  { name: "Jane Smith", imageUrl: "/pictures/2.png" },
+  { name: "Bob Johnson", imageUrl: "/pictures/3.png" },
 ];
 
 function TeamCarousel() {
