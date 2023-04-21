@@ -203,16 +203,17 @@ function Scan() {
         const scanTime = new Date();
         const timeDifference = scanTime.getTime() - classStartTime.getTime();
 
-   if (timeDifference < -300000) {
-          // Student is early (5 minutes before class start time)
+        let badgeFieldName = "";
+        if (timeDifference <= -300000) {
+          // Student is early (arrived 5 minutes or more before class start time)
           attendanceStatus = "early";
-        } else if (timeDifference > 600000) {
-          // Student is late (more than 10 minutes after class start time)
-          attendanceStatus = "late";
-        } else {
-          // Student is on time (within 10 minutes of class start time)
+        } else if (timeDifference <= 0) {
+          // Student is on time (arrived within 5 minutes of class start time)
           attendanceStatus = "ontime";
-        }        let badgeFieldName = "";
+        } else {
+          // Student is late (arrived more than 5 minutes after class start time)
+          attendanceStatus = "late";
+        }
 
 
         const dayOfWeek = currentDay.substring(0, 3);
