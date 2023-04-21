@@ -1,7 +1,7 @@
 import React from "react";
 
 const teamMembers = [
-  { name: "John Doe", imageUrl: "/pictures/1.png" },
+  { name: "John Doe", imageUrl: "/pictures/pic.jpg" },
   { name: "Jane Smith", imageUrl: "/pictures/2.png" },
   { name: "Bob Johnson", imageUrl: "/pictures/3.png" },
   { name: "Samuel Lee", imageUrl: "/pictures/4.png" },
