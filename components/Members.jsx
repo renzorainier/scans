@@ -16,7 +16,7 @@ function TeamCarousel() {
     let intervalId = setInterval(() => {
       setCurrentMemberIndex((currentMemberIndex + 1) % teamMembers.length);
       strip.style.transform = `translateX(-${currentMemberIndex * stripWidth}px)`;
-    }, 3000);
+    }, 500);
     return () => clearInterval(intervalId);
   }, [currentMemberIndex]);
 
@@ -26,7 +26,7 @@ function TeamCarousel() {
         {teamMembers.map((member, index) => (
           <div key={index} className="team-member flex-shrink-0 w-full h-64">
             <div
-              className="h-full bg-cover bg-center"
+              className="h-fu bg-cover bg-center"
               style={{ backgroundImage: `url(${member.imageUrl})` }}
             ></div>
             <div className="bg-black bg-opacity-50 p-4">
