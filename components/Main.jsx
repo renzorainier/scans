@@ -6,6 +6,7 @@ import Greeting from "./Dash";
 import Calculator from "./Sample";
 import Scan from "./Scan";
 import Generate from "./Generate";
+import TeamCarousel from "./Members";
 
 // import Weather from "./Weather";
 
@@ -32,7 +33,9 @@ const MainComponent = () => {
             return <Generate onBackButtonClick={handleBackButtonClick} />;
             case "scan":
               return <Scan onBackButtonClick={handleBackButtonClick} />;
-      // render other components as needed
+              case "members":
+                return <TeamCarousel onBackButtonClick={handleBackButtonClick} />;
+              // render other components as needed
       default:
         return (
           <div className="mt-4 ax-w-screen-lg mx-auto">
@@ -44,7 +47,7 @@ const MainComponent = () => {
                 Attendance
               </button>
 
-              <button className="bg-white font-bold text-xl py-10 rounded-lg " onClick={() => handleButtonClick("past")}>
+              <button className="bg-white font-bold text-xl py-10 rounded-lg " onClick={() => handleButtonClick("members")}>
                 About
               </button>
               <button className="bg-white font-bold text-xl py-10 rounded-lg " onClick={() => handleButtonClick("create")}>
@@ -53,7 +56,7 @@ const MainComponent = () => {
               <button className="bg-white font-bold text-xl py-10 rounded-lg " onClick={() => handleButtonClick("scan")}>
                 Scan
               </button>
-              <button className="bg-white font-bold text-xl py-10 rounded-lg " onClick={() => handleButtonClick("past")}>
+              <button className="bg-white font-bold text-xl py-10 rounded-lg " onClick={() => handleButtonClick("create")}>
                 Qr Code
               </button>
 
