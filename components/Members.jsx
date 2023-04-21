@@ -16,7 +16,7 @@ function TeamCarousel() {
     let intervalId = setInterval(() => {
       setCurrentMemberIndex((currentMemberIndex + 1) % teamMembers.length);
       strip.style.transform = `translateX(-${currentMemberIndex * stripWidth}px)`;
-    }, 3000);
+    }, 1000);
     return () => clearInterval(intervalId);
   }, [currentMemberIndex]);
 
