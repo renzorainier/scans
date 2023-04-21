@@ -4,6 +4,9 @@ const teamMembers = [
   { name: "John Doe", imageUrl: "/pictures/1.png" },
   { name: "Jane Smith", imageUrl: "/pictures/2.png" },
   { name: "Bob Johnson", imageUrl: "/pictures/3.png" },
+    { name: " Doe", imageUrl: "/pictures/4.png" },
+  { name: " Smith", imageUrl: "/pictures/5.png" },
+  { name: " Johnson", imageUrl: "/pictures/6.png" },
 ];
 
 function TeamCarousel() {
@@ -26,7 +29,7 @@ function TeamCarousel() {
         {teamMembers.map((member, index) => (
           <div key={index} className="team-member flex-shrink-0 w-full h-64">
             <div
-              className="h-fu bg-cover bg-center"
+              className="h-full bg-cover bg-center"
               style={{ backgroundImage: `url(${member.imageUrl})` }}
             ></div>
             <div className="bg-black bg-opacity-50 p-4">
