@@ -12,11 +12,11 @@ function TeamCarousel() {
 
   useEffect(() => {
     const strip = stripRef.current;
-    const stripWidth = strip.offsetWidth;
+    const stripWidth = strip.offsetWidth / teamMembers.length;
     let intervalId = setInterval(() => {
       setCurrentMemberIndex((currentMemberIndex + 1) % teamMembers.length);
       strip.style.transform = `translateX(-${currentMemberIndex * stripWidth}px)`;
-    }, 1000);
+    }, 3000);
     return () => clearInterval(intervalId);
   }, [currentMemberIndex]);
 
