@@ -5,7 +5,7 @@ import janeSmithImage from  "/pictures/2.png";
 import bobJohnsonImage from  "/pictures/3.png";
 
 const teamMembers = [
-  { name: "John Doe", imageUrl: johnDoeImage },
+  { name: "John Doe", imageUrl: /pictures/1.png },
   { name: "Jane Smith", imageUrl: janeSmithImage },
   { name: "Bob Johnson", imageUrl: bobJohnsonImage },
 ];
