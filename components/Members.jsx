@@ -1,35 +1,35 @@
-import { useState, useEffect } from "react";
+import React from "react";
+import Slider from "react-slick";
+
 
 const teamMembers = [
   { name: "John Doe", imageUrl: "/pictures/1.png" },
-  { name: "Jane Smith", imageUrl:  "/pictures/2.png" },
-  { name: "Bob Johnson", imageUrl:  "/pictures/3.png"},
+  { name: "Jane Smith", imageUrl: "/pictures/2.png" },
+  { name: "Bob Johnson", imageUrl: "/pictures/3.png" },
 ];
 
 function TeamCarousel() {
-  const [currentMemberIndex, setCurrentMemberIndex] = useState(0);
-
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      setCurrentMemberIndex((currentMemberIndex + 1) % teamMembers.length);
-    }, 3000);
-    return () => clearInterval(intervalId);
-  }, [currentMemberIndex]);
+  const settings = {
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+  };
 
   return (
-    <div className="relative overflow-hidden">
-      <div className="flex absolute top-1/2 left-0 transform -translate-y-1/2">
-        {teamMembers.map((member, index) => (
+    <Slider {...settings}>
+      {teamMembers.map((member, index) => (
+        <div key={index} className="team-member flex-shrink-0 w-full h-64">
           <div
-            key={index}
-            className={`${
-              index === currentMemberIndex ? "opacity-100" : "opacity-50"
-            } h-20 w-20 flex-shrink-0 rounded-full bg-cover bg-center mx-4 transition-opacity duration-500`}
+            className="h-full bg-cover bg-center rounded-full"
             style={{ backgroundImage: `url(${member.imageUrl})` }}
           ></div>
-        ))}
-      </div>
-    </div>
+          <div className="bg-black bg-opacity-50 p-4 rounded-b-lg">
+            <h2 className="text-white text-lg font-bold">{member.name}</h2>
+          </div>
+        </div>
+      ))}
+    </Slider>
   );
 }
 
