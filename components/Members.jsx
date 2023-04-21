@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import johnDoeImage from "/pictures/1.png";
-import janeSmithImage from "./jane-smith.jpg";
-import bobJohnsonImage from "./bob-johnson.jpg";
+import janeSmithImage from  "/pictures/2.png";
+import bobJohnsonImage from  "/pictures/3.png";
 
 const teamMembers = [
   { name: "John Doe", imageUrl: johnDoeImage },
