@@ -1,9 +1,12 @@
 import { useState, useEffect, useRef } from "react";
+import johnDoeImage from "./john-doe.jpg";
+import janeSmithImage from "./jane-smith.jpg";
+import bobJohnsonImage from "./bob-johnson.jpg";
 
 const teamMembers = [
-  { name: "John Doe", imageUrl: "https://example.com/john-doe.jpg" },
-  { name: "Jane Smith", imageUrl: "https://example.com/jane-smith.jpg" },
-  { name: "Bob Johnson", imageUrl: "https://example.com/bob-johnson.jpg" },
+  { name: "John Doe", imageUrl: johnDoeImage },
+  { name: "Jane Smith", imageUrl: janeSmithImage },
+  { name: "Bob Johnson", imageUrl: bobJohnsonImage },
 ];
 
 function TeamCarousel() {
