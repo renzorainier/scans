@@ -11,18 +11,19 @@ const teamMembers = [
 
 function TeamMembers() {
   return (
-    <div className="grid grid-cols-3 gap-4 grid-auto-rows-minmax(0, fr)">
-      {teamMembers.map((member, index) => (
-        <div key={index} className="bg-white shadow-lg rounded-lg overflow-hidden flex flex-col items-center">
-          <div className="rounded-full w-36 h-36 overflow-hidden mt-6">
-            <img className="w-full h-full object-cover object-center" src={member.imageUrl} alt={member.name} />
-          </div>
-          <div className="p-4">
-            <h2 className="font-bold text-lg mt-4">{member.name}</h2>
-          </div>
+    <div className="grid grid-cols-3 gap-4">
+    {teamMembers.map((member, index) => (
+      <div key={index} className="bg-white shadow-lg rounded-lg overflow-hidden flex flex-col items-center">
+        <div className="rounded-full w-36 h-36 overflow-hidden mt-6">
+          <img className="w-full h-full object-cover object-center" src={member.imageUrl} alt={member.name} />
         </div>
-      ))}
-    </div>
+        <div className="p-4">
+          <h2 className="font-bold text-lg mt-4">{member.name}</h2>
+        </div>
+      </div>
+    ))}
+  </div>
+
   );
 
 
