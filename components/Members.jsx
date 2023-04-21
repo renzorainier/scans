@@ -1,5 +1,4 @@
-import React from "react";
-import Slider from "react-slick";
+import { useState, useEffect, useRef } from "react";
 
 const teamMembers = [
   { name: "John Doe", imageUrl: "/pictures/1.png" },
@@ -8,30 +7,35 @@ const teamMembers = [
 ];
 
 function TeamCarousel() {
-  const settings = {
-    infinite: true,
-    speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    rtl: true, // Move to the right
-    dots: true, // Add navigation dots
-    autoplay: true, // Add autoplay functionality
-  };
+  const [currentMemberIndex, setCurrentMemberIndex] = useState(0);
+  const stripRef = useRef(null);
+
+  useEffect(() => {
+    const strip = stripRef.current;
+    const stripWidth = strip.offsetWidth;
+    let intervalId = setInterval(() => {
+      setCurrentMemberIndex((currentMemberIndex + 1) % teamMembers.length);
+      strip.style.transform = `translateX(-${currentMemberIndex * stripWidth}px)`;
+    }, 3000);
+    return () => clearInterval(intervalId);
+  }, [currentMemberIndex]);
 
   return (
-    <Slider {...settings}>
-      {teamMembers.map((member, index) => (
-        <div key={index} className="team-member flex-shrink-0 w-full h-64">
-          <div
-            className="h-full bg-cover bg-center rounded-full"
-            style={{ backgroundImage: `url(${member.imageUrl})` }}
-          ></div>
-          <div className="bg-black bg-opacity-50 p-4 rounded-b-lg">
-            <h2 className="text-white text-lg font-bold">{member.name}</h2>
+    <div className="relative overflow-hidden">
+      <div className="flex" ref={stripRef}>
+        {teamMembers.map((member, index) => (
+          <div key={index} className="team-member flex-shrink-0 w-full h-64">
+            <div
+              className="h-full bg-cover bg-center"
+              style={{ backgroundImage: `url(${member.imageUrl})` }}
+            ></div>
+            <div className="bg-black bg-opacity-50 p-4">
+              <h2 className="text-white text-lg font-bold">{member.name}</h2>
+            </div>
           </div>
-        </div>
-      ))}
-    </Slider>
+        ))}
+      </div>
+    </div>
   );
 }
 
