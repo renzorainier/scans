@@ -7,9 +7,51 @@ const Greeting = () => {
   const [timeOfDay, setTimeOfDay] = useState("");
 
   useEffect(() => {
-    const morningGreetings = ["Good Morning"];
-    const afternoonGreetings = ["Good Afternoon"];
-    const eveningGreetings = ["Good Evening"];
+    const morningGreetings = [
+      "Good Morning",
+      "Top of the morning",
+      "Rise and shine",
+      "Good day to you",
+      "Hello sunshine",
+      "Wakey wakey, eggs and bakey",
+      "Hope you slept well",
+      "Lets get this day started",
+      "Time to be awesome",
+      "Its a great day to learn",
+      "Good day, beautiful",
+      "Wishing you a lovely day ahead",
+      "May your day be filled with joy and positivity",
+      "Sending positive vibes your way",
+      "Hope you have a productive day",
+      "Lets make today count",
+      "Heres to a great day ahead",
+      "Seize the day and make it yours",
+      "Good morning, superstar!",
+      "Make today your best day yet",
+    ];
+    const afternoonGreetings = [
+      "Good Afternoon",
+      "Hello there",
+      "Howdy",
+      "Hey hey",
+      "How's your day going?",
+      "Keep up the good work",
+      "Stay strong, finish strong",
+      "We got this",
+      "Let's finish the day strong, keep it up",
+    ];
+    const eveningGreetings = [
+      "Good Evening",
+      "Greetings",
+      "Salutations",
+      "Well hello there",
+      "Time to unwind",
+      "Hope you had a great day",
+      "Rest up for tomorrow",
+      "Great job today",
+      "Let's aim to do even better tomorrow",
+      "Keep up the good work",
+    ];
 
     const hour = date.getHours();
     let greetingOptions = [];
@@ -60,66 +102,26 @@ const Greeting = () => {
 
   return (
     <div className="flex justify-center pt-1 items-center">
-  <div
-    className={`w-full p-5 mr-5 ml-5 rounded-lg shadow-lg mx-auto ${getTextColor()}`}
-    style={{
-      backgroundImage: `url(${getImageUrl()})`,
-      backgroundSize: "cover",
-      backgroundPosition: "center",
-    }}
-  >
-    <div style={{ minHeight: "200px" }}>
-      <h2 className="text-3xl font-bold mb-2">{greeting} Scasians! </h2>
-      <p className="mb-2 font-bold">Today is {dateString}</p>
-      {showReminder && (
-        <h3 className="text-sm font-bold mb-2 ">
-          If you haven't already, get your qr-code scanned now :&gt;
-        </h3>
-      )}
+      <div
+        className={`w-full p-5 mr-5 ml-5 rounded-lg shadow-lg mx-auto ${getTextColor()}`}
+        style={{
+          backgroundImage: `url(${getImageUrl()})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
+        <div style={{ minHeight: "200px" }}>
+          <h2 className="text-3xl font-bold mb-2">{greeting} Scasians! </h2>
+          <p className="mb-2 font-bold">Today is {dateString}</p>
+          {showReminder && (
+            <h3 className="text-sm font-bold mb-2 ">
+              If you haven't already, get your qr-code scanned now :&gt;
+            </h3>
+          )}
+        </div>
+      </div>
     </div>
-  </div>
-</div>
-
   );
 };
 
 export default Greeting;
-
-// "Top of the morning",
-//       "Rise and shine",
-//       "Good day to you",
-//       "Hello sunshine",
-//       "Wakey wakey, eggs and bakey",
-//       "Hope you slept well",
-//       "Lets get this day started",
-//       "Time to be awesome",
-//       "Its a great day to learn",
-//       "Good day, beautiful",
-//       "Wishing you a lovely day ahead",
-//       "May your day be filled with joy and positivity",
-//       "Sending positive vibes your way",
-//       "Hope you have a productive day",
-//       "Lets make today count",
-//       "Heres to a great day ahead",
-//       "Seize the day and make it yours",
-//       "Good morning, superstar!",
-//       "Make today your best day yet"
-
-// "Hello there",
-// "Howdy",
-// "Hey hey",
-// "How's your day going?",
-// "Keep up the good work",
-// "Stay strong, finish strong",
-// "We got this",
-// "Let's finish the day strong, keep it up"
-
-// "Greetings",
-// "Salutations",
-// "Well hello there",
-// "Time to unwind",
-// "Hope you had a great day",
-// "Rest up for tomorrow",
-// "Great job today",
-// "Let's aim to do even better tomorrow",
-// "Keep up the good work"
