@@ -2,11 +2,11 @@ import { useState, useEffect, useRef } from "react";
 
 const teamMembers = [
   { name: "John Doe", imageUrl: "/pictures/pic.jpg" },
-  { name: "Jane Smith", imageUrl: "/pictures/2.png" },
-  { name: "Bob Johnson", imageUrl: "/pictures/3.png" },
-  { name: "Alice Lee", imageUrl: "/pictures/4.png" },
-  { name: "Peter Parker", imageUrl: "/pictures/5.png" },
-  { name: "Mary Jane", imageUrl: "/pictures/6.png" },
+  { name: "Jane Smith", imageUrl: "/pictures/pic.jpg" },
+  { name: "Bob Johnson", imageUrl: "/pictures/pic.jpg" },
+  { name: "Alice Lee", imageUrl: "/pictures/pic.jpg" },
+  { name: "Peter Parker", imageUrl: "/pictures/pic.jpg" },
+  { name: "Mary Jane", imageUrl: "/pictures/pic.jpg" },
 ];
 
 function TeamMembers() {
