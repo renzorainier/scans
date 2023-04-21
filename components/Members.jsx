@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const teamMembers = [
   { name: "John Doe", imageUrl: "https://example.com/john-doe.jpg" },
@@ -8,36 +8,27 @@ const teamMembers = [
 
 function TeamCarousel() {
   const [currentMemberIndex, setCurrentMemberIndex] = useState(0);
+  const containerRef = useRef(null);
 
-  const prevMember = () => {
-    setCurrentMemberIndex((currentMemberIndex - 1 + teamMembers.length) % teamMembers.length);
-  };
-
-  const nextMember = () => {
-    setCurrentMemberIndex((currentMemberIndex + 1) % teamMembers.length);
-  };
+  useEffect(() => {
+    const container = containerRef.current;
+    const memberWidth = container.querySelector(".team-member").offsetWidth;
+    let intervalId = setInterval(() => {
+      setCurrentMemberIndex((currentMemberIndex + 1) % teamMembers.length);
+      container.style.transform = `translateX(-${currentMemberIndex * memberWidth}px)`;
+    }, 3000);
+    return () => clearInterval(intervalId);
+  }, [currentMemberIndex]);
 
   return (
     <div className="relative overflow-hidden">
-      <div className="absolute inset-y-0 left-0 flex items-center">
-        <button className="text-white bg-gray-500 px-2 py-1 rounded-l" onClick={prevMember}>
-          {"<"}
-        </button>
-      </div>
-      <div className="absolute inset-y-0 right-0 flex items-center">
-        <button className="text-white bg-gray-500 px-2 py-1 rounded-r" onClick={nextMember}>
-          {">"}
-        </button>
-      </div>
-      <div className="flex overflow-x-auto">
+      <div className="flex" ref={containerRef}>
         {teamMembers.map((member, index) => (
-          <div
-            key={index}
-            className={`w-full flex-shrink-0 h-64 bg-cover bg-center transition-transform ${
-              index === currentMemberIndex ? "transform-none" : "transform translate-x-full"
-            }`}
-            style={{ backgroundImage: `url(${member.imageUrl})` }}
-          >
+          <div key={index} className="team-member flex-shrink-0 w-full h-64">
+            <div
+              className="h-full bg-cover bg-center"
+              style={{ backgroundImage: `url(${member.imageUrl})` }}
+            ></div>
             <div className="bg-black bg-opacity-50 p-4">
               <h2 className="text-white text-lg font-bold">{member.name}</h2>
             </div>
