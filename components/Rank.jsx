@@ -105,6 +105,7 @@ function Rank({ data, onClose }) {
     });
   });
 
+
   return (
     <div>
       <div className="flex justify-center pt-4 pb-5 items-center">
