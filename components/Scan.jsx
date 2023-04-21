@@ -134,7 +134,7 @@ function Scan() {
           startTime: "08:00:00",
         },
         Friday: {
-          startTime: "16:13:00",
+          startTime: "16:18:00",
         },
         Saturday: {
           startTime: "08:00:00",
@@ -207,7 +207,7 @@ function Scan() {
         if (timeDifference <= -300000) {
           // Student is early (arrived 5 minutes or more before class start time)
           attendanceStatus = "early";
-        } else if (timeDifference <= 0) {
+        } else if (timeDifference <= 60000) {
           // Student is on time (arrived within 5 minutes of class start time)
           attendanceStatus = "ontime";
         } else {
