@@ -11,10 +11,10 @@ const teamMembers = [
 
 function TeamMembers() {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+    <div className="grid grid-cols-4 gap-4">
       {teamMembers.map((member, index) => (
         <div key={index} className="bg-white shadow-lg rounded-lg overflow-hidden">
-          <img className="w-full h-64 object-cover object-center" src={member.imageUrl} alt={member.name} />
+          <img className="w-full h-full object-cover object-center" src={member.imageUrl} alt={member.name} />
           <div className="p-4">
             <h2 className="font-bold text-lg">{member.name}</h2>
           </div>
