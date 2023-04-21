@@ -43,6 +43,10 @@ const MainComponent = () => {
               <button className="bg-white font-bold text-xl py-10 rounded-lg " onClick={() => handleButtonClick("today")}>
                 Attendance
               </button>
+
+              <button className="bg-white font-bold text-xl py-10 rounded-lg " onClick={() => handleButtonClick("past")}>
+                About
+              </button>
               <button className="bg-white font-bold text-xl py-10 rounded-lg " onClick={() => handleButtonClick("create")}>
                 Create
               </button>
@@ -52,12 +56,7 @@ const MainComponent = () => {
               <button className="bg-white font-bold text-xl py-10 rounded-lg " onClick={() => handleButtonClick("past")}>
                 Qr Code
               </button>
-              <button className="bg-white font-bold text-xl py-10 rounded-lg " onClick={() => handleButtonClick("sample")}>
-                Badges
-              </button>
-              <button className="bg-white font-bold text-xl py-10 rounded-lg " onClick={() => handleButtonClick("past")}>
-                About
-              </button>
+
 
             </div>
           </div>
