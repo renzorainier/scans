@@ -41,8 +41,9 @@ const About = () => {
                 <div className="mt-2 text-sm text-gray-500">
                   Scans is a web application developed by a Grade 12 ST-1B
                   student of Sumulong College of Arts and Sciences as a research
-                  project titled "Development of QR Code Technology as an
-                  Attendance System for Enhancing Attendance and Punctuality"
+                  project titled &ldquo;Development of QR Code Technology as an
+                  Attendance System for Enhancing Attendance and
+                  Punctuality&rdquo;
                 </div>
               )}
             </div>
@@ -128,7 +129,7 @@ const About = () => {
             >
               <div className="flex justify-between items-center">
                 <h3 className="text-lg leading-6 font-medium text-gray-900">
-                Meet Our Team
+                  Meet Our Team
                 </h3>
                 <div className="flex items-center">
                   <FaChevronDown
