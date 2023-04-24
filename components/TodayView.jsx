@@ -212,8 +212,15 @@ function AttendanceTable() {
 
                 <div>
                   <LineGraph data={attendanceData} />
-                </div>
-
+                  </div>
+                  </div>
+                  </div>
+ 
+                  <div className="flex justify-center pt-4 pb-5 items-center">
+              <div
+                className="w-full text-gray-700 bg-white p-5  rounded-lg shadow-lg mx-auto"
+                style={{ maxWidth: "90%" }}
+              >
                 <div className="flex justify-between items-center mb-4">
                   <div id="search" className="flex items-center w-full">
                     <input
@@ -385,9 +392,12 @@ function AttendanceTable() {
                   )}
                 </div>
               </div>
+
             </div>
+
           )}
         </div>
+
       </div>
     </div>
   );
