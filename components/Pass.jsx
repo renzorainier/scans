@@ -46,12 +46,13 @@ function PasswordProtectedContent() {
             </button>
           </form>
         )}
-      </div>
-      {showContent && (
+         {showContent && (
         <div>
           <Scan />
         </div>
       )}
+      </div>
+
     </div>
   );
 }
