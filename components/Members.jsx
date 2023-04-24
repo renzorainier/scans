@@ -13,7 +13,7 @@ function TeamMembers() {
     <div className="grid grid-cols-2 gap-4 md:grid-cols-6">
       <TeamMember
         name="Renz Pasagdan"
-        role="Leader, Programmer"
+        role="Leader | Programmer"
         image={renz}
       />
       <TeamMember
@@ -53,7 +53,7 @@ function TeamMember({ name, role, image }) {
         <Image className="object-cover w-full h-full" src={image} alt={name} />
       </div>
       <h2 className="font-bold text-lg mt-2 md:text-xl md:mt-4">{name}</h2>
-      <h3 className="text-base md:text-lg md:mt-2">{role}</h3>
+      <h3 className="text-sm md:text-lg md:mt-2">{role}</h3>
     </div>
   );
 }
