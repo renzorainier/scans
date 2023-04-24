@@ -5,7 +5,7 @@ import renz from "./../public/pictures/renz.webp";
 import celine from "./../public/pictures/celine.webp";
 import xedrick from "./../public/pictures/xed.webp";
 import aidrian from "./../public/pictures/adrian.webp";
-import klaus from "./../public/pictures/klaus.webp";
+import klaus from "./../public/pictures/klas.jpeg";
 import marjorie from "./../public/pictures/marjorie.webp";
 
 function TeamMembers() {
