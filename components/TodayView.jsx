@@ -191,216 +191,214 @@ function AttendanceTable() {
             </div>
           ) : (
             <div>
-            <div className="flex justify-center pt-4 pb-5 items-center">
-              <div
-                className="w-full text-gray-700 bg-white p-5  rounded-lg shadow-lg mx-auto"
-                style={{ maxWidth: "90%" }}
-              >
-                <div className="bg-white shadow rounded-lg p-6">
-                  <div className="mb-4">
-                    <h2 className="text-gray-700 text-xl font-bold text-center">
-                      Attendance For Today
-                    </h2>
-                    <h1 className="text-gray-700 font-bold text-base mb-2 text-center">
-                      {new Date().toLocaleDateString()}
-                    </h1>
-                  </div>
-                </div>
-
-                <div>
-                  <NumberLineGraph data={attendanceData} />
-                </div>
-
-                <div>
-                  <LineGraph data={attendanceData} />
-                  </div>
-                  </div>
-                  </div>
-
-                  <div className="flex justify-center pt-4 pb-5 items-center">
-              <div
-                className="w-full text-gray-700 bg-white p-5  rounded-lg shadow-lg mx-auto"
-                style={{ maxWidth: "90%" }}
-              >
-                <div className="flex justify-between items-center mb-4">
-                  <div id="search" className="flex items-center w-full">
-                    <input
-                      type="text"
-                      className="border rounded-md py-1 px-2 text-gray-700 w-4/5 mr-2"
-                      placeholder="Search name (select a section first)"
-                      value={searchQuery}
-                      onChange={handleSearchQueryChange}
-                      disabled={selectedSection === ""}
-                    />
-
-                    <select
-                      className="border rounded-md py-1 px-2 text-gray-700 w-1/5"
-                      value={selectedSection}
-                      onChange={handleSectionChange}
-                    >
-                      <option value="">All</option>
-                      <option value="1A">1A</option>
-                      <option value="1B">1B</option>
-                      <option value="1C">1C</option>
-                      <option value="1D">1D</option>
-                    </select>
-                  </div>
-                </div>
-
-                <div id="table" className="overflow-x-auto rounded-lg">
-                  <table className="table-auto w-full text-center ">
-                    <thead
-                      className="bg-gray-200 text-"
-                      style={{ border: "none" }}
-                    >
-                      <tr className="p-2 font-bold">
-                        <th
-                          className="p-2 pb-4 pt-4 "
-                          onClick={() =>
-                            handleHeaderClick(
-                              "Index - shows the index of the students baseds on their scan time."
-                            )
-                          }
-                          style={{
-                            background: "transparent",
-                            fontWeight: "bold",
-                            cursor: "pointer",
-                          }}
-                        >
-                          #
-                        </th>
-                        <th
-                          className="p-2"
-                          onClick={() =>
-                            handleHeaderClick(
-                              "NAME - shows the name of the students"
-                            )
-                          }
-                          style={{
-                            background: "transparent",
-                            fontWeight: "bold",
-                            cursor: "pointer",
-                          }}
-                        >
-                          NAME
-                        </th>
-                        <th
-                          className="p-2"
-                          onClick={() =>
-                            handleHeaderClick(
-                              "STRAND - shows the strand of the students"
-                            )
-                          }
-                          style={{
-                            background: "transparent",
-                            fontWeight: "bold",
-                            cursor: "pointer",
-                          }}
-                        >
-                          STRAND
-                        </th>
-                        <th
-                          className="p-2"
-                          onClick={() =>
-                            handleHeaderClick(
-                              "SEC - shows the section of the students."
-                            )
-                          }
-                          style={{
-                            background: "transparent",
-                            fontWeight: "bold",
-                            cursor: "pointer",
-                          }}
-                        >
-                          SEC
-                        </th>
-                        <th
-                          className="p-2"
-                          onClick={() =>
-                            handleHeaderClick(
-                              "SCANNED - shows the time the students was scanned for the day, red means late, yellow means on time, and green means early."
-                            )
-                          }
-                          style={{
-                            background: "transparent",
-                            fontWeight: "bold",
-                            cursor: "pointer",
-                          }}
-                        >
-                          SCANNED:
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {filteredStudents.map((student, index) => (
-                        <tr
-                          className={`${
-                            index % 2 === 0 ? "bg-gray-100" : "bg-gray-200"
-                          } rounded-lg mb-2 py-2`}
-                          key={student.studentId}
-                          onClick={() => handleMoreClick(student)}
-                        >
-                          <td className="p-2">
-                            {filteredStudents.length - index}
-                          </td>
-                          <td className="p-2 font-bold whitespace-nowrap">
-                            {student.name}
-                          </td>
-                          <td className="p-2">{student.strand}</td>
-                          <td className="p-2 ">{student.section}</td>
-                          <td className="p-2 whitespace-nowrap">
-                            {student.status === "late" && (
-                              <div className="bg-[#EC7063] h-6 w-16 rounded-sm inline-block mr-1">
-                                {student.lastScanTime}
-                              </div>
-                            )}
-                            {student.status === "ontime" && (
-                              <div className="bg-[#F7DC6F]  h-6 w-16 rounded-sm inline-block mr-1">
-                                {student.lastScanTime}
-                              </div>
-                            )}
-                            {student.status === "early" && (
-                              <div className="bg-[#2ECC71]  h-6 w-16 rounded-sm inline-block mr-1">
-                                {student.lastScanTime}
-                              </div>
-                            )}
-                          </td>
-                        </tr>
-                      ))}
-                      {selectedStudent && (
-                        <StudentDetails
-                          student={selectedStudent}
-                          onClose={onClose}
-                        />
-                      )}
-                    </tbody>
-                  </table>
-                  {showInfo && (
-                    <div className="fixed z-50 top-0 left-0 w-screen h-screen backdrop-blur-xl bg-gray/90">
-                      <div
-                        id="show"
-                        className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2  max-w-90% bg-white p-5 rounded-lg shadow-lg inline-block"
-                      >
-                        <p className="text-gray-700 text-center">{infoText}</p>
-                        <button
-                          className="block mx-auto mt-4 px-4 py-2 bg-gray-700 text-white rounded-lg hover:bg-gray-600"
-                          onClick={() => setShowInfo(false)}
-                        >
-                          Close
-                        </button>
-                      </div>
+              <div className="flex justify-center pt-4 pb-4 items-center">
+                <div
+                  className="w-full text-gray-700 bg-white p-5  rounded-lg shadow-lg mx-auto"
+                  style={{ maxWidth: "90%" }}
+                >
+                  <div className="bg-white shadow rounded-lg p-6">
+                    <div className="mb-4">
+                      <h2 className="text-gray-700 text-xl font-bold text-center">
+                        Attendance For Today
+                      </h2>
+                      <h1 className="text-gray-700 font-bold text-base mb-2 text-center">
+                        {new Date().toLocaleDateString()}
+                      </h1>
                     </div>
-                  )}
+                  </div>
+
+                  <div>
+                    <NumberLineGraph data={attendanceData} />
+                  </div>
+
+                  <div>
+                    <LineGraph data={attendanceData} />
+                  </div>
                 </div>
               </div>
 
-            </div>
-            </div>
+              <div className="flex justify-center pt-4 pb-5 items-center">
+                <div
+                  className="w-full text-gray-700 bg-white p-5  rounded-lg shadow-lg mx-auto"
+                  style={{ maxWidth: "90%" }}
+                >
+                  <div className="flex justify-between items-center mb-4">
+                    <div id="search" className="flex items-center w-full">
+                      <input
+                        type="text"
+                        className="border rounded-md py-1 px-2 text-gray-700 w-4/5 mr-2"
+                        placeholder="Search name (select a section first)"
+                        value={searchQuery}
+                        onChange={handleSearchQueryChange}
+                        disabled={selectedSection === ""}
+                      />
 
+                      <select
+                        className="border rounded-md py-1 px-2 text-gray-700 w-1/5"
+                        value={selectedSection}
+                        onChange={handleSectionChange}
+                      >
+                        <option value="">All</option>
+                        <option value="1A">1A</option>
+                        <option value="1B">1B</option>
+                        <option value="1C">1C</option>
+                        <option value="1D">1D</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div id="table" className="overflow-x-auto rounded-lg">
+                    <table className="table-auto w-full text-center ">
+                      <thead
+                        className="bg-gray-200 text-"
+                        style={{ border: "none" }}
+                      >
+                        <tr className="p-2 font-bold">
+                          <th
+                            className="p-2 pb-4 pt-4 "
+                            onClick={() =>
+                              handleHeaderClick(
+                                "Index - shows the index of the students baseds on their scan time."
+                              )
+                            }
+                            style={{
+                              background: "transparent",
+                              fontWeight: "bold",
+                              cursor: "pointer",
+                            }}
+                          >
+                            #
+                          </th>
+                          <th
+                            className="p-2"
+                            onClick={() =>
+                              handleHeaderClick(
+                                "NAME - shows the name of the students"
+                              )
+                            }
+                            style={{
+                              background: "transparent",
+                              fontWeight: "bold",
+                              cursor: "pointer",
+                            }}
+                          >
+                            NAME
+                          </th>
+                          <th
+                            className="p-2"
+                            onClick={() =>
+                              handleHeaderClick(
+                                "STRAND - shows the strand of the students"
+                              )
+                            }
+                            style={{
+                              background: "transparent",
+                              fontWeight: "bold",
+                              cursor: "pointer",
+                            }}
+                          >
+                            STRAND
+                          </th>
+                          <th
+                            className="p-2"
+                            onClick={() =>
+                              handleHeaderClick(
+                                "SEC - shows the section of the students."
+                              )
+                            }
+                            style={{
+                              background: "transparent",
+                              fontWeight: "bold",
+                              cursor: "pointer",
+                            }}
+                          >
+                            SEC
+                          </th>
+                          <th
+                            className="p-2"
+                            onClick={() =>
+                              handleHeaderClick(
+                                "SCANNED - shows the time the students was scanned for the day, red means late, yellow means on time, and green means early."
+                              )
+                            }
+                            style={{
+                              background: "transparent",
+                              fontWeight: "bold",
+                              cursor: "pointer",
+                            }}
+                          >
+                            SCANNED:
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {filteredStudents.map((student, index) => (
+                          <tr
+                            className={`${
+                              index % 2 === 0 ? "bg-gray-100" : "bg-gray-200"
+                            } rounded-lg mb-2 py-2`}
+                            key={student.studentId}
+                            onClick={() => handleMoreClick(student)}
+                          >
+                            <td className="p-2">
+                              {filteredStudents.length - index}
+                            </td>
+                            <td className="p-2 font-bold whitespace-nowrap">
+                              {student.name}
+                            </td>
+                            <td className="p-2">{student.strand}</td>
+                            <td className="p-2 ">{student.section}</td>
+                            <td className="p-2 whitespace-nowrap">
+                              {student.status === "late" && (
+                                <div className="bg-[#EC7063] h-6 w-16 rounded-sm inline-block mr-1">
+                                  {student.lastScanTime}
+                                </div>
+                              )}
+                              {student.status === "ontime" && (
+                                <div className="bg-[#F7DC6F]  h-6 w-16 rounded-sm inline-block mr-1">
+                                  {student.lastScanTime}
+                                </div>
+                              )}
+                              {student.status === "early" && (
+                                <div className="bg-[#2ECC71]  h-6 w-16 rounded-sm inline-block mr-1">
+                                  {student.lastScanTime}
+                                </div>
+                              )}
+                            </td>
+                          </tr>
+                        ))}
+                        {selectedStudent && (
+                          <StudentDetails
+                            student={selectedStudent}
+                            onClose={onClose}
+                          />
+                        )}
+                      </tbody>
+                    </table>
+                    {showInfo && (
+                      <div className="fixed z-50 top-0 left-0 w-screen h-screen backdrop-blur-xl bg-gray/90">
+                        <div
+                          id="show"
+                          className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2  max-w-90% bg-white p-5 rounded-lg shadow-lg inline-block"
+                        >
+                          <p className="text-gray-700 text-center">
+                            {infoText}
+                          </p>
+                          <button
+                            className="block mx-auto mt-4 px-4 py-2 bg-gray-700 text-white rounded-lg hover:bg-gray-600"
+                            onClick={() => setShowInfo(false)}
+                          >
+                            Close
+                          </button>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </div>
           )}
         </div>
-
-
       </div>
     </div>
   );
