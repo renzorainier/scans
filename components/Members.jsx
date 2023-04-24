@@ -18,7 +18,7 @@ function TeamMembers() {
         <h2 className="font-bold text-base md:text-lg mt-2 md:mt-4">
           Renz Pasagdan
         </h2>
-          <h2 className="font-bold text-base md:text-lg mt-2 md:mt-4">
+          <h2 className=" text-base md:text-lg  md:mt-4">
           Renz Pasagdan
         </h2>
       </div>
