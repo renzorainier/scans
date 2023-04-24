@@ -195,13 +195,13 @@ function AttendanceTable() {
                 className="w-full text-gray-700 bg-white p-5  rounded-lg shadow-lg mx-auto"
                 style={{ maxWidth: "90%" }}
               >
-                <div className="bg-gray-100 rounded-lg p-6">
-                  <div className="flex flex-col items-center justify-center">
-                    <h2 className="text-gray-700 text-xl font-bold mb-2">
-                      Attendance for Today
+                <div className="bg-white shadow rounded-lg p-6">
+                  <div className="mb-4">
+                    <h2 className="text-gray-700 text-xl font-bold text-center">
+                      Attendance For Today
                     </h2>
-                    <h1 className="text-gray-700 font-bold text-base mb-4">
-                      ({new Date().toLocaleDateString()})
+                    <h1 className="text-gray-700 font-bold text-base mb-2 text-center">
+                      {new Date().toLocaleDateString()}
                     </h1>
                   </div>
                 </div>
