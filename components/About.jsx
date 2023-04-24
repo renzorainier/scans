@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { FaChevronDown } from "react-icons/fa";
+import TeamMembers from "./Members.jsx";
 
 const About = () => {
   const [card1Expanded, setCard1Expanded] = useState(false);
@@ -119,6 +120,7 @@ const About = () => {
             </div>
           </div>
         </div>
+        TeamMembers
       </div>
     </div>
   );
