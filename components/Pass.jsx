@@ -41,7 +41,7 @@ function PasswordProtectedContent() {
         </form>
       )}
       {showContent && (
-        <div className="bg-white p-6 rounded-lg shadow-lg">
+        <div>
           <Scan/>
         </div>
       )}
