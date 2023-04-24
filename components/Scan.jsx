@@ -294,7 +294,7 @@ function Scan() {
   }, [data, lastScanned, log]);
 
   return (
-    <div className="bg-gray-100 flex flex-col items-center justify-center">
+    <div className="bg-gray-100 flex flex-col items-center justify-center h-screen">
       <div className="bg-white rounded-lg shadow-md p-6 w-full h-full ">
         <QrReader
           onResult={async (result) => {
