@@ -322,7 +322,7 @@ function Scan() {
       </div>
 
       <h1 className="mt-8 text-3xl font-semibold">Recent Logs</h1>
-      <div className="mt-6 w-full max-w-md">
+      <div className="mt-4 w-full max-w-md">
         <ul className="bg-white divide-y divide-gray-300 shadow-lg rounded-lg">
           {log.map((entry, index) => (
             <li key={entry.id} className="px-6 py-4 hover:bg-gray-100">
