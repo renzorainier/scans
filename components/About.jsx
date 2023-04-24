@@ -6,10 +6,12 @@ const About = () => {
   const [card1Expanded, setCard1Expanded] = useState(false);
   const [card2Expanded, setCard2Expanded] = useState(false);
   const [card3Expanded, setCard3Expanded] = useState(false);
+  const [card4Expanded, setCard4Expanded] = useState(false);
 
   const toggleCard1 = () => setCard1Expanded(!card1Expanded);
   const toggleCard2 = () => setCard2Expanded(!card2Expanded);
   const toggleCard3 = () => setCard3Expanded(!card3Expanded);
+  const toggleCard4 = () => setCard3Expanded(!card4Expanded);
 
   return (
     <div className="bg-gray-100">
@@ -119,8 +121,27 @@ const About = () => {
               )}
             </div>
           </div>
+          <div className="bg-white shadow-lg rounded-lg overflow-hidden">
+            <div
+              className="px-4 py-5 sm:p-6 cursor-pointer"
+              onClick={toggleCard4}
+            >
+              <div className="flex justify-between items-center">
+                <h3 className="text-lg leading-6 font-medium text-gray-900">
+                  What is Scans?
+                </h3>
+                <div className="flex items-center">
+                  <FaChevronDown
+                    className={`transition-transform ${
+                      card4Expanded ? "rotate-180" : ""
+                    }`}
+                  />
+                </div>
+              </div>
+              {card4Expanded && <TeamMembers />}
+            </div>
+          </div>
         </div>
-        <TeamMembers/>
       </div>
     </div>
   );
