@@ -4,7 +4,7 @@ import TodayAttendance from "./TodayView";
 import PastAttendance from "./PastView";
 import Greeting from "./Dash";
 import Calculator from "./Sample";
-import Scan from "./Scan";
+import Pass from "./Pass";
 import Generate from "./Generate";
 import TeamCarousel from "./Members";
 import About from "./About";
@@ -32,8 +32,8 @@ const MainComponent = () => {
           return <Calculator onBackButtonClick={handleBackButtonClick} />;
           case "create":
             return <Generate onBackButtonClick={handleBackButtonClick} />;
-            case "scan":
-              return <Scan onBackButtonClick={handleBackButtonClick} />;
+            case "pass":
+              return <Pass onBackButtonClick={handleBackButtonClick} />;
               case "members":
                 return <TeamCarousel onBackButtonClick={handleBackButtonClick} />;
                 case "about":
