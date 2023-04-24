@@ -26,6 +26,11 @@ function TeamMembers() {
         role="Researcher"
         image={xedrick}
       />
+        <TeamMember
+        name="Marjorie Polinar"
+        role="Researcher"
+        image={marjorie}
+      />
       <TeamMember
         name="Adrian Bataller"
         role="Researcher"
@@ -36,11 +41,7 @@ function TeamMembers() {
         role="Researcher"
         image={klaus}
       />
-      <TeamMember
-        name="Marjorie Polinar"
-        role="Researcher"
-        image={marjorie}
-      />
+   
     </div>
   );
 }
