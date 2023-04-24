@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import { TextField, Button, Typography, Box } from "@mui/material";
 
-function PasswordProtectedComponent() {
+const ProtectedContent = () => {
   const [password, setPassword] = useState("");
   const [showContent, setShowContent] = useState(false);
 
@@ -10,33 +11,46 @@ function PasswordProtectedComponent() {
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
-
-    if (password === "password") {
+    if (password === "mysecret") {
       setShowContent(true);
-    } else {
-      alert("Incorrect password, please try again.");
     }
   };
 
   return (
-    <div>
+    <Box sx={{ p: 3 }}>
       {!showContent && (
-        <form onSubmit={handleFormSubmit}>
-          <label>
-            Password:
-            <input type="password" value={password} onChange={handlePasswordChange} />
-          </label>
-          <button type="submit">Submit</button>
-        </form>
+        <Box sx={{ mb: 2 }}>
+          <Typography variant="h4" gutterBottom>
+            Enter Password
+          </Typography>
+          <form onSubmit={handleFormSubmit}>
+            <TextField
+              label="Password"
+              type="password"
+              value={password}
+              onChange={handlePasswordChange}
+              fullWidth
+              sx={{ mb: 2 }}
+            />
+            <Button type="submit" variant="contained">
+              Submit
+            </Button>
+          </form>
+        </Box>
       )}
       {showContent && (
-        <div>
-          <h1>Protected Content</h1>
-          <p>This is protected content that is only visible once you enter the correct password.</p>
-        </div>
+        <Box>
+          <Typography variant="h4" gutterBottom>
+            Protected Content
+          </Typography>
+          <Typography variant="body1" sx={{ mb: 2 }}>
+            This is protected content that is only visible once you enter the correct password.
+          </Typography>
+          <img src="https://picsum.photos/400/300" alt="Protected Content" />
+        </Box>
       )}
-    </div>
+    </Box>
   );
-}
+};
 
-export default PasswordProtectedComponent;
+export default ProtectedContent;
