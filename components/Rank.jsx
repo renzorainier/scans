@@ -107,7 +107,7 @@ function Rank({ data, onClose }) {
 
 
   return (
-    <div id="badge">
+    <div>
      <div className="flex justify-center pt-4 pb-5 items-center">
   <div className="bg-white p-5 rounded-lg shadow-lg mx-auto" style={{ maxWidth: "90%" }}>
     <div className="flex space-x-2">
@@ -154,14 +154,14 @@ function Rank({ data, onClose }) {
           Overall Top 10 Most Punctual Students
         </div>
       </div>
-      <div className="flex justify-center pb-5 items-center">
+      <div className="flex justify-center pb-5 items-center ">
         <div
           className=" w-full flex justify-center pb-5 items-center"
           style={{ maxWidth: "90%" }}
         >
           <div className="w-full bg-gray-900 rounded-b-lg shadow-xl mx-auto">
             <div className="py-4 px-4">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              <div  id="badge" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {overallEarliest.map(
                   ({ name, section, formattedTime }, index) => (
                     <div
@@ -214,7 +214,7 @@ function Rank({ data, onClose }) {
               >
                 <div className="w-full bg-gray-900 rounded-b-lg shadow-xl mx-auto">
                   <div className="py-4 px-4">
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div  id="badge" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                       {earliestStudents[section].map(
                         ({ name, student, formattedTime }, index) => (
                           <div

@@ -123,8 +123,8 @@ export default function Home() {
       </Head>
       {/* <main className="container mx-auto ">{renderComponent()}</main> */}
     <Main />
-    <StudentCollection />
-    <BadgeWriter />
+    {/* <StudentCollection />
+    <BadgeWriter /> */}
     {/* <BadgeReader /> */}
     </>
   );
