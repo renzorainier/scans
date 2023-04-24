@@ -26,7 +26,7 @@ const About = () => {
               onClick={toggleCard1}
             >
               <div className="flex justify-between items-center">
-                <h3 className="text-lg font-bold leading-6 font-medium text-gray-900">
+                <h3 className="text-lg font-bold leading-6  text-gray-900">
                   What is Scans?
                 </h3>
                 <div className="flex items-center">
@@ -55,7 +55,7 @@ const About = () => {
               onClick={toggleCard2}
             >
               <div className="flex justify-between items-center">
-                <h3 className="text-lg font-bold  leading-6 font-medium text-gray-900">
+                <h3 className="text-lg font-bold  leading-6 text-gray-900">
                   Our Mission
                 </h3>
                 <div className="flex items-center">
@@ -84,7 +84,7 @@ const About = () => {
               onClick={toggleCard3}
             >
               <div className="flex justify-between items-center">
-                <h3 className="text-lg  font-bold  leading-6 font-medium text-gray-900">
+                <h3 className="text-lg  font-bold  leading-6  text-gray-900">
                   Who will Benefit?
                 </h3>
                 <div className="flex items-center">
@@ -128,7 +128,7 @@ const About = () => {
               onClick={toggleCard4}
             >
               <div className="flex justify-between items-center">
-                <h3 className="text-lg font-bold  leading-6 font-medium text-gray-900">
+                <h3 className="text-lg font-bold  leading-6  text-gray-900">
                   Meet Our Team
                 </h3>
                 <div className="flex items-center">
