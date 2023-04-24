@@ -10,7 +10,7 @@ import marjorie from "./../public/pictures/pic.jpg";
 
 function TeamMembers() {
   return (
-    <div className="grid grid-cols-3 md:grid-cols-6 gap-4">
+    <div className="grid grid-cols-3 md:grid-cols-6">
       <div className="flex flex-col items-center">
         <div className="w-20 h-20 md:w-20 md:h-20 rounded-full overflow-hidden">
           <Image className="object-cover w-full h-full" src={renz} alt="Renz" />
