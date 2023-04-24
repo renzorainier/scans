@@ -191,7 +191,7 @@ function AttendanceTable() {
             </div>
           ) : (
             <div>
-              <div className="flex justify-center pt-4 pb-4 items-center">
+              <div className="flex justify-center pt-4 pb-5 items-center">
                 <div
                   className="w-full text-gray-700 bg-white p-5  rounded-lg shadow-lg mx-auto"
                   style={{ maxWidth: "90%" }}
