@@ -19,7 +19,7 @@ function TeamMembers() {
           Renz Pasagdan
         </h2>
           <h2 className=" text-base md:text-lg  md:mt-4">
-          Renz Pasagdan
+          Leader - Programer
         </h2>
       </div>
       <div className="flex flex-col items-center">
