@@ -99,21 +99,21 @@ const About = () => {
                 <div className="mt-2 text-sm text-gray-500">
                   <ul className="list-disc list-inside">
                     <li>
-                      Students: Motivates attendance and punctuality, recognizes
+                      <span classname="font-bold"> Students:</span>  Motivates attendance and punctuality, recognizes
                       and rewards positive behavior through digital achievement
                       badges.
                     </li>
                     <li>
-                      Teachers: Streamlines administrative tasks, enhances
+                    <span classname="font-bold"> Teachers: </span> Streamlines administrative tasks, enhances
                       attendance tracking and monitoring, enabling more time for
                       teaching.
                     </li>
                     <li>
-                      Parents/Guardians: Offers timely attendance data for their
+                    <span classname="font-bold"> Parents/Guardians:  </span>  Offers timely attendance data for their
                       child, allowing for better involvement in their education.
                     </li>
                     <li>
-                      School: Cultivates a culture of responsibility and
+                    <span classname="font-bold"> School:  </span> Cultivates a culture of responsibility and
                       academic success, advances student participation and
                       lowers absenteeism rates.
                     </li>
