@@ -16,7 +16,10 @@ function TeamMembers() {
           <Image className="object-cover w-full h-full" src={renz} alt="Renz" />
         </div>
         <h2 className="font-bold text-base md:text-lg mt-2 md:mt-4">
-          Renz Doe
+          Renz Pasagdan
+        </h2>
+          <h2 className="font-bold text-base md:text-lg mt-2 md:mt-4">
+          Renz Pasagdan
         </h2>
       </div>
       <div className="flex flex-col items-center">
@@ -28,7 +31,7 @@ function TeamMembers() {
           />
         </div>
         <h2 className="font-bold text-base md:text-lg mt-2 md:mt-4">
-          Celine Doe
+          Celine Mendi
         </h2>
       </div>
       <div className="flex flex-col items-center">
@@ -40,7 +43,7 @@ function TeamMembers() {
           />
         </div>
         <h2 className="font-bold text-base md:text-lg mt-2 md:mt-4">
-          Xedrick Doe
+          Xedrick Pureza
         </h2>
       </div>
       <div className="flex flex-col items-center">
@@ -52,7 +55,7 @@ function TeamMembers() {
           />
         </div>
         <h2 className="font-bold text-base md:text-lg mt-2 md:mt-4">
-          Aidrian Doe
+          Adrian Bataller
         </h2>
       </div>
       <div className="flex flex-col items-center">
@@ -64,7 +67,7 @@ function TeamMembers() {
           />
         </div>
         <h2 className="font-bold text-base md:text-lg mt-2 md:mt-4">
-          Klaus Doe
+          Klaus Lonquino
         </h2>
       </div>
       <div className="flex flex-col items-center">
@@ -76,7 +79,7 @@ function TeamMembers() {
           />
         </div>
         <h2 className="font-bold text-base md:text-lg mt-2 md:mt-4">
-          Marjorie Doe
+          Marjorie Polinar
         </h2>
       </div>
     </div>
