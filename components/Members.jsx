@@ -36,6 +36,10 @@ function TeamMembers() {
         <h2 className="font-bold text-base md:text-lg mt-2 md:mt-4">
           Celine Mendi
         </h2>
+        <h2 className=" text-base md:text-lg  md:mt-4">
+          Researcher
+        </h2>
+
       </div>
       <div className="flex flex-col items-center">
         <div className="w-20 h-20 md:w-20 md:h-20 rounded-full overflow-hidden">
@@ -48,6 +52,10 @@ function TeamMembers() {
         <h2 className="font-bold text-base md:text-lg mt-2 md:mt-4">
           Xedrick Pureza
         </h2>
+        <h2 className=" text-base md:text-lg  md:mt-4">
+          Researcher
+        </h2>
+
       </div>
       <div className="flex flex-col items-center">
         <div className="w-20 h-20 md:w-20 md:h-20 rounded-full overflow-hidden">
@@ -59,6 +67,9 @@ function TeamMembers() {
         </div>
         <h2 className="font-bold text-base md:text-lg mt-2 md:mt-4">
           Adrian Bataller
+        </h2>
+        <h2 className=" text-base md:text-lg  md:mt-4">
+          Researcher
         </h2>
       </div>
       <div className="flex flex-col items-center">
@@ -72,6 +83,9 @@ function TeamMembers() {
         <h2 className="font-bold text-base md:text-lg mt-2 md:mt-4">
           Klaus Lonquino
         </h2>
+        <h2 className=" text-base md:text-lg  md:mt-4">
+          Researcher
+        </h2>
       </div>
       <div className="flex flex-col items-center">
         <div className="w-20 h-20 md:w-20 md:h-20 rounded-full overflow-hidden">
@@ -83,6 +97,9 @@ function TeamMembers() {
         </div>
         <h2 className="font-bold text-base md:text-lg mt-2 md:mt-4">
           Marjorie Polinar
+        </h2>
+        <h2 className=" text-base md:text-lg  md:mt-4">
+          Researcher
         </h2>
       </div>
     </div>
