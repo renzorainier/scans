@@ -107,7 +107,7 @@ function Rank({ data, onClose }) {
 
 
   return (
-    <div>
+    <div id="badge">
      <div className="flex justify-center pt-4 pb-5 items-center">
   <div className="bg-white p-5 rounded-lg shadow-lg mx-auto" style={{ maxWidth: "90%" }}>
     <div className="flex space-x-2">
