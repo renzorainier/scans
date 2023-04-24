@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import Scan from "./Scan";
+
 
 function PasswordProtectedContent() {
   const [password, setPassword] = useState('');
@@ -40,10 +42,7 @@ function PasswordProtectedContent() {
       )}
       {showContent && (
         <div className="bg-white p-6 rounded-lg shadow-lg">
-          <h1 className="text-3xl font-bold text-gray-900 mb-4">Protected Content</h1>
-          <p className="text-gray-700">
-            This is protected content that is only visible once you enter the correct password.
-          </p>
+          <Scan/>
         </div>
       )}
     </div>
