@@ -39,7 +39,7 @@ const About = () => {
               </div>
               {card1Expanded && (
                 <div className="mt-2 text-sm text-gray-500">
-                  Scans is a web application developed by a Grade 12 ST-1B
+                  Scans is a web application developed by Renz Pasagdan - a Grade 12 ST-1B
                   student of Sumulong College of Arts and Sciences as a research
                   project titled &ldquo;Development of QR Code Technology as an
                   Attendance System for Enhancing Attendance and
@@ -113,7 +113,7 @@ const About = () => {
                       child, allowing for better involvement in their education.
                     </li>
                     <li>
-                    <span classname="font-bold"> School:  </span> Cultivates a culture of responsibility and
+                    <span classname="font-bold "> School:  </span> Cultivates a culture of responsibility and
                       academic success, advances student participation and
                       lowers absenteeism rates.
                     </li>
