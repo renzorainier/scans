@@ -1,10 +1,10 @@
 import React from "react";
 import Image from "next/image";
 
-import renz from "./../public/pictures/pic.jpg";
-import celine from "./../public/pictures/pic.jpg";
-import xedrick from "./../public/pictures/pic.jpg";
-import aidrian from "./../public/pictures/pic.jpg";
+import renz from "./../public/pictures/renz.webp";
+import celine from "./../public/pictures/celine.webp";
+import xedrick from "./../public/pictures/xed.webp";
+import aidrian from "./../public/pictures/adraian";
 import klaus from "./../public/pictures/pic.jpg";
 import marjorie from "./../public/pictures/pic.jpg";
 
