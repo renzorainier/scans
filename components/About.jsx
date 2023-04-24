@@ -74,7 +74,6 @@ const About = () => {
               )}
             </div>
           </div>
-
           <div className="bg-white shadow-lg rounded-lg overflow-hidden">
             <div
               className="px-4 py-5 sm:p-6 cursor-pointer"
@@ -82,16 +81,41 @@ const About = () => {
             >
               <div className="flex justify-between items-center">
                 <h3 className="text-lg leading-6 font-medium text-gray-900">
-                  Who Will Benefit?
+                  Who will Benefit?
                 </h3>
                 <div className="flex items-center">
                   <FaChevronDown
                     className={`transition-transform ${
-                      card2Expanded ? "rotate-180" : ""
+                      card3Expanded ? "rotate-180" : ""
                     }`}
                   />
                 </div>
               </div>
+              {card3Expanded && (
+                <div className="mt-2 text-sm text-gray-500">
+                  <ul className="list-disc list-inside">
+                    <li>
+                      Students: Motivates attendance and punctuality, recognizes
+                      and rewards positive behavior through digital achievement
+                      badges.
+                    </li>
+                    <li>
+                      Teachers: Streamlines administrative tasks, enhances
+                      attendance tracking and monitoring, enabling more time for
+                      teaching.
+                    </li>
+                    <li>
+                      Parents/Guardians: Offers timely attendance data for their
+                      child, allowing for better involvement in their education.
+                    </li>
+                    <li>
+                      School: Cultivates a culture of responsibility and
+                      academic success, advances student participation and
+                      lowers absenteeism rates.
+                    </li>
+                  </ul>
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -101,14 +125,3 @@ const About = () => {
 };
 
 export default About;
-
-{
-  /* <div className="mt-2 text-sm text-gray-500">
-<ul className="list-disc list-inside">
-  <li>Students: Motivates attendance and punctuality, recognizes and rewards positive behavior through digital achievement badges.</li>
-  <li>Teachers: Streamlines administrative tasks, enhances attendance tracking and monitoring, enabling more time for teaching.</li>
-  <li>Parents/Guardians: Offers timely attendance data for their child, allowing for better involvement in their education.</li>
-  <li>School: Cultivates a culture of responsibility and academic success, advances student participation and lowers absenteeism rates.</li>
-</ul>
-</div> */
-}
