@@ -41,7 +41,7 @@ function TeamMembers() {
         role="Researcher"
         image={klaus}
       />
-   
+
     </div>
   );
 }
