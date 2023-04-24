@@ -120,7 +120,7 @@ const About = () => {
             </div>
           </div>
         </div>
-        TeamMembers
+        <TeamMembers/>
       </div>
     </div>
   );
