@@ -146,7 +146,7 @@ const LineGraph = ({ data }) => {
         chartInstanceRef.current.destroy();
       }
     };
-  }, []);
+  }, [formatChartData]);
 
   return (
     <div className="bg-white rounded-lg shadow-md  mb-4  overflow-hidden">
