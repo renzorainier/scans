@@ -53,94 +53,94 @@ function Scan() {
     STEM: {
       "1A": {
         Monday: {
-          startTime: "17:00:00",
+          startTime: "6:00:00",
         },
         Tuesday: {
-          startTime: "23:59:00",
+          startTime: "6:00:00",
         },
         Wednesday: {
-          startTime: "08:00:00",
+          startTime: "6:00:00",
         },
         Thursday: {
-          startTime: "08:00:00",
+          startTime: "6:00:00",
         },
         Friday: {
-          startTime: "08:00:00",
+          startTime: "6:00:00",
         },
         Saturday: {
-          startTime: "08:00:00",
+          startTime: "6:00:00",
         },
         Sunday: {
-          startTime: "08:00:00",
+          startTime: "6:00:00",
         },
       },
       "1B": {
         Monday: {
-          startTime: "17:00:00",
+          startTime: "6:00:00",
         },
         Tuesday: {
-          startTime: "23:59:00",
+          startTime: "6:00:00",
         },
         Wednesday: {
-          startTime: "23:59:00",
+          startTime: "6:00:00",
         },
         Thursday: {
-          startTime: "23:59:00",
+          startTime: "6:00:00",
         },
         Friday: {
-          startTime: "08:00:00",
+          startTime: "6:00:00",
         },
         Saturday: {
-          startTime: "08:00:00",
+          startTime: "6:00:00",
         },
         Sunday: {
-          startTime: "08:00:00",
+          startTime: "6:00:00",
         },
       },
       "1C": {
         Monday: {
-          startTime: "17:00:00",
+          startTime: "6:00:00",
         },
         Tuesday: {
-          startTime: "19:10:00",
+          startTime: "6:00:00",
         },
         Wednesday: {
-          startTime: "08:00:00",
+          startTime: "6:00:00",
         },
         Thursday: {
-          startTime: "08:00:00",
+          startTime: "6:00:00",
         },
         Friday: {
-          startTime: "08:00:00",
+          startTime: "6:00:00",
         },
         Saturday: {
-          startTime: "08:00:00",
+          startTime: "6:00:00",
         },
         Sunday: {
-          startTime: "08:00:00",
+          startTime: "6:00:00",
         },
       },
       "1D": {
         Monday: {
-          startTime: "17:00:00",
+          startTime: "6:00:00",
         },
         Tuesday: {
-          startTime: "22:10:00",
+          startTime: "6:00:00",
         },
         Wednesday: {
-          startTime: "08:00:00",
+          startTime: "6:00:00",
         },
         Thursday: {
-          startTime: "08:00:00",
+          startTime: "6:00:00",
         },
         Friday: {
-          startTime: "16:18:00",
+          startTime: "6:00:00",
         },
         Saturday: {
-          startTime: "08:00:00",
+          startTime: "6:00:00",
         },
         Sunday: {
-          startTime: "08:00:00",
+          startTime: "6:00:00",
         },
       },
     },
