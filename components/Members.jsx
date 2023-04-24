@@ -12,7 +12,7 @@ function TeamMembers() {
   return (
     <div className="grid grid-cols-3 md:grid-cols-6 gap-4">
       <div className="flex flex-col items-center">
-        <div className="w-12 h-12 md:w-20 md:h-20 rounded-full overflow-hidden">
+        <div className="w-20 h-20 md:w-20 md:h-20 rounded-full overflow-hidden">
           <Image className="object-cover w-full h-full" src={renz} alt="Renz" />
         </div>
         <h2 className="font-bold text-base md:text-lg mt-2 md:mt-4">
@@ -20,7 +20,7 @@ function TeamMembers() {
         </h2>
       </div>
       <div className="flex flex-col items-center">
-        <div className="w-12 h-12 md:w-20 md:h-20 rounded-full overflow-hidden">
+        <div className="w-20 h-20 md:w-20 md:h-20 rounded-full overflow-hidden">
           <Image
             className="object-cover w-full h-full"
             src={celine}
@@ -32,7 +32,7 @@ function TeamMembers() {
         </h2>
       </div>
       <div className="flex flex-col items-center">
-        <div className="w-12 h-12 md:w-20 md:h-20 rounded-full overflow-hidden">
+        <div className="w-20 h-20 md:w-20 md:h-20 rounded-full overflow-hidden">
           <Image
             className="object-cover w-full h-full"
             src={xedrick}
@@ -44,7 +44,7 @@ function TeamMembers() {
         </h2>
       </div>
       <div className="flex flex-col items-center">
-        <div className="w-12 h-12 md:w-20 md:h-20 rounded-full overflow-hidden">
+        <div className="w-20 h-20 md:w-20 md:h-20 rounded-full overflow-hidden">
           <Image
             className="object-cover w-full h-full"
             src={aidrian}
@@ -56,7 +56,7 @@ function TeamMembers() {
         </h2>
       </div>
       <div className="flex flex-col items-center">
-        <div className="w-12 h-12 md:w-20 md:h-20 rounded-full overflow-hidden">
+        <div className="w-20 h-20 md:w-20 md:h-20 rounded-full overflow-hidden">
           <Image
             className="object-cover w-full h-full"
             src={klaus}
@@ -68,7 +68,7 @@ function TeamMembers() {
         </h2>
       </div>
       <div className="flex flex-col items-center">
-        <div className="w-12 h-12 md:w-20 md:h-20 rounded-full overflow-hidden">
+        <div className="w-20 h-20 md:w-20 md:h-20 rounded-full overflow-hidden">
           <Image
             className="object-cover w-full h-full"
             src={marjorie}
