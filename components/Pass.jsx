@@ -11,7 +11,7 @@ function PasswordProtectedComponent() {
   const handleFormSubmit = (event) => {
     event.preventDefault();
 
-    if (password === "mysecretpassword") {
+    if (password === "password") {
       setShowContent(true);
     } else {
       alert("Incorrect password, please try again.");

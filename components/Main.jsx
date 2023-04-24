@@ -56,7 +56,7 @@ const MainComponent = () => {
               <button className="bg-white font-bold text-xl py-10 rounded-lg " onClick={() => handleButtonClick("create")}>
                 Create
               </button>
-              <button className="bg-white font-bold text-xl py-10 rounded-lg " onClick={() => handleButtonClick("scan")}>
+              <button className="bg-white font-bold text-xl py-10 rounded-lg " onClick={() => handleButtonClick("pass")}>
                 Scan
               </button>
               <button className="bg-white font-bold text-xl py-10 rounded-lg " onClick={() => handleButtonClick("create")}>
