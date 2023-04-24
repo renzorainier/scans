@@ -196,21 +196,15 @@ function AttendanceTable() {
                 className="w-full text-gray-700 bg-white p-5  rounded-lg shadow-lg mx-auto"
                 style={{ maxWidth: "90%" }}
               >
-                <div className="bg-gray-200 relative rounded-lg">
-                  <img
-                    src="https://static.planetminecraft.com/files/profile_banner/3800851_1.gif"
-                    alt="background gif"
-                    className="absolute top-0 left-0 w-full h-full object-cover z-0 rounded-lg"
-                  />
-                  <div className="relative z-10">
-                    <h2 className="text-gray-700 text-xl font-bold text-center">
-                      Attendance For Today
-                    </h2>
-                    <h1 className="text-gray-700 font-bold text-base mb-4 text-center">
-                      ({new Date().toLocaleDateString()})
-                    </h1>
-                  </div>
-                </div>
+              <div className="bg-gray-100 rounded-lg p-6">
+  <div className="flex flex-col items-center justify-center">
+    <h2 className="text-gray-700 text-xl font-bold mb-2">Attendance for Today</h2>
+    <h1 className="text-gray-700 font-bold text-base mb-4">
+      ({new Date().toLocaleDateString()})
+    </h1>
+  </div>
+</div>
+
                 <div>
                   <NumberLineGraph data={attendanceData} />
                 </div>
