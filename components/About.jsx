@@ -128,7 +128,7 @@ const About = () => {
             >
               <div className="flex justify-between items-center">
                 <h3 className="text-lg leading-6 font-medium text-gray-900">
-                  What is Scans?
+                Meet Our Team
                 </h3>
                 <div className="flex items-center">
                   <FaChevronDown
