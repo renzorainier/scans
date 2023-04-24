@@ -7,7 +7,6 @@ const About = () => {
       <p className="text-gray-700 text-lg leading-relaxed">
         Scans is an application created as our research project.
       </p>
-
     </div>
   );
 };
