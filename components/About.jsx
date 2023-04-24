@@ -11,7 +11,7 @@ const About = () => {
   const toggleCard1 = () => setCard1Expanded(!card1Expanded);
   const toggleCard2 = () => setCard2Expanded(!card2Expanded);
   const toggleCard3 = () => setCard3Expanded(!card3Expanded);
-  const toggleCard4 = () => setCard3Expanded(!card4Expanded);
+  const toggleCard4 = () => setCard4Expanded(!card4Expanded);
 
   return (
     <div className="bg-gray-100">
