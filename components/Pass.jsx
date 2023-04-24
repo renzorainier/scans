@@ -19,7 +19,7 @@ function PasswordProtectedContent() {
 
   return (
     <div>
-      <div className="flex flex-col items-center justify-center h-screen">
+      <div >
         {!showContent && (
           <form
             onSubmit={handleFormSubmit}
@@ -45,13 +45,14 @@ function PasswordProtectedContent() {
               Submit
             </button>
           </form>
+        )} {showContent && (
+          <div>
+            <Scan />
+          </div>
         )}
-         {showContent && (
-        <div>
-          <Scan />
-        </div>
-      )}
+
       </div>
+
 
     </div>
   );
