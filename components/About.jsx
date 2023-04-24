@@ -6,7 +6,7 @@ const About = () => {
   const [card1Expanded, setCard1Expanded] = useState(false);
   const [card2Expanded, setCard2Expanded] = useState(false);
   const [card3Expanded, setCard3Expanded] = useState(false);
-  const [card4Expanded, setCard4Expanded] = useState(false);
+  const [card4Expanded, setCard4Expanded] = useState(true);
 
   const toggleCard1 = () => setCard1Expanded(!card1Expanded);
   const toggleCard2 = () => setCard2Expanded(!card2Expanded);
