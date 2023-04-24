@@ -322,7 +322,7 @@ function Scan() {
       </div>
     </div>
   );
-}
+
 }
 
 export default Scan;
