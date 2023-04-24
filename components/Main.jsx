@@ -7,6 +7,7 @@ import Calculator from "./Sample";
 import Scan from "./Scan";
 import Generate from "./Generate";
 import TeamCarousel from "./Members";
+import About from "./About";
 
 // import Weather from "./Weather";
 
@@ -35,6 +36,8 @@ const MainComponent = () => {
               return <Scan onBackButtonClick={handleBackButtonClick} />;
               case "members":
                 return <TeamCarousel onBackButtonClick={handleBackButtonClick} />;
+                case "about":
+                  return <About onBackButtonClick={handleBackButtonClick} />;
               // render other components as needed
       default:
         return (
@@ -47,7 +50,7 @@ const MainComponent = () => {
                 Attendance
               </button>
 
-              <button className="bg-white font-bold text-xl py-10 rounded-lg " onClick={() => handleButtonClick("members")}>
+              <button className="bg-white font-bold text-xl py-10 rounded-lg " onClick={() => handleButtonClick("about")}>
                 About
               </button>
               <button className="bg-white font-bold text-xl py-10 rounded-lg " onClick={() => handleButtonClick("create")}>
