@@ -1,8 +1,7 @@
-import { useState } from "react";
-import { TextField, Button, Typography, Box } from "@mui/material";
+import { useState } from 'react';
 
-const ProtectedContent = () => {
-  const [password, setPassword] = useState("");
+function PasswordProtectedContent() {
+  const [password, setPassword] = useState('');
   const [showContent, setShowContent] = useState(false);
 
   const handlePasswordChange = (event) => {
@@ -11,46 +10,45 @@ const ProtectedContent = () => {
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
-    if (password === "mysecret") {
+    // Replace this with your actual password check logic
+    if (password === 'password') {
       setShowContent(true);
     }
   };
 
   return (
-    <Box sx={{ p: 3 }}>
+    <div className="flex flex-col items-center justify-center h-screen">
       {!showContent && (
-        <Box sx={{ mb: 2 }}>
-          <Typography variant="h4" gutterBottom>
-            Enter Password
-          </Typography>
-          <form onSubmit={handleFormSubmit}>
-            <TextField
-              label="Password"
-              type="password"
-              value={password}
-              onChange={handlePasswordChange}
-              fullWidth
-              sx={{ mb: 2 }}
-            />
-            <Button type="submit" variant="contained">
-              Submit
-            </Button>
-          </form>
-        </Box>
+        <form onSubmit={handleFormSubmit} className="bg-white p-6 rounded-lg shadow-lg">
+          <label htmlFor="password" className="block font-medium text-gray-700 mb-2">
+            Password:
+          </label>
+          <input
+            type="password"
+            id="password"
+            value={password}
+            onChange={handlePasswordChange}
+            className="border border-gray-300 rounded-lg px-3 py-2 w-full mb-4"
+          />
+          <button
+            type="submit"
+            className="bg-indigo-500 text-white rounded-lg px-4 py-2 hover:bg-indigo-600"
+          >
+            Submit
+          </button>
+        </form>
       )}
       {showContent && (
-        <Box>
-          <Typography variant="h4" gutterBottom>
-            Protected Content
-          </Typography>
-          <Typography variant="body1" sx={{ mb: 2 }}>
+        <div className="bg-white p-6 rounded-lg shadow-lg">
+          <h1 className="text-3xl font-bold text-gray-900 mb-4">Protected Content</h1>
+          <p className="text-gray-700">
             This is protected content that is only visible once you enter the correct password.
-          </Typography>
-          <img src="https://picsum.photos/400/300" alt="Protected Content" />
-        </Box>
+          </p>
+        </div>
       )}
-    </Box>
+    </div>
   );
-};
+}
 
-export default ProtectedContent;
+
+export default PasswordProtectedContent;
