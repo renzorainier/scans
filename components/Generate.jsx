@@ -65,10 +65,8 @@ function Generate() {
         <h1 className="text-3xl font-semibold mb-4">Generate QR Code</h1>
         <div className="flex items-center justify-center mb-6">
           {qrCodeValue !== "" && (
-            <div className="bg-white rounded-lg shadow-md p-6 flex flex-col items-center">
-              <div className="rounded-lg border-4 border-blue-600">
-                <QRCode value={transformValue(qrCodeValue)} />
-              </div>
+            <div className="bg-white rounded-lg shadow-md p-6">
+              <QRCode value={transformValue(qrCodeValue)} />
               <button
                 className="mt-4 px-4 py-2 rounded-lg text-white bg-blue-600 hover:bg-blue-700 focus:outline-none"
                 onClick={() => {
@@ -105,7 +103,6 @@ function Generate() {
       </div>
     </div>
   );
-
 
 }
 
