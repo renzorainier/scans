@@ -213,7 +213,6 @@ function Rank({ data, onClose }) {
                 style={{ maxWidth: "90%" }}
               >
                 <h2>
-                  {" "}
                   <span class="bg-gradient-to-r from-blue-400 to-violet-400 text-transparent bg-clip-text">
                     {section}
                   </span>
@@ -233,7 +232,7 @@ function Rank({ data, onClose }) {
                       className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
                     >
                       {earliestStudents[section].map(
-                        ({ name, student, formattedTime, inde }, index) => (
+                        ({ name, student, formattedTime }, index) => (
                           <div
                             key={name}
                             className="relative border border-white-200 rounded-lg overflow-hidden"
