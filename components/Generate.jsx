@@ -59,50 +59,50 @@ function Generate() {
     // console.log(qrCodeValue)
   };
 
-  return (
-    <div className="bg-gray-100 flex flex-col items-center justify-center h-screen">
-      <div className="bg-white rounded-lg shadow-md p-6 w-full max-w-md">
-        <h1 className="text-3xl font-semibold mb-4">Generate QR Code</h1>
-        <div className="flex items-center justify-center mb-6">
-          {qrCodeValue !== "" && (
-            <div className="bg-white rounded-lg shadow-md p-6">
-              <QRCode value={transformValue(qrCodeValue)} />
-              <button
-                className="mt-4 px-4 py-2 rounded-lg text-white bg-blue-600 hover:bg-blue-700 focus:outline-none"
-                onClick={() => {
-                  const svg = document.querySelector("svg");
-                  const serializer = new XMLSerializer();
-                  const svgString = serializer.serializeToString(svg);
-                  const canvas = document.createElement("canvas");
-                  const canvasCtx = canvas.getContext("2d");
-                  const img = new Image();
-                  img.src = "data:image/svg+xml;base64," + btoa(svgString);
-                  img.onload = () => {
-                    canvas.width = img.width;
-                    canvas.height = img.height;
-                    canvasCtx.drawImage(img, 0, 0);
-                    const link = document.createElement("a");
-                    link.download = "qrcode.png";
-                    link.href = canvas.toDataURL("image/png");
-                    link.click();
-                  };
-                }}
-              >
-                Save to Device
-              </button>
-            </div>
-          )}
+  <div className="bg-gray-100 flex flex-col items-center justify-center h-screen">
+  <div className="bg-white rounded-lg shadow-md p-6 w-full max-w-md">
+    <h1 className="text-3xl font-semibold mb-4">Generate QR Code</h1>
+    <div className="flex items-center justify-center mb-6">
+      {qrCodeValue !== "" && (
+        <div className="bg-white rounded-lg shadow-md p-6">
+          <div className="bg-white w-52 h-52 flex items-center justify-center rounded-lg shadow-md">
+            <QRCode value={transformValue(qrCodeValue)} />
+          </div>
+          <button
+            className="mt-4 px-4 py-2 rounded-lg text-white bg-blue-600 hover:bg-blue-700 focus:outline-none"
+            onClick={() => {
+              const svg = document.querySelector("svg");
+              const serializer = new XMLSerializer();
+              const svgString = serializer.serializeToString(svg);
+              const canvas = document.createElement("canvas");
+              const canvasCtx = canvas.getContext("2d");
+              const img = new Image();
+              img.src = "data:image/svg+xml;base64," + btoa(svgString);
+              img.onload = () => {
+                canvas.width = img.width;
+                canvas.height = img.height;
+                canvasCtx.drawImage(img, 0, 0);
+                const link = document.createElement("a");
+                link.download = "qrcode.png";
+                link.href = canvas.toDataURL("image/png");
+                link.click();
+              };
+            }}
+          >
+            Save to Device
+          </button>
         </div>
-        <label className="text-lg font-semibold">QR Code Value:</label>
-        <input
-          className="w-full border border-gray-300 rounded-md p-2 mt-2 mb-4"
-          onChange={(e) => {
-            setQrCodeValue(e.target.value);
-          }}
-        />
-      </div>
+      )}
     </div>
-  );
+    <label className="text-lg font-semibold">QR Code Value:</label>
+    <input
+      className="w-full border border-gray-300 rounded-md p-2 mt-2 mb-4"
+      onChange={(e) => {
+        setQrCodeValue(e.target.value);
+      }}
+    />
+  </div>
+</div>
 
 }
 
