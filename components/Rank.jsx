@@ -248,10 +248,10 @@ function Rank({ data, onClose }) {
                             <Image
   src={`/pictures/${getBadgeRankSec(index + 1)}.png`}
   alt={`Badge ${getBadgeRankSec(index + 1)}`}
-  width={610}
-  height={610}
+  layout="fill"
   objectFit="cover"
 />
+
                             </div>
                             <div className="absolute top-0 right-0 p-2">
                               <div className="text-white text-3xl font-bold">
