@@ -46,7 +46,7 @@ const MainComponent = () => {
               <Greeting />
             </div>
             <div className="ml-5 mr-5 mt-3 grid grid-cols-2 gap-4">
-  <button className="bg-white hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-300 font-bold text-xl py-10 rounded-lg shadow-sm" onClick={() => handleButtonClick("today")}>
+  <button className="bg-[#C9EEFF] hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-300 font-bold text-xl py-10 rounded-lg shadow-sm" onClick={() => handleButtonClick("today")}>
     Attendance
   </button>
 
