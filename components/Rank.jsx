@@ -248,8 +248,8 @@ function Rank({ data, onClose }) {
                             <Image
   src={`/pictures/${getBadgeRankSec(index + 1)}.png`}
   alt={`Badge ${getBadgeRankSec(index + 1)}`}
-  width={700}
-  height={700}
+  width={600}
+  height={600}
   objectFit="cover"
 />
                             </div>
