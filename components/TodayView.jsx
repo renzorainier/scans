@@ -250,7 +250,7 @@ function AttendanceTable() {
                   <div id="table" className="overflow-x-auto rounded-lg">
                     <table className="table-auto w-full text-center ">
                       <thead
-                        className="bg-gray-200 text-"
+                        className="bg-blue-400"
                         style={{ border: "none" }}
                       >
                         <tr className="p-2 font-bold">
