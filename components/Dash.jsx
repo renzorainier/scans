@@ -22,25 +22,25 @@ const Greeting = () => {
 
     if (hour >= 5 && hour < 6) {
       greetingOptions = fivetosix;
-      setTimeOfDay("early morning");
+      setTimeOfDay("fivetosix");
     } else if (hour >= 6 && hour < 7) {
       greetingOptions = sixtoseven;
-      setTimeOfDay("morning");
+      setTimeOfDay("sixtoseven");
     } else if (hour >= 7 && hour < 8) {
       greetingOptions = seventoeight;
-      setTimeOfDay("morning");
+      setTimeOfDay("seventoeight");
     } else if (hour >= 8 && hour < 9) {
       greetingOptions = eighttonine;
-      setTimeOfDay("morning");
+      setTimeOfDay("eighttonine");
     } else if (hour >= 9 && hour < 10) {
       greetingOptions = ninetoten;
-      setTimeOfDay("morning");
+      setTimeOfDay("ninetoten");
     } else if (hour >= 10 && hour < 11) {
       greetingOptions = tentoeleven;
-      setTimeOfDay("morning");
+      setTimeOfDay("tentoeleven");
     } else if (hour >= 11 && hour < 12) {
       greetingOptions = eleventotwelve;
-      setTimeOfDay("morning");
+      setTimeOfDay("eleventotwelve");
     } else if (hour >= 12 && hour < 18) {
       greetingOptions = afternoonGreetings;
       setTimeOfDay("afternoon");
