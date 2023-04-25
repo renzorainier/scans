@@ -28,7 +28,7 @@ const About = () => {
             >
               <div className="flex justify-between items-center">
                 <h3 className="text-lg font-bold leading-6  text-gray-900">
-                  What is  
+                  What is  <span class="bg-gradient-to-r from-blue-400 to-violet-400 text-transparent bg-clip-text">Scans</span>
                 </h3>
                 <div className="flex items-center">
                   <FaChevronDown
