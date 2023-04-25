@@ -196,12 +196,12 @@ function AttendanceTable() {
                   className="w-full text-gray-700 bg-white p-5  rounded-lg shadow-lg mx-auto"
                   style={{ maxWidth: "90%" }}
                 >
-                  <div className="bg-white shadow rounded-lg p-6">
-                    <div className="mb-4">
-                      <h2 className="text-gray-700 text-xl font-bold text-center">
+                  <div className="bg-gradient-to-r from-blue-400 to-violet-400 shadow rounded-lg p-6">
+                    <div className="mb-">
+                      <h2 className="text-white text-xl font-bold text-center">
                         Attendance For Today
                       </h2>
-                      <h1 className="text-gray-700 font-bold text-base mb-2 text-center">
+                      <h1 className="text-white font-bold text-base  text-center">
                         {new Date().toLocaleDateString()}
                       </h1>
                     </div>
@@ -250,7 +250,7 @@ function AttendanceTable() {
                   <div id="table" className="overflow-x-auto rounded-lg">
                     <table className="table-auto w-full text-center ">
                       <thead
-                        className="bg-blue-400"
+                        className="bg-blue-400 text-white"
                         style={{ border: "none" }}
                       >
                         <tr className="p-2 font-bold">
@@ -385,7 +385,7 @@ function AttendanceTable() {
                             {infoText}
                           </p>
                           <button
-                            className="block mx-auto mt-4 px-4 py-2 bg-gray-700 text-white rounded-lg hover:bg-gray-600"
+                            className="block mx-auto mt-4 px-4 py-2 bg-blue-400 text-white rounded-lg hover:bg-gray-600"
                             onClick={() => setShowInfo(false)}
                           >
                             Close

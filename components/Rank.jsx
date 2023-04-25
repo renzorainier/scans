@@ -105,53 +105,57 @@ function Rank({ data, onClose }) {
     });
   });
 
-
   return (
     <div>
-     <div className="flex justify-center pt-4 pb-5 items-center">
-  <div className="bg-white p-5 rounded-lg shadow-lg mx-auto" style={{ maxWidth: "90%" }}>
-    <div className="flex space-x-2">
-      <button
-        onClick={() => handleTabClick("A")}
-        className="w-full px-4 py-2 bg-gray-800 text-white rounded-lg shadow-md hover:bg-violet-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-violet-400"
-      >
-        Mon
-      </button>
-      <button
-        onClick={() => handleTabClick("B")}
-        className="w-full px-4 py-2 bg-gray-800 text-white rounded-lg shadow-md hover:bg-violet-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-violet-400"
-      >
-        Tue
-      </button>
-      <button
-        onClick={() => handleTabClick("C")}
-        className="w-full px-4 py-2 bg-gray-800 text-white rounded-lg shadow-md hover:bg-violet-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-violet-400"
-      >
-        Wed
-      </button>
-      <button
-        onClick={() => handleTabClick("D")}
-        className="w-full px-4 py-2 bg-gray-800 text-white rounded-lg shadow-md hover:bg-violet-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-violet-400"
-      >
-        Thu
-      </button>
-      <button
-        onClick={() => handleTabClick("E")}
-        className="w-full px-4 py-2 bg-gray-800 text-white rounded-lg shadow-md hover:bg-violet-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-violet-400"
-      >
-        Fri
-      </button>
-    </div>
-  </div>
-</div>
-
+      <div className="flex justify-center pt-4 pb-5 items-center">
+        <div
+          className="bg-white p-5 rounded-lg shadow-lg mx-auto"
+          style={{ maxWidth: "90%" }}
+        >
+          <div className="flex space-x-2">
+            <button
+              onClick={() => handleTabClick("A")}
+              className="w-full px-4 py-2 bg-gray-800 text-white rounded-lg shadow-md hover:bg-violet-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-violet-400"
+            >
+              Mon
+            </button>
+            <button
+              onClick={() => handleTabClick("B")}
+              className="w-full px-4 py-2 bg-gray-800 text-white rounded-lg shadow-md hover:bg-violet-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-violet-400"
+            >
+              Tue
+            </button>
+            <button
+              onClick={() => handleTabClick("C")}
+              className="w-full px-4 py-2 bg-gray-800 text-white rounded-lg shadow-md hover:bg-violet-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-violet-400"
+            >
+              Wed
+            </button>
+            <button
+              onClick={() => handleTabClick("D")}
+              className="w-full px-4 py-2 bg-gray-800 text-white rounded-lg shadow-md hover:bg-violet-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-violet-400"
+            >
+              Thu
+            </button>
+            <button
+              onClick={() => handleTabClick("E")}
+              className="w-full px-4 py-2 bg-gray-800 text-white rounded-lg shadow-md hover:bg-violet-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-violet-400"
+            >
+              Fri
+            </button>
+          </div>
+        </div>
+      </div>
 
       <div className="flex justify-center items-center">
         <div
           className="w-full text-gray-70 flex justify-center font-bold items-center bg-white p-5 rounded-t-lg shadow-lg mx-auto"
           style={{ maxWidth: "90%" }}
         >
-          Overall Top 10 Most Punctual Students
+          <span class="bg-gradient-to-r from-blue-400 to-violet-400 text-transparent bg-clip-text">
+            {" "}
+            Overall Top 10 Most Punctual Students
+          </span>
         </div>
       </div>
       <div className="flex justify-center pb-5 items-center ">
@@ -161,14 +165,17 @@ function Rank({ data, onClose }) {
         >
           <div className="w-full bg-gray-900 rounded-b-lg shadow-xl mx-auto">
             <div className="py-4 px-4">
-              <div  id="badge" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              <div
+                id="badge"
+                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
+              >
                 {overallEarliest.map(
                   ({ name, section, formattedTime }, index) => (
                     <div
                       key={name}
-                      className="relative border border-gray-800 rounded-lg overflow-hidden"
+                      className="relative border border-white-200 rounded-lg overflow-hidden"
                     >
-                      <div className="absolute top-0 left-0 right-0 p-2 bg-gradient-to-b from-black to-transparent">
+                      <div className="absolute top-0 left-0 right-0 p-2 bg-gradient-to-b from-violet-900 to-transparent">
                         <div className="text-white text-lg">{name}</div>
                         <div className="text-white text-sm">
                           {formattedTime}&emsp;|&emsp;{section}
@@ -203,7 +210,12 @@ function Rank({ data, onClose }) {
                 className="w-full text-gray-700 bg-white font-bold flex justify-center items-center p-5 rounded-t-lg shadow-lg mx-auto"
                 style={{ maxWidth: "90%" }}
               >
-                <h2>{section}</h2>
+                <h2>
+                  {" "}
+                  <span class="bg-gradient-to-r from-blue-400 to-violet-400 text-transparent bg-clip-text">
+                    {section}
+                  </span>
+                </h2>
               </div>
             </div>
 
@@ -214,14 +226,17 @@ function Rank({ data, onClose }) {
               >
                 <div className="w-full bg-gray-900 rounded-b-lg shadow-xl mx-auto">
                   <div className="py-4 px-4">
-                    <div  id="badge" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div
+                      id="badge"
+                      className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
+                    >
                       {earliestStudents[section].map(
                         ({ name, student, formattedTime }, index) => (
                           <div
                             key={student}
-                            className="relative border border-gray-800 rounded-lg overflow-hidden"
+                            className="relative border border-white-200 rounded-lg overflow-hidden"
                           >
-                            <div className="absolute top-0 left-0 right-0 p-2 bg-gradient-to-b from-black to-transparent">
+                            <div className="absolute top-0 left-0 right-0 p-2 bg-gradient-to-b from-violet-900 to-transparent">
                               <div className="text-white text-lg">{name}</div>
                               <div className="text-white text-sm">
                                 {formattedTime}&emsp;|&emsp;{section}

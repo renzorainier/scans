@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import TodayAttendance from "./TodayView";
 import PastAttendance from "./PastView";
@@ -10,67 +10,80 @@ import TeamCarousel from "./Members";
 import About from "./About";
 
 // import Weather from "./Weather";
-
 const MainComponent = () => {
   const [currentComponent, setCurrentComponent] = useState(null);
 
+  useEffect(() => {
+    const storedComponent = localStorage.getItem("currentComponent");
+    if (storedComponent) {
+      setCurrentComponent(storedComponent);
+    }
+  }, []);
+
   const handleButtonClick = (componentName) => {
     setCurrentComponent(componentName);
+    localStorage.setItem("currentComponent", componentName);
   };
 
   const handleBackButtonClick = () => {
     setCurrentComponent(null);
+    localStorage.removeItem("currentComponent");
   };
 
   const renderCurrentComponent = () => {
-    switch (currentComponent) {
-      case "today":
-        return <TodayAttendance onBackButtonClick={handleBackButtonClick} />;
-      case "past":
-        return <PastAttendance onBackButtonClick={handleBackButtonClick} />;
-      case "sample":
-        return <Calculator onBackButtonClick={handleBackButtonClick} />;
-      case "create":
-        return <Generate onBackButtonClick={handleBackButtonClick} />;
-      case "pass":
-        return <Pass onBackButtonClick={handleBackButtonClick} />;
-      case "members":
-        return <TeamCarousel onBackButtonClick={handleBackButtonClick} />;
-      case "about":
-        return <About onBackButtonClick={handleBackButtonClick} />;
-      // render other components as needed
-      default:
-        return (
+    if (currentComponent) {
+      switch (currentComponent) {
+        case "today":
+          return <TodayAttendance onBackButtonClick={handleBackButtonClick} />;
+        case "about":
+          return <About onBackButtonClick={handleBackButtonClick} />;
+        // render other components as needed
+        default:
+          return null;
+      }
+    } else {
+      return (
+        <div className="flex justify-center h-screen">
           <div className="mt-4 ax-w-screen-lg mx-auto">
             <div>
               <Greeting />
             </div>
-            <div className="ml-5 mr-5 mt-3 grid grid-cols-2 gap-4">
+            <div className="ml-5 text-white mr-5 mt-3 grid grid-cols-2 gap-4">
               <button
-                className="bg-white hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-300 font-bold text-xl py-10 rounded-lg shadow-sm"
+                className="bg-blue-400 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-300 font-bold text-xl py-10 rounded-lg shadow-sm"
                 onClick={() => handleButtonClick("today")}
               >
                 Attendance
               </button>
 
               <button
-                className="bg-white hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-300 font-bold text-xl py-10 rounded-lg shadow-sm"
+                className="bg-violet-400 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-300 font-bold text-xl py-10 rounded-lg shadow-sm"
                 onClick={() => handleButtonClick("about")}
               >
                 About
               </button>
             </div>
           </div>
-        );
+        </div>
+      );
     }
   };
 
+
   return (
     <div>
+      <button
+        className="bg-red-400 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-300 font-bold text-sm md:text-xl px-4 py-2 md:px-6 md:py-3 rounded-lg shadow-sm border border-gray-300 transition-colors duration-300 ease-in-out"
+        onClick={() => handleBackButtonClick()}
+      >
+        Back
+      </button>
+
       <div>{renderCurrentComponent()}</div>
     </div>
   );
 };
+
 
 export default MainComponent;
 
@@ -87,3 +100,15 @@ export default MainComponent;
 // 62CDFF
 
 // C9EEFF
+
+
+// case "past":
+//   return <PastAttendance onBackButtonClick={handleBackButtonClick} />;
+// case "sample":
+//   return <Calculator onBackButtonClick={handleBackButtonClick} />;
+// case "create":
+//   return <Generate onBackButtonClick={handleBackButtonClick} />;
+// case "pass":
+//   return <Pass onBackButtonClick={handleBackButtonClick} />;
+// case "members":
+//   return <TeamCarousel onBackButtonClick={handleBackButtonClick} />;
