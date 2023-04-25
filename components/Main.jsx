@@ -46,15 +46,20 @@ const MainComponent = () => {
               <Greeting />
             </div>
             <div className="ml-5 mr-5 mt-3 grid grid-cols-2 gap-4">
-  <button className="bg-[#C9EEFF] hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-300 font-bold text-xl py-10 rounded-lg shadow-sm" onClick={() => handleButtonClick("today")}>
-    Attendance
-  </button>
+              <button
+                className="bg-white hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-300 font-bold text-xl py-10 rounded-lg shadow-sm"
+                onClick={() => handleButtonClick("today")}
+              >
+                Attendance
+              </button>
 
-  <button className="bg-white hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-300 font-bold text-xl py-10 rounded-lg shadow-sm" onClick={() => handleButtonClick("about")}>
-    About
-  </button>
-</div>
-
+              <button
+                className="bg-white hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-300 font-bold text-xl py-10 rounded-lg shadow-sm"
+                onClick={() => handleButtonClick("about")}
+              >
+                About
+              </button>
+            </div>
           </div>
         );
     }
@@ -78,3 +83,9 @@ export default MainComponent;
 // <button className="bg-white font-bold text-xl py-10 rounded-lg " onClick={() => handleButtonClick("create")}>
 // Qr Code
 // </button>
+
+
+
+// 62CDFF
+
+// C9EEFF
