@@ -99,7 +99,7 @@ function Generate() {
       ctx.font = "bold 36px Arial";
       ctx.textAlign = "center";
       ctx.fillStyle = "#333333";
-      ctx.fillText(qrCodeValue, canvas.width / 2, qrY + qrSize + 80);
+      ctx.fillText(qrCodeValue, canvas.width / 2, qrY + qrSize + 40);
 
 
 //       ctx.font = "bold 24px sans-serif";
