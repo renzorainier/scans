@@ -18,8 +18,11 @@ const MainComponent = () => {
   };
 
   const handleBackButtonClick = () => {
-    setCurrentComponent(null);
+    const previousComponent = componentHistory[componentHistory.length - 1];
+    setCurrentComponent(previousComponent);
+    setComponentHistory(componentHistory.slice(0, -1));
   };
+
 
   const renderComponent = (componentName) => {
     if (!renderedComponents[componentName]) {
