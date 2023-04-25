@@ -66,7 +66,21 @@ const Greeting = () => {
   });
 
   const getImageUrl = () => {
-    if (timeOfDay === "morning") {
+    if (timeOfDay === "fivetosix") {
+      return "/pictures/fivetosix.jpg";
+    } else if (timeOfDay === "sixtoseven") {
+      return "/pictures/sixtoseven.jpg";
+    } else if (timeOfDay === "seventoeight") {
+      return "/pictures/seventoeight.jpg";
+    } else if (timeOfDay === "eighttonine") {
+      return "/pictures/eighttonine.jpg";
+    } else if (timeOfDay === "ninetoten") {
+      return "/pictures/ninetoten.jpg";
+    } else if (timeOfDay === "tentoeleven") {
+      return "/pictures/tentoeleven.jpg";
+    } else if (timeOfDay === "eleventotwelve") {
+      return "/pictures/eleventotwelve.jpg";
+    } else if (timeOfDay === "morning") {
       return "/pictures/morning.jpg";
     } else if (timeOfDay === "afternoon") {
       return "/pictures/afternoon.jpg";
@@ -74,6 +88,7 @@ const Greeting = () => {
       return "/pictures/night.jpg";
     }
   };
+
 
   const getTextColor = () => {
     if (timeOfDay === "evening") {
