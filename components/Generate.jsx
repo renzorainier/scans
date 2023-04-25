@@ -58,7 +58,6 @@ function Generate() {
     return transformedValue;
     // console.log(qrCodeValue)
   };
-
   const downloadQRCode = () => {
     const svg = document.querySelector("svg");
     const serializer = new XMLSerializer();
@@ -73,7 +72,7 @@ function Generate() {
     img.src = "data:image/svg+xml;base64," + btoa(svgString);
     img.onload = () => {
       // Draw white card template
-      ctx.fillStyle = "#fff";
+      ctx.fillStyle = "#f5f5f5";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       // Draw rounded QR code in center
@@ -98,7 +97,7 @@ function Generate() {
       // Add name label
       ctx.font = "bold 24px sans-serif";
       ctx.textAlign = "center";
-      ctx.fillStyle = "#333";
+      ctx.fillStyle = "#333333";
       ctx.fillText(qrCodeValue, canvas.width / 2, qrY + qrSize + 40);
 
       // Download image
