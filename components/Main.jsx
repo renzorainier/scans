@@ -10,16 +10,14 @@ import TeamCarousel from "./Members";
 import About from "./About";
 
 const MainComponent = () => {
-  const [components, setComponents] = useState([]);
+  const [currentComponent, setCurrentComponent] = useState(null);
 
   const handleButtonClick = (componentName) => {
-    if (!components.includes(componentName)) {
-      setComponents([...components, componentName]);
-    }
+    setCurrentComponent(componentName);
   };
 
   const handleBackButtonClick = () => {
-    setComponents(components.slice(0, -1));
+    setCurrentComponent(null);
   };
 
   const renderCurrentComponent = () => {
@@ -64,14 +62,6 @@ const MainComponent = () => {
 
   return (
     <div>
-      {components.length > 0 &&
-        <button
-          className="bg-red-400 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-300 font-bold text-sm md:text-xl px-4 py-2 md:px-6 md:py-3 rounded-lg shadow-sm border border-gray-300 transition-colors duration-300 ease-in-out"
-          onClick={handleBackButtonClick}
-        >
-          Back
-        </button>
-      }
       <div>{renderCurrentComponent()}</div>
     </div>
   );
