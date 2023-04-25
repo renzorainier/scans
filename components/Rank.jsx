@@ -211,12 +211,13 @@ function Rank({ data, onClose }) {
                 className="w-full text-gray-700 bg-white font-bold flex justify-center items-center p-5 rounded-t-lg shadow-lg mx-auto"
                 style={{ maxWidth: "90%" }}
               >
-                <h2>
-                  {" "}
-                  <span class="bg-gradient-to-r from-blue-400 to-violet-400 text-transparent bg-clip-text">
-                    {section}
-                  </span>
-                </h2>
+                <div key={section}>
+                  <h2 >
+                    <span class="bg-gradient-to-r from-blue-400 to-violet-400 text-transparent bg-clip-text">
+                      {section}
+                    </span>
+                  </h2>
+                </div>
               </div>
             </div>
 
