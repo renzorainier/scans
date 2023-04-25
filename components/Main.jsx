@@ -84,8 +84,6 @@ export default MainComponent;
 // Qr Code
 // </button>
 
-
-
 // 62CDFF
 
 // C9EEFF
