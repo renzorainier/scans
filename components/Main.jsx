@@ -106,18 +106,6 @@ return (
       </button>
       <button
         className={`py-2 px-4 rounded-lg ${
-          selectedTab === "b"
-            ? "bg-blue-400 text-white"
-            : "bg-gray-200 hover:bg-blue-200 transition duration-700 ease-in-out"
-        }`}
-        onClick={() => handleTabChange("b")}
-      >
-        <div className="hover:scale-150 ease-in duration-200">
-l
-        </div>
-      </button>
-      <button
-        className={`py-2 px-4 rounded-lg ${
           selectedTab === "c"
             ? "bg-blue-400 text-white"
             : "bg-gray-200 hover:bg-blue-200 transition duration-700 ease-in-out"
