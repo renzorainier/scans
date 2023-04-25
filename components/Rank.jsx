@@ -235,7 +235,7 @@ function Rank({ data, onClose }) {
                       {earliestStudents[section].map(
                         ({ name, student, formattedTime, inde }, index) => (
                           <div
-                            key={inde}
+                            key={name}
                             className="relative border border-white-200 rounded-lg overflow-hidden"
                           >
                             <div className="absolute top-0 left-0 right-0 p-2 bg-gradient-to-b from-violet-900 to-transparent">
