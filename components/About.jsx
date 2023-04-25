@@ -17,7 +17,7 @@ const About = () => {
     <div className="bg-gray-100">
       <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
       <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
-  About <span class="bg-gradient-to-r from-blue-100 to-blue-123 text-transparent bg-clip-text"> d fsdfsdfsdf sdScans</span>
+  About <span class="bg-gradient-to-r from-blue-400 to-violet-400 text-transparent bg-clip-text">Scans</span>
 </h2>
 
         <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
