@@ -10,44 +10,26 @@ import TeamCarousel from "./Members";
 import About from "./About";
 
 const MainComponent = () => {
-  const [currentComponent, setCurrentComponent] = useState(null);
-  const [renderedComponents, setRenderedComponents] = useState({});
+  const [components, setComponents] = useState([]);
 
   const handleButtonClick = (componentName) => {
-    setCurrentComponent(componentName);
-  };
-
-  const handleBackButtonClick = () => {
-    setCurrentComponent(null);
-  };
-
-  const renderComponent = (componentName) => {
-    if (!renderedComponents[componentName]) {
-      setRenderedComponents((prev) => ({ ...prev, [componentName]: true }));
+    if (!components.includes(componentName)) {
+      setComponents([...components, componentName]);
     }
   };
 
-  const hideComponent = (componentName) => {
-    setRenderedComponents((prev) => ({ ...prev, [componentName]: false }));
+  const handleBackButtonClick = () => {
+    setComponents(components.slice(0, -1));
   };
 
   const renderCurrentComponent = () => {
-    if (currentComponent) {
+    if (components.length > 0) {
+      const currentComponent = components[components.length - 1];
       switch (currentComponent) {
         case "today":
-          renderComponent("today");
-          return (
-            <div className={`${renderedComponents["today"] ? "block" : "hidden-component"}`}>
-              <TodayAttendance onBackButtonClick={() => hideComponent("today")} />
-            </div>
-          );
+          return <TodayAttendance onBackButtonClick={handleBackButtonClick} />;
         case "about":
-          renderComponent("about");
-          return (
-            <div className={`${renderedComponents["about"] ? "block" : "hidden-component"}`}>
-              <About onBackButtonClick={() => hideComponent("about")} />
-            </div>
-          );
+          return <About onBackButtonClick={handleBackButtonClick} />;
         // render other components as needed
         default:
           return null;
@@ -82,15 +64,14 @@ const MainComponent = () => {
 
   return (
     <div>
-      <button
-        className={`${
-          currentComponent ? "block" : "hidden-component"
-        } bg-red-400 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-300 font-bold text-sm md:text-xl px-4 py-2 md:px-6 md:py-3 rounded-lg shadow-sm border border-gray-300 transition-colors duration-300 ease-in-out`}
-        onClick={() => handleBackButtonClick()}
-      >
-        Back
-      </button>
-
+      {components.length > 0 &&
+        <button
+          className="bg-red-400 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-300 font-bold text-sm md:text-xl px-4 py-2 md:px-6 md:py-3 rounded-lg shadow-sm border border-gray-300 transition-colors duration-300 ease-in-out"
+          onClick={handleBackButtonClick}
+        >
+          Back
+        </button>
+      }
       <div>{renderCurrentComponent()}</div>
     </div>
   );
