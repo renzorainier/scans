@@ -59,6 +59,38 @@ function Generate() {
     // console.log(qrCodeValue)
   };
 
+  
+  const downloadQRCode = () => {
+    const svg = document.querySelector("svg");
+    const serializer = new XMLSerializer();
+    const svgString = serializer.serializeToString(svg);
+
+    const canvas = document.createElement("canvas");
+    canvas.width = 300;
+    canvas.height = 300;
+
+    const ctx = canvas.getContext("2d");
+    const img = new Image();
+    img.src = "data:image/svg+xml;base64," + btoa(svgString);
+    img.onload = () => {
+      // Draw white card template
+      ctx.fillStyle = "#ffffff";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // Draw QR code in center
+      const qrSize = Math.min(canvas.width, canvas.height) * 0.7;
+      const qrX = (canvas.width - qrSize) / 2;
+      const qrY = (canvas.height - qrSize) / 2;
+      ctx.drawImage(img, qrX, qrY, qrSize, qrSize);
+
+      // Download image
+      const link = document.createElement("a");
+      link.download = "qrcode.png";
+      link.href = canvas.toDataURL("image/png");
+      link.click();
+    };
+  };
+
   return (
     <div className="bg-gray-100 flex flex-col items-center justify-center h-screen">
     <div className="bg-white rounded-lg shadow-md p-6 w-full max-w-md">
