@@ -113,7 +113,7 @@ function Rank({ data, onClose }) {
     <div className="flex space-x-2">
       <button
         onClick={() => handleTabClick("A")}
-        className="w-full px-4 py-2 bg-gray-800 text-white rounded-lg shadow-md hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800"
+        className="w-full px-4 py-2 bg-gray-800 text-white rounded-lg shadow-md hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-violet-400"
       >
         Mon
       </button>
