@@ -100,7 +100,7 @@ const About = () => {
                 <div className="mt-2 text-sm text-gray-500">
                   <ul className="list-disc list-inside">
                     <li>
-                      <span classname="font-bold"> Students:</span>  Motivates attendance and punctuality, recognizes
+                      <span class="bg-gradient-to-r text-xl from-blue-400 to-violet-400 text-transparent bg-clip-text"> Students:</span>  Motivates attendance and punctuality, recognizes
                       and rewards positive behavior through digital achievement
                       badges.
                     </li>
