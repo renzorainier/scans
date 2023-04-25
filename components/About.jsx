@@ -69,7 +69,7 @@ const About = () => {
               </div>
               {card2Expanded && (
                 <div className="mt-2 text-sm text-gray-500">
-                  Our mission is to improve student attendance and punctuality
+                  Our <span class="bg-gradient-to-r text-xl from-blue-400 to-violet-400 text-transparent bg-clip-text"> mission </span>is to improve student attendance and punctuality
                   by utilizing QR code technology and psychological theories to
                   create an efficient and reliable attendance tracking system.
                   We strive to empower students, teachers, and parents with
