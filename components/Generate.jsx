@@ -67,7 +67,7 @@ function Generate() {
 
     const canvas = document.createElement("canvas");
     canvas.width = 500;
-    canvas.height = 500;
+    canvas.height = 700;
 
     const ctx = canvas.getContext("2d");
     const img = new Image();
@@ -77,26 +77,29 @@ function Generate() {
       ctx.fillStyle = "#ffffff";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      // Draw QR code in center
+      // Draw rounded QR code in center
       const qrSize = Math.min(canvas.width, canvas.height) * 0.7;
       const qrX = (canvas.width - qrSize) / 2;
-      const qrY = (canvas.height - qrSize) / 2;
-
-      // Add border and drop shadow to QR code
-      ctx.shadowColor = "#888888";
-      ctx.shadowOffsetX = 4;
-      ctx.shadowOffsetY = 4;
-      ctx.shadowBlur = 10;
-      ctx.strokeStyle = "#ffffff";
-      ctx.lineWidth = 8;
-      ctx.strokeRect(qrX - 4, qrY - 4, qrSize + 8, qrSize + 8);
+      const qrY = (canvas.height - qrSize - 100) / 2;
+      ctx.beginPath();
+      ctx.moveTo(qrX + 10, qrY);
+      ctx.lineTo(qrX + qrSize - 10, qrY);
+      ctx.quadraticCurveTo(qrX + qrSize, qrY, qrX + qrSize, qrY + 10);
+      ctx.lineTo(qrX + qrSize, qrY + qrSize - 10);
+      ctx.quadraticCurveTo(qrX + qrSize, qrY + qrSize, qrX + qrSize - 10, qrY + qrSize);
+      ctx.lineTo(qrX + 10, qrY + qrSize);
+      ctx.quadraticCurveTo(qrX, qrY + qrSize, qrX, qrY + qrSize - 10);
+      ctx.lineTo(qrX, qrY + 10);
+      ctx.quadraticCurveTo(qrX, qrY, qrX + 10, qrY);
+      ctx.closePath();
+      ctx.clip();
       ctx.drawImage(img, qrX, qrY, qrSize, qrSize);
 
       // Add name label
       ctx.font = "bold 24px sans-serif";
       ctx.textAlign = "center";
       ctx.fillStyle = "#333333";
-      ctx.fillText(qrCodeValue, canvas.width / 2, qrY + qrSize + 40);
+      ctx.fillText(qrCodeValue, canvas.width / 2, qrY + qrSize + 60);
 
       // Download image
       const link = document.createElement("a");
@@ -105,6 +108,7 @@ function Generate() {
       link.click();
     };
   };
+
 
 
 
