@@ -9,25 +9,15 @@ import Generate from "./Generate";
 import TeamCarousel from "./Members";
 import About from "./About";
 
-// import Weather from "./Weather";
 const MainComponent = () => {
   const [currentComponent, setCurrentComponent] = useState(null);
 
-  useEffect(() => {
-    const storedComponent = localStorage.getItem("currentComponent");
-    if (storedComponent) {
-      setCurrentComponent(storedComponent);
-    }
-  }, []);
-
   const handleButtonClick = (componentName) => {
     setCurrentComponent(componentName);
-    localStorage.setItem("currentComponent", componentName);
   };
 
   const handleBackButtonClick = () => {
     setCurrentComponent(null);
-    localStorage.removeItem("currentComponent");
   };
 
   const renderCurrentComponent = () => {
