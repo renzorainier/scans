@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, useCallback } from 'react';
 import Chart from 'chart.js/auto';
 import { collection, getDocs } from "firebase/firestore";
 
@@ -8,7 +8,7 @@ const LineGraph = ({ data }) => {
   const chartRef = useRef();
   const chartInstanceRef = useRef(null);
 
-  const formatChartData = () => {
+  const formatChartData = useCallback(() => {
     const chartData = {
       labels: [],
       datasets: [
@@ -82,7 +82,7 @@ const LineGraph = ({ data }) => {
     console.log(chartData);
 
     return chartData;
-  };
+  }, [data]);
 
 
   useEffect(() => {

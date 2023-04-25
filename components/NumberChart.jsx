@@ -1,15 +1,13 @@
-import React, { useEffect, useRef, useState } from 'react';
-import Chart from 'chart.js/auto';
+import React, { useEffect, useRef, useState, useCallback } from "react";
+import Chart from "chart.js/auto";
 import { collection, getDocs } from "firebase/firestore";
-
-
 
 const NumberLineGraph = ({ data }) => {
   console.log(data);
   const chartRef = useRef();
   const chartInstanceRef = useRef(null);
 
-  const formatChartData = () => {
+  const formatChartData = useCallback(() => {
     const chartData = {
       labels: [],
       datasets: [
@@ -45,7 +43,9 @@ const NumberLineGraph = ({ data }) => {
           }
           const minute = new Date(scanTime).getMinutes();
           const hour = new Date(scanTime).getHours();
-          const formattedMinute = `${hour.toString().padStart(2, "0")}:${minute.toString().padStart(2, "0")}`;
+          const formattedMinute = `${hour.toString().padStart(2, "0")}:${minute
+            .toString()
+            .padStart(2, "0")}`;
           if (!minuteData[formattedMinute]) {
             minuteData[formattedMinute] = 1;
           } else {
@@ -61,7 +61,10 @@ const NumberLineGraph = ({ data }) => {
 
     // Create empty data points for all minutes between earliest and latest scan time
     for (let i = earliestTime.getMinutes(); i <= latestTime.getMinutes(); i++) {
-      const formattedMinute = `${earliestTime.getHours().toString().padStart(2, "0")}:${i.toString().padStart(2, "0")}`;
+      const formattedMinute = `${earliestTime
+        .getHours()
+        .toString()
+        .padStart(2, "0")}:${i.toString().padStart(2, "0")}`;
       if (!minuteData[formattedMinute]) {
         minuteData[formattedMinute] = 0;
       }
@@ -85,11 +88,10 @@ const NumberLineGraph = ({ data }) => {
     console.log(chartData);
 
     return chartData;
-  };
-
+  }, [data]);
 
   useEffect(() => {
-    const chartCtx = chartRef.current.getContext('2d');
+    const chartCtx = chartRef.current.getContext("2d");
 
     const chartData = formatChartData();
 
@@ -99,45 +101,49 @@ const NumberLineGraph = ({ data }) => {
     }
 
     chartInstanceRef.current = new Chart(chartCtx, {
-      type: 'line',
+      type: "line",
       data: chartData,
       options: {
         scales: {
-          yAxes: [{
-            gridLines: {
-              color: '#F5F5F5',
-              zeroLineColor: '#F5F5F5',
+          yAxes: [
+            {
+              gridLines: {
+                color: "#F5F5F5",
+                zeroLineColor: "#F5F5F5",
+              },
+              ticks: {
+                fontColor: "#888",
+                beginAtZero: true,
+                maxTicksLimit: 5,
+                padding: 10,
+              },
             },
-            ticks: {
-              fontColor: '#888',
-              beginAtZero: true,
-              maxTicksLimit: 5,
-              padding: 10,
+          ],
+          xAxes: [
+            {
+              gridLines: {
+                color: "#F5F5F5",
+                zeroLineColor: "#F5F5F5",
+              },
+              ticks: {
+                fontColor: "#888",
+                padding: 5,
+              },
             },
-          }],
-          xAxes: [{
-            gridLines: {
-              color: '#F5F5F5',
-              zeroLineColor: '#F5F5F5',
-            },
-            ticks: {
-              fontColor: '#888',
-              padding: 5,
-            },
-          }],
+          ],
         },
         legend: {
           display: false,
         },
         tooltips: {
-          backgroundColor: '#4FD1C5',
-          bodyFontColor: '#FFF',
-          titleFontColor: '#FFF',
+          backgroundColor: "#4FD1C5",
+          bodyFontColor: "#FFF",
+          titleFontColor: "#FFF",
           titleMarginBottom: 10,
           bodySpacing: 5,
           xPadding: 10,
           yPadding: 10,
-          mode: 'nearest',
+          mode: "nearest",
           intersect: 0,
         },
       },
@@ -158,11 +164,7 @@ const NumberLineGraph = ({ data }) => {
   );
 };
 
-
 export default NumberLineGraph;
-
-
-
 
 // finish this code from earlier"import React, { useEffect, useRef } from 'react';
 // import Chart from 'chart.js/auto';
@@ -267,15 +269,12 @@ export default NumberLineGraph;
 //               gridLines: {
 //                 color: '#F5F5F5',
 
-
 // ????????????????
-
 
 // " based from this "import React, { useEffect, useRef, useState } from 'react';
 // import Chart from 'chart.js/auto';
 // import { collection, getDocs } from "firebase/firestore";
 // import { db } from "./firebase.js";
-
 
 // function useAttendanceData() {
 //   const [attendanceData, setAttendanceData] = useState({});
@@ -305,7 +304,6 @@ export default NumberLineGraph;
 
 //     fetchData();
 //   }, []);
-
 
 //   const formatChartData = () => {
 //     const chartData = {
@@ -386,9 +384,7 @@ export default NumberLineGraph;
 //     formatChartData,
 //   };
 
-
 // }
-
 
 // const LineGraph = () => {
 //   const chartRef = useRef();
