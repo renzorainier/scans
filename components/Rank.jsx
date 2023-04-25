@@ -1,4 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
+import Image from "next/image";
+
 
 function getBadgeRank(rank) {
   switch (rank) {
@@ -243,7 +245,7 @@ function Rank({ data, onClose }) {
                               </div>
                             </div>
                             <div className="w-full h-52 overflow-hidden">
-                              <img
+                              <Image 
                                 src={`/pictures/${getBadgeRankSec(
                                   index + 1
                                 )}.png`}
