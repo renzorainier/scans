@@ -85,7 +85,7 @@ function Generate() {
           ctx.font = "bold 24px sans-serif";
           ctx.textAlign = "center";
           ctx.fillStyle = "#333333";
-          ctx.fillText(qrCodeValue, canvas.width / 2, qrY + qrSize + 40);
+          ctx.fillText(name, canvas.width / 2, qrY + qrSize + 40);
 
 
       // Download image
