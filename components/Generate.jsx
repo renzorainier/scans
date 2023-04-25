@@ -60,7 +60,6 @@ function Generate() {
   };
 
 
-
   const downloadQRCode = () => {
     const svg = document.querySelector("svg");
     const serializer = new XMLSerializer();
@@ -77,7 +76,7 @@ function Generate() {
       // Draw rounded QR code in center
       const qrSize = Math.min(canvas.width, canvas.height) * 0.7;
       const qrX = (canvas.width - qrSize) / 2;
-      const qrY = (canvas.height - qrSize) / 2;
+      const qrY = (canvas.height - qrSize - 100) / 2;
       const radius = 20;
       ctx.beginPath();
       ctx.moveTo(qrX + radius, qrY);
@@ -98,7 +97,7 @@ function Generate() {
       ctx.textAlign = "center";
       ctx.fillStyle = "#333333";
       ctx.globalCompositeOperation = "source-over";
-      ctx.fillText(qrCodeValue, canvas.width / 2, qrY + qrSize + 80);
+      ctx.fillText(qrCodeValue, canvas.width / 2, qrY + qrSize + 40);
 
       // Download image
       const link = document.createElement("a");
@@ -107,6 +106,7 @@ function Generate() {
       link.click();
     };
   };
+
 
   return (
     <div className="bg-gray-100 flex flex-col items-center justify-center h-screen">
