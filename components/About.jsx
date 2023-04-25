@@ -105,16 +105,16 @@ const About = () => {
                       badges.
                     </li>
                     <li>
-                    <span classname="font-bold"> Teachers: </span> Streamlines administrative tasks, enhances
+                    <span class="bg-gradient-to-r text-xl from-blue-400 to-violet-400 text-transparent bg-clip-text"> Teachers:</span> Streamlines administrative tasks, enhances
                       attendance tracking and monitoring, enabling more time for
                       teaching.
                     </li>
                     <li>
-                    <span classname="font-bold"> Parents/Guardians:  </span>  Offers timely attendance data for their
+                    <span class="bg-gradient-to-r text-xl from-blue-400 to-violet-400 text-transparent bg-clip-text"> Parents/Guardians:</span>  Offers timely attendance data for their
                       child, allowing for better involvement in their education.
                     </li>
                     <li>
-                    <span classname="font-bold "> School:  </span> Cultivates a culture of responsibility and
+                    <span class="bg-gradient-to-r text-xl from-blue-400 to-violet-400 text-transparent bg-clip-text"> School: </span>Cultivates a culture of responsibility and
                       academic success, advances student participation and
                       lowers absenteeism rates.
                     </li>
