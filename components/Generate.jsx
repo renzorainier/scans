@@ -81,6 +81,15 @@ function Generate() {
       const qrSize = Math.min(canvas.width, canvas.height) * 0.7;
       const qrX = (canvas.width - qrSize) / 2;
       const qrY = (canvas.height - qrSize) / 2;
+
+      // Add border and drop shadow to QR code
+      ctx.shadowColor = "#888888";
+      ctx.shadowOffsetX = 4;
+      ctx.shadowOffsetY = 4;
+      ctx.shadowBlur = 10;
+      ctx.strokeStyle = "#ffffff";
+      ctx.lineWidth = 8;
+      ctx.strokeRect(qrX - 4, qrY - 4, qrSize + 8, qrSize + 8);
       ctx.drawImage(img, qrX, qrY, qrSize, qrSize);
 
       // Add name label
