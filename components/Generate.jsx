@@ -95,10 +95,13 @@ function Generate() {
       ctx.drawImage(img, qrX, qrY, qrSize, qrSize);
 
       // Add name label
-      ctx.font = "bold 36px sans-serif";
+      ctx.font = "bold 36px Arial";
       ctx.textAlign = "center";
       ctx.fillStyle = "#333333";
       ctx.fillText(qrCodeValue, canvas.width / 2, qrY + qrSize + 80);
+      ctx.strokeStyle = "#ffffff";
+      ctx.lineWidth = 2;
+      ctx.strokeText(qrCodeValue, canvas.width / 2, qrY + qrSize + 80);
 
       // Download image
       const link = document.createElement("a");
