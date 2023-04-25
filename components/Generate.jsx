@@ -58,6 +58,9 @@ function Generate() {
     return transformedValue;
     // console.log(qrCodeValue)
   };
+
+
+
   const downloadQRCode = () => {
     const svg = document.querySelector("svg");
     const serializer = new XMLSerializer();
@@ -95,7 +98,6 @@ function Generate() {
       ctx.drawImage(img, qrX, qrY, qrSize, qrSize);
 
       // Add name label
-      const qrCodeValue = "renz"
       ctx.font = "bold 24px sans-serif";
       ctx.textAlign = "center";
       ctx.fillStyle = "#333333";
@@ -108,7 +110,6 @@ function Generate() {
       link.click();
     };
   };
-
 
   return (
     <div className="bg-gray-100 flex flex-col items-center justify-center h-screen">
