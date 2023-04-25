@@ -74,16 +74,6 @@ function Generate() {
     const img = new Image();
     img.src = "data:image/svg+xml;base64," + btoa(svgString);
     img.onload = () => {
-      // Draw white card template
-      ctx.fillStyle = "#f5f5f5";
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-      // Add name label
-      ctx.font = "bold 24px sans-serif";
-      ctx.textAlign = "center";
-      ctx.fillStyle = "#333333";
-      ctx.fillText(qrCodeValue, canvas.width / 2, 100);
-
       // Draw rounded QR code in center
       const qrSize = Math.min(canvas.width, canvas.height) * 0.7;
       const qrX = (canvas.width - qrSize) / 2;
@@ -102,6 +92,13 @@ function Generate() {
       ctx.closePath();
       ctx.clip();
       ctx.drawImage(img, qrX, qrY, qrSize, qrSize);
+
+      // Add name label as overlay
+      ctx.font = "bold 24px sans-serif";
+      ctx.textAlign = "center";
+      ctx.fillStyle = "#333333";
+      ctx.globalCompositeOperation = "source-over";
+      ctx.fillText(qrCodeValue, canvas.width / 2, qrY + qrSize + 80);
 
       // Download image
       const link = document.createElement("a");
