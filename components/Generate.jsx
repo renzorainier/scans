@@ -3,45 +3,44 @@ import React, { useState } from "react";
 import QRCode from "react-qr-code";
 
 const mappingTable = {
-  "0": "Z",
-  "1": "X",
-  "2": "C",
-  "3": "V",
-  "4": "B",
-  "5": "N",
-  "6": "M",
+  0: "Z",
+  1: "X",
+  2: "C",
+  3: "V",
+  4: "B",
+  5: "N",
+  6: "M",
   "-": "-",
-  "8": "L",
-  "9": "K",
-  "7": "D",
-  "A": "Q",
-  "B": "R",
-  "C": "E",
-  "D": "F",
-  "E": "G",
-  "F": "H",
-  "G": "I",
-  "H": "J",
-  "I": "P",
-  "J": "S",
-  "K": "U",
-  "L": "Y",
-  "M": "A",
-  "N": "O",
-  "O": "W",
-  "P": "T",
-  "Q": "1",
-  "R": "2",
-  "S": "3",
-  "T": "4",
-  "U": "5",
-  "V": "6",
-  "W": "7",
-  "X": "8",
-  "Y": "9",
-  "Z": "0"
+  8: "L",
+  9: "K",
+  7: "D",
+  A: "Q",
+  B: "R",
+  C: "E",
+  D: "F",
+  E: "G",
+  F: "H",
+  G: "I",
+  H: "J",
+  I: "P",
+  J: "S",
+  K: "U",
+  L: "Y",
+  M: "A",
+  N: "O",
+  O: "W",
+  P: "T",
+  Q: "1",
+  R: "2",
+  S: "3",
+  T: "4",
+  U: "5",
+  V: "6",
+  W: "7",
+  X: "8",
+  Y: "9",
+  Z: "0",
 };
-
 
 function Generate() {
   const [qrCodeValue, setQrCodeValue] = useState("");
@@ -53,12 +52,11 @@ function Generate() {
       if (mappingTable.hasOwnProperty(char)) {
         transformedValue += mappingTable[char];
       }
-      console.log(transformedValue)
+      console.log(transformedValue);
     }
     return transformedValue;
     // console.log(qrCodeValue)
   };
-
 
   const downloadQRCode = () => {
     const svg = document.querySelector("svg");
@@ -73,30 +71,20 @@ function Generate() {
     const img = new Image();
     img.src = "data:image/svg+xml;base64," + btoa(svgString);
     img.onload = () => {
-      // Draw rounded QR code in center
+      // Draw white card template
+      ctx.fillStyle = "#ffffff";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // Draw QR code in center
       const qrSize = Math.min(canvas.width, canvas.height) * 0.7;
       const qrX = (canvas.width - qrSize) / 2;
-      const qrY = (canvas.height - qrSize - 100) / 2;
-      const radius = 20;
-      ctx.beginPath();
-      ctx.moveTo(qrX + radius, qrY);
-      ctx.lineTo(qrX + qrSize - radius, qrY);
-      ctx.quadraticCurveTo(qrX + qrSize, qrY, qrX + qrSize, qrY + radius);
-      ctx.lineTo(qrX + qrSize, qrY + qrSize - radius);
-      ctx.quadraticCurveTo(qrX + qrSize, qrY + qrSize, qrX + qrSize - radius, qrY + qrSize);
-      ctx.lineTo(qrX + radius, qrY + qrSize);
-      ctx.quadraticCurveTo(qrX, qrY + qrSize, qrX, qrY + qrSize - radius);
-      ctx.lineTo(qrX, qrY + radius);
-      ctx.quadraticCurveTo(qrX, qrY, qrX + radius, qrY);
-      ctx.closePath();
-      ctx.clip();
+      const qrY = (canvas.height - qrSize) / 2;
       ctx.drawImage(img, qrX, qrY, qrSize, qrSize);
 
-      // Add name label as overlay
+      // Add name label
       ctx.font = "bold 24px sans-serif";
       ctx.textAlign = "center";
       ctx.fillStyle = "#333333";
-      ctx.globalCompositeOperation = "source-over";
       ctx.fillText(qrCodeValue, canvas.width / 2, qrY + qrSize + 40);
 
       // Download image
@@ -106,7 +94,6 @@ function Generate() {
       link.click();
     };
   };
-
 
   return (
     <div className="bg-gray-100 flex flex-col items-center justify-center h-screen">
@@ -135,13 +122,9 @@ function Generate() {
       </div>
     </div>
   );
-
-
 }
 
 export default Generate;
-
-
 
 // import React, { useState } from "react";
 // import QRCode from "react-qr-code";
@@ -163,8 +146,6 @@ export default Generate;
 // }
 
 // export default Generate;
-
-
 
 // import React, { useState } from "react";
 // import QRCode from "react-qr-code";
@@ -209,7 +190,6 @@ export default Generate;
 //   "Z": "0"
 // };
 
-
 // function Generate() {
 //   const [qrCodeValue, setQrCodeValue] = useState("");
 
@@ -226,45 +206,42 @@ export default Generate;
 //     // console.log(qrCodeValue)
 //   };
 
+// const downloadQRCode = () => {
+//   const svg = document.querySelector("svg");
+//   const serializer = new XMLSerializer();
+//   const svgString = serializer.serializeToString(svg);
 
-  // const downloadQRCode = () => {
-  //   const svg = document.querySelector("svg");
-  //   const serializer = new XMLSerializer();
-  //   const svgString = serializer.serializeToString(svg);
+//   const canvas = document.createElement("canvas");
+//   canvas.width = 500;
+//   canvas.height = 500;
 
-  //   const canvas = document.createElement("canvas");
-  //   canvas.width = 500;
-  //   canvas.height = 500;
+//   const ctx = canvas.getContext("2d");
+//   const img = new Image();
+//   img.src = "data:image/svg+xml;base64," + btoa(svgString);
+//   img.onload = () => {
+//     // Draw white card template
+//     ctx.fillStyle = "#ffffff";
+//     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-  //   const ctx = canvas.getContext("2d");
-  //   const img = new Image();
-  //   img.src = "data:image/svg+xml;base64," + btoa(svgString);
-  //   img.onload = () => {
-  //     // Draw white card template
-  //     ctx.fillStyle = "#ffffff";
-  //     ctx.fillRect(0, 0, canvas.width, canvas.height);
+//     // Draw QR code in center
+//     const qrSize = Math.min(canvas.width, canvas.height) * 0.7;
+//     const qrX = (canvas.width - qrSize) / 2;
+//     const qrY = (canvas.height - qrSize) / 2;
+//     ctx.drawImage(img, qrX, qrY, qrSize, qrSize);
 
-  //     // Draw QR code in center
-  //     const qrSize = Math.min(canvas.width, canvas.height) * 0.7;
-  //     const qrX = (canvas.width - qrSize) / 2;
-  //     const qrY = (canvas.height - qrSize) / 2;
-  //     ctx.drawImage(img, qrX, qrY, qrSize, qrSize);
+//     // Add name label
+//     ctx.font = "bold 24px sans-serif";
+//     ctx.textAlign = "center";
+//     ctx.fillStyle = "#333333";
+//     ctx.fillText(qrCodeValue, canvas.width / 2, qrY + qrSize + 40);
 
-  //     // Add name label
-  //     ctx.font = "bold 24px sans-serif";
-  //     ctx.textAlign = "center";
-  //     ctx.fillStyle = "#333333";
-  //     ctx.fillText(qrCodeValue, canvas.width / 2, qrY + qrSize + 40);
-
-  //     // Download image
-  //     const link = document.createElement("a");
-  //     link.download = "qrcode.png";
-  //     link.href = canvas.toDataURL("image/png");
-  //     link.click();
-  //   };
-  // };
-
-
+//     // Download image
+//     const link = document.createElement("a");
+//     link.download = "qrcode.png";
+//     link.href = canvas.toDataURL("image/png");
+//     link.click();
+//   };
+// };
 
 //   return (
 //     <div className="bg-gray-100 flex flex-col items-center justify-center h-screen">
@@ -293,7 +270,6 @@ export default Generate;
 //       </div>
 //     </div>
 //   );
-
 
 // }
 
