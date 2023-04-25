@@ -173,17 +173,14 @@ function Rank({ data, onClose }) {
               >
                 {overallEarliest.map(
                   ({ name, section, formattedTime }, index) => (
-                    <div
-                    key={name}
-                    className="relative border border-white-200 rounded-lg overflow-hidden"
-                  >
-                    <div className="absolute top-0 left-0 right-0 p-2 bg-gradient-to-b from-violet-900 to-transparent">
+                    <div key={name} className="relative border border-white-200 rounded-lg overflow-hidden px-2 py-4">
+                    <div className="absolute top-0 left-0 right-0 p-2 bg-gradient-to-b from-violet-900 to-transparent z-10">
                       <div className="text-white text-lg">{name}</div>
                       <div className="text-white text-sm">
                         {formattedTime}&emsp;|&emsp;{section}
                       </div>
                     </div>
-                    <div className="w-full h-52 overflow-hidden relative">
+                    <div className="w-full h-52 overflow-hidden relative z-0">
                       <Image
                         src={`/pictures/S${getBadgeRank(index + 1)}.png`}
                         alt={`Badge ${getBadgeRank(index + 1)}`}
@@ -191,12 +188,13 @@ function Rank({ data, onClose }) {
                         objectFit="cover"
                       />
                     </div>
-                    <div className="absolute top-0 right-0 p-2">
+                    <div className="absolute top-0 right-0 p-2 z-10">
                       <div className="text-white text-3xl font-bold">
                         {index + 1}
                       </div>
                     </div>
                   </div>
+
 
                   )
                 )}
