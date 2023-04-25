@@ -107,11 +107,11 @@ const Greeting = () => {
         }}
       >
         <div style={{ minHeight: "200px" }}>
-          <h2 className="text-3xl font-bold mb-2">{greeting} Scasians! </h2>
+          <h2 className="text-3xl font-bold mb-2">{greeting} </h2>
           <p className="mb-2 font-bold">Today is {dateString}</p>
           {showReminder && (
             <h3 className="text-sm font-bold mb-2 ">
-              If you have not already get your qr-code scanned now :&gt;
+              If you have not already,  get your qr-code scanned now :&gt;
             </h3>
           )}
         </div>
