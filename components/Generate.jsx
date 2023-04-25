@@ -95,6 +95,7 @@ function Generate() {
       ctx.drawImage(img, qrX, qrY, qrSize, qrSize);
 
       // Add name label
+      const qrCodeValue = "John Doe";
       ctx.font = "bold 36px Arial";
       ctx.textAlign = "center";
       ctx.fillStyle = "#333333";
