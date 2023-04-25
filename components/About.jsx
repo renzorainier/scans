@@ -22,6 +22,7 @@ const About = () => {
   </span>
 </h2>
 
+
         <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
           <div className="bg-white shadow-lg rounded-lg overflow-hidden">
             <div
