@@ -73,19 +73,32 @@ function Generate() {
     img.src = "data:image/svg+xml;base64," + btoa(svgString);
     img.onload = () => {
       // Draw white card template
-      ctx.fillStyle = "#ffffff";
+      ctx.fillStyle = "#fff";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      // Draw QR code in center
+      // Draw rounded QR code in center
       const qrSize = Math.min(canvas.width, canvas.height) * 0.7;
       const qrX = (canvas.width - qrSize) / 2;
       const qrY = (canvas.height - qrSize) / 2;
+      const radius = 20;
+      ctx.beginPath();
+      ctx.moveTo(qrX + radius, qrY);
+      ctx.lineTo(qrX + qrSize - radius, qrY);
+      ctx.quadraticCurveTo(qrX + qrSize, qrY, qrX + qrSize, qrY + radius);
+      ctx.lineTo(qrX + qrSize, qrY + qrSize - radius);
+      ctx.quadraticCurveTo(qrX + qrSize, qrY + qrSize, qrX + qrSize - radius, qrY + qrSize);
+      ctx.lineTo(qrX + radius, qrY + qrSize);
+      ctx.quadraticCurveTo(qrX, qrY + qrSize, qrX, qrY + qrSize - radius);
+      ctx.lineTo(qrX, qrY + radius);
+      ctx.quadraticCurveTo(qrX, qrY, qrX + radius, qrY);
+      ctx.closePath();
+      ctx.clip();
       ctx.drawImage(img, qrX, qrY, qrSize, qrSize);
 
       // Add name label
       ctx.font = "bold 24px sans-serif";
       ctx.textAlign = "center";
-      ctx.fillStyle = "#333333";
+      ctx.fillStyle = "#333";
       ctx.fillText(qrCodeValue, canvas.width / 2, qrY + qrSize + 40);
 
       // Download image
@@ -95,6 +108,7 @@ function Generate() {
       link.click();
     };
   };
+
 
   return (
     <div className="bg-gray-100 flex flex-col items-center justify-center h-screen">
