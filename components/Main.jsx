@@ -11,22 +11,26 @@ import About from "./About";
 
 const MainComponent = () => {
   const [currentComponent, setCurrentComponent] = useState(null);
+  const [componentHistory, setComponentHistory] = useState([]);
 
   const handleButtonClick = (componentName) => {
+    setComponentHistory([...componentHistory, currentComponent]);
     setCurrentComponent(componentName);
   };
 
   const handleBackButtonClick = () => {
-    setCurrentComponent(null);
+    const previousComponent = componentHistory.pop();
+    setCurrentComponent(previousComponent);
+    setComponentHistory([...componentHistory]);
   };
 
   const renderCurrentComponent = () => {
     if (currentComponent) {
       switch (currentComponent) {
         case "today":
-          return <TodayAttendance onBackButtonClick={handleBackButtonClick} />;
+          return <TodayAttendance />;
         case "about":
-          return <About onBackButtonClick={handleBackButtonClick} />;
+          return <About />;
         // render other components as needed
         default:
           return null;
@@ -59,20 +63,22 @@ const MainComponent = () => {
     }
   };
 
-
   return (
     <div>
-      <button
-        className="bg-red-400 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-300 font-bold text-sm md:text-xl px-4 py-2 md:px-6 md:py-3 rounded-lg shadow-sm border border-gray-300 transition-colors duration-300 ease-in-out"
-        onClick={() => handleBackButtonClick()}
-      >
-        Back
-      </button>
+      {currentComponent && (
+        <button
+          className="bg-red-400 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-300 font-bold text-sm md:text-xl px-4 py-2 md:px-6 md:py-3 rounded-lg shadow-sm border border-gray-300 transition-colors duration-300 ease-in-out"
+          onClick={() => handleBackButtonClick()}
+        >
+          Back
+        </button>
+      )}
 
       <div>{renderCurrentComponent()}</div>
     </div>
   );
 };
+
 
 
 export default MainComponent;
