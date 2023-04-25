@@ -7,15 +7,39 @@ const Greeting = () => {
   const [timeOfDay, setTimeOfDay] = useState("");
 
   useEffect(() => {
-    const morningGreetings = ["Good Morning"];
+    const earlyMorningGreetings = ["Good Morning"];
+    const morningGreetings1 = ["Good Morning"];
+    const morningGreetings2 = ["Good Morning"];
+    const morningGreetings3 = ["Good Morning"];
+    const morningGreetings4 = ["Good Morning"];
+    const morningGreetings5 = ["Good Morning"];
+    const morningGreetings6 = ["Good Morning"];
     const afternoonGreetings = ["Good Afternoon"];
     const eveningGreetings = ["Good Evening"];
 
     const hour = date.getHours();
     let greetingOptions = [];
 
-    if (hour >= 5 && hour < 12) {
-      greetingOptions = morningGreetings;
+    if (hour >= 5 && hour < 6) {
+      greetingOptions = earlyMorningGreetings;
+      setTimeOfDay("early morning");
+    } else if (hour >= 6 && hour < 7) {
+      greetingOptions = morningGreetings1;
+      setTimeOfDay("morning");
+    } else if (hour >= 7 && hour < 8) {
+      greetingOptions = morningGreetings2;
+      setTimeOfDay("morning");
+    } else if (hour >= 8 && hour < 9) {
+      greetingOptions = morningGreetings3;
+      setTimeOfDay("morning");
+    } else if (hour >= 9 && hour < 10) {
+      greetingOptions = morningGreetings4;
+      setTimeOfDay("morning");
+    } else if (hour >= 10 && hour < 11) {
+      greetingOptions = morningGreetings5;
+      setTimeOfDay("morning");
+    } else if (hour >= 11 && hour < 12) {
+      greetingOptions = morningGreetings6;
       setTimeOfDay("morning");
     } else if (hour >= 12 && hour < 18) {
       greetingOptions = afternoonGreetings;
