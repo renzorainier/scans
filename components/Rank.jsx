@@ -245,12 +245,14 @@ function Rank({ data, onClose }) {
                               </div>
                             </div>
                             <div className="w-full h-52 overflow-hidden">
-                              <Image 
+                              <Image
                                 src={`/pictures/${getBadgeRankSec(
                                   index + 1
                                 )}.png`}
                                 alt={`Badge ${getBadgeRankSec(index + 1)}`}
                                 className="w-full h-full object-cover"
+                                width="160"
+                                height="160"
                               />
                             </div>
                             <div className="absolute top-0 right-0 p-2">
