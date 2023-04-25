@@ -61,44 +61,42 @@ function Generate() {
 
 
   const downloadQRCode = () => {
-    // Select the SVG element
     const svg = document.querySelector("svg");
     const serializer = new XMLSerializer();
     const svgString = serializer.serializeToString(svg);
 
-    // Create a canvas element and set its size to 300x300
     const canvas = document.createElement("canvas");
-    canvas.width = 300;
-    canvas.height = 300;
+    canvas.width = 500;
+    canvas.height = 500;
 
-    // Get the canvas context
     const ctx = canvas.getContext("2d");
-
-    // Fill the canvas with a white rectangle
-    ctx.fillStyle = "#ffffff";
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-    // Load the SVG image into an Image object
     const img = new Image();
     img.src = "data:image/svg+xml;base64," + btoa(svgString);
-
-    // When the Image object has loaded
     img.onload = () => {
-      // Calculate the size and position of the QR code in the canvas
+      // Draw white card template
+      ctx.fillStyle = "#ffffff";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // Draw QR code in center
       const qrSize = Math.min(canvas.width, canvas.height) * 0.7;
       const qrX = (canvas.width - qrSize) / 2;
       const qrY = (canvas.height - qrSize) / 2;
-
-      // Draw the QR code onto the canvas
       ctx.drawImage(img, qrX, qrY, qrSize, qrSize);
 
-      // Create a link element that downloads the canvas as a PNG image
+      // Add name label
+      ctx.font = "bold 24px sans-serif";
+      ctx.textAlign = "center";
+      ctx.fillStyle = "#333333";
+      ctx.fillText(qrCodeValue, canvas.width / 2, qrY + qrSize + 40);
+
+      // Download image
       const link = document.createElement("a");
       link.download = "qrcode.png";
       link.href = canvas.toDataURL("image/png");
       link.click();
     };
   };
+
 
 
   return (
