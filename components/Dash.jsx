@@ -80,8 +80,6 @@ const Greeting = () => {
       return "/pictures/tentoeleven.jpg";
     } else if (timeOfDay === "eleventotwelve") {
       return "/pictures/eleventotwelve.jpg";
-    } else if (timeOfDay === "morning") {
-      return "/pictures/morning.jpg";
     } else if (timeOfDay === "afternoon") {
       return "/pictures/afternoon.jpg";
     } else {
