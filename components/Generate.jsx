@@ -76,30 +76,17 @@ function Generate() {
       ctx.fillStyle = "#ffffff";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      // Draw rounded QR code in center
+      // Draw QR code in center
       const qrSize = Math.min(canvas.width, canvas.height) * 0.7;
       const qrX = (canvas.width - qrSize) / 2;
       const qrY = (canvas.height - qrSize) / 2;
-      const cornerRadius = 10;
-      ctx.beginPath();
-      ctx.moveTo(qrX + cornerRadius, qrY);
-      ctx.lineTo(qrX + qrSize - cornerRadius, qrY);
-      ctx.arcTo(qrX + qrSize, qrY, qrX + qrSize, qrY + cornerRadius, cornerRadius);
-      ctx.lineTo(qrX + qrSize, qrY + qrSize - cornerRadius);
-      ctx.arcTo(qrX + qrSize, qrY + qrSize, qrX + qrSize - cornerRadius, qrY + qrSize, cornerRadius);
-      ctx.lineTo(qrX + cornerRadius, qrY + qrSize);
-      ctx.arcTo(qrX, qrY + qrSize, qrX, qrY + qrSize - cornerRadius, cornerRadius);
-      ctx.lineTo(qrX, qrY + cornerRadius);
-      ctx.arcTo(qrX, qrY, qrX + cornerRadius, qrY, cornerRadius);
-      ctx.closePath();
-      ctx.clip();
       ctx.drawImage(img, qrX, qrY, qrSize, qrSize);
 
       // Add name label
-      ctx.font = "bold 36px sans-serif";
+      ctx.font = "bold 24px sans-serif";
       ctx.textAlign = "center";
       ctx.fillStyle = "#333333";
-      ctx.fillText(qrCodeValue, canvas.width / 2, qrY + qrSize + 80);
+      ctx.fillText(qrCodeValue, canvas.width / 2, qrY + qrSize + 40);
 
       // Download image
       const link = document.createElement("a");
@@ -108,7 +95,6 @@ function Generate() {
       link.click();
     };
   };
-
 
   return (
     <div className="bg-gray-100 flex flex-col items-center justify-center h-screen">
