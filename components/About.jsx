@@ -17,9 +17,7 @@ const About = () => {
     <div className="bg-gray-100">
       <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
       <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
-  About <span style={{backgroundImage: "linear-gradient(90deg, #62CDFF, #C9EEFF)", backgroundClip: "text", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent"}}>
-    Scans
-  </span>
+  About <span style="background: linear-gradient(to right, #62CDFF, #C9EEFF); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Scans</span>
 </h2>
 
 
