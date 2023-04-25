@@ -59,7 +59,6 @@ function Generate() {
     // console.log(qrCodeValue)
   };
 
-
   const downloadQRCode = () => {
     const svg = document.querySelector("svg");
     const serializer = new XMLSerializer();
@@ -96,10 +95,10 @@ function Generate() {
       ctx.drawImage(img, qrX, qrY, qrSize, qrSize);
 
       // Add name label
-      ctx.font = "bold 24px sans-serif";
+      ctx.font = "bold 36px sans-serif";
       ctx.textAlign = "center";
       ctx.fillStyle = "#333333";
-      ctx.fillText(qrCodeValue, canvas.width / 2, qrY + qrSize + 60);
+      ctx.fillText(qrCodeValue, canvas.width / 2, qrY + qrSize + 80);
 
       // Download image
       const link = document.createElement("a");
