@@ -172,7 +172,7 @@ function Rank({ data, onClose }) {
                 className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
               >
                 {overallEarliest.map(
-                  ({ name, section, formattedTime}, index) => (
+                  ({ name, section, formattedTime }, index) => (
                     <div
                       key={name}
                       className="relative border border-white-200 rounded-lg overflow-hidden"
@@ -213,6 +213,7 @@ function Rank({ data, onClose }) {
                 style={{ maxWidth: "90%" }}
               >
                 <h2>
+                  {" "}
                   <span class="bg-gradient-to-r from-blue-400 to-violet-400 text-transparent bg-clip-text">
                     {section}
                   </span>
@@ -234,7 +235,7 @@ function Rank({ data, onClose }) {
                       {earliestStudents[section].map(
                         ({ name, student, formattedTime }, index) => (
                           <div
-                            key={name}
+                            key={student}
                             className="relative border border-white-200 rounded-lg overflow-hidden"
                           >
                             <div className="absolute top-0 left-0 right-0 p-2 bg-gradient-to-b from-violet-900 to-transparent">
@@ -243,27 +244,15 @@ function Rank({ data, onClose }) {
                                 {formattedTime}&emsp;|&emsp;{section}
                               </div>
                             </div>
-                            <div id="badge" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-  {earliestStudents[section].map(({ name, student, formattedTime, inde }, index) => (
-    <div key={name} className="relative border border-white-200 rounded-lg overflow-hidden">
-      <div className="absolute top-0 left-0 right-0 p-2 bg-gradient-to-b from-violet-900 to-transparent">
-        <div className="text-white text-lg">{name}</div>
-        <div className="text-white text-sm">
-          {formattedTime}&emsp;|&emsp;{section}
-        </div>
-      </div>
-      <div className="w-full h-52 overflow-hidden">
-        <img src={`/pictures/${getBadgeRankSec(index + 1)}.png`} alt={`Badge ${getBadgeRankSec(index + 1)}`} className="w-full h-full object-cover" />
-      </div>
-      <div className="absolute top-0 right-0 p-2">
-        <div className="text-white text-3xl font-bold">
-          {index + 1}
-        </div>
-      </div>
-    </div>
-  ))}
-</div>
-
+                            <div className="w-full h-52 overflow-hidden">
+                              <img
+                                src={`/pictures/${getBadgeRankSec(
+                                  index + 1
+                                )}.png`}
+                                alt={`Badge ${getBadgeRankSec(index + 1)}`}
+                                className="w-full h-full object-cover"
+                              />
+                            </div>
                             <div className="absolute top-0 right-0 p-2">
                               <div className="text-white text-3xl font-bold">
                                 {index + 1}
