@@ -53,17 +53,6 @@ const MainComponent = () => {
               <button className="bg-white font-bold text-xl py-10 rounded-lg " onClick={() => handleButtonClick("about")}>
                 About
               </button>
-              <button className="bg-white font-bold text-xl py-10 rounded-lg " onClick={() => handleButtonClick("create")}>
-                Create
-              </button>
-              <button className="bg-white font-bold text-xl py-10 rounded-lg " onClick={() => handleButtonClick("pass")}>
-                Scan
-              </button>
-              <button className="bg-white font-bold text-xl py-10 rounded-lg " onClick={() => handleButtonClick("create")}>
-                Qr Code
-              </button>
-
-
             </div>
           </div>
         );
@@ -80,3 +69,14 @@ const MainComponent = () => {
 };
 
 export default MainComponent;
+
+
+// <button className="bg-white font-bold text-xl py-10 rounded-lg " onClick={() => handleButtonClick("create")}>
+// Create
+// </button>
+// <button className="bg-white font-bold text-xl py-10 rounded-lg " onClick={() => handleButtonClick("pass")}>
+// Scan
+// </button>
+// <button className="bg-white font-bold text-xl py-10 rounded-lg " onClick={() => handleButtonClick("create")}>
+// Qr Code
+// </button>
