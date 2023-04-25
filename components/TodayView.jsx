@@ -335,7 +335,7 @@ function AttendanceTable() {
                         {filteredStudents.map((student, index) => (
                           <tr
                             className={`${
-                              index % 2 === 0 ? "bg-gray-100" : "bg-gray-200"
+                              index % 2 === 0 ? "bg-blue-10" : "bg-blue-50"
                             } rounded-lg mb-2 py-2`}
                             key={student.studentId}
                             onClick={() => handleMoreClick(student)}
