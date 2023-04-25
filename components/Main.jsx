@@ -46,14 +46,15 @@ const MainComponent = () => {
               <Greeting />
             </div>
             <div className="ml-5 mr-5 mt-3 grid grid-cols-2 gap-4">
-              <button className="bg-white font-bold text-xl py-10 rounded-lg " onClick={() => handleButtonClick("today")}>
-                Attendance
-              </button>
+  <button className="bg-gradient-to-br from-indigo-500 to-blue-500 text-white font-bold text-xl py-10 rounded-lg hover:bg-blue-600 transition duration-300 ease-in-out" onClick={() => handleButtonClick("today")}>
+    Attendance
+  </button>
 
-              <button className="bg-white font-bold text-xl py-10 rounded-lg " onClick={() => handleButtonClick("about")}>
-                About
-              </button>
-            </div>
+  <button className="bg-gradient-to-br from-pink-500 to-red-500 text-white font-bold text-xl py-10 rounded-lg hover:bg-red-600 transition duration-300 ease-in-out" onClick={() => handleButtonClick("about")}>
+    About
+  </button>
+</div>
+
           </div>
         );
 
