@@ -21,20 +21,16 @@ const MainComponent = () => {
   };
 
 
-    const renderCurrentComponent = () => {
-      switch (currentComponent) {
-        case "today":
-          return <TodayAttendance onBackButtonClick={handleBackButtonClick} />;
-          case "past":
-            return <PastAttendance onBackButtonClick={handleBackButtonClick} />;
-          case "sample":
-            return <Calculator onBackButtonClick={handleBackButtonClick} />;
-            case "create":
-              return <Generate onBackButtonClick={handleBackButtonClick} />;
-              case "scan":
-                return <Scan onBackButtonClick={handleBackButtonClick} />;
-      }
-      return (
+  const renderCurrentComponent = () => {
+    switch (currentComponent) {
+      case "today":
+        return <TodayAttendance onBackButtonClick={handleBackButtonClick} />;
+        case "about":
+          return <About onBackButtonClick={handleBackButtonClick} />;
+
+      // render other components as needed
+      default:
+        return (
         <div className="flex justify-center h-screen">
           <div className="mt-4 ax-w-screen-lg mx-auto">
             <div>
