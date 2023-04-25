@@ -16,11 +16,9 @@ const About = () => {
   return (
     <div className="bg-gray-100">
       <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
-      <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
-  About <span style="background: linear-gradient(to right, #62CDFF, #C9EEFF); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Scans</span>
-</h2>
-
-
+        <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+          About Scans
+        </h2>
         <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
           <div className="bg-white shadow-lg rounded-lg overflow-hidden">
             <div
