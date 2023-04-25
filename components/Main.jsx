@@ -47,14 +47,14 @@ const MainComponent = () => {
             </div>
             <div className="ml-5 mr-5 mt-3 grid grid-cols-2 gap-4">
               <button
-                className="bg-gradient-to-br from-indigo-500 to-blue-500 text-white font-bold text-xl py-10 rounded-lg hover:bg-blue-600 transition duration-300 ease-in-out"
+                className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-pink-500 hover:to-purple-500 font-bold text-white text-xl py-6 rounded-lg shadow-lg"
                 onClick={() => handleButtonClick("today")}
               >
                 Attendance
               </button>
 
               <button
-                className="bg-gradient-to-br from-pink-500 to-red-500 text-white font-bold text-xl py-10 rounded-lg hover:bg-red-600 transition duration-300 ease-in-out"
+                className="bg-gradient-to-r from-blue-500 to-green-500 hover:from-green-500 hover:to-blue-500 font-bold text-white text-xl py-6 rounded-lg shadow-lg"
                 onClick={() => handleButtonClick("about")}
               >
                 About
