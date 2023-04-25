@@ -82,7 +82,7 @@ function Generate() {
       ctx.drawImage(img, qrX, qrY, qrSize, qrSize);
 
       // Add name label
-      const name = "PASGDAN, RENZ";
+      const name = "PASAGDAN, RENZ";
       ctx.font = "600 28px 'Montserrat', sans-serif";
       ctx.textAlign = "center";
       ctx.fillStyle = "#4a4a4a";
