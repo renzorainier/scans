@@ -95,6 +95,7 @@ function Generate() {
       ctx.drawImage(img, qrX, qrY, qrSize, qrSize);
 
       // Add name label
+      const qrCodeValue = "renz"
       ctx.font = "bold 24px sans-serif";
       ctx.textAlign = "center";
       ctx.fillStyle = "#333333";
