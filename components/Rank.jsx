@@ -172,9 +172,9 @@ function Rank({ data, onClose }) {
                 className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
               >
                 {overallEarliest.map(
-                  ({ name, section, formattedTime }, index) => (
+                  ({ name, section, formattedTime, inde }, index) => (
                     <div
-                      key={index}
+                      key={inde}
                       className="relative border border-white-200 rounded-lg overflow-hidden"
                     >
                       <div className="absolute top-0 left-0 right-0 p-2 bg-gradient-to-b from-violet-900 to-transparent">
@@ -233,9 +233,9 @@ function Rank({ data, onClose }) {
                       className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
                     >
                       {earliestStudents[section].map(
-                        ({ name, student, formattedTime }, index) => (
+                        ({ name, student, formattedTime, inde }, index) => (
                           <div
-                            key={index}
+                            key={inde}
                             className="relative border border-white-200 rounded-lg overflow-hidden"
                           >
                             <div className="absolute top-0 left-0 right-0 p-2 bg-gradient-to-b from-violet-900 to-transparent">
