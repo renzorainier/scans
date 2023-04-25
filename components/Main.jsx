@@ -11,26 +11,43 @@ import About from "./About";
 
 const MainComponent = () => {
   const [currentComponent, setCurrentComponent] = useState(null);
-  const [componentHistory, setComponentHistory] = useState([]);
+  const [renderedComponents, setRenderedComponents] = useState({});
 
   const handleButtonClick = (componentName) => {
-    setComponentHistory([...componentHistory, currentComponent]);
     setCurrentComponent(componentName);
   };
 
   const handleBackButtonClick = () => {
-    const previousComponent = componentHistory.pop();
-    setCurrentComponent(previousComponent);
-    setComponentHistory([...componentHistory]);
+    setCurrentComponent(null);
+  };
+
+  const renderComponent = (componentName) => {
+    if (!renderedComponents[componentName]) {
+      setRenderedComponents((prev) => ({ ...prev, [componentName]: true }));
+    }
+  };
+
+  const hideComponent = (componentName) => {
+    setRenderedComponents((prev) => ({ ...prev, [componentName]: false }));
   };
 
   const renderCurrentComponent = () => {
     if (currentComponent) {
       switch (currentComponent) {
         case "today":
-          return <TodayAttendance />;
+          renderComponent("today");
+          return (
+            <div className={`${renderedComponents["today"] ? "block" : "hidden-component"}`}>
+              <TodayAttendance onBackButtonClick={() => hideComponent("today")} />
+            </div>
+          );
         case "about":
-          return <About />;
+          renderComponent("about");
+          return (
+            <div className={`${renderedComponents["about"] ? "block" : "hidden-component"}`}>
+              <About onBackButtonClick={() => hideComponent("about")} />
+            </div>
+          );
         // render other components as needed
         default:
           return null;
@@ -65,14 +82,14 @@ const MainComponent = () => {
 
   return (
     <div>
-      {currentComponent && (
-        <button
-          className="bg-red-400 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-300 font-bold text-sm md:text-xl px-4 py-2 md:px-6 md:py-3 rounded-lg shadow-sm border border-gray-300 transition-colors duration-300 ease-in-out"
-          onClick={() => handleBackButtonClick()}
-        >
-          Back
-        </button>
-      )}
+      <button
+        className={`${
+          currentComponent ? "block" : "hidden-component"
+        } bg-red-400 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-300 font-bold text-sm md:text-xl px-4 py-2 md:px-6 md:py-3 rounded-lg shadow-sm border border-gray-300 transition-colors duration-300 ease-in-out`}
+        onClick={() => handleBackButtonClick()}
+      >
+        Back
+      </button>
 
       <div>{renderCurrentComponent()}</div>
     </div>
