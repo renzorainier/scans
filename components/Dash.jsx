@@ -110,7 +110,7 @@ const Greeting = () => {
           <p className="mb-2 font-bold">Today is {dateString}</p>
           {showReminder && (
             <h3 className="text-sm font-bold mb-2 ">
-              If you haven't already, get your qr-code scanned now :&gt;
+              If you have not already get your qr-code scanned now :&gt;
             </h3>
           )}
         </div>
