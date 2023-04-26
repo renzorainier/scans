@@ -211,11 +211,11 @@ function AttendanceTable() {
                   </div>
 
                   <div>
-                    <NumberLineGraph data={attendanceData} />
+                    {/* <NumberLineGraph data={attendanceData} /> */}
                   </div>
 
                   <div>
-                    <LineGraph data={attendanceData} />
+                    {/* <LineGraph data={attendanceData} /> */}
                   </div>
                 </div>
               </div>

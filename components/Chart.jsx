@@ -1,8 +1,6 @@
-import React, { useEffect, useRef, useState, useCallback } from 'react';
-import Chart from 'chart.js/auto';
+import React, { useEffect, useRef, useState, useCallback } from "react";
+import Chart from "chart.js/auto";
 import { collection, getDocs } from "firebase/firestore";
-
-
 
 const LineGraph = ({ data }) => {
   const chartRef = useRef();
@@ -44,7 +42,9 @@ const LineGraph = ({ data }) => {
           }
           const minute = new Date(scanTime).getMinutes();
           const hour = new Date(scanTime).getHours();
-          const formattedMinute = `${hour.toString().padStart(2, "0")}:${minute.toString().padStart(2, "0")}`;
+          const formattedMinute = `${hour.toString().padStart(2, "0")}:${minute
+            .toString()
+            .padStart(2, "0")}`;
           if (!minuteData[formattedMinute]) {
             minuteData[formattedMinute] = 1;
           } else {
@@ -60,7 +60,10 @@ const LineGraph = ({ data }) => {
 
     // Create empty data points for all minutes between earliest and latest scan time
     for (let i = earliestTime.getMinutes(); i <= latestTime.getMinutes(); i++) {
-      const formattedMinute = `${earliestTime.getHours().toString().padStart(2, "0")}:${i.toString().padStart(2, "0")}`;
+      const formattedMinute = `${earliestTime
+        .getHours()
+        .toString()
+        .padStart(2, "0")}:${i.toString().padStart(2, "0")}`;
       if (!minuteData[formattedMinute]) {
         minuteData[formattedMinute] = 0;
       }
@@ -84,9 +87,8 @@ const LineGraph = ({ data }) => {
     return chartData;
   }, [data]);
 
-
   useEffect(() => {
-    const chartCtx = chartRef.current.getContext('2d');
+    const chartCtx = chartRef.current.getContext("2d");
 
     const chartData = formatChartData();
 
@@ -96,45 +98,49 @@ const LineGraph = ({ data }) => {
     }
 
     chartInstanceRef.current = new Chart(chartCtx, {
-      type: 'line',
+      type: "line",
       data: chartData,
       options: {
         scales: {
-          yAxes: [{
-            gridLines: {
-              color: '#F5F5F5',
-              zeroLineColor: '#F5F5F5',
+          yAxes: [
+            {
+              gridLines: {
+                color: "#F5F5F5",
+                zeroLineColor: "#F5F5F5",
+              },
+              ticks: {
+                fontColor: "#888",
+                beginAtZero: true,
+                maxTicksLimit: 5,
+                padding: 10,
+              },
             },
-            ticks: {
-              fontColor: '#888',
-              beginAtZero: true,
-              maxTicksLimit: 5,
-              padding: 10,
+          ],
+          xAxes: [
+            {
+              gridLines: {
+                color: "#F5F5F5",
+                zeroLineColor: "#F5F5F5",
+              },
+              ticks: {
+                fontColor: "#888",
+                padding: 5,
+              },
             },
-          }],
-          xAxes: [{
-            gridLines: {
-              color: '#F5F5F5',
-              zeroLineColor: '#F5F5F5',
-            },
-            ticks: {
-              fontColor: '#888',
-              padding: 5,
-            },
-          }],
+          ],
         },
         legend: {
           display: false,
         },
         tooltips: {
-          backgroundColor: '#4FD1C5',
-          bodyFontColor: '#FFF',
-          titleFontColor: '#FFF',
+          backgroundColor: "#4FD1C5",
+          bodyFontColor: "#FFF",
+          titleFontColor: "#FFF",
           titleMarginBottom: 10,
           bodySpacing: 5,
           xPadding: 10,
           yPadding: 10,
-          mode: 'nearest',
+          mode: "nearest",
           intersect: 0,
         },
       },
@@ -150,16 +156,12 @@ const LineGraph = ({ data }) => {
 
   return (
     <div className="bg-white rounded-lg shadow-md  mb-4  overflow-hidden">
-      <canvas ref={chartRef} className="w-full h-full"></canvas>
+      <canvas ref={chartRef} className="w-full h-48"></canvas>
     </div>
   );
 };
 
-
 export default LineGraph;
-
-
-
 
 // finish this code from earlier"import React, { useEffect, useRef } from 'react';
 // import Chart from 'chart.js/auto';
@@ -264,15 +266,12 @@ export default LineGraph;
 //               gridLines: {
 //                 color: '#F5F5F5',
 
-
 // ????????????????
-
 
 // " based from this "import React, { useEffect, useRef, useState } from 'react';
 // import Chart from 'chart.js/auto';
 // import { collection, getDocs } from "firebase/firestore";
 // import { db } from "./firebase.js";
-
 
 // function useAttendanceData() {
 //   const [attendanceData, setAttendanceData] = useState({});
@@ -302,7 +301,6 @@ export default LineGraph;
 
 //     fetchData();
 //   }, []);
-
 
 //   const formatChartData = () => {
 //     const chartData = {
@@ -383,9 +381,7 @@ export default LineGraph;
 //     formatChartData,
 //   };
 
-
 // }
-
 
 // const LineGraph = () => {
 //   const chartRef = useRef();

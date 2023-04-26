@@ -159,7 +159,7 @@ const NumberLineGraph = ({ data }) => {
 
   return (
     <div className="bg-white rounded-lg shadow-md mt-4 mb-4 overflow-hidden">
-      <canvas ref={chartRef} className="w-full h-full"></canvas>
+      <canvas ref={chartRef} className="w-full h-48"></canvas>
     </div>
   );
 };
