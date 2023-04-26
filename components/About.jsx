@@ -16,19 +16,28 @@ const About = () => {
   return (
     <div className="bg-gray-100">
       <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
-      <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
-  About <span class="bg-gradient-to-r from-blue-400 to-violet-400 text-transparent bg-clip-text">Scans</span>
-</h2>
+        <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+          About{" "}
+          <span class="bg-gradient-to-r from-blue-400 to-violet-400 text-transparent bg-clip-text">
+            Scans
+          </span>
+        </h2>
 
         <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          <div className="bg-white shadow-lg rounded-lg overflow-hidden">
+          <div
+            className="bg-white shadow-lg rounded-lg overflow-hidden"
+            style={{ animation: "slide-from-left 1s ease forwards" }}
+          >
             <div
               className="px-4 py-5 sm:p-6 cursor-pointer"
               onClick={toggleCard1}
             >
               <div className="flex justify-between items-center">
                 <h3 className="text-lg font-bold leading-6  text-gray-900">
-                  What is  <span class="bg-gradient-to-r from-blue-400 to-violet-400 text-transparent bg-clip-text">Scans</span>
+                  What is{" "}
+                  <span class="bg-gradient-to-r from-blue-400 to-violet-400 text-transparent bg-clip-text">
+                    Scans
+                  </span>
                 </h3>
                 <div className="flex items-center">
                   <FaChevronDown
@@ -40,11 +49,11 @@ const About = () => {
               </div>
               {card1Expanded && (
                 <div className="mt-2 text-sm text-gray-500">
-                  Scans is a web application developed by Renz Pasagdan - a Grade 12 ST-1B
-                  student of Sumulong College of Arts and Sciences as a research
-                  project titled &ldquo;Development of QR Code Technology as an
-                  Attendance System for Enhancing Attendance and
-                  Punctuality&rdquo;
+                  Scans is a web application developed by Renz Pasagdan - a
+                  Grade 12 ST-1B student of Sumulong College of Arts and
+                  Sciences as a research project titled &ldquo;Development of QR
+                  Code Technology as an Attendance System for Enhancing
+                  Attendance and Punctuality&rdquo;
                 </div>
               )}
             </div>
@@ -69,12 +78,17 @@ const About = () => {
               </div>
               {card2Expanded && (
                 <div className="mt-2 text-sm text-gray-500">
-                  Our <span class="bg-gradient-to-r text-xl from-blue-400 to-violet-400 text-transparent bg-clip-text"> mission </span>is to improve student attendance and punctuality
-                  by utilizing QR code technology and psychological theories to
-                  create an efficient and reliable attendance tracking system.
-                  We strive to empower students, teachers, and parents with
-                  real-time attendance data to foster a culture of
-                  accountability and academic excellence.
+                  Our{" "}
+                  <span class="bg-gradient-to-r text-xl from-blue-400 to-violet-400 text-transparent bg-clip-text">
+                    {" "}
+                    mission{" "}
+                  </span>
+                  is to improve student attendance and punctuality by utilizing
+                  QR code technology and psychological theories to create an
+                  efficient and reliable attendance tracking system. We strive
+                  to empower students, teachers, and parents with real-time
+                  attendance data to foster a culture of accountability and
+                  academic excellence.
                 </div>
               )}
             </div>
@@ -100,23 +114,38 @@ const About = () => {
                 <div className="mt-2 text-sm text-gray-500">
                   <ul className="list-disc list-inside">
                     <li>
-                      <span class="bg-gradient-to-r text-xl from-blue-400 to-violet-400 text-transparent bg-clip-text"> Students:</span>  Motivates attendance and punctuality, recognizes
-                      and rewards positive behavior through digital achievement
+                      <span class="bg-gradient-to-r text-xl from-blue-400 to-violet-400 text-transparent bg-clip-text">
+                        {" "}
+                        Students:
+                      </span>{" "}
+                      Motivates attendance and punctuality, recognizes and
+                      rewards positive behavior through digital achievement
                       badges.
                     </li>
                     <li>
-                    <span class="bg-gradient-to-r text-xl from-blue-400 to-violet-400 text-transparent bg-clip-text"> Teachers:</span> Streamlines administrative tasks, enhances
-                      attendance tracking and monitoring, enabling more time for
-                      teaching.
+                      <span class="bg-gradient-to-r text-xl from-blue-400 to-violet-400 text-transparent bg-clip-text">
+                        {" "}
+                        Teachers:
+                      </span>{" "}
+                      Streamlines administrative tasks, enhances attendance
+                      tracking and monitoring, enabling more time for teaching.
                     </li>
                     <li>
-                    <span class="bg-gradient-to-r text-xl from-blue-400 to-violet-400 text-transparent bg-clip-text"> Parents/Guardians:</span>  Offers timely attendance data for their
-                      child, allowing for better involvement in their education.
+                      <span class="bg-gradient-to-r text-xl from-blue-400 to-violet-400 text-transparent bg-clip-text">
+                        {" "}
+                        Parents/Guardians:
+                      </span>{" "}
+                      Offers timely attendance data for their child, allowing
+                      for better involvement in their education.
                     </li>
                     <li>
-                    <span class="bg-gradient-to-r text-xl from-blue-400 to-violet-400 text-transparent bg-clip-text"> School: </span>Cultivates a culture of responsibility and
-                      academic success, advances student participation and
-                      lowers absenteeism rates.
+                      <span class="bg-gradient-to-r text-xl from-blue-400 to-violet-400 text-transparent bg-clip-text">
+                        {" "}
+                        School:{" "}
+                      </span>
+                      Cultivates a culture of responsibility and academic
+                      success, advances student participation and lowers
+                      absenteeism rates.
                     </li>
                   </ul>
                 </div>
