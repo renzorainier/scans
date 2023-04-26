@@ -111,7 +111,7 @@ const Greeting = () => {
         <p className="text-sm font-bold mb-2">Today is {dateString}</p>
         {showReminder && (
           <h3 className="text-sm font-bold mb-4 ">
-            Don't forget to get your QR-code scanned now!
+            Don&apos;t forget to get your QR-code scanned now!
           </h3>
         )}
       </div>
