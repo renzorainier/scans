@@ -108,9 +108,9 @@ const Greeting = () => {
     >
       <div style={{ minHeight: "200px" }}>
         <h2 className="text-4xl font-bold mb-4">{greeting}</h2>
-        <p className="text-lg font-bold mb-2">Today is {dateString}</p>
+        <p className="text-sm font-bold mb-2">Today is {dateString}</p>
         {showReminder && (
-          <h3 className="text-md font-bold mb-4 ">
+          <h3 className="text-sm font-bold mb-4 ">
             Don't forget to get your QR-code scanned now!
           </h3>
         )}
