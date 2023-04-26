@@ -20,60 +20,49 @@ const MainComponent = () => {
     setCurrentComponent(null);
   };
 
-
   const renderCurrentComponent = () => {
     switch (currentComponent) {
       case "today":
         return <TodayAttendance onBackButtonClick={handleBackButtonClick} />;
-        case "about":
-          return <About onBackButtonClick={handleBackButtonClick} />;
+      case "about":
+        return <About onBackButtonClick={handleBackButtonClick} />;
 
       // render other components as needed
       default:
         return (
           <div className="flex justify-center h-screen">
-          <div className="mt-4 ax-w-screen-lg mx-auto">
-            <div>
-              <Greeting />
-            </div>
-            <div className="ml-5 text-white mr-5 mt-3 grid grid-cols-2 gap-4">
-              <button
-                className="bg-blue-400 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-300 font-bold text-xl py-10 rounded-lg shadow-lg"
-                onClick={() => handleButtonClick("today")}
-                style={{ animation: 'slide-from-left 0.5s ease forwards' }}
-              >
-                Attendance
-              </button>
+            <div className="mt-4 ax-w-screen-lg mx-auto">
+              <div className="greeting-container">
+                <Greeting />
+              </div>
 
-              <button
-                className="bg-violet-400 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-300 font-bold text-xl py-10 rounded-lg shadow-lg"
-                onClick={() => handleButtonClick("about")}
-                style={{ animation: 'slide-from-right 0.5s ease forwards' }}
-              >
-                About
-              </button>
+              <div className="ml-5 text-white mr-5 mt-3 grid grid-cols-2 gap-4">
+                <button
+                  className="bg-blue-400 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-300 font-bold text-xl py-10 rounded-lg shadow-lg"
+                  onClick={() => handleButtonClick("today")}
+                  style={{ animation: "slide-from-left 0.5s ease forwards" }}
+                >
+                  Attendance
+                </button>
+
+                <button
+                  className="bg-violet-400 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-300 font-bold text-xl py-10 rounded-lg shadow-lg"
+                  onClick={() => handleButtonClick("about")}
+                  style={{ animation: "slide-from-right 0.5s ease forwards" }}
+                >
+                  About
+                </button>
+              </div>
             </div>
           </div>
-        </div>
-      );
+        );
     }
   };
 
-  return (
-    <div className="fade-in">{renderCurrentComponent()}</div>
-
-  );
+  return <div className="fade-in">{renderCurrentComponent()}</div>;
 };
 
-
-
 export default MainComponent;
-
-
-
-
-
-
 
 // <button className="bg-white font-bold text-xl py-10 rounded-lg " onClick={() => handleButtonClick("create")}>
 // Create
@@ -88,7 +77,6 @@ export default MainComponent;
 // 62CDFF
 
 // C9EEFF
-
 
 // case "past":
 //   return <PastAttendance onBackButtonClick={handleBackButtonClick} />;
