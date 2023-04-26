@@ -38,14 +38,14 @@ const MainComponent = () => {
             </div>
             <div className="ml-5 text-white mr-5 mt-3 grid grid-cols-2 gap-4">
               <button
-                className="bg-blue-400 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-300 font-bold text-xl py-10 rounded-lg shadow-sm"
+                className="bg-blue-400 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-300 font-bold text-xl py-10 rounded-lg shadow-lg"
                 onClick={() => handleButtonClick("today")}
               >
                 Attendance
               </button>
 
               <button
-                className="bg-violet-400 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-300 font-bold text-xl py-10 rounded-lg shadow-sm"
+                className="bg-violet-400 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-300 font-bold text-xl py-10 rounded-lg shadow-lg"
                 onClick={() => handleButtonClick("about")}
               >
                 About
