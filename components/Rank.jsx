@@ -164,9 +164,10 @@ function Rank({ data, onClose }) {
           </span>
         </div>
       </div>
-      <div className="flex justify-center pb-5 items-center "
-                    style={{ animation: "slide-from-right 1s ease 0.1s forwards" }}
-                    >
+      <div
+        className="flex justify-center pb-5 items-center "
+        style={{ animation: "slide-from-right 1s ease 0.1s forwards" }}
+      >
         <div
           className=" w-full flex justify-center pb-5 items-center"
           style={{ maxWidth: "90%" }}
@@ -214,7 +215,10 @@ function Rank({ data, onClose }) {
       <div>
         {Object.keys(earliestStudents).map((section) => (
           <div key={section}>
-            <div className="flex justify-center  items-center">
+            <div
+              className="flex justify-center  items-center"
+              style={{ animation: "slide-from-right 1s ease 0.2s forwards" }}
+            >
               <div
                 className="w-full text-gray-700 bg-white font-bold flex justify-center items-center p-5 rounded-t-lg shadow-lg mx-auto"
                 style={{ maxWidth: "90%" }}
@@ -229,7 +233,10 @@ function Rank({ data, onClose }) {
               </div>
             </div>
 
-            <div className="flex justify-center pb-5 items-center">
+            <div
+              className="flex justify-center pb-5 items-center"
+              style={{ animation: "slide-from-right 1s ease 0.2s forwards" }}
+            >
               <div
                 className="w-full flex justify-center pb-5 items-center"
                 style={{ maxWidth: "90%" }}
