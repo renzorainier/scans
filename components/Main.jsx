@@ -40,7 +40,7 @@ const MainComponent = () => {
                 <button
                   className="bg-blue-400 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-300 font-bold text-xl py-10 rounded-lg shadow-lg"
                   onClick={() => handleButtonClick("today")}
-                  style={{ animation: "slide-from-left 0.7s ease forwards" }}
+                  style={{ animation: "slide-from-left 1s ease forwards" }}
                 >
                   Attendance
                 </button>
