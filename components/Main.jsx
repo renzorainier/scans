@@ -22,10 +22,9 @@ const MainComponent = () => {
 
   const renderCurrentComponent = () => {
     switch (currentComponent) {
-      case "today":
-        return <TodayAttendance onBackButtonClick={handleBackButtonClick} />;
-      case "about":
-        return <About onBackButtonClick={handleBackButtonClick} />;
+
+      case "pass":
+        return <Pass onBackButtonClick={handleBackButtonClick} />;
 
       // render other components as needed
       default:
@@ -33,24 +32,30 @@ const MainComponent = () => {
           <div className="flex justify-center h-screen">
             <div className="mt-4 ax-w-screen-lg mx-auto">
               <div className="greeting-container">
-                <Greeting />
+                {/* <Greeting /> */}
               </div>
 
               <div className="ml-5 text-white mr-5 mt-3 grid grid-cols-2 gap-4">
-                <button
+                {/* <button
                   className="bg-blue-400 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-300 font-bold text-xl py-10 rounded-lg shadow-lg"
                   onClick={() => handleButtonClick("today")}
                   style={{ animation: "slide-from-left 1s ease forwards" }}
                 >
                   Attendance
-                </button>
+                </button> */}
 
-                <button
+                {/* <button
                   className="bg-violet-400 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-300 font-bold text-xl py-10 rounded-lg shadow-lg"
                   onClick={() => handleButtonClick("about")}
                   style={{ animation: "slide-from-right 1s ease forwards" }}
                 >
                   About
+                </button> */}
+                  <button
+                  className="bg-violet-400 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-300 font-bold text-xl py-10 rounded-lg shadow-lg"
+                  onClick={() => handleButtonClick("pass")}
+                >
+                  Scan
                 </button>
               </div>
             </div>
