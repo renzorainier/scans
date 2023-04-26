@@ -59,7 +59,10 @@ const About = () => {
             </div>
           </div>
 
-          <div className="bg-white shadow-lg rounded-lg overflow-hidden">
+          <div
+            className="bg-white shadow-lg rounded-lg overflow-hidden"
+            style={{ animation: "slide-from-left 1s ease 0.1s forwards" }}
+          >
             <div
               className="px-4 py-5 sm:p-6 cursor-pointer"
               onClick={toggleCard2}
@@ -93,7 +96,10 @@ const About = () => {
               )}
             </div>
           </div>
-          <div className="bg-white shadow-lg rounded-lg overflow-hidden">
+          <div
+            className="bg-white shadow-lg rounded-lg overflow-hidden"
+            style={{ animation: "slide-from-left 1s ease 0.2s forwards" }}
+          >
             <div
               className="px-4 py-5 sm:p-6 cursor-pointer"
               onClick={toggleCard3}
@@ -152,7 +158,10 @@ const About = () => {
               )}
             </div>
           </div>
-          <div className="bg-white shadow-lg rounded-lg overflow-hidden">
+          <div
+            className="bg-white shadow-lg rounded-lg overflow-hidden"
+            style={{ animation: "slide-from-left 1s ease 0.3s forwards" }}
+          >
             <div
               className="px-4 py-5 sm:p-6 cursor-pointer"
               onClick={toggleCard4}
