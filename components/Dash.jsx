@@ -7,69 +7,16 @@ const Greeting = () => {
   const [timeOfDay, setTimeOfDay] = useState("");
 
   useEffect(() => {
-    const fivetosix = [
-      "Rise and shine, Scasians!",
-      "Good morning, Scasians!",
-      "Wakey wakey, Scasians!",
-      "Good day, Scasians!",
-      "A brand new day, Scasians!",
-    ];
-    const sixtoseven = [
-      "Early bird gets the worm, Scasians!",
-      "Top of the morning to you, Scasians!",
-      "Morning glory, Scasians!",
-      "Time to start your day, Scasians!",
-      "Good day ahead, Scasians!",
-    ];
-    const seventoeight = [
-      "Breakfast is the most important meal, Scasians!",
-      "Greetings, Scasians!",
-      "Rise and grind, Scasians!",
-      "Let's get this day started, Scasians!",
-      "Good vibes for a great day, Scasians!",
-    ];
-    const eighttonine = [
-      "It's a beautiful day, Scasians!",
-      "Hello, Scasians!",
-      "Good day to you, Scasians!",
-      "Morning, Scasians!",
-      "The world is yours today, Scasians!",
-    ];
-    const ninetoten = [
-      "Almost time for a break, Scasians!",
-      "Keep up the good work, Scasians!",
-      "Stay motivated, Scasians!",
-      "You got this, Scasians!",
-      "Hello again, Scasians!",
-    ];
-    const tentoeleven = [
-      "Double digits, Scasians!",
-      "It's almost lunch time, Scasians!",
-      "Halfway there, Scasians!",
-      "You're doing great, Scasians!",
-      "Let's keep going, Scasians!",
-    ];
-    const eleventotwelve = [
-      "Lunch time soon, Scasians!",
-      "Keep pushing, Scasians!",
-      "Hello Scasians, keep it up!",
-      "You're killing it, Scasians!",
-      "Have a great day, Scasians!",
-    ];
-    const afternoonGreetings = [
-      "Good afternoon, Scasians!",
-      "Hope you're having a great day, Scasians!",
-      "Keep grinding, Scasians!",
-      "You're doing amazing, Scasians!",
-      "Afternoon vibes, Scasians!",
-    ];
-    const eveningGreetings = [
-      "Good evening, Scasians!",
-      "How was your day, Scasians?",
-      "Time to unwind, Scasians!",
-      "You deserve a break, Scasians!",
-      "Have a relaxing evening, Scasians!",
-    ];
+    const fivetosix = [  "Rise and shine, Scasians!",  "Good morning, Scasians!",  "Wakey wakey, Scasians!",  "Good day, Scasians!",  "A brand new day, Scasians!"];
+    const sixtoseven = [  "Early bird gets the worm, Scasians!",  "Top of the morning to you, Scasians!",  "Morning glory, Scasians!",  "Time to start your day, Scasians!",  "Good day ahead, Scasians!"];
+    const seventoeight = [  "Breakfast is the most important meal, Scasians!",  "Greetings, Scasians!",  "Rise and grind, Scasians!",  "Let's get this day started, Scasians!",  "Good vibes for a great day, Scasians!"];
+    const eighttonine = [  "It's a beautiful day, Scasians!",  "Hello, Scasians!",  "Good day to you, Scasians!",  "Morning, Scasians!",  "The world is yours today, Scasians!"];
+    const ninetoten = [  "Almost time for a break, Scasians!",  "Keep up the good work, Scasians!",  "Stay motivated, Scasians!",  "You got this, Scasians!",  "Hello again, Scasians!"];
+    const tentoeleven = [  "Double digits, Scasians!",  "It's almost lunch time, Scasians!",  "Halfway there, Scasians!",  "You're doing great, Scasians!",  "Let's keep going, Scasians!"];
+    const eleventotwelve = [  "Lunch time soon, Scasians!",  "Keep pushing, Scasians!",  "Hello Scasians, keep it up!",  "You're killing it, Scasians!",  "Have a great day, Scasians!"];
+    const afternoonGreetings = [  "Good afternoon, Scasians!",  "Hope you're having a great day, Scasians!",  "Keep grinding, Scasians!",  "You're doing amazing, Scasians!",  "Afternoon vibes, Scasians!"];
+    const eveningGreetings = [  "Good evening, Scasians!",  "How was your day, Scasians?",  "Time to unwind, Scasians!",  "You deserve a break, Scasians!",  "Have a relaxing evening, Scasians!"];
+
 
     const hour = date.getHours();
     let greetingOptions = [];
@@ -141,6 +88,7 @@ const Greeting = () => {
     }
   };
 
+
   const getTextColor = () => {
     if (timeOfDay === "evening") {
       return "text-white";
@@ -150,25 +98,26 @@ const Greeting = () => {
 
   return (
     <div className="flex justify-center pt-1 items-center">
-      <div
-        className={`w-full p-5 mr-5 ml-5 rounded-lg shadow-lg mx-auto ${getTextColor()} bg-gradient-to-r from-blue-400 to-violet-400`}
-        style={{
-          backgroundImage: `url(${getImageUrl()})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      >
-        <div style={{ minHeight: "200px" }}>
-          <h2 className="text-4xl font-bold mb-4">{greeting}</h2>
-          <p className="mb-2 font-bold text-white">Today is {dateString}</p>
-          {showReminder && (
-            <h3 className="text-sm font-bold mb-2 text-white">
-              If you haven't already, get your QR code scanned now.
-            </h3>
-          )}
-        </div>
+    <div
+      className={`w-full p-5 mr-5 ml-5 rounded-lg shadow-lg mx-auto ${getTextColor()} bg-gradient-to-br from-gray-100 to-gray-200`}
+      style={{
+        backgroundImage: `url(${getImageUrl()})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
+      <div style={{ minHeight: "200px" }}>
+        <h2 className="text-4xl font-bold mb-4">{greeting}</h2>
+        <p className="text-lg font-bold mb-2">Today is {dateString}</p>
+        {showReminder && (
+          <h3 className="text-md font-bold mb-4 ">
+            Don't forget to get your QR-code scanned now!
+          </h3>
+        )}
       </div>
     </div>
+  </div>
+
   );
 };
 
