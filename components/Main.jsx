@@ -58,9 +58,8 @@ const MainComponent = () => {
   };
 
   return (
-    <div>
-      <div>{renderCurrentComponent()}</div>
-    </div>
+    <div className="fade-in">{renderCurrentComponent()}</div>
+
   );
 };
 
