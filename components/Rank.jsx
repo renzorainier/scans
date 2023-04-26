@@ -108,7 +108,10 @@ function Rank({ data, onClose }) {
 
   return (
     <div>
-      <div className="flex justify-center pt-4 pb-5 items-center">
+      <div
+        className="flex justify-center pt-4 pb-5 items-center"
+        style={{ animation: "slide-from-right 1s ease  forwards" }}
+      >
         <div
           className="bg-white p-5 rounded-lg shadow-lg mx-auto"
           style={{ maxWidth: "90%" }}
@@ -204,71 +207,72 @@ function Rank({ data, onClose }) {
       </div>
 
       <div>
-  {Object.keys(earliestStudents).map((section) => (
-    <div key={section}>
-      <div className="flex justify-center  items-center">
-        <div
-          className="w-full text-gray-700 bg-white font-bold flex justify-center items-center p-5 rounded-t-lg shadow-lg mx-auto"
-          style={{ maxWidth: "90%" }}
-        >
-          <div>
-            <h2>
-              <span class="bg-gradient-to-r from-blue-400 to-violet-400 text-transparent bg-clip-text">
-                {section}
-              </span>
-            </h2>
-          </div>
-        </div>
-      </div>
-
-      <div className="flex justify-center pb-5 items-center">
-        <div
-          className="w-full flex justify-center pb-5 items-center"
-          style={{ maxWidth: "90%" }}
-        >
-          <div className="w-full bg-gray-900 rounded-b-lg shadow-xl mx-auto">
-            <div className="py-4 px-4">
+        {Object.keys(earliestStudents).map((section) => (
+          <div key={section}>
+            <div className="flex justify-center  items-center">
               <div
-                id="badge"
-                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
+                className="w-full text-gray-700 bg-white font-bold flex justify-center items-center p-5 rounded-t-lg shadow-lg mx-auto"
+                style={{ maxWidth: "90%" }}
               >
-                {earliestStudents[section].map(
-                  ({ name, student, formattedTime }, index) => (
+                <div>
+                  <h2>
+                    <span class="bg-gradient-to-r from-blue-400 to-violet-400 text-transparent bg-clip-text">
+                      {section}
+                    </span>
+                  </h2>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex justify-center pb-5 items-center">
+              <div
+                className="w-full flex justify-center pb-5 items-center"
+                style={{ maxWidth: "90%" }}
+              >
+                <div className="w-full bg-gray-900 rounded-b-lg shadow-xl mx-auto">
+                  <div className="py-4 px-4">
                     <div
-                      key={student}
-                      className="relative border border-white-200 rounded-lg overflow-hidden"
+                      id="badge"
+                      className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
                     >
-                      <div className="absolute top-0 left-0 right-0 p-2 bg-gradient-to-b from-violet-900 to-transparent z-10">
-                        <div className="text-white text-lg">{name}</div>
-                        <div className="text-white text-sm">
-                          {formattedTime}&emsp;|&emsp;{section}
-                        </div>
-                      </div>
-                      <div className="w-full h-52 overflow-hidden relative z-0">
-                        <Image
-                          src={`/pictures/${getBadgeRankSec(index + 1)}.png`}
-                          alt={`Badge ${getBadgeRankSec(index + 1)}`}
-                          layout="fill"
-                          objectFit="cover"
-                        />
-                      </div>
-                      <div className="absolute top-0 right-0 p-2 z-10">
-                        <div className="text-white text-3xl font-bold">
-                          {index + 1}
-                        </div>
-                      </div>
+                      {earliestStudents[section].map(
+                        ({ name, student, formattedTime }, index) => (
+                          <div
+                            key={student}
+                            className="relative border border-white-200 rounded-lg overflow-hidden"
+                          >
+                            <div className="absolute top-0 left-0 right-0 p-2 bg-gradient-to-b from-violet-900 to-transparent z-10">
+                              <div className="text-white text-lg">{name}</div>
+                              <div className="text-white text-sm">
+                                {formattedTime}&emsp;|&emsp;{section}
+                              </div>
+                            </div>
+                            <div className="w-full h-52 overflow-hidden relative z-0">
+                              <Image
+                                src={`/pictures/${getBadgeRankSec(
+                                  index + 1
+                                )}.png`}
+                                alt={`Badge ${getBadgeRankSec(index + 1)}`}
+                                layout="fill"
+                                objectFit="cover"
+                              />
+                            </div>
+                            <div className="absolute top-0 right-0 p-2 z-10">
+                              <div className="text-white text-3xl font-bold">
+                                {index + 1}
+                              </div>
+                            </div>
+                          </div>
+                        )
+                      )}
                     </div>
-                  )
-                )}
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        ))}
       </div>
-    </div>
-  ))}
-</div>
-
     </div>
   );
 }
