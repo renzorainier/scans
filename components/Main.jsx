@@ -31,7 +31,7 @@ const MainComponent = () => {
       // render other components as needed
       default:
         return (
-        <div className="flex justify-center h-screen">
+          <div className="flex justify-center h-screen">
           <div className="mt-4 ax-w-screen-lg mx-auto">
             <div>
               <Greeting />
@@ -40,6 +40,7 @@ const MainComponent = () => {
               <button
                 className="bg-blue-400 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-300 font-bold text-xl py-10 rounded-lg shadow-lg"
                 onClick={() => handleButtonClick("today")}
+                style={{ animation: 'slide-from-left 0.5s ease forwards' }}
               >
                 Attendance
               </button>
@@ -47,6 +48,7 @@ const MainComponent = () => {
               <button
                 className="bg-violet-400 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-300 font-bold text-xl py-10 rounded-lg shadow-lg"
                 onClick={() => handleButtonClick("about")}
+                style={{ animation: 'slide-from-right 0.5s ease forwards' }}
               >
                 About
               </button>
