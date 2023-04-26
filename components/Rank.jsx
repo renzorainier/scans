@@ -151,7 +151,10 @@ function Rank({ data, onClose }) {
         </div>
       </div>
 
-      <div className="flex justify-center items-center">
+      <div
+        className="flex justify-center items-center"
+        style={{ animation: "slide-from-right 1s ease 0.1s forwards" }}
+      >
         <div
           className="w-full text-gray-70 flex justify-center font-bold items-center bg-white p-5 rounded-t-lg shadow-lg mx-auto"
           style={{ maxWidth: "90%" }}
@@ -161,7 +164,9 @@ function Rank({ data, onClose }) {
           </span>
         </div>
       </div>
-      <div className="flex justify-center pb-5 items-center ">
+      <div className="flex justify-center pb-5 items-center "
+                    style={{ animation: "slide-from-right 1s ease 0.1s forwards" }}
+                    >
         <div
           className=" w-full flex justify-center pb-5 items-center"
           style={{ maxWidth: "90%" }}
