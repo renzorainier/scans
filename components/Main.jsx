@@ -24,42 +24,36 @@ const MainComponent = () => {
   const renderCurrentComponent = () => {
     switch (currentComponent) {
       case "today":
-        return (
-          <div className="transition-all delay-500 animate-fade-in">
-            <TodayAttendance onBackButtonClick={handleBackButtonClick} />
-          </div>
-        );
-      case "about":
-        return (
-          <div className="transition-all delay-500 animate-fade-in">
-            <About onBackButtonClick={handleBackButtonClick} />
-          </div>
-        );
+        return <TodayAttendance onBackButtonClick={handleBackButtonClick} />;
+        case "about":
+          return <About onBackButtonClick={handleBackButtonClick} />;
+
+      // render other components as needed
       default:
         return (
-          <div className="flex justify-center h-screen">
-            <div className="mt-4 ax-w-screen-lg mx-auto transition-all delay-500 animate-fade-in">
-              <div>
-                <Greeting />
-              </div>
-              <div className="ml-5 text-white mr-5 mt-3 grid grid-cols-2 gap-4">
-                <button
-                  className="bg-blue-400 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-300 font-bold text-xl py-10 rounded-lg shadow-lg transition-all delay-500 animate-fade-in"
-                  onClick={() => handleButtonClick("today")}
-                >
-                  Attendance
-                </button>
+        <div className="flex justify-center h-screen">
+          <div className="mt-4 ax-w-screen-lg mx-auto">
+            <div>
+              <Greeting />
+            </div>
+            <div className="ml-5 text-white mr-5 mt-3 grid grid-cols-2 gap-4">
+              <button
+                className="bg-blue-400 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-300 font-bold text-xl py-10 rounded-lg shadow-lg"
+                onClick={() => handleButtonClick("today")}
+              >
+                Attendance
+              </button>
 
-                <button
-                  className="bg-violet-400 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-300 font-bold text-xl py-10 rounded-lg shadow-lg transition-all delay-500 animate-fade-in"
-                  onClick={() => handleButtonClick("about")}
-                >
-                  About
-                </button>
-              </div>
+              <button
+                className="bg-violet-400 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-300 font-bold text-xl py-10 rounded-lg shadow-lg"
+                onClick={() => handleButtonClick("about")}
+              >
+                About
+              </button>
             </div>
           </div>
-        );
+        </div>
+      );
     }
   };
 
@@ -68,7 +62,6 @@ const MainComponent = () => {
       <div>{renderCurrentComponent()}</div>
     </div>
   );
-
 };
 
 
