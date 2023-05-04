@@ -89,11 +89,6 @@ th:hover {
   animation-fill-mode: both;
 }
 
-.canvas-container {
-  width: 100%;
-  height: 100%; /* set an appropriate height for the chart */
-}
-
 
 @keyframes slide-down {
   0% {
