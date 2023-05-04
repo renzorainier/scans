@@ -236,8 +236,8 @@ function AttendanceTable() {
                         }}
                       >
                         <div>
-                          <LineGraph data={attendanceData} />
                           <NumberLineGraph data={attendanceData} />
+                          <LineGraph data={attendanceData} />
                         </div>
                       </div>
                     )}
