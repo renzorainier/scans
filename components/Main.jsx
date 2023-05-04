@@ -23,10 +23,11 @@ const MainComponent = () => {
   const renderCurrentComponent = () => {
     switch (currentComponent) {
       case "today":
-        return <TodayAttendance onBackButtonClick={handleBackButtonClick} />;
+        return (
+          <TodayAttendance onBackButtonClick={handleBackButtonClick} />
+        );
       case "about":
         return <About onBackButtonClick={handleBackButtonClick} />;
-
       // render other components as needed
       default:
         return (
@@ -59,7 +60,17 @@ const MainComponent = () => {
     }
   };
 
-  return <div className="fade-in">{renderCurrentComponent()}</div>;
+  // Render a back button if there is a currentComponent
+  const backButton = currentComponent ? (
+    <button onClick={handleBackButtonClick}>Back</button>
+  ) : null;
+
+  return (
+    <div className="fade-in">
+      {backButton}
+      {renderCurrentComponent()}
+    </div>
+  );
 };
 
 export default MainComponent;
