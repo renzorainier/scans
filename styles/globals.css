@@ -90,8 +90,8 @@ th:hover {
 }
 
 .canvas {
-  width: 100px;
-  height: 100px; /* set an appropriate height for the chart */
+  width: 50px;
+  height: 50px; /* set an appropriate height for the chart */
 }
 
 
