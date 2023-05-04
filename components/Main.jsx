@@ -8,7 +8,7 @@ import Pass from "./Pass";
 import Generate from "./Generate";
 import TeamCarousel from "./Members";
 import About from "./About";
-import { MdOutlineArrowBackIos }from "react-icons/io";
+import { FaChevronDown } from "react-icons/fa";
 
 const MainComponent = () => {
   const [currentComponent, setCurrentComponent] = useState(null);
@@ -67,7 +67,7 @@ const MainComponent = () => {
       className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline"
       onClick={handleBackButtonClick}
     >
-      <IoCaretBack/>
+      <FaChevronDown/>
     </button>
   ) : null;
 
