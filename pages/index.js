@@ -1,6 +1,7 @@
 import Head from "next/head";
 import { useState,useEffect } from "react";
 import StudentCollection from "components/Create";
+
 import Main from "components/Main";
 
 export default function Home() {
@@ -16,6 +17,7 @@ export default function Home() {
           rel="stylesheet"
         />
       </Head>
+    <Main />
 
     </>
   );
