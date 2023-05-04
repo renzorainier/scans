@@ -60,9 +60,14 @@ const MainComponent = () => {
     }
   };
 
-  // Render a back button if there is a currentComponent
+  // Style the back button with modern UI
   const backButton = currentComponent ? (
-    <button onClick={handleBackButtonClick}>Back</button>
+    <button
+      className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline"
+      onClick={handleBackButtonClick}
+    >
+      Back
+    </button>
   ) : null;
 
   return (
