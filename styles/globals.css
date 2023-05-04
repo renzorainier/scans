@@ -90,9 +90,10 @@ th:hover {
 }
 
 #canvas {
-  width: 300px;
-  height: 150px; /* set an appropriate height for the chart */
+  width:80vw;
+  height: 20vh;
 }
+
 
 
 @keyframes slide-down {

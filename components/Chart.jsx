@@ -101,7 +101,6 @@ const LineGraph = ({ data }) => {
       type: "line",
       data: chartData,
       options: {
-        events: [],
 
         scales: {
           yAxes: [
