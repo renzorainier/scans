@@ -129,7 +129,7 @@ function AttendanceTable() {
 
   if (isLoading) {
     return (
-      <div className="container py-10 px-10 mx-0 min-w-full flex flex-col items-center">
+      <div className="container  py-10 px-10 mx-0 min-w-full flex flex-col items-center">
         <button
           disabled
           type="button"
