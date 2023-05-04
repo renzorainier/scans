@@ -12,7 +12,6 @@ import { FaChevronDown } from "react-icons/fa";
 
 function useAttendanceData() {
   const [attendanceData, setAttendanceData] = useState({});
-
   useEffect(() => {
     const fetchData = async () => {
       const data = {};
