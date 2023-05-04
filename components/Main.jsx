@@ -71,10 +71,7 @@ const MainComponent = () => {
 
   return (
     <div className="fade-in">
-                <span class="bg-gradient-to-r from-blue-400 to-violet-400 text-transparent bg-clip-text">
-
       {backButton}
-</span>
       {renderCurrentComponent()}
     </div>
   );
