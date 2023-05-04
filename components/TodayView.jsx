@@ -228,7 +228,13 @@ function AttendanceTable() {
                     </div>
 
                     {card1Expanded && (
-                      <div>
+                      <div
+                        style={{
+                          display: "flex",
+                          justifyContent: "center",
+                          alignItems: "center",
+                        }}
+                      >
                         <div>
                           <LineGraph data={attendanceData} />
                           <NumberLineGraph data={attendanceData} />
