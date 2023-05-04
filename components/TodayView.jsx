@@ -233,7 +233,7 @@ function AttendanceTable() {
                           <NumberLineGraph data={attendanceData} />
                         </div>
                         <div>
-                          <LineGraph data={attendanceData} />
+                          {/* <LineGraph data={attendanceData} /> */}
                         </div>
                       </div>
                     )}
