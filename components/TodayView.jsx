@@ -173,6 +173,7 @@ function AttendanceTable() {
               className={`${state ? "translate-x-full" : "translate-x-0"}
           pointer-events-none inline-block h-[47px] w-[50%] transform rounded-lg bg-gray-100 shadow-lg ring-0 transition duration-200 ease-in-out `}
             />
+
             <div className="absolute top-1/2 left-[12%] transform -translate-y-1/2 font-bold text-lg">
               ATTENDANCE
             </div>
@@ -211,18 +212,17 @@ function AttendanceTable() {
                   </div>
 
                   <div>
-                    {/* <NumberLineGraph data={attendanceData} /> */}
+                    <NumberLineGraph data={attendanceData} />
                   </div>
 
-                  <div>
-                    {/* <LineGraph data={attendanceData} /> */}
-                  </div>
+                  <div>{/* <LineGraph data={attendanceData} /> */}</div>
                 </div>
               </div>
 
-              <div className="flex justify-center pt-4 pb-5 items-center"
-                                style={{ animation: "slide-from-left 1s ease 0.1s forwards" }}
-                                >
+              <div
+                className="flex justify-center pt-4 pb-5 items-center"
+                style={{ animation: "slide-from-left 1s ease 0.1s forwards" }}
+              >
                 <div
                   className="w-full text-gray-700 bg-white p-5  rounded-lg shadow-lg mx-auto"
                   style={{ maxWidth: "90%" }}
