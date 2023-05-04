@@ -1,14 +1,6 @@
 import Head from "next/head";
 import { useState,useEffect } from "react";
-// import Scan from "components/Scan";
-// import PastAttendance from "/components/PastView";
-// import TodayAttendance from "/components/TodayView";
-// import SavePresentStudents from "components/Save";
-// import Generate from "components/Generate";
 import StudentCollection from "components/Create";
-import BadgeWriter from "components/Badge";
-import BadgeReader from "components/BadgeAssign";
-// import TabSelector from "components/Tab";
 import Main from "components/Main";
 
 export default function Home() {
@@ -16,7 +8,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>scans | view</title>
+        <title>scans | scas</title>
         <meta name="description" content="Welcome to Scas Attendance Scan" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/logo.jpeg" />
@@ -25,10 +17,7 @@ export default function Home() {
           rel="stylesheet"
         />
       </Head>
-    <Main />
-    {/* <StudentCollection />
-    <BadgeWriter /> */}
-    {/* <BadgeReader /> */}
+
     </>
   );
 }
