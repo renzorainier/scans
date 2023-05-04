@@ -1,9 +1,7 @@
 import { useState, useEffect } from "react";
 
 import TodayAttendance from "./TodayView";
-import PastAttendance from "./PastView";
 import Greeting from "./Dash";
-import Calculator from "./Sample";
 import Pass from "./Pass";
 import Generate from "./Generate";
 import TeamCarousel from "./Members";
