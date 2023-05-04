@@ -216,7 +216,7 @@ function AttendanceTable() {
                     </div>
                   </div>
                   <div onClick={toggleCard1}>
-                    <div className="flex items-center justify-center">
+                    <div className="flex pt-4 items-center justify-center">
                       <div className="flex items-center">
                         <FaChevronDown
                           className={`transition-transform ${
