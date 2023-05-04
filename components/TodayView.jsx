@@ -9,6 +9,7 @@ import TransparentTabs from "components/Select";
 import { Switch } from "@headlessui/react";
 import { SlGraph } from "react-icons/sl";
 import { FaAward } from "react-icons/fa";
+import { FaChevronDown } from "react-icons/fa";
 
 function useAttendanceData() {
   const [attendanceData, setAttendanceData] = useState({});
@@ -55,7 +56,11 @@ function AttendanceTable() {
   const [isLoading, setIsLoading] = useState(true);
   const [selectedStudent, setSelectedStudent] = useState(null);
   const [state, setState] = useState(false);
+
   const [enabled, setEnabled] = useState(false);
+
+  const [card1Expanded, setCard1Expanded] = useState(false);
+  const toggleCard1 = () => setCard1Expanded(!card1Expanded);
 
   const onClose = () => {
     setSelectedStudent(null);
@@ -210,14 +215,31 @@ function AttendanceTable() {
                       </h1>
                     </div>
                   </div>
-
-                  <div>
-                    <NumberLineGraph data={attendanceData} />
-                  </div>
-
-                  <div>
-                    <LineGraph data={attendanceData} />
+                  <div
+                    className="px-4 py-5 sm:p-6 cursor-pointer"
+                    onClick={toggleCard1}
+                  >
+                    <div className="flex justify-between items-center">
+                      <div className="flex items-center">
+                        <FaChevronDown
+                          className={`transition-transform ${
+                            card1Expanded ? "rotate-180" : ""
+                          }`}
+                        />
+                      </div>
                     </div>
+                    {card1Expanded && (
+                      <div>
+                        {" "}
+                        <div>
+                          <NumberLineGraph data={attendanceData} />
+                        </div>
+                        <div>
+                          <LineGraph data={attendanceData} />
+                        </div>
+                      </div>
+                    )}
+                  </div>
                 </div>
               </div>
 
