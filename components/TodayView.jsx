@@ -216,7 +216,6 @@ function AttendanceTable() {
                     </div>
                   </div>
                   <div
-                    className="px-4 py-5 sm:p-6 cursor-pointer"
                     onClick={toggleCard1}
                   >
                     <div className="flex justify-between items-center">
