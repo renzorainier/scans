@@ -5,7 +5,6 @@ import LineGraph from "components/Chart";
 import NumberLineGraph from "components/NumberChart";
 import StudentDetails from "components/StudentWeek";
 import Rank from "components/Rank";
-import TransparentTabs from "components/Select";
 import { Switch } from "@headlessui/react";
 import { SlGraph } from "react-icons/sl";
 import { FaAward } from "react-icons/fa";
