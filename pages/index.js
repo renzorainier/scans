@@ -9,7 +9,6 @@ export default function Home() {
     <>
       <Head>
         <title>scans | scas</title>
-        <meta name="description" content="Welcome to Scas Attendance Scan" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/logo.jpeg" />
         <link
