@@ -104,7 +104,6 @@ const NumberLineGraph = ({ data }) => {
       type: "line",
       data: chartData,
       options: {
-
         events: [],
         scales: {
           yAxes: [
@@ -161,9 +160,7 @@ const NumberLineGraph = ({ data }) => {
 
   return (
     <div className="bg-white rounded-lg shadow-md mt-4 mb-4 overflow-hidden">
-      <canvas
-        ref={chartRef}
-      ></canvas>
+      <canvas ref={chartRef}></canvas>
     </div>
   );
 };
