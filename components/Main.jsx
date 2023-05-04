@@ -24,9 +24,7 @@ const MainComponent = () => {
   const renderCurrentComponent = () => {
     switch (currentComponent) {
       case "today":
-        return (
-          <TodayAttendance onBackButtonClick={handleBackButtonClick} />
-        );
+        return <TodayAttendance onBackButtonClick={handleBackButtonClick} />;
       case "about":
         return <About onBackButtonClick={handleBackButtonClick} />;
       // render other components as needed
@@ -67,13 +65,16 @@ const MainComponent = () => {
       className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline"
       onClick={handleBackButtonClick}
     >
-      <FaChevronDown/>
+      <FaChevronDown style={{ transform: "rotate(90deg)" }} />{" "}
     </button>
   ) : null;
 
   return (
     <div className="fade-in">
+                <span class="bg-gradient-to-r from-blue-400 to-violet-400 text-transparent bg-clip-text">
+
       {backButton}
+</span>
       {renderCurrentComponent()}
     </div>
   );
