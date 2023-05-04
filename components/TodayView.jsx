@@ -215,7 +215,6 @@ function AttendanceTable() {
                       </h1>
                     </div>
                   </div>
-                  <NumberLineGraph data={attendanceData} />
 
                   <div onClick={toggleCard1}>
                     <div className="flex pt-4 items-center justify-center">
@@ -230,11 +229,9 @@ function AttendanceTable() {
 
                     {card1Expanded && (
                       <div>
-                        {" "}
                         <div>
-                        <LineGraph data={attendanceData} />
-                        </div>
-                        <div>
+                          <LineGraph data={attendanceData} />
+                          <NumberLineGraph data={attendanceData} />
                         </div>
                       </div>
                     )}

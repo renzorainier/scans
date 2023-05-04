@@ -156,7 +156,7 @@ const LineGraph = ({ data }) => {
   }, [formatChartData]);
 
   return (
-    <div className="bg-white rounded-lg shadow-md mt-4 mb-4 overflow-hidden">
+    <div id="canvas" className="bg-white rounded-lg shadow-md mt-4 mb-4 overflow-hidden">
     <canvas
       ref={chartRef}
     ></canvas>
