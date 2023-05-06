@@ -149,7 +149,7 @@ const About = () => {
                     </li>
                     <li>
                       Students, teachers, and parents can view attendance
-                      records and digital badges on a .
+                      records and digital badges on scans-scas.vercel.app.
                     </li>
                   </ul>
                 </div>
