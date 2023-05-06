@@ -128,7 +128,7 @@ const About = () => {
                     </li>
 
                     <li>
-                      Students' unique QR codes are scanned at the school gate upon entering the school
+                      Students' unique QR codes are scanned at the school gate upon entering the school (In the trial phase, a selected student scans the QR codes of their classmates.)
                     </li>
                     <li>
                       <span class="bg-gradient-to-r text-xl from-blue-400 to-violet-400 text-transparent bg-clip-text">
