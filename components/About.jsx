@@ -128,11 +128,13 @@ const About = () => {
                     </li>
 
                     <li>
-                      Students' unique QR codes are scanned at the school gate upon entering the school (In the trial phase, a selected student scans the QR codes of their classmates.)
+                      Students' unique QR codes are scanned at the gate upon
+                      entering the school (In the trial phase, a selected
+                      student scans the QR codes of their classmates instead.)
                     </li>
                     <li>
                       <span class="bg-gradient-to-r text-xl from-blue-400 to-violet-400 text-transparent bg-clip-text">
-                        2. Mark Attendance and Color Code:
+                        2. Mark Attendance and Color Code
                       </span>
                     </li>
                     <li>
@@ -141,9 +143,13 @@ const About = () => {
                       red for late).
                     </li>
                     <li>
-                      Access Attendance Records and Digital Badges: Students,
-                      teachers, and parents can view attendance records and
-                      digital badges on a dedicated website.
+                      <span class="bg-gradient-to-r text-xl from-blue-400 to-violet-400 text-transparent bg-clip-text">
+                        3. Access Attendance Records and Digital Badges
+                      </span>
+                    </li>
+                    <li>
+                      Students, teachers, and parents can view attendance
+                      records and digital badges on a .
                     </li>
                   </ul>
                 </div>
