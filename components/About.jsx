@@ -52,7 +52,7 @@ const About = () => {
               {card1Expanded && (
                 <div className="mt-2 text-sm text-gray-500">
                   Scans is an attendance system developed by Renz Pasagdan - a
-                  Grade 12 ST-1B student of Sumulong College of Arts and
+                  Grade 12 STEM-1B student of Sumulong College of Arts and
                   Sciences as a research project titled &ldquo;Development of QR
                   Code Technology as an Attendance System for Enhancing
                   Attendance and Punctuality&rdquo;
