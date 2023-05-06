@@ -154,11 +154,7 @@ const About = () => {
                     </li>
                     <li className="pl-3">
                       Students, teachers, and parents can view attendance
-                      records and digital badges on{" "}
-                      <a href="https://scans-scas.vercel.app">
-                        scans-scas.vercel.app
-                      </a>
-                      .
+                      records and digital badges on scans-scas.vercel.app.
                     </li>
                   </ul>
                 </div>
