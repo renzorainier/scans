@@ -84,7 +84,7 @@ const About = () => {
               </div>
               {card2Expanded && (
                 <div className="mt-2 pl-2 text-sm text-gray-500">
-                       &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;Our{" "}
+                  &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;Our{" "}
                   <span class="bg-gradient-to-r text-xl from-blue-400 to-violet-400 text-transparent bg-clip-text">
                     {" "}
                     mission{" "}
@@ -109,7 +109,11 @@ const About = () => {
             >
               <div className="flex justify-between items-center">
                 <h3 className="text-lg font-bold  leading-6 text-gray-900">
-                  How Scans Work?
+                  How{" "}
+                  <span class="bg-gradient-to-r from-blue-400 to-violet-400 text-transparent bg-clip-text">
+                    Scans
+                  </span>{" "}
+                  Work?
                 </h3>
                 <div className="flex items-center">
                   <FaChevronDown
