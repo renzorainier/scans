@@ -50,8 +50,8 @@ const About = () => {
                 </div>
               </div>
               {card1Expanded && (
-                <div className="mt-2 pr-2 text-sm text-gray-500">
-                  &nbsp;&nbsp;&nbsp;&nbsp;Scans is an attendance system
+                <div className="mt-2 pl-2 text-sm text-gray-500">
+                  &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;Scans is an attendance system
                   developed by Renz Pasagdan - a Grade 12 STEM-1B student of
                   Sumulong College of Arts and Sciences as a research project
                   titled &ldquo;Development of QR Code Technology as an
@@ -83,8 +83,8 @@ const About = () => {
                 </div>
               </div>
               {card2Expanded && (
-                <div className="mt-2 text-sm text-gray-500">
-                  Our{" "}
+                <div className="mt-2 pl-2 text-sm text-gray-500">
+                       &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;Our{" "}
                   <span class="bg-gradient-to-r text-xl from-blue-400 to-violet-400 text-transparent bg-clip-text">
                     {" "}
                     mission{" "}
@@ -120,7 +120,7 @@ const About = () => {
                 </div>
               </div>
               {card5Expanded && (
-                <div className="mt-2 text-sm text-gray-500">
+                <div className="mt-2 pl-2 text-sm text-gray-500">
                   <ul>
                     <li>
                       <span class="bg-gradient-to-r text-xl from-blue-400 to-violet-400 text-transparent bg-clip-text">
@@ -128,7 +128,7 @@ const About = () => {
                       </span>
                     </li>
 
-                    <li>
+                    <li className="pl-3">
                       Students' unique QR codes are scanned at the gate upon
                       entering the school (In the trial phase, a selected
                       student scans the QR codes of their classmates instead.)
@@ -138,7 +138,7 @@ const About = () => {
                         2. Mark Attendance and Color Code
                       </span>
                     </li>
-                    <li>
+                    <li className="pl-3">
                       The system marks the student's attendance for the day and
                       assigns a color code (green for early, yellow for on time,
                       red for late).
@@ -148,7 +148,7 @@ const About = () => {
                         3. Access Attendance Records and Digital Badges
                       </span>
                     </li>
-                    <li>
+                    <li className="pl-3">
                       Students, teachers, and parents can view attendance
                       records and digital badges on scans-scas.vercel.app.
                     </li>
