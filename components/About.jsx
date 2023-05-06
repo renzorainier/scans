@@ -50,12 +50,13 @@ const About = () => {
                 </div>
               </div>
               {card1Expanded && (
-                <div className="mt-2 text-sm text-gray-500">
-                  Scans is an attendance system developed by Renz Pasagdan - a
-                  Grade 12 STEM-1B student of Sumulong College of Arts and
-                  Sciences as a research project titled &ldquo;Development of QR
-                  Code Technology as an Attendance System for Enhancing
-                  Attendance and Punctuality&rdquo;
+                <div className="mt-2 pr-2 text-sm text-gray-500">
+                  &nbsp;&nbsp;&nbsp;&nbsp;Scans is an attendance system
+                  developed by Renz Pasagdan - a Grade 12 STEM-1B student of
+                  Sumulong College of Arts and Sciences as a research project
+                  titled &ldquo;Development of QR Code Technology as an
+                  Attendance System for Enhancing Attendance and
+                  Punctuality&rdquo;
                 </div>
               )}
             </div>
