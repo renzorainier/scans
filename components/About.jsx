@@ -56,7 +56,7 @@ const About = () => {
                   Sumulong College of Arts and Sciences as a research project
                   titled &ldquo;Development of QR Code Technology as an
                   Attendance System for Enhancing Attendance and
-                  Punctuality&rdquo;
+                  Punctuality&rdquo;. There is absolutely no cost involved in running the system unlike other 
                 </div>
               )}
             </div>
