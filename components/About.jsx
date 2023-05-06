@@ -7,7 +7,7 @@ const About = () => {
   const [card2Expanded, setCard2Expanded] = useState(false);
   const [card3Expanded, setCard3Expanded] = useState(false);
   const [card4Expanded, setCard4Expanded] = useState(true);
-  const [card5Expanded, setCard5Expanded] = useState(true);
+  const [card5Expanded, setCard5Expanded] = useState(false);
 
   const toggleCard1 = () => setCard1Expanded(!card1Expanded);
   const toggleCard2 = () => setCard2Expanded(!card2Expanded);
@@ -104,21 +104,21 @@ const About = () => {
           >
             <div
               className="px-4 py-5 sm:p-6 cursor-pointer"
-              onClick={toggleCard2}
+              onClick={toggleCard5}
             >
               <div className="flex justify-between items-center">
                 <h3 className="text-lg font-bold  leading-6 text-gray-900">
-                  Our Mission
+                How Scans Work?
                 </h3>
                 <div className="flex items-center">
                   <FaChevronDown
                     className={`transition-transform ${
-                      card2Expanded ? "rotate-180" : ""
+                      card5Expanded ? "rotate-180" : ""
                     }`}
                   />
                 </div>
               </div>
-              {card2Expanded && (
+              {card5Expanded && (
                 <div className="mt-2 text-sm text-gray-500">
                   Our{" "}
                   <span class="bg-gradient-to-r text-xl from-blue-400 to-violet-400 text-transparent bg-clip-text">
