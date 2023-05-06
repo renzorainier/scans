@@ -51,7 +51,7 @@ const About = () => {
               </div>
               {card1Expanded && (
                 <div className="mt-2 text-sm text-gray-500">
-                  Scans is a web application developed by Renz Pasagdan - a
+                  Scans is an attendance system developed by Renz Pasagdan - a
                   Grade 12 ST-1B student of Sumulong College of Arts and
                   Sciences as a research project titled &ldquo;Development of QR
                   Code Technology as an Attendance System for Enhancing
@@ -108,7 +108,7 @@ const About = () => {
             >
               <div className="flex justify-between items-center">
                 <h3 className="text-lg font-bold  leading-6 text-gray-900">
-                How Scans Work?
+                  How Scans Work?
                 </h3>
                 <div className="flex items-center">
                   <FaChevronDown
@@ -120,17 +120,23 @@ const About = () => {
               </div>
               {card5Expanded && (
                 <div className="mt-2 text-sm text-gray-500">
-                  Our{" "}
-                  <span class="bg-gradient-to-r text-xl from-blue-400 to-violet-400 text-transparent bg-clip-text">
-                    {" "}
-                    mission{" "}
-                  </span>
-                  is to improve student attendance and punctuality by utilizing
-                  QR code technology and psychological theories to create an
-                  efficient and reliable attendance tracking system. We strive
-                  to empower students, teachers, and parents with real-time
-                  attendance data to foster a culture of accountability and
-                  academic excellence.
+                  QR Code Scanning at School Gate: When a student arrives at the
+                  school gate, they present their unique QR code to be scanned.
+                  In the trial phase, a selected student scans the QR codes of
+                  their classmates. The scanning device captures the QR code
+                  image. Attendance Marking and Color Coding: After the QR code
+                  is scanned, the system records the attendance of the student
+                  for that day. Additionally, based on the time of entry, the
+                  system assigns a color code to indicate punctuality. Green
+                  represents arriving early, yellow represents being on time,
+                  and red represents being late. The system updates the
+                  attendance record with the corresponding color code. Online
+                  Access to Attendance Records and Digital Badges: Students,
+                  teachers, and parents can access a dedicated website to view
+                  the attendance records. The website displays the attendance
+                  status of each student, including the color-coded entries.
+                  Additionally, the system awards digital badges to the most
+                  punctual students for each day, recognizing their punctuality.
                 </div>
               )}
             </div>
@@ -220,10 +226,9 @@ const About = () => {
               {card4Expanded && <TeamMembers />}
             </div>
           </div>
-
-          </div>
         </div>
       </div>
+    </div>
   );
 };
 
