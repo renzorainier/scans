@@ -56,7 +56,7 @@ const About = () => {
                   Sumulong College of Arts and Sciences as a research project
                   titled &ldquo;Development of QR Code Technology as an
                   Attendance System for Enhancing Attendance and
-                  Punctuality&rdquo;. There is absolutely no cost involved in running the system unlike what other big private schools use.
+                  Punctuality&rdquo;. One of the key advantages of Scans, is its cost-effectiveness. Unlike the other systems utilized by many prominent private schools, scans incurs zero expenses in its operation.
                 </div>
               )}
             </div>
