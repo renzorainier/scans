@@ -3,6 +3,7 @@ import { useState,useEffect } from "react";
 import StudentCollection from "components/Create";
 
 import Main from "components/Main";
+import Save from "components/Save";
 
 export default function Home() {
 
@@ -17,7 +18,8 @@ export default function Home() {
           rel="stylesheet"
         />
       </Head>
-    <Main />
+      <Main />
+      <Save />
 
     </>
   );
