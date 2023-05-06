@@ -133,7 +133,7 @@ const About = () => {
                     </li>
 
                     <li className="pl-3">
-                      Students' unique QR codes are scanned at the gate upon
+                      Students&apos; unique QR codes are scanned at the gate upon
                       entering the school (In the trial phase, a selected
                       student scans the QR codes of their classmates instead.)
                     </li>
@@ -143,7 +143,7 @@ const About = () => {
                       </span>
                     </li>
                     <li className="pl-3">
-                      The system marks the student's attendance for the day and
+                      The system marks the student&apos;s attendance for the day and
                       assigns a color code (green for early, yellow for on time,
                       red for late).
                     </li>
