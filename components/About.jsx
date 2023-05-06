@@ -120,23 +120,15 @@ const About = () => {
               </div>
               {card5Expanded && (
                 <div className="mt-2 text-sm text-gray-500">
-                  QR Code Scanning at School Gate: When a student arrives at the
-                  school gate, they present their unique QR code to be scanned.
-                  In the trial phase, a selected student scans the QR codes of
-                  their classmates. The scanning device captures the QR code
-                  image. Attendance Marking and Color Coding: After the QR code
-                  is scanned, the system records the attendance of the student
-                  for that day. Additionally, based on the time of entry, the
-                  system assigns a color code to indicate punctuality. Green
-                  represents arriving early, yellow represents being on time,
-                  and red represents being late. The system updates the
-                  attendance record with the corresponding color code. Online
-                  Access to Attendance Records and Digital Badges: Students,
-                  teachers, and parents can access a dedicated website to view
-                  the attendance records. The website displays the attendance
-                  status of each student, including the color-coded entries.
-                  Additionally, the system awards digital badges to the most
-                  punctual students for each day, recognizing their punctuality.
+                  Scan QR Code at School Gate: Students scan their unique QR
+                  codes at the school gate using a scanning device.
+                  Mark
+                  Attendance and Color Code: The system marks the student's
+                  attendance for the day and assigns a color code (green for
+                  early, yellow for on time, red for late). Access Attendance
+                  Records and Digital Badges: Students, teachers, and parents
+                  can view attendance records and digital badges on a dedicated
+                  website.
                 </div>
               )}
             </div>
