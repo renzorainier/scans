@@ -7,11 +7,13 @@ const About = () => {
   const [card2Expanded, setCard2Expanded] = useState(false);
   const [card3Expanded, setCard3Expanded] = useState(false);
   const [card4Expanded, setCard4Expanded] = useState(true);
+  const [card5Expanded, setCard5Expanded] = useState(true);
 
   const toggleCard1 = () => setCard1Expanded(!card1Expanded);
   const toggleCard2 = () => setCard2Expanded(!card2Expanded);
   const toggleCard3 = () => setCard3Expanded(!card3Expanded);
   const toggleCard4 = () => setCard4Expanded(!card4Expanded);
+  const toggleCard5 = () => setCard5Expanded(!card5Expanded);
 
   return (
     <div className="bg-gray-100">
@@ -59,6 +61,43 @@ const About = () => {
             </div>
           </div>
 
+          <div
+            className="bg-white shadow-lg rounded-lg overflow-hidden"
+            style={{ animation: "slide-from-left 1s ease 0.1s forwards" }}
+          >
+            <div
+              className="px-4 py-5 sm:p-6 cursor-pointer"
+              onClick={toggleCard2}
+            >
+              <div className="flex justify-between items-center">
+                <h3 className="text-lg font-bold  leading-6 text-gray-900">
+                  Our Mission
+                </h3>
+                <div className="flex items-center">
+                  <FaChevronDown
+                    className={`transition-transform ${
+                      card2Expanded ? "rotate-180" : ""
+                    }`}
+                  />
+                </div>
+              </div>
+              {card2Expanded && (
+                <div className="mt-2 text-sm text-gray-500">
+                  Our{" "}
+                  <span class="bg-gradient-to-r text-xl from-blue-400 to-violet-400 text-transparent bg-clip-text">
+                    {" "}
+                    mission{" "}
+                  </span>
+                  is to improve student attendance and punctuality by utilizing
+                  QR code technology and psychological theories to create an
+                  efficient and reliable attendance tracking system. We strive
+                  to empower students, teachers, and parents with real-time
+                  attendance data to foster a culture of accountability and
+                  academic excellence.
+                </div>
+              )}
+            </div>
+          </div>
           <div
             className="bg-white shadow-lg rounded-lg overflow-hidden"
             style={{ animation: "slide-from-left 1s ease 0.1s forwards" }}
@@ -181,9 +220,10 @@ const About = () => {
               {card4Expanded && <TeamMembers />}
             </div>
           </div>
+
+          </div>
         </div>
       </div>
-    </div>
   );
 };
 
