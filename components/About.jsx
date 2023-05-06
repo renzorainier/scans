@@ -119,17 +119,29 @@ const About = () => {
                 </div>
               </div>
               {card5Expanded && (
-                <div className="mt-2 text-sm text-gray-500">
-                  Scan QR Code at School Gate: Students scan their unique QR
-                  codes at the school gate using a scanning device.
-                  Mark
-                  Attendance and Color Code: The system marks the student's
-                  attendance for the day and assigns a color code (green for
-                  early, yellow for on time, red for late). Access Attendance
-                  Records and Digital Badges: Students, teachers, and parents
-                  can view attendance records and digital badges on a dedicated
-                  website.
-                </div>
+          <div className="mt-2 text-sm text-gray-500">
+          <ul>
+            <li>
+            <span class="bg-gradient-to-r text-xl from-blue-400 to-violet-400 text-transparent bg-clip-text">
+                        {" "}
+                        Students:
+                      </span
+              Scan QR Code at School Gate: Students scan their unique QR codes at the
+              school gate using a scanning device.
+            </li>
+            <li>
+              Mark Attendance and Color Code: The system marks the student's attendance
+              for the day and assigns a color code (green for early, yellow for on
+              time, red for late).
+            </li>
+            <li>
+              Access Attendance Records and Digital Badges: Students, teachers, and
+              parents can view attendance records and digital badges on a dedicated
+              website.
+            </li>
+          </ul>
+        </div>
+
               )}
             </div>
           </div>
