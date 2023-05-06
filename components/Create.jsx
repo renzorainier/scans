@@ -333,6 +333,7 @@ function StudentCollection() {
       strand: "STEM",
       present: false,
     },
+    
     // { id: "41", lrn: "402969160037", name: "ALARCON, RHYZEA", section: "1C", strand: "STEM", present: false },
     // { id: "42", lrn: "109339100105", name: "BANTOG, THAMZ JAZLEY", section: "1C", strand: "STEM", present: false },
     // { id: "43", lrn: "114235070063", name: "BUCOG, JESSIELYN", section: "1C", strand: "STEM", present: false },
