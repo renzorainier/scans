@@ -90,6 +90,14 @@ th:hover {
 }
 
 
+.move-up {
+  animation-name: slide-up;
+  animation-duration: 0.5s;
+  animation-delay: 0.1s;
+  animation-fill-mode: both;
+}
+
+
 
 
 #canvas {
@@ -103,6 +111,17 @@ th:hover {
 @keyframes slide-down {
   0% {
     transform: translateY(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-up {
+  0% {
+    transform: translateY(100%);
     opacity: 0;
   }
   100% {
