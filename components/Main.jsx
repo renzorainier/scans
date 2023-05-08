@@ -7,6 +7,7 @@ import Generate from "./Generate";
 import TeamCarousel from "./Members";
 import About from "./About";
 import { FaChevronDown } from "react-icons/fa";
+import BobbingImage from "./Image"
 
 const MainComponent = () => {
   const [currentComponent, setCurrentComponent] = useState(null);
@@ -50,6 +51,10 @@ const MainComponent = () => {
                 >
                   About
                 </button>
+              </div>
+              <div>
+                
+              {/* </BobbingImage> */}
               </div>
             </div>
           </div>
