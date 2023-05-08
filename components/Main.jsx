@@ -53,7 +53,7 @@ const MainComponent = () => {
                 </button>
               </div>
               <div>
-                <div>
+              <div className="greeting-container">
 
               <BobbingImage/>
                 </div>
