@@ -4,8 +4,8 @@ import Image from "next/image";
 const BobbingImage = () => {
   return (
     <div className="flex items-center justify-center h-screen">
-      <div className="h-64 w-64 flex items-center justify-center animate-bob">
-        <div className="relative h-56 w-56">
+      <div className="h-96 w-96 flex items-center justify-center animate-bob" style={{ transform: 'translateY(10px)' }}>
+        <div className="relative h-80 w-80">
           <Image
             src="/pictures/bob.png"
             alt="Bobbing Image"
