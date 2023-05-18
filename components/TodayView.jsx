@@ -107,7 +107,6 @@ function AttendanceTable() {
         return false;
       }
       if (
-        selectedSection &&
         searchQuery &&
         !student.name.toLowerCase().includes(searchQuery.toLowerCase())
       ) {
@@ -230,17 +229,14 @@ function AttendanceTable() {
                 >
                   <div className="flex justify-between items-center mb-4">
                     <div id="search" className="flex items-center w-full">
-                 <input
-  type="text"
-  className="border rounded-md py-1 px-2 text-gray-700 w-4/5 mr-2"
-  placeholder={`Search name ${
-    selectedSection ? "(within selected section)" : "(select a section first)"
-  }`}
-  value={searchQuery}
-  onChange={handleSearchQueryChange}
-  disabled={selectedSection === ""}
-/>
-
+                      <input
+                        type="text"
+                        className="border rounded-md py-1 px-2 text-gray-700 w-4/5 mr-2"
+                        placeholder="Search name (select a section first)"
+                        value={searchQuery}
+                        onChange={handleSearchQueryChange}
+                        disabled={selectedSection === ""}
+                      />
 
                       <select
                         className="border rounded-md py-1 px-2 text-gray-700 w-1/5"
