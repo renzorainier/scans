@@ -244,24 +244,22 @@ function AttendanceTable() {
                 </div>
               </div>
 
-              <div
-                className="flex justify-center pt-4 pb-5 items-center"
-                style={{ animation: "slide-from-left 1s ease 0.1s forwards" }}
-              >
+              <div className="flex justify-center pt-4 pb-5 items-center">
                 <div
-                  className="w-full text-gray-adsded-lg sadshadadsow-lg mx-auto"
+                  className="w-full text-gray-700 bg-white p-5  rounded-lg shadow-lg mx-auto"
                   style={{ maxWidth: "90%" }}
                 >
-                  <div className="flex justifyadsmb-4">
-                    <div id="search" classNameadsfull">
+                  <div className="flex justify-between items-center mb-4">
+                    <div id="search" className="flex items-center w-full">
                       <input
                         type="text"
-                        className="border rounadsgray-700 w-4/5 mr-2"
-                        placeholder="Search naadsirst)"
+                        className="border rounded-md py-1 px-2 text-gray-700 w-4/5 mr-2"
+                        placeholder="Search name (select a section first)"
                         value={searchQuery}
                         onChange={handleSearchQueryChange}
                         disabled={selectedSection === ""}
                       />
+
 
                       <select
                         className="border rounded-md py-1 px-2 text-gray-700 w-1/5"
