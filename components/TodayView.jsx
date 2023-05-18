@@ -248,6 +248,7 @@ function AttendanceTable() {
                         <option value="1B">1B</option>
                         <option value="1C">1C</option>
                         <option value="1D">1D</option>
+                        <option value="2A">2A</option>
                       </select>
                     </div>
                   </div>
