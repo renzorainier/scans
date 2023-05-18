@@ -116,7 +116,9 @@ function AttendanceTable() {
     });
   };
 
-  const filteredStudents = filterStudents(presentStudents);
+  const filteredStudents = filterStudents(presentStudents).filter((student) => {
+    return student.section === selectedSection;
+  });
 
   const handleSectionChange = (event) => {
     setSelectedSection(event.target.value);
