@@ -97,7 +97,7 @@ function AttendanceTable() {
     });
 
     // Sort presentStudents by lastScanTimestamp in descending order
-    presentStudents.sort((a, b) => a.lastScanTimestamp - b.lastScanTimestamp);
+    presentStudents.sort((a, b) => b.lastScanTimestamp - a.lastScanTimestamp);
     setPresentStudents(presentStudents);
   }, [attendanceData]);
 
