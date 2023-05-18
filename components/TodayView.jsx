@@ -100,15 +100,6 @@ function AttendanceTable() {
     presentStudents.sort((a, b) => b.lastScanTimestamp - a.lastScanTimestamp);
     setPresentStudents(presentStudents);
   }, [attendanceData]);
-  
-  const handleSectionChange = (event) => {
-    setSelectedSection(event.target.value);
-    setSearchQuery(""); // Clear search query when section is changed
-  };
-
-  const handleSearchQueryChange = (event) => {
-    setSearchQuery(event.target.value);
-  };
 
   const filterStudents = (students) => {
     return students.filter((student) => {
@@ -127,7 +118,13 @@ function AttendanceTable() {
 
   const filteredStudents = filterStudents(presentStudents);
 
+  const handleSectionChange = (event) => {
+    setSelectedSection(event.target.value);
+  };
 
+  const handleSearchQueryChange = (event) => {
+    setSearchQuery(event.target.value);
+  };
 
   if (isLoading) {
     return <div></div>;
