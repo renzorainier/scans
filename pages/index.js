@@ -1,6 +1,5 @@
 import Head from "next/head";
 import { useState,useEffect } from "react";
-import StudentCollection from "components/Create";
 
 import Main from "components/Main";
 

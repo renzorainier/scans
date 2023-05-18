@@ -2,8 +2,6 @@ import { useState, useEffect } from "react";
 
 import TodayAttendance from "./TodayView";
 import Greeting from "./Dash";
-import Pass from "./Pass";
-import Generate from "./Generate";
 import TeamCarousel from "./Members";
 import About from "./About";
 import { FaChevronDown } from "react-icons/fa";
