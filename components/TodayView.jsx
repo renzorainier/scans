@@ -102,7 +102,7 @@ function AttendanceTable() {
   }, [attendanceData]);
 
   const filterStudents = (students) => {
-    let count = 0;
+    let count = 0; // Counter for tracking the index
     return students.filter((student, index) => {
       if (selectedSection && student.section !== selectedSection) {
         return false;
@@ -113,11 +113,16 @@ function AttendanceTable() {
       ) {
         return false;
       }
-      count++;
-      return count === students.length - index;
+
+      // Check if the index of the next student matches the count
+      if (index < students.length - 1 && students[index + 1].index !== count) {
+        count = student.index; // Update the count to the current student's index
+      }
+
+      count++; // Increment the count for the next iteration
+      return true;
     });
   };
-
 
   const filteredStudents = filterStudents(presentStudents);
 
@@ -128,6 +133,7 @@ function AttendanceTable() {
   const handleSearchQueryChange = (event) => {
     setSearchQuery(event.target.value);
   };
+
 
   if (isLoading) {
     return <div></div>;
