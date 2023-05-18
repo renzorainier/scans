@@ -101,30 +101,32 @@ function AttendanceTable() {
     setPresentStudents(presentStudents);
   }, [attendanceData]);
 
+
   const filterStudents = (students) => {
     return students.filter((student) => {
       if (selectedSection && student.section !== selectedSection) {
         return false;
       }
-      if (
-        searchQuery &&
-        !student.name.toLowerCase().includes(searchQuery.toLowerCase())
-      ) {
+      if (searchQuery && !student.name.toLowerCase().includes(searchQuery.toLowerCase())) {
         return false;
       }
       return true;
     });
   };
 
-  const filteredStudents = filterStudents(presentStudents);
-
   const handleSectionChange = (event) => {
-    setSelectedSection(event.target.value);
+    const section = event.target.value;
+    setSelectedSection(section);
+    setSearchQuery(""); // Clear search query when changing section
   };
 
   const handleSearchQueryChange = (event) => {
-    setSearchQuery(event.target.value);
+    const query = event.target.value;
+    setSearchQuery(query.toLowerCase()); // Convert search query to lowercase for case-insensitive matching
   };
+
+  const filteredStudents = filterStudents(presentStudents);
+
 
   if (isLoading) {
     return <div></div>;
@@ -227,31 +229,30 @@ function AttendanceTable() {
                     animation: "slide-from-left 1.5s ease forwards",
                   }}
                 >
-                  <div className="flex justify-between items-center mb-4">
-                    <div id="search" className="flex items-center w-full">
-                      <input
-                        type="text"
-                        className="border rounded-md py-1 px-2 text-gray-700 w-4/5 mr-2"
-                        placeholder="Search name (select a section first)"
-                        value={searchQuery}
-                        onChange={handleSearchQueryChange}
-                        disabled={selectedSection === ""}
-                      />
+                <div className="flex justify-between items-center mb-4">
+  <div id="search" className="flex items-center w-full">
+    <input
+      type="text"
+      className="border rounded-md py-1 px-2 text-gray-700 w-4/5 mr-2"
+      placeholder="Search name (select a section first)"
+      value={searchQuery}
+      onChange={handleSearchQueryChange}
+      disabled={selectedSection === ""}
+    />
 
-                      <select
-                        className="border rounded-md py-1 px-2 text-gray-700 w-1/5"
-                        value={selectedSection}
-                        onChange={handleSectionChange}
-                      >
-                        <option value="">All</option>
-                        <option value="1A">1A</option>
-                        <option value="1B">1B</option>
-                        <option value="1C">1C</option>
-                        <option value="1D">1D</option>
-                        <option value="2A">2A</option>
-                      </select>
-                    </div>
-                  </div>
+    <select
+      className="border rounded-md py-1 px-2 text-gray-700 w-1/5"
+      value={selectedSection}
+      onChange={handleSectionChange}
+    >
+      <option value="">All</option>
+      <option value="1A">1A</option>
+      <option value="1B">1B</option>
+      <option value="1C">1C</option>
+      <option value="1D">1D</option>
+    </select>
+  </div>
+</div>
 
                   <div id="table" className="overflow-x-auto rounded-lg">
                     <table className="table-auto w-full text-center ">
