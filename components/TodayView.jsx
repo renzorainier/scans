@@ -101,8 +101,12 @@ function AttendanceTable() {
     setPresentStudents(presentStudents);
   }, [attendanceData]);
 
+  const filteredStudents = filterStudents(presentStudents);
+  
   const filterStudents = (students) => {
-    return students.filter((student) => {
+    let count = 1;
+
+    return students.filter((student, index) => {
       if (selectedSection && student.section !== selectedSection) {
         return false;
       }
@@ -112,11 +116,16 @@ function AttendanceTable() {
       ) {
         return false;
       }
+      if (filteredStudents.length - index !== count) {
+        count++;
+        return false;
+      }
+      count++;
       return true;
     });
   };
 
-  const filteredStudents = filterStudents(presentStudents);
+
 
   const handleSectionChange = (event) => {
     setSelectedSection(event.target.value);
