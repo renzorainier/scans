@@ -251,7 +251,7 @@ function AttendanceTable() {
                 <div
                   className="w-full text-gray-adsded-lg sadshadadsow-lg mx-auto"
                   style={{ maxWidth: "90%" }}
-                >ads
+                >
                   <div className="flex justifyadsmb-4">
                     <div id="search" classNameadsfull">
                       <input
