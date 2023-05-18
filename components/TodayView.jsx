@@ -100,32 +100,31 @@ function AttendanceTable() {
     presentStudents.sort((a, b) => b.lastScanTimestamp - a.lastScanTimestamp);
     setPresentStudents(presentStudents);
   }, [attendanceData]);
-  
+
   const filterStudents = (students) => {
-    if (selectedSection) {
-      students = students.filter((student) => student.section === selectedSection);
-    }
-    if (searchQuery) {
-      const searchLower = searchQuery.toLowerCase();
-      students = students.filter((student) =>
-        student.name.toLowerCase().includes(searchLower)
-      );
-    }
-    return students;
+    return students.filter((student) => {
+      if (selectedSection && student.section !== selectedSection) {
+        return false;
+      }
+      if (
+        searchQuery &&
+        !student.name.toLowerCase().includes(searchQuery.toLowerCase())
+      ) {
+        return false;
+      }
+      return true;
+    });
   };
 
   const filteredStudents = filterStudents(presentStudents);
 
   const handleSectionChange = (event) => {
     setSelectedSection(event.target.value);
-    setSearchQuery(""); // Clear the search query when the section is changed
   };
 
   const handleSearchQueryChange = (event) => {
     setSearchQuery(event.target.value);
-    setSelectedSection(""); // Clear the selected section when the search query is changed
   };
-
 
   if (isLoading) {
     return <div></div>;
