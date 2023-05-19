@@ -1,27 +1,27 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef } from "react";
 
 function StudentChart({ student, onClose }) {
   const grades = ["Mon", "Tue", "Wed", "Thu", "Fri"];
   const times = ["A", "B", "C", "D", "E"];
-  const [screenPosition, setScreenPosition] = useState({ top: 0, left: 0 });
+  const chartRef = useRef(null);
 
   useEffect(() => {
-    const handleResize = () => {
-      const { innerWidth, innerHeight } = window;
-      const modalWidth = document.getElementById("student-chart-modal").offsetWidth;
-      const modalHeight = document.getElementById("student-chart-modal").offsetHeight;
+    const calculatePosition = () => {
+      const chartElement = chartRef.current;
+      if (chartElement) {
+        const viewportHeight = window.innerHeight;
+        const chartHeight = chartElement.offsetHeight;
+        const topOffset = (viewportHeight - chartHeight) / 2;
 
-      const top = Math.max((innerHeight - modalHeight) / 2, 0);
-      const left = Math.max((innerWidth - modalWidth) / 2, 0);
-
-      setScreenPosition({ top, left });
+        chartElement.style.top = `${topOffset}px`;
+      }
     };
 
-    handleResize();
-    window.addEventListener('resize', handleResize);
+    calculatePosition();
+    window.addEventListener("resize", calculatePosition);
 
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("resize", calculatePosition);
     };
   }, []);
 
@@ -29,11 +29,10 @@ function StudentChart({ student, onClose }) {
     <div>
       <div className="fixed z-50 top-0 left-0 w-full h-full backdrop-blur-xl rounded-lg"></div>
       <div
-        id="student-chart-modal"
-        className="fixed z-50 bg-white rounded-md shadow-xl p-8 w-4/5 max-w-md"
-        style={{ top: screenPosition.top, left: screenPosition.left }}
+        ref={chartRef}
+        className="fixed z-50 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-md shadow-xl p-8 w-4/5 max-w-md"
       >
-        {/* Content here */}
+        {/* content here */}
       </div>
     </div>
   );
