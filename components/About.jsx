@@ -24,6 +24,9 @@ const About = () => {
             Scans
           </span>
         </h2>
+        <h1>
+        With the widespread adoption of beep cards in private schools, SCAS can revolutionize its attendance system by implementing its own innovative solution.
+        </h1>
 
         <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
           <div
