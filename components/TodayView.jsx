@@ -130,7 +130,7 @@ function AttendanceTable() {
 
   const tableData = selectedSection ? (
     <tbody>
-      {" "}
+      {""}
       {filteredStudents.map((student, index) => (
         <tr
           className={`${
@@ -307,7 +307,7 @@ function AttendanceTable() {
                     animation: "slide-from-left 1.5s ease forwards",
                   }}
                 >
-                 <div className="flex justify-between items-center mb-4">
+                  <div className="flex justify-between items-center mb-4">
   <div id="search" className="flex items-center w-full">
     {selectedSection && (
       <input
