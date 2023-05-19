@@ -363,36 +363,86 @@ function AttendanceTable() {
 
                   <div id="table" className="overflow-x-auto rounded-lg">
                     <table className="table-auto w-full text-center ">
-                      <thead
+                    <thead
                         className="bg-blue-400 text-white"
                         style={{ border: "none" }}
                       >
                         <tr className="p-2 font-bold">
-                          {["Index", "NAME", "STRAND", "SEC", "TIME"].map(
-                            (label, index) => (
-                              <th
-                                key={index}
-                                className="p-2 pb-4 pt-4"
-                                onClick={() =>
-                                  handleHeaderClick(
-                                    `${label} - shows the ${
-                                      label === "Index"
-                                        ? "index of the students based on their scan time."
-                                        : label.toLowerCase() +
-                                          " of the students."
-                                    }`
-                                  )
-                                }
-                                style={{
-                                  background: "transparent",
-                                  fontWeight: "bold",
-                                  cursor: "pointer",
-                                }}
-                              >
-                                {label === "Index" ? "#" : label}
-                              </th>
-                            )
-                          )}
+                          <th
+                            className="p-2 pb-4 pt-4 "
+                            onClick={() =>
+                              handleHeaderClick(
+                                "Index - shows the index of the students baseds on their scan time."
+                              )
+                            }
+                            style={{
+                              background: "transparent",
+                              fontWeight: "bold",
+                              cursor: "pointer",
+                            }}
+                          >
+                            #
+                          </th>
+                          <th
+                            className="p-2"
+                            onClick={() =>
+                              handleHeaderClick(
+                                "NAME - shows the name of the students"
+                              )
+                            }
+                            style={{
+                              background: "transparent",
+                              fontWeight: "bold",
+                              cursor: "pointer",
+                            }}
+                          >
+                            NAME
+                          </th>
+                          <th
+                            className="p-2"
+                            onClick={() =>
+                              handleHeaderClick(
+                                "STRAND - shows the strand of the students"
+                              )
+                            }
+                            style={{
+                              background: "transparent",
+                              fontWeight: "bold",
+                              cursor: "pointer",
+                            }}
+                          >
+                            STRAND
+                          </th>
+                          <th
+                            className="p-2"
+                            onClick={() =>
+                              handleHeaderClick(
+                                "SEC - shows the section of the students."
+                              )
+                            }
+                            style={{
+                              background: "transparent",
+                              fontWeight: "bold",
+                              cursor: "pointer",
+                            }}
+                          >
+                            SEC
+                          </th>
+                          <th
+                            className="p-2"
+                            onClick={() =>
+                              handleHeaderClick(
+                                "SCANNED - shows the time the students was scanned for the day, red means late, yellow means on time, and green means early."
+                              )
+                            }
+                            style={{
+                              background: "transparent",
+                              fontWeight: "bold",
+                              cursor: "pointer",
+                            }}
+                          >
+                            SCANNED:
+                          </th>
                         </tr>
                       </thead>
                       {tableData}
