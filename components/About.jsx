@@ -64,9 +64,9 @@ const About = () => {
                   &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;Scans is an attendance system
                   developed by Renz Pasagdan - a Grade 12 STEM-1B student of
                   Sumulong College of Arts and Sciences as a research project
-                  titled &ldquo;Development of QR Code Technology as an
+                  titled &ldquo;<span className="text-violet-400">Development of QR Code Technology as an
                   Attendance System for Enhancing Attendance and
-                  Punctuality&rdquo;. One of the key advantages of Scans, is its cost-effectiveness. Unlike the other systems utilized by many prominent private schools, scans incurs zero expenses in its operation.
+                  Punctuality</span>&rdquo;. One of the key advantages of Scans, is its cost-effectiveness. Unlike the other systems utilized by many prominent private schools, scans incurs zero expenses in its operation.
                 </div>
               )}
             </div>
