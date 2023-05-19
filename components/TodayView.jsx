@@ -128,9 +128,9 @@ function AttendanceTable() {
     setSearchQuery(event.target.value);
   };
 
-  const tableData = (
+  const tableData = selectedSection ? (
     <tbody>
-      {(selectedSection ? filteredStudents : presentStudents).map((student, index) => (
+      {filteredStudents.map((student, index) => (
         <tr
           className={`${
             index % 2 === 0 ? "bg-gray-50" : "bg-gray-100"
@@ -138,7 +138,44 @@ function AttendanceTable() {
           key={student.studentId}
           onClick={() => handleMoreClick(student)}
         >
-          <td className="p-2">{(selectedSection ? filteredStudents : presentStudents).length - index}</td>
+          <td className="p-2">{filteredStudents.length - index}</td>
+          <td className="p-2 font-bold whitespace-nowrap">{student.name}</td>
+          <td className="p-2">{student.strand}</td>
+          <td className="p-2 ">{student.section}</td>
+          <td className="p-2 whitespace-nowrap">
+            {student.status === "late" && (
+              <div className="bg-[#EC7063] h-6 w-16 rounded-sm inline-block mr-1">
+                {student.lastScanTime}
+              </div>
+            )}
+            {student.status === "ontime" && (
+              <div className="bg-[#F7DC6F]  h-6 w-16 rounded-sm inline-block mr-1">
+                {student.lastScanTime}
+              </div>
+            )}
+            {student.status === "early" && (
+              <div className="bg-[#2ECC71]  h-6 w-16 rounded-sm inline-block mr-1">
+                {student.lastScanTime}
+              </div>
+            )}
+          </td>
+        </tr>
+      ))}
+      {selectedStudent && (
+        <StudentDetails student={selectedStudent} onClose={onClose} />
+      )}
+    </tbody>
+  ) : (
+    <tbody>
+      {presentStudents.map((student, index) => (
+        <tr
+          className={`${
+            index % 2 === 0 ? "bg-gray-50" : "bg-gray-100"
+          } rounded-lg mb-2 py-2`}
+          key={student.studentId}
+          onClick={() => handleMoreClick(student)}
+        >
+          <td className="p-2">{presentStudents.length - index}</td>
           <td className="p-2 font-bold whitespace-nowrap">{student.name}</td>
           <td className="p-2">{student.strand}</td>
           <td className="p-2 ">{student.section}</td>
