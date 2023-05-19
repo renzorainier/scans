@@ -210,6 +210,8 @@ function AttendanceTable() {
     setInfoText(text);
   }
 
+
+
   if (isLoading) {
     return <div></div>;
   }
