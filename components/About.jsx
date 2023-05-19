@@ -25,13 +25,14 @@ const About = () => {
 </div>
 
 <div class="text-center mt-8">
-  <h1 class="text-lg font-bold text-gray-900">
-    With the widespread adoption of beep cards in private schools,
+  <h1 class="text-4xl font-bold text-gray-900">
+    With the widespread adoption of <span class="text-red-500">beep cards</span> in private schools,
   </h1>
-  <h1 class="text-lg font-bold text-gray-900">
-    SCAS can revolutionize its attendance system by implementing its own innovative solution.
+  <h1 class="text-4xl font-bold text-gray-900">
+    SCAS can <span class="text-blue-500">revolutionize</span> its attendance system by implementing its own <span class="text-green-500">innovative</span> solution.
   </h1>
 </div>
+
 
 
         <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
