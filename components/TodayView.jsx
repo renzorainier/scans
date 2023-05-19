@@ -205,7 +205,6 @@ function AttendanceTable() {
     </tbody>
   );
 
-
   function handleHeaderClick(text) {
     setShowInfo(true);
     setInfoText(text);
@@ -307,33 +306,32 @@ function AttendanceTable() {
                     animation: "slide-from-left 1.5s ease forwards",
                   }}
                 >
-                <div className="flex justify-between items-center mb-4">
-  <div id="search" className="flex items-center w-full">
-    {selectedSection && (
-      <input
-        type="text"
-        className="border rounded-l-md py-1 px-2 text-gray-700 w-4/5 mr-2 focus:outline-none focus:ring-1 focus:ring-blue-500"
-        placeholder="Search name"
-        value={searchQuery}
-        onChange={handleSearchQueryChange}
-      />
-    )}
+                  <div className="flex justify-between items-center mb-4">
+                    <div id="search" className="flex items-center w-full">
+                      {selectedSection && (
+                        <input
+                          type="text"
+                          className="border rounded-l-md py-1 px-2 text-gray-700 w-4/5 mr-2 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                          placeholder="Search name"
+                          value={searchQuery}
+                          onChange={handleSearchQueryChange}
+                        />
+                      )}
 
-    <select
-      className="border rounded-r-md py-1 px-2 text-gray-700 w-1/5 focus:outline-none focus:ring-1 focus:ring-blue-500"
-      value={selectedSection}
-      onChange={handleSectionChange}
-    >
-      <option value="">All</option>
-      <option value="1A">1A</option>
-      <option value="1B">1B</option>
-      <option value="1C">1C</option>
-      <option value="1D">1D</option>
-      <option value="2A">2A</option>
-    </select>
-  </div>
-</div>
-
+                      <select
+                        className="border rounded-r-md py-1 px-2 text-gray-700 w-1/5 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                        value={selectedSection}
+                        onChange={handleSectionChange}
+                      >
+                        <option value="">All</option>
+                        <option value="1A">1A</option>
+                        <option value="1B">1B</option>
+                        <option value="1C">1C</option>
+                        <option value="1D">1D</option>
+                        <option value="2A">2A</option>
+                      </select>
+                    </div>
+                  </div>
 
                   <div id="table" className="overflow-x-auto rounded-lg">
                     <table className="table-auto w-full text-center ">
