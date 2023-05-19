@@ -130,6 +130,7 @@ function AttendanceTable() {
 
   const tableData = selectedSection ? (
     <tbody>
+      hehhehehhehe
       {filteredStudents.map((student, index) => (
         <tr
           className={`${
@@ -167,7 +168,7 @@ function AttendanceTable() {
     </tbody>
   ) : (
     <tbody>
-       {presentStudents.map((student, index) => (
+      {presentStudents.map((student, index) => (
         <tr
           className={`${
             index % 2 === 0 ? "bg-gray-50" : "bg-gray-100"
@@ -200,9 +201,10 @@ function AttendanceTable() {
       ))}
       {selectedStudent && (
         <StudentDetails student={selectedStudent} onClose={onClose} />
-      )}
+      )}{" "}
     </tbody>
   );
+
 
   function handleHeaderClick(text) {
     setShowInfo(true);
