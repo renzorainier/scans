@@ -1,19 +1,47 @@
+import { useEffect, useState } from "react";
+
 function StudentChart({ student, onClose }) {
   const grades = ["Mon", "Tue", "Wed", "Thu", "Fri"];
   const times = ["A", "B", "C", "D", "E"];
+  const [screenDimensions, setScreenDimensions] = useState({
+    width: 0,
+    height: 0
+  });
+
+  useEffect(() => {
+    const updateScreenDimensions = () => {
+      setScreenDimensions({
+        width: window.innerWidth,
+        height: window.innerHeight
+      });
+    };
+
+    window.addEventListener("resize", updateScreenDimensions);
+    updateScreenDimensions();
+
+    return () => {
+      window.removeEventListener("resize", updateScreenDimensions);
+    };
+  }, []);
 
   return (
     <div>
       <div className="fixed z-50 top-0 left-0 w-full h-full backdrop-blur-xl rounded-lg"></div>
-      <div className="fixed z-50 top-1/2 left-1/2  transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-md shadow-xl p-8 w-4/5 max-w-md">
-//content here
+      <div
+        className="fixed z-50 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-md shadow-xl p-8 w-4/5 max-w-md"
+        style={{
+          top: `calc(${screenDimensions.height}px / 2)`,
+          left: `calc(${screenDimensions.width}px / 2)`,
+          transform: "translate(-50%, -50%)"
+        }}
+      >
+        {/* Content here */}
       </div>
     </div>
   );
 }
 
 export default StudentChart;
-
 
 
 // <button
