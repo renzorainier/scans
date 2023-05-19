@@ -310,38 +310,17 @@ function AttendanceTable() {
                 <div className="flex justify-between items-center mb-4">
   <div id="search" className="flex items-center w-full">
     {selectedSection && (
-      <div className="relative">
-        <input
-          type="text"
-          className="border rounded-md py-1 px-2 text-gray-700 w-64 mr-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-          placeholder="Search name"
-          value={searchQuery}
-          onChange={handleSearchQueryChange}
-        />
-        <span className="absolute right-2 top-1/2 transform -translate-y-1/2">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-5 w-5 text-gray-500"
-            viewBox="0 0 20 20"
-            fill="currentColor"
-          >
-            <path
-              fillRule="evenodd"
-              d="M10 3a7 7 0 110 14 7 7 0 010-14zm0 1a6 6 0 100 12 6 6 0 000-12z"
-              clipRule="evenodd"
-            />
-            <path
-              fillRule="evenodd"
-              d="M9.707 11.707a1 1 0 01-1.414-1.414L9.586 9H6a1 1 0 010-2h3.586l-1.293-1.293a1 1 0 011.414-1.414l3 3a1 1 0 010 1.414l-3 3z"
-              clipRule="evenodd"
-            />
-          </svg>
-        </span>
-      </div>
+      <input
+        type="text"
+        className="border rounded-l-md py-1 px-2 text-gray-700 w-4/5 mr-2 focus:outline-none focus:ring-1 focus:ring-blue-500"
+        placeholder="Search name"
+        value={searchQuery}
+        onChange={handleSearchQueryChange}
+      />
     )}
 
     <select
-      className="border rounded-md py-1 px-2 text-gray-700 w-40"
+      className="border rounded-r-md py-1 px-2 text-gray-700 w-1/5 focus:outline-none focus:ring-1 focus:ring-blue-500"
       value={selectedSection}
       onChange={handleSectionChange}
     >
@@ -354,6 +333,7 @@ function AttendanceTable() {
     </select>
   </div>
 </div>
+
 
                   <div id="table" className="overflow-x-auto rounded-lg">
                     <table className="table-auto w-full text-center ">
