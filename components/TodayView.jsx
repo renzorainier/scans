@@ -128,14 +128,6 @@ function AttendanceTable() {
     setSearchQuery(event.target.value);
   };
 
-
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-
-  const toggleDropdown = () => {
-    setIsDropdownOpen(!isDropdownOpen);
-  };
-
-
   const tableData = selectedSection ? (
     <tbody>
       {""}
@@ -221,11 +213,6 @@ function AttendanceTable() {
   if (isLoading) {
     return <div></div>;
   }
-
-
-
-
-
 
   return (
     <div>
