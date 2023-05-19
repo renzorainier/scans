@@ -3,18 +3,21 @@ import { useEffect, useRef } from "react";
 function StudentChart({ student, onClose }) {
   const grades = ["Mon", "Tue", "Wed", "Thu", "Fri"];
   const times = ["A", "B", "C", "D", "E"];
-  const chartRef = useRef(null);
+  const modalRef = useRef(null);
 
   useEffect(() => {
     const calculatePosition = () => {
-      const chartElement = chartRef.current;
-      if (chartElement) {
-        const viewportHeight = window.innerHeight;
-        const chartHeight = chartElement.offsetHeight;
-        const topOffset = (viewportHeight - chartHeight) / 2;
+      const modal = modalRef.current;
+      const windowWidth = window.innerWidth;
+      const windowHeight = window.innerHeight;
+      const modalWidth = modal.offsetWidth;
+      const modalHeight = modal.offsetHeight;
 
-        chartElement.style.top = `${topOffset}px`;
-      }
+      const left = `${(windowWidth - modalWidth) / 2}px`;
+      const top = `${(windowHeight - modalHeight) / 2}px`;
+
+      modal.style.left = left;
+      modal.style.top = top;
     };
 
     calculatePosition();
@@ -29,7 +32,7 @@ function StudentChart({ student, onClose }) {
     <div>
       <div className="fixed z-50 top-0 left-0 w-full h-full backdrop-blur-xl rounded-lg"></div>
       <div
-        ref={chartRef}
+        ref={modalRef}
         className="fixed z-50 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-md shadow-xl p-8 w-4/5 max-w-md"
       >
         {/* content here */}
@@ -39,6 +42,7 @@ function StudentChart({ student, onClose }) {
 }
 
 export default StudentChart;
+
 
 
 // <button
