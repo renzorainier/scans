@@ -130,7 +130,7 @@ function AttendanceTable() {
 
   const tableData = selectedSection ? (
     <tbody>
-      hehhehehhehe
+      {" "}
       {filteredStudents.map((student, index) => (
         <tr
           className={`${
