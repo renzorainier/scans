@@ -18,15 +18,21 @@ const About = () => {
   return (
     <div className="bg-gray-100">
       <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
-        <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
-          About{" "}
-          <span class="bg-gradient-to-r from-blue-400 to-violet-400 text-transparent bg-clip-text">
-            Scans
-          </span>
-        </h2>
-        <h1>
-        With the widespread adoption of beep cards in private schools, SCAS can revolutionize its attendance system by implementing its own innovative solution.
-        </h1>
+      <div class="text-center">
+  <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+    About <span class="bg-gradient-to-r from-blue-400 to-violet-400 text-transparent bg-clip-text">Scans</span>
+  </h2>
+</div>
+
+<div class="text-center mt-8">
+  <h1 class="text-2xl font-bold text-gray-900">
+    With the widespread adoption of beep cards in private schools,
+  </h1>
+  <h1 class="text-2xl font-bold text-gray-900">
+    SCAS can revolutionize its attendance system by implementing its own innovative solution.
+  </h1>
+</div>
+
 
         <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
           <div
