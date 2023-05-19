@@ -167,7 +167,7 @@ function AttendanceTable() {
     </tbody>
   ) : (
     <tbody>
-      {presentStudents.map((student, index) => (
+           {presentStudents.map((student, index) => (
         <tr
           className={`${
             index % 2 === 0 ? "bg-gray-50" : "bg-gray-100"
