@@ -290,7 +290,7 @@ function AttendanceTable() {
                         </tr>
                       </thead>
                       <tbody>
-                        {filteredStudents.map((student, index) => (
+                        {presentStudents.map((student, index) => (
                           <tr
                             className={`${
                               index % 2 === 0 ? "bg-gray-50" : "bg-gray-100"
@@ -299,7 +299,7 @@ function AttendanceTable() {
                             onClick={() => handleMoreClick(student)}
                           >
                             <td className="p-2">
-                              {filteredStudents.length - index}
+                              {presentStudents.length - index}
                             </td>
                             <td className="p-2 font-bold whitespace-nowrap">
                               {student.name}
