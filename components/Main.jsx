@@ -6,6 +6,7 @@ import TeamCarousel from "./Members";
 import About from "./About";
 import { FaChevronDown } from "react-icons/fa";
 import BobbingImage from "./Image"
+import ScrollToTopButton from "./Scroll"
 
 const MainComponent = () => {
   const [currentComponent, setCurrentComponent] = useState(null);
@@ -76,6 +77,7 @@ const MainComponent = () => {
     <div className="fade-in">
       {backButton}
       {renderCurrentComponent()}
+      <ScrollToTopButton/>
     </div>
   );
 };
