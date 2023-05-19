@@ -34,14 +34,23 @@ function ScrollToTopButton() {
   return (
     showButton && (
       <button
-        className="fixed bottom-4 right-4 bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-full"
+        className="fixed bottom-4 right-4 bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-full transition-all duration-300 ease-in-out transform hover:scale-110"
         onClick={scrollToTop}
       >
-        Scroll to Top
+        <svg
+          className="w-6 h-6"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="2"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path d="M5 10l7-7m0 0l7 7m-7-7v18" />
+        </svg>
       </button>
     )
   );
 }
 
 export default ScrollToTopButton;
-
