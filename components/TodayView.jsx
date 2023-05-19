@@ -307,31 +307,53 @@ function AttendanceTable() {
                     animation: "slide-from-left 1.5s ease forwards",
                   }}
                 >
-                  <div className="flex justify-between items-center mb-4">
-                    <div id="search" className="flex items-center w-full">
-                      <input
-                        type="text"
-                        className="border rounded-md py-1 px-2 text-gray-700 w-4/5 mr-2"
-                        placeholder="Search name (select a section first)"
-                        value={searchQuery}
-                        onChange={handleSearchQueryChange}
-                        disabled={selectedSection === ""}
-                      />
+                <div className="flex justify-between items-center mb-4">
+  <div id="search" className="flex items-center w-full">
+    {selectedSection && (
+      <div className="relative">
+        <input
+          type="text"
+          className="border rounded-md py-1 px-2 text-gray-700 w-64 mr-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="Search name"
+          value={searchQuery}
+          onChange={handleSearchQueryChange}
+        />
+        <span className="absolute right-2 top-1/2 transform -translate-y-1/2">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-5 w-5 text-gray-500"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+          >
+            <path
+              fillRule="evenodd"
+              d="M10 3a7 7 0 110 14 7 7 0 010-14zm0 1a6 6 0 100 12 6 6 0 000-12z"
+              clipRule="evenodd"
+            />
+            <path
+              fillRule="evenodd"
+              d="M9.707 11.707a1 1 0 01-1.414-1.414L9.586 9H6a1 1 0 010-2h3.586l-1.293-1.293a1 1 0 011.414-1.414l3 3a1 1 0 010 1.414l-3 3z"
+              clipRule="evenodd"
+            />
+          </svg>
+        </span>
+      </div>
+    )}
 
-                      <select
-                        className="border rounded-md py-1 px-2 text-gray-700 w-1/5"
-                        value={selectedSection}
-                        onChange={handleSectionChange}
-                      >
-                        <option value="">All</option>
-                        <option value="1A">1A</option>
-                        <option value="1B">1B</option>
-                        <option value="1C">1C</option>
-                        <option value="1D">1D</option>
-                        <option value="2A">2A</option>
-                      </select>
-                    </div>
-                  </div>
+    <select
+      className="border rounded-md py-1 px-2 text-gray-700 w-40"
+      value={selectedSection}
+      onChange={handleSectionChange}
+    >
+      <option value="">All</option>
+      <option value="1A">1A</option>
+      <option value="1B">1B</option>
+      <option value="1C">1C</option>
+      <option value="1D">1D</option>
+      <option value="2A">2A</option>
+    </select>
+  </div>
+</div>
 
                   <div id="table" className="overflow-x-auto rounded-lg">
                     <table className="table-auto w-full text-center ">
