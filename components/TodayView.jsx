@@ -307,66 +307,32 @@ function AttendanceTable() {
                     animation: "slide-from-left 1.5s ease forwards",
                   }}
                 >
-                <div className="flex justify-between items-center mb-4">
-  <div id="search" className="flex items-center w-full">
-    {selectedSection && (
-      <input
-        type="text"
-        className="border rounded-md py-1 px-2 text-gray-700 w-4/5 mr-2"
-        placeholder="Search name"
-        value={searchQuery}
-        onChange={handleSearchQueryChange}
-      />
-    )}
+                  <div className="flex justify-between items-center mb-4">
+                    <div id="search" className="flex items-center w-full">
+                      <input
+                        type="text"
+                        className="border rounded-md py-1 px-2 text-gray-700 w-4/5 mr-2"
+                        placeholder="Search name (select a section first)"
+                        value={searchQuery}
+                        onChange={handleSearchQueryChange}
+                        disabled={selectedSection === ""}
+                      />
 
-    <div className="relative">
-      <div className="flex items-center justify-between border rounded-md py-1 px-2 text-gray-700 w-1/5">
-        <div className="flex items-center space-x-1">
-          <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
-          <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-          <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
-        </div>
-        <div className="text-sm">Sections</div>
-        <svg
-          className="w-4 h-4 text-gray-500"
-          viewBox="0 0 20 20"
-          fill="currentColor"
-        >
-          <path
-            fillRule="evenodd"
-            d="M6.293 7.293a1 1 0 011.414 0L10 9.586l2.293-2.293a1 1 0 011.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z"
-            clipRule="evenodd"
-          />
-        </svg>
-      </div>
+                      <select
+                        className="border rounded-md py-1 px-2 text-gray-700 w-1/5"
+                        value={selectedSection}
+                        onChange={handleSectionChange}
+                      >
+                        <option value="">All</option>
+                        <option value="1A">1A</option>
+                        <option value="1B">1B</option>
+                        <option value="1C">1C</option>
+                        <option value="1D">1D</option>
+                        <option value="2A">2A</option>
+                      </select>
+                    </div>
+                  </div>
 
-      <div className="absolute mt-1 bg-white border rounded-md shadow-lg">
-        <div className="py-2">
-          <div className="flex items-center p-2 hover:bg-gray-100 cursor-pointer">
-            <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
-            <div className="ml-2 text-sm">1A</div>
-          </div>
-          <div className="flex items-center p-2 hover:bg-gray-100 cursor-pointer">
-            <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-            <div className="ml-2 text-sm">1B</div>
-          </div>
-          <div className="flex items-center p-2 hover:bg-gray-100 cursor-pointer">
-            <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
-            <div className="ml-2 text-sm">1C</div>
-          </div>
-          <div className="flex items-center p-2 hover:bg-gray-100 cursor-pointer">
-            <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-            <div className="ml-2 text-sm">1D</div>
-          </div>
-          <div className="flex items-center p-2 hover:bg-gray-100 cursor-pointer">
-            <div className="w-3 h-3 bg-purple-500 rounded-full"></div>
-            <div className="ml-2 text-sm">2A</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
                   <div id="table" className="overflow-x-auto rounded-lg">
                     <table className="table-auto w-full text-center ">
                       <thead
