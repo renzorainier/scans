@@ -318,18 +318,19 @@ function AttendanceTable() {
                         />
                       )}
 
-                      <select
-                        className="border rounded-r-md py-1 px-2 text-gray-700 w-1/5 focus:outline-none focus:ring-1 focus:ring-blue-500"
-                        value={selectedSection}
-                        onChange={handleSectionChange}
-                      >
-                        <option value="">All</option>
-                        <option value="1A">1A</option>
-                        <option value="1B">1B</option>
-                        <option value="1C">1C</option>
-                        <option value="1D">1D</option>
-                        <option value="2A">2A</option>
-                      </select>
+<select
+  className="border border-gray-300 bg-white rounded-md py-2 px-4 text-gray-700 w-1/5 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+  value={selectedSection}
+  onChange={handleSectionChange}
+>
+  <option value="">All</option>
+  <option value="1A">1A</option>
+  <option value="1B">1B</option>
+  <option value="1C">1C</option>
+  <option value="1D">1D</option>
+  <option value="2A">2A</option>
+</select>
+
                     </div>
                   </div>
 
