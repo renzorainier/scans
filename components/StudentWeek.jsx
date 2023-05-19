@@ -1,41 +1,47 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useState } from "react";
 
 function StudentChart({ student, onClose }) {
   const grades = ["Mon", "Tue", "Wed", "Thu", "Fri"];
   const times = ["A", "B", "C", "D", "E"];
-  const modalRef = useRef(null);
+  const [topPosition, setTopPosition] = useState(0);
+  const [leftPosition, setLeftPosition] = useState(0);
 
   useEffect(() => {
-    const calculatePosition = () => {
-      const modal = modalRef.current;
-      const windowWidth = window.innerWidth;
-      const windowHeight = window.innerHeight;
-      const modalWidth = modal.offsetWidth;
-      const modalHeight = modal.offsetHeight;
+    const handleScroll = () => {
+      const screenWidth = window.innerWidth;
+      const screenHeight = window.innerHeight;
+      const floatingDiv = document.getElementById("floating-div");
 
-      const left = `${(windowWidth - modalWidth) / 2}px`;
-      const top = `${(windowHeight - modalHeight) / 2}px`;
-
-      modal.style.left = left;
-      modal.style.top = top;
+      if (floatingDiv) {
+        const floatingDivWidth = floatingDiv.offsetWidth;
+        const floatingDivHeight = floatingDiv.offsetHeight;
+        const newLeftPosition = (screenWidth - floatingDivWidth) / 2;
+        const newTopPosition = (screenHeight - floatingDivHeight) / 2;
+        setLeftPosition(newLeftPosition);
+        setTopPosition(newTopPosition);
+      }
     };
 
-    calculatePosition();
-    window.addEventListener("resize", calculatePosition);
+    handleScroll();
+    window.addEventListener("scroll", handleScroll);
 
     return () => {
-      window.removeEventListener("resize", calculatePosition);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
   return (
     <div>
-      <div className="fixed z-50 top-0 left-0 w-full h-full backdrop-blur-xl rounded-lg"></div>
       <div
-        ref={modalRef}
-        className="fixed z-50 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-md shadow-xl p-8 w-4/5 max-w-md"
+        className="fixed z-50 top-0 left-0 w-full h-full backdrop-blur-xl rounded-lg"
+        id="backdrop"
+      ></div>
+      <div
+        className="fixed z-50 bg-white rounded-md shadow-xl p-8 w-4/5 max-w-md"
+        id="floating-div"
+        style={{ top: `${topPosition}px`, left: `${leftPosition}px` }}
       >
-        {/* content here */}
+        {/* Content here */}
       </div>
     </div>
   );
