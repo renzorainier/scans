@@ -34,7 +34,7 @@ function ScrollToTopButton() {
   return (
     showButton && (
       <button
-        className="fixed bottom-4 right-4 bg-gradient-to-r from-blue-400 to-violet-400 hover:from-blue-500 hover:to-violet-500 text-white font-bold py-2 px-4 rounded-full transition-all duration-300 ease-in-out transform hover:scale-110"
+        className="fixed bottom-4 right-4 bg-gradient-to-r from-blue-400 to-violet-400 hover:from-blue-500 hover:to-violet-500 text-white font-bold py-2 px-4 rounded-lg transition-all duration-300 ease-in-out transform hover:scale-110"
         onClick={scrollToTop}
       >
         <svg
