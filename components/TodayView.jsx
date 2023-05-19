@@ -137,9 +137,6 @@ function AttendanceTable() {
     setInfoText(text);
   }
 
-
-  
-
   return (
     <div>
       <div className="flex justify-center pt-5 items-center">
