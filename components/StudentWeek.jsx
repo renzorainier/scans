@@ -5,15 +5,20 @@ function StudentChart({ student, onClose }) {
   const grades = ["Mon", "Tue", "Wed", "Thu", "Fri"];
   const times = ["A", "B", "C", "D", "E"];
 
-  // Move the screen to the top of the floating div
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
 
   return (
     <div>
-      <div className="fixed z-50 top-0 left-0 w-full h-full backdrop-blur-xl rounded-lg"></div>
-      <div className="fixed z-50 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-md shadow-xl p-8 w-4/5 max-w-md">
+      <div
+        className="fixed z-50 top-0 left-0 w-full h-full backdrop-blur-xl rounded-lg"
+        onClick={scrollToTop}
+      ></div>
+      <div className="fixed z-50 top-1/2 left-1/2  transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-md shadow-xl p-8 w-4/5 max-w-md">
         {/* content here */}
       </div>
     </div>
@@ -21,7 +26,6 @@ function StudentChart({ student, onClose }) {
 }
 
 export default StudentChart;
-
 
 
 // <button
