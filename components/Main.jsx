@@ -64,12 +64,15 @@ const MainComponent = () => {
 
   // Style the back button with modern UI
   const backButton = currentComponent ? (
+    <div className="fixed top-4 left-4 z-50">
     <button
       className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline"
       onClick={handleBackButtonClick}
     >
-      <FaChevronDown style={{ transform: "rotate(90deg)" }} />{" "}
+      <FaChevronDown style={{ transform: "rotate(90deg)" }} />
     </button>
+  </div>
+
   ) : null;
 
   const currentYear = new Date().getFullYear();
