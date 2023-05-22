@@ -167,8 +167,8 @@ const About = () => {
                     </li>
                     <li className="pl-3">
                       The system marks the student&apos;s attendance for the day
-                      and assigns a color code (green for early, yellow for on
-                      time, red for late).
+                      and assigns a color code (🟩green for early, 🟨yellow for on
+                      time, 🟥red for late).
                     </li>
                     <li>
                       <span class="bg-gradient-to-r text-xl from-blue-400 to-violet-400 text-transparent bg-clip-text">
