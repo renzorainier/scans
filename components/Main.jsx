@@ -65,7 +65,7 @@ const MainComponent = () => {
   // Style the back button with modern UI
   const backButton = currentComponent ? (
     <div className="fixed top-4 left-4 z-50">
-    <button  style={{ transform: "rotate(90deg)" }} 
+    <button
       className="bg-gradient-to-r from-blue-400 to-violet-400 hover:from-blue-500 hover:to-violet-500 text-white font-bold py-2 px-4 rounded-lg transition-all duration-300 ease-in-out transform hover:scale-110 focus:outline-none focus:ring-2 focus:ring-blue-500"
       onClick={handleBackButtonClick}
     >
@@ -77,10 +77,11 @@ const MainComponent = () => {
         strokeWidth="2"
         viewBox="0 0 24 24"
         stroke="currentColor"
+        style={{ transform: "rotate(270deg)" }}
       >
         <path d="M5 10l7-7m0 0l7 7m-7-7v18" />
       </svg>
-    </button >
+    </button>
   </div>
 
 
