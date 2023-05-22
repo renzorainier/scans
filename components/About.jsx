@@ -19,9 +19,11 @@ const About = () => {
     <div className="bg-gray-100">
       <div className="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
       <div class="text-center">
-  <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
-    About <span class="bg-gradient-to-r from-blue-400 to-violet-400 text-transparent bg-clip-text">Scans</span>
-  </h2>
+      <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+  About <span className="bg-gradient-to-r from-blue-400 to-violet-400 text-transparent bg-clip-text">Scans</span>
+</h2>
+<p className="text-gray-500 text-sm mt-2">Latest Update: <span className="font-semibold">May 22, 2023</span></p>
+
 </div>
 
 <div class="text-center mt-8">
