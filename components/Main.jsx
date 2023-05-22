@@ -7,6 +7,7 @@ import About from "./About";
 import { FaChevronDown } from "react-icons/fa";
 import BobbingImage from "./Image";
 import ScrollToTopButton from "./Scroll";
+import { Analytics } from '@vercel/analytics/react';
 
 const MainComponent = () => {
   const [currentComponent, setCurrentComponent] = useState(null);
@@ -102,6 +103,7 @@ const MainComponent = () => {
         </div>
       </footer>
       <ScrollToTopButton />
+      <Analytics />
     </div>
   );
 };
