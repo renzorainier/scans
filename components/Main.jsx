@@ -5,9 +5,8 @@ import Greeting from "./Dash";
 import TeamCarousel from "./Members";
 import About from "./About";
 import { FaChevronDown } from "react-icons/fa";
-import BobbingImage from "./Image"
-import ScrollToTopButton from "./Scroll"
-import Footer from "./Footer"
+import BobbingImage from "./Image";
+import ScrollToTopButton from "./Scroll";
 
 const MainComponent = () => {
   const [currentComponent, setCurrentComponent] = useState(null);
@@ -53,9 +52,8 @@ const MainComponent = () => {
                 </button>
               </div>
               <div>
-              <div className="move-up">
-
-              <BobbingImage/>
+                <div className="move-up">
+                  <BobbingImage />
                 </div>
               </div>
             </div>
@@ -74,12 +72,21 @@ const MainComponent = () => {
     </button>
   ) : null;
 
+  const currentYear = new Date().getFullYear();
+
   return (
     <div className="fade-in">
       {backButton}
       {renderCurrentComponent()}
-      <ScrollToTopButton/>
-      <Footer/>
+      <footer className="bg-gray-200 py-4 px-8">
+        <div className="container mx-auto text-center text-gray-700">
+          <p className="text-sm">
+            <span className="font-bold">Scans</span> &copy; {currentYear}. All
+            rights reserved.
+          </p>
+        </div>
+      </footer>
+      <ScrollToTopButton />
     </div>
   );
 };
