@@ -16,26 +16,31 @@ const About = () => {
   const toggleCard5 = () => setCard5Expanded(!card5Expanded);
 
   return (
-    <div className="bg-gray-100">
+    <div>
       <div className="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
-      <div class="text-center">
-      <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
-  About <span className="bg-gradient-to-r from-blue-400 to-violet-400 text-transparent bg-clip-text">Scans</span>
-</h2>
-<p className="text-gray-500 text-sm mt-2">Latest Update: <span className="font-semibold">May 22, 2023</span></p>
+        <div class="text-center">
+          <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+            About{" "}
+            <span className="bg-gradient-to-r from-blue-400 to-violet-400 text-transparent bg-clip-text">
+              Scans
+            </span>
+          </h2>
+          <p className="text-gray-500 text-sm mt-2">
+            Latest Update: <span className="font-semibold">May 22, 2023</span>
+          </p>
+        </div>
 
-</div>
-
-<div class="text-center mt-8">
-  <h1 class="text-lg font-bold text-gray-900">
-    With the widespread adoption of <span class="text-violet-400">beep cards</span> in private schools,
-  </h1>
-  <h1 class="text-lg font-bold text-gray-900">
-    <span class="text-purple-400">SCAS</span> can revolutionize its attendance system by implementing its own <span class="text-blue-400">innovative</span> solution.
-  </h1>
-</div>
-
-
+        <div class="text-center mt-8">
+          <h1 class="text-lg font-bold text-gray-900">
+            With the widespread adoption of{" "}
+            <span class="text-violet-400">beep cards</span> in private schools,
+          </h1>
+          <h1 class="text-lg font-bold text-gray-900">
+            <span class="text-purple-400">SCAS</span> can revolutionize its
+            attendance system by implementing its own{" "}
+            <span class="text-blue-400">innovative</span> solution.
+          </h1>
+        </div>
 
         <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
           <div
@@ -66,9 +71,15 @@ const About = () => {
                   &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;Scans is an attendance system
                   developed by Renz Pasagdan - a Grade 12 STEM-1B student of
                   Sumulong College of Arts and Sciences as a research project
-                  titled &ldquo;<span className="text-violet-400">Development of QR Code Technology as an
-                  Attendance System for Enhancing Attendance and
-                  Punctuality</span>&rdquo;. One of the key advantages of Scans, is its cost-effectiveness. Unlike the other systems utilized by many prominent private schools, scans incurs zero expenses in its operation.
+                  titled &ldquo;
+                  <span className="text-violet-400">
+                    Development of QR Code Technology as an Attendance System
+                    for Enhancing Attendance and Punctuality
+                  </span>
+                  &rdquo;. One of the key advantages of Scans, is its
+                  cost-effectiveness. Unlike the other systems utilized by many
+                  prominent private schools, scans incurs zero expenses in its
+                  operation.
                 </div>
               )}
             </div>
@@ -145,8 +156,8 @@ const About = () => {
                     </li>
 
                     <li className="pl-3">
-                      Students&apos; unique QR codes are scanned at the gate upon
-                      entering the school (In the trial phase, a selected
+                      Students&apos; unique QR codes are scanned at the gate
+                      upon entering the school (In the trial phase, a selected
                       student scans the QR codes of their classmates instead.)
                     </li>
                     <li>
@@ -155,9 +166,9 @@ const About = () => {
                       </span>
                     </li>
                     <li className="pl-3">
-                      The system marks the student&apos;s attendance for the day and
-                      assigns a color code (green for early, yellow for on time,
-                      red for late).
+                      The system marks the student&apos;s attendance for the day
+                      and assigns a color code (green for early, yellow for on
+                      time, red for late).
                     </li>
                     <li>
                       <span class="bg-gradient-to-r text-xl from-blue-400 to-violet-400 text-transparent bg-clip-text">
