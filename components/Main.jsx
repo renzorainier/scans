@@ -66,21 +66,10 @@ const MainComponent = () => {
   const backButton = currentComponent ? (
     <div className="fixed top-4 left-4 z-50">
     <button
-      className="bg-gradient-to-r from-blue-400 to-violet-400 hover:from-blue-500 hover:to-violet-500 text-white font-bold py-2 px-4 rounded-lg transition-all duration-300 ease-in-out transform hover:scale-110 focus:outline-none focus:shadow-outline"
+      className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline"
       onClick={handleBackButtonClick}
     >
-  <svg
-  className="w-6 h-6 transform rotate-90"
-  fill="none"
-  strokeLinecap="round"
-  strokeLinejoin="round"
-  strokeWidth="2"
-  viewBox="0 0 24 24"
-  stroke="currentColor"
->
-  <path d="M14 5l-7 7m0 0l7 7m-7-7h18" />
-</svg>
-
+      <FaChevronDown style={{ transform: "rotate(90deg)" }} />
     </button>
   </div>
 
