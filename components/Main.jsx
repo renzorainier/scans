@@ -7,6 +7,7 @@ import About from "./About";
 import { FaChevronDown } from "react-icons/fa";
 import BobbingImage from "./Image"
 import ScrollToTopButton from "./Scroll"
+import Footer from "./Footer"
 
 const MainComponent = () => {
   const [currentComponent, setCurrentComponent] = useState(null);
@@ -78,6 +79,7 @@ const MainComponent = () => {
       {backButton}
       {renderCurrentComponent()}
       <ScrollToTopButton/>
+      <Footer/>
     </div>
   );
 };
