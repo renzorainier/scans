@@ -7,7 +7,8 @@ import About from "./About";
 import { FaChevronDown } from "react-icons/fa";
 import BobbingImage from "./Image";
 import ScrollToTopButton from "./Scroll";
-import { Analytics } from '@vercel/analytics/react';
+import { Analytics } from "@vercel/analytics/react";
+import Weather from "./Weather";
 
 const MainComponent = () => {
   const [currentComponent, setCurrentComponent] = useState(null);
@@ -33,6 +34,7 @@ const MainComponent = () => {
             <div className="mt-4 ax-w-screen-lg mx-auto">
               <div className="greeting-container">
                 <Greeting />
+                <Weather />
               </div>
 
               <div className="ml-5 text-white mr-5 mt-3 grid grid-cols-2 gap-4">
@@ -54,7 +56,7 @@ const MainComponent = () => {
               </div>
               <div>
                 <div className="move-up">
-                  <BobbingImage />
+                <BobbingImage />
                 </div>
               </div>
             </div>
@@ -66,26 +68,24 @@ const MainComponent = () => {
   // Style the back button with modern UI
   const backButton = currentComponent ? (
     <div className="fixed top-4 left-4 z-50">
-    <button
-      className="bg-gradient-to-r from-blue-400 to-violet-400 hover:from-blue-500 hover:to-violet-500 text-white font-bold py-2 px-4 rounded-lg transition-all duration-300 ease-in-out transform hover:scale-110 focus:outline-none focus:ring-2 focus:ring-blue-500"
-      onClick={handleBackButtonClick}
-    >
-      <svg
-        className="w-6 h-6"
-        fill="none"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="2"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-        style={{ transform: "rotate(270deg)" }}
+      <button
+        className="bg-gradient-to-r from-blue-400 to-violet-400 hover:from-blue-500 hover:to-violet-500 text-white font-bold py-2 px-4 rounded-lg transition-all duration-300 ease-in-out transform hover:scale-110 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        onClick={handleBackButtonClick}
       >
-        <path d="M5 10l7-7m0 0l7 7m-7-7v18" />
-      </svg>
-    </button>
-  </div>
-
-
+        <svg
+          className="w-6 h-6"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="2"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          style={{ transform: "rotate(270deg)" }}
+        >
+          <path d="M5 10l7-7m0 0l7 7m-7-7v18" />
+        </svg>
+      </button>
+    </div>
   ) : null;
 
   const currentYear = new Date().getFullYear();
