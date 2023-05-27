@@ -103,13 +103,13 @@ const MainComponent = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <div>
+    <div className="fade-in">
       {isLoading ? (
         <LoadingPage />
       ) : (
         <div className="fade-in">
           {backButton}
-          <LoadingPage />
+          {/* <LoadingPage /> */}
 
           {renderCurrentComponent()}
           <footer className="bg-gray-200 py-4 px-8">
