@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 import TodayAttendance from "./TodayView";
 import Greeting from "./Dash";
@@ -94,7 +94,6 @@ const MainComponent = () => {
   return (
     <div className="fade-in">
       {backButton}
-
       {renderCurrentComponent()}
       <footer className="bg-gray-200 py-4 px-8">
         <div className="container mx-auto text-center text-gray-700">
