@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { FaChevronDown } from "react-icons/fa";
 import TeamMembers from "./Members.jsx";
-import LoadingPage from "./LoadingPage";
 
 
 const About = () => {
@@ -17,22 +16,8 @@ const About = () => {
   const toggleCard4 = () => setCard4Expanded(!card4Expanded);
   const toggleCard5 = () => setCard5Expanded(!card5Expanded);
 
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    // Simulate a 3-second delay
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 3500);
-
-    // Clean up the timer when the component unmounts
-    return () => clearTimeout(timer);
-  }, []);
-
   return (
     <div>
-           {isLoading ?   <LoadingPage /> :
-
       <div className="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
         <div class="text-center">
           <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
@@ -286,7 +271,7 @@ const About = () => {
             </div>
           </div>
         </div>
-      </div> }
+      </div>
     </div>
   );
 };

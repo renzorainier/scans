@@ -4,17 +4,19 @@ import Main from "components/Main";
 import LoadingPage from "components/LoadingPage";
 
 export default function Home() {
+
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     // Simulate a 3-second delay
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 3000);
+    }, 3500);
 
     // Clean up the timer when the component unmounts
     return () => clearTimeout(timer);
   }, []);
+
 
   return (
     <>
