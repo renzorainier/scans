@@ -5,9 +5,6 @@ const LoadingPage = () => {
     <div className="flex items-center justify-center h-screen">
 
       <video src="/pictures/intro.mp4" autoPlay alt="hehe"/>
-      <h1>
-  hello
-</h1>
     </div>
   );
 }
