@@ -4,7 +4,6 @@ import Main from "components/Main";
 import LoadingPage from "components/LoadingPage";
 
 export default function Home() {
-
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -17,7 +16,6 @@ export default function Home() {
     return () => clearTimeout(timer);
   }, []);
 
-
   return (
     <>
       <Head>
@@ -29,7 +27,7 @@ export default function Home() {
           rel="stylesheet"
         />
       </Head>
-      {isLoading ? <LoadingPage /> : <Main />}
+      <div>{isLoading ? <LoadingPage /> : <Main />}</div>
     </>
   );
 }
