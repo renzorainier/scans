@@ -33,7 +33,6 @@ const MainComponent = () => {
     return () => clearTimeout(timer);
   }, []);
 
-
   const renderCurrentComponent = () => {
     switch (currentComponent) {
       case "today":
@@ -69,7 +68,7 @@ const MainComponent = () => {
               </div>
               <div>
                 <div className="move-up">
-                <BobbingImage />
+                  <BobbingImage />
                 </div>
               </div>
             </div>
@@ -104,24 +103,28 @@ const MainComponent = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <div>{isLoading ? <LoadingPage /> :
-    <div className="fade-in">
-      {backButton}
+    <div>
+      {isLoading ? (
+        <LoadingPage />
+      ) : (
+        <div className="fade-in">
+          {backButton}
 
-      {renderCurrentComponent()}
-      <footer className="bg-gray-200 py-4 px-8">
-        <div className="container mx-auto text-center text-gray-700">
-          <p className="text-sm">
-            <span className="font-bold">Scans</span> &copy; {currentYear}. All
-            rights reserved.
-          </p>
+          {renderCurrentComponent()}
+          <footer className="bg-gray-200 py-4 px-8">
+            <div className="container mx-auto text-center text-gray-700">
+              <p className="text-sm">
+                <span className="font-bold">Scans</span> &copy; {currentYear}.
+                All rights reserved.
+              </p>
+            </div>
+          </footer>
+          <ScrollToTopButton />
+          <Analytics />
         </div>
-      </footer>
-      <ScrollToTopButton />
-      <Analytics />
-      </div>}
+      )}
     </div>
-    );
+  );
 };
 
 export default MainComponent;
