@@ -9,7 +9,7 @@ import BobbingImage from "./Image";
 import ScrollToTopButton from "./Scroll";
 import { Analytics } from "@vercel/analytics/react";
 import Weather from "./Weather";
-// import LoadingPage from "./LoadingPage";
+import LoadingPage from "./LoadingPage";
 
 const MainComponent = () => {
   const [currentComponent, setCurrentComponent] = useState(null);
@@ -94,6 +94,8 @@ const MainComponent = () => {
   return (
     <div className="fade-in">
       {backButton}
+      <LoadingPage/>
+
       {renderCurrentComponent()}
       <footer className="bg-gray-200 py-4 px-8">
         <div className="container mx-auto text-center text-gray-700">
