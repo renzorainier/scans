@@ -94,6 +94,8 @@ const MainComponent = () => {
   return (
     <div className="fade-in">
       {backButton}
+      <LoadingPage/>
+
       {renderCurrentComponent()}
       <footer className="bg-gray-200 py-4 px-8">
         <div className="container mx-auto text-center text-gray-700">
