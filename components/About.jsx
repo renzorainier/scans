@@ -27,7 +27,7 @@ const About = () => {
             </span>
           </h2>
           <p className="text-gray-500 text-sm mt-2">
-            Latest Version: <span className="font-semibold">May 24, 2023</span>
+            Latest Version: <span className="font-semibold">May 27, 2023</span>
           </p>
         </div>
 
