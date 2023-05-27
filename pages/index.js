@@ -1,12 +1,11 @@
 import Head from "next/head";
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 
 import Main from "components/Main";
 
 import LoadingPage from "components/LoadingPage";
 
 export default function Home() {
-
   return (
     <>
       <Head>
@@ -19,7 +18,6 @@ export default function Home() {
         />
       </Head>
       <Main />
-
     </>
   );
 }
