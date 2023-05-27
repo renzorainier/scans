@@ -23,7 +23,7 @@ const About = () => {
     // Simulate a 3-second delay
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 3000);
+    }, 3500);
 
     // Clean up the timer when the component unmounts
     return () => clearTimeout(timer);
