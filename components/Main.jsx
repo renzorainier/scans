@@ -9,6 +9,7 @@ import BobbingImage from "./Image";
 import ScrollToTopButton from "./Scroll";
 import { Analytics } from "@vercel/analytics/react";
 import Weather from "./Weather";
+// import LoadingPage from "./LoadingPage";
 
 const MainComponent = () => {
   const [currentComponent, setCurrentComponent] = useState(null);
