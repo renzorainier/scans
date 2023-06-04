@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Head from "next/head";
-import Main from "components/Main";
+import App from "components/App";
 
 export default function Home() {
 
@@ -15,7 +15,7 @@ export default function Home() {
           rel="stylesheet"
         />
       </Head>
-      <Main />
+      <App />
     </>
   );
 }

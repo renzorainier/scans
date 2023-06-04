@@ -9,7 +9,6 @@ import BobbingImage from "./Image";
 import ScrollToTopButton from "./Scroll";
 import { Analytics } from "@vercel/analytics/react";
 import Weather from "./Weather";
-import LoadingPage from "./LoadingPage";
 
 const MainComponent = () => {
   const [currentComponent, setCurrentComponent] = useState(null);
@@ -21,17 +20,6 @@ const MainComponent = () => {
   const handleBackButtonClick = () => {
     setCurrentComponent(null);
   };
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    // Simulate a 3-second delay
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 3500);
-
-    // Clean up the timer when the component unmounts
-    return () => clearTimeout(timer);
-  }, []);
 
   const renderCurrentComponent = () => {
     switch (currentComponent) {
@@ -104,26 +92,23 @@ const MainComponent = () => {
 
   return (
     <div className="fade-in">
-      {isLoading ? (
-        <LoadingPage />
-      ) : (
-        <div className="fade-in">
-          {backButton}
-          {/* <LoadingPage /> */}
 
-          {renderCurrentComponent()}
-          <footer className="bg-gray-200 py-4 px-8">
-            <div className="container mx-auto text-center text-gray-700">
-              <p className="text-sm">
-                <span className="font-bold">Scans</span> &copy; {currentYear}.
-                All rights reserved.
-              </p>
-            </div>
-          </footer>
-          <ScrollToTopButton />
-          <Analytics />
+        <div className="fade-in">
+          <div>
+            {backButton}
+            {renderCurrentComponent()}
+            <footer className="bg-gray-200 py-4 px-8">
+              <div className="container mx-auto text-center text-gray-700">
+                <p className="text-sm">
+                  <span className="font-bold">Scans</span> &copy; {currentYear}.
+                  All rights reserved.
+                </p>
+              </div>
+            </footer>
+            <ScrollToTopButton />
+            <Analytics />
+          </div>
         </div>
-      )}
     </div>
   );
 };
