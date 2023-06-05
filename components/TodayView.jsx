@@ -338,7 +338,7 @@ function AttendanceTable() {
                   }}
                 >
                   <div className="flex justify-between items-center mb-4">
-                    <div id="search" className="flex items-center w-full">
+                    <div id="search" className="flex text-white items-center w-full">
                       {selectedSection && (
                         <input
                           type="text"
