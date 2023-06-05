@@ -342,7 +342,7 @@ function AttendanceTable() {
                       {selectedSection && (
                         <input
                           type="text"
-                          className="border rounded-l-md  font-bold py-2 px-2 text-gray-700 w-4/5 mr-2 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                          className="border rounded-l-md bg-blue-400  font-bold py-2 px-2 text-gray-700 w-4/5 mr-2 focus:outline-none focus:ring-1 focus:ring-blue-500"
                           placeholder="Search name"
                           value={searchQuery}
                           onChange={handleSearchQueryChange}
