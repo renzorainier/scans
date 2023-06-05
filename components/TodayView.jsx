@@ -350,7 +350,7 @@ function AttendanceTable() {
                       )}
 
                       <select
-                        className="border rounded-r-md py-2 bg-blue-400 font-bold px-2 text-white-700 w-1/5 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                        className="border rounded-r-md py-2 bg-blue-400 font-bold px-2 text-white w-1/5 focus:outline-none focus:ring-1 focus:ring-blue-500"
                         value={selectedSection}
                         onChange={handleSectionChange}
                       >
