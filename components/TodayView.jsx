@@ -286,7 +286,7 @@ function AttendanceTable() {
                 style={{ animation: "slide-from-left 1s ease forwards" }}
               >
                 <div
-                  className="w-full text-gray-700 bg-white p-5  rounded-lg shadow-lg mx-auto"
+                  className="w-full text-gray-700 bg-white p-5 border rounded-lg shadow-lg mx-auto"
                   style={{ maxWidth: "90%" }}
                 >
                   <div className="bg-gradient-to-r from-blue-400 to-violet-400 shadow rounded-lg p-6">
