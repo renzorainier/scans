@@ -282,7 +282,7 @@ function AttendanceTable() {
           ) : (
             <div>
               <div
-                className="flex justify-center pt-4 pb-5 items-center"
+                className="flex justify-center border pt-4 pb-5 items-center"
                 style={{ animation: "slide-from-left 1s ease forwards" }}
               >
                 <div
