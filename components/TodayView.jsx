@@ -214,11 +214,11 @@ function AttendanceTable() {
     return (
       <div>
         <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-          <div className="container py-10 px-10 mx-0 min-w-full flex flex-col items-center">
+          <div className="container  py-10 px-10 mx-0 min-w-full flex flex-col items-center">
             <button
               disabled
               type="button"
-              className="bg-white hover:bg-gray-100 focus:ring-4 focus:ring-gray-500 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 text-gray-900 dark:bg-gray-700 dark:hover:bg-gray-800 dark:focus:ring-gray-500 inline-flex items-center animate-pulse"
+              className="bg-white border hover:bg-gray-100 focus:ring-4 focus:ring-gray-500 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 text-gray-900 dark:bg-gray-700 dark:hover:bg-gray-800 dark:focus:ring-gray-500 inline-flex items-center animate-pulse"
             >
               <svg
                 aria-hidden="true"
