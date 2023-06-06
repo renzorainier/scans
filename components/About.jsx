@@ -22,14 +22,14 @@ const About = () => {
 
       <div className="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
         <div class="text-center">
-          <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+          <h2 className="text-5xl font-extrabold text-gray-900 sm:text-5xl">
             About{" "}
             <span className="bg-gradient-to-r from-blue-400 to-violet-400 text-transparent bg-clip-text">
               Scans
             </span>
           </h2>
           <p className="text-gray-500 text-sm mt-2">
-            Latest Version: <span className="font-semibold">June 6, 2023</span>
+            Latest Version: <span className="font-semibold">June 7, 2023</span>
           </p>
         </div>
 
