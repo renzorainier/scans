@@ -139,9 +139,9 @@ const Greeting = () => {
     } else if (timeOfDay === "ninetoten") {
       return "/pictures/ninetoten.jpg";
     } else if (timeOfDay === "tentoeleven") {
-      return "/pictures/tentoeleven.jpg";
+      return "/pictures/eighttonine.jpg";
     } else if (timeOfDay === "eleventotwelve") {
-      return "/pictures/eleventotwelve.jpg";
+      return "/pictures/ninetoten.jpg";
     } else if (timeOfDay === "afternoon") {
       return "/pictures/afternoon.jpg";
     } else {
