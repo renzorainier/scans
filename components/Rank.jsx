@@ -64,7 +64,7 @@ function Rank({ data, onClose }) {
   useEffect(() => {
     const days = ["A", "B", "C", "D", "E"];
     const today = new Date().getDay();
-    setActiveTab(days[today + 1]);
+    setActiveTab(days[today - 0]);
   }, []);
 
   Object.keys(data).forEach((section) => {
